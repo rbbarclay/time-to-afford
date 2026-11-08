@@ -23,8 +23,10 @@ Only public or clearly licensed sources are used. Every value carries an as-of d
 
 ### EIA gasoline prices: gas
 - **Publisher:** U.S. Energy Information Administration
-- **Used for:** retail gasoline prices
-- **Coverage:** only about a dozen metro areas. Other metros are shown as missing.
+- **Used for:** retail price of regular gasoline (all formulations, taxes included), dollars per gallon, monthly average for the latest complete month
+- **File:** `https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls`, sheet "Cities" (no key needed; the EIA API now requires a key, so it isn't used)
+- **Coverage:** only 10 cities: Boston, Chicago, Cleveland, Denver, Houston, Los Angeles, Miami, New York City, San Francisco, Seattle. Each is mapped to its metro (CBSA) code. EIA's city sampling areas may not match metro boundaries exactly. All other metros are shown as missing. State and regional averages are not used to fill gaps.
+- **Timing:** updated monthly. This is more recent than the wage and rent data (see PROJECT.md, Known data constraints).
 - **Terms:** U.S. government data, generally in the public domain. Attribution is recommended.
 - **Site:** https://www.eia.gov/petroleum/gasdiesel/
 

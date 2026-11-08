@@ -89,8 +89,8 @@ def read_oews(path: Path) -> pd.DataFrame:
             names = [n for n in zf.namelist() if re.search(r"MSA_M\d{4}_dl\.xlsx$", n, re.I)]
             if not names:
                 raise ValueError(f"No MSA_M*_dl.xlsx found in {path.name}")
-            return pd.read_excel(io.BytesIO(zf.read(names[0])), dtype=object)
-    return pd.read_excel(path, dtype=object)
+            return pd.read_excel(io.BytesIO(zf.read(names[0])), dtype=object, engine="openpyxl")
+    return pd.read_excel(path, dtype=object, engine="openpyxl")
 
 
 def year_from_name(path: Path) -> int:

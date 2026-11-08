@@ -1,0 +1,92 @@
+{
+  "source": "U.S. Energy Information Administration (EIA), Gasoline and Diesel Fuel Update",
+  "source_url": "https://www.eia.gov/dnav/pet/pet_pri_gnd_a_epmr_pte_dpgal_m.htm",
+  "reference_period": "October 2026 (monthly average)",
+  "as_of": "2026-10",
+  "retrieved": "2026-11-08",
+  "basis": "Retail price of regular gasoline (all formulations), dollars per gallon, including taxes",
+  "coverage_note": "EIA publishes city prices for only 10 areas; EIA's city sampling areas may not match metro (CBSA) boundaries exactly. All other metros have no gas data.",
+  "attribution": "Source: U.S. Energy Information Administration",
+  "metros": {
+    "14460": {
+      "eia_area": "Boston, MA",
+      "eia_series": "EMM_EPMR_PTE_YBOS_DPG",
+      "price_per_gallon": {
+        "value": 4.266,
+        "status": "ok"
+      }
+    },
+    "16980": {
+      "eia_area": "Chicago",
+      "eia_series": "EMM_EPMR_PTE_YORD_DPG",
+      "price_per_gallon": {
+        "value": 4.733,
+        "status": "ok"
+      }
+    },
+    "17410": {
+      "eia_area": "Cleveland, OH",
+      "eia_series": "EMM_EPMR_PTE_YCLE_DPG",
+      "price_per_gallon": {
+        "value": 4.029,
+        "status": "ok"
+      }
+    },
+    "19740": {
+      "eia_area": "Denver",
+      "eia_series": "EMM_EPMR_PTE_YDEN_DPG",
+      "price_per_gallon": {
+        "value": 4.196,
+        "status": "ok"
+      }
+    },
+    "26420": {
+      "eia_area": "Houston",
+      "eia_series": "EMM_EPMR_PTE_Y44HO_DPG",
+      "price_per_gallon": {
+        "value": 3.747,
+        "status": "ok"
+      }
+    },
+    "31080": {
+      "eia_area": "Los Angeles",
+      "eia_series": "EMM_EPMR_PTE_Y05LA_DPG",
+      "price_per_gallon": {
+        "value": 6.049,
+        "status": "ok"
+      }
+    },
+    "33100": {
+      "eia_area": "Miami, FL",
+      "eia_series": "EMM_EPMR_PTE_YMIA_DPG",
+      "price_per_gallon": {
+        "value": 4.076,
+        "status": "ok"
+      }
+    },
+    "35620": {
+      "eia_area": "New York City",
+      "eia_series": "EMM_EPMR_PTE_Y35NY_DPG",
+      "price_per_gallon": {
+        "value": 4.27,
+        "status": "ok"
+      }
+    },
+    "41860": {
+      "eia_area": "San Francisco",
+      "eia_series": "EMM_EPMR_PTE_Y05SF_DPG",
+      "price_per_gallon": {
+        "value": 6.079,
+        "status": "ok"
+      }
+    },
+    "42660": {
+      "eia_area": "Seattle, WA",
+      "eia_series": "EMM_EPMR_PTE_Y48SE_DPG",
+      "price_per_gallon": {
+        "value": 5.553,
+        "status": "ok"
+      }
+    }
+  }
+}
