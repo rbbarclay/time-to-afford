@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Time to Afford</title>
+  <meta name="description" content="How many hours of work it takes to afford rent and gas in U.S. metro areas.">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Time to Afford</h1>
+    <p class="tagline">How many hours of work it takes to afford everyday costs in U.S. metro areas.</p>
+  </header>
+
+  <main>
+    <!-- Not a <form> and inputs have no name attribute: the wage can never be submitted or placed in a URL. -->
+    <section class="controls" aria-label="Inputs">
+      <div class="field">
+        <label for="metro">Use prices from this metro</label>
+        <select id="metro" disabled><option>Loading metros…</option></select>
+      </div>
+
+      <div class="field">
+        <label for="wage">Your wage <span class="hint">(optional, pre-tax)</span></label>
+        <div class="wage-row">
+          <span class="prefix" aria-hidden="true">$</span>
+          <input id="wage" type="text" inputmode="decimal" autocomplete="off" spellcheck="false"
+                 placeholder="Leave blank to use the metro median" aria-describedby="wage-help wage-error">
+          <fieldset class="unit" aria-label="Wage period">
+            <label><input type="radio" id="unit-hour" checked> per hour</label>
+            <label><input type="radio" id="unit-year"> per year</label>
+          </fieldset>
+        </div>
+        <p id="wage-error" class="error" role="alert" hidden></p>
+        <p id="wage-help" class="hint">Your wage stays in this browser tab. It is never saved, sent anywhere, or put in the page address.
+          Annual pay is converted at 2,080 hours a year (40 hours × 52 weeks).</p>
+      </div>
+
+      <div class="field">
+        <label for="rent-measure">Rent type</label>
+        <select id="rent-measure" disabled></select>
+      </div>
+    </section>
+
+    <p id="wage-used" class="wage-used" aria-live="polite"></p>
+
+    <section class="cards" aria-live="polite" aria-label="Results">
+      <article class="card" id="card-rent">
+        <h2>Rent <span class="card-sub" id="rent-label"></span></h2>
+        <p class="big" id="rent-hours">—</p>
+        <p class="per" id="rent-per">of work per month</p>
+        <p class="inputs" id="rent-inputs"></p>
+        <p class="source" id="rent-source"></p>
+      </article>
+
+      <article class="card" id="card-gas">
+        <h2>Gas <span class="card-sub">regular</span></h2>
+        <div class="gas-pair">
+          <div>
+            <p class="big" id="gas-fill-hours">—</p>
+            <p class="per" id="gas-fill-per">of work for a 15-gallon fill-up</p>
+          </div>
+          <div id="gas-gallon-block">
+            <p class="big small" id="gas-gallon-hours">—</p>
+            <p class="per">per gallon</p>
+          </div>
+        </div>
+        <p class="inputs" id="gas-inputs"></p>
+        <p class="source" id="gas-source"></p>
+      </article>
+    </section>
+
+    <section class="limits" aria-labelledby="limits-h">
+      <h2 id="limits-h">Keep in mind</h2>
+      <ul>
+        <li>Wages are <strong>pre-tax</strong>; take-home pay buys less.</li>
+        <li>Sources cover <strong>different periods</strong>: <span id="periods">…</span>.</li>
+        <li>Gas prices exist for <strong>only 10 metros</strong>; EIA's areas may not match metro boundaries exactly.</li>
+        <li>Rents are survey estimates (with margins of error) and include utilities.</li>
+        <li>A metro median wage is not any one person's pay.</li>
+      </ul>
+      <p><a href="methodology.html">Methodology, sources, and all limitations →</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Data: U.S. Bureau of Labor Statistics (OEWS), U.S. Census Bureau (American Community Survey),
+      U.S. Energy Information Administration. <span id="built"></span></p>
+    <p>Code: <a href="https://github.com/rbbarclay/time-to-afford">github.com/rbbarclay/time-to-afford</a> · MIT License</p>
+  </footer>
+</body>
+</html>
