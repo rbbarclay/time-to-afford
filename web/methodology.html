@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Methodology · Time to Afford</title>
+  <meta name="description" content="How Time to Afford calculates hours of work, its data sources, and their limitations.">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="methodology.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <p class="back"><a href="./">← Back to Time to Afford</a></p>
+    <h1>Methodology</h1>
+    <p class="tagline">How the numbers are calculated, where the data comes from, and what it can't tell you.</p>
+  </header>
+
+  <main class="prose">
+    <nav class="toc" aria-label="On this page">
+      <a href="#calc">Calculation</a> · <a href="#sources">Sources</a> · <a href="#missing">Missing data</a> ·
+      <a href="#limits">Limitations</a> · <a href="#privacy">Privacy</a> · <a href="#credits">Attribution</a>
+    </nav>
+
+    <section id="calc">
+      <h2>Calculation</h2>
+      <p>Every figure is <strong>hours of work = cost ÷ hourly wage</strong>.</p>
+      <ul>
+        <li><strong>Wage used.</strong> If you enter a wage, that is used. Annual pay is divided by 2,080 hours
+          (40 hours × 52 weeks). If you leave it blank, the metro's <strong>median hourly wage</strong> for all
+          occupations is used.</li>
+        <li><strong>Rent:</strong> monthly median gross rent ÷ wage = hours of work per month.</li>
+        <li><strong>Gas, per gallon:</strong> price per gallon ÷ wage.</li>
+        <li><strong>Gas, fill-up:</strong> 15 gallons × price per gallon ÷ wage. The 15-gallon size is fixed.</li>
+        <li><strong>Display.</strong> Results under one hour are shown in whole minutes; otherwise in hours to one decimal place.</li>
+      </ul>
+      <p class="example" id="example">Loading worked example…</p>
+    </section>
+
+    <section id="sources">
+      <h2>Sources</h2>
+      <p>All data comes from U.S. government agencies and is generally in the public domain.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Measure</th><th scope="col">Source</th><th scope="col">What it is</th>
+                <th scope="col">Period</th><th scope="col">Coverage</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Wage</th>
+              <td><a href="https://www.bls.gov/oes/">BLS Occupational Employment and Wage Statistics (OEWS)</a></td>
+              <td>Median hourly wage, all occupations, pre-tax</td>
+              <td data-period="wage">…</td>
+              <td>All <span data-count>393</span> metros</td>
+            </tr>
+            <tr>
+              <th scope="row">Rent</th>
+              <td><a href="https://www.census.gov/programs-surveys/acs">Census American Community Survey (ACS)</a>, table B25031</td>
+              <td>Median monthly gross rent (rent plus utilities): all units, 1 bedroom, 2 bedrooms</td>
+              <td data-period="rent">…</td>
+              <td>All <span data-count>393</span> metros</td>
+            </tr>
+            <tr>
+              <th scope="row">Gas</th>
+              <td><a href="https://www.eia.gov/petroleum/gasdiesel/">EIA Gasoline and Diesel Fuel Update</a></td>
+              <td>Retail price of regular gasoline, taxes included, monthly average</td>
+              <td data-period="gas">…</td>
+              <td>10 metros: Boston, Chicago, Cleveland, Denver, Houston, Los Angeles, Miami, New York, San Francisco, Seattle</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Metros are U.S. Office of Management and Budget metropolitan statistical areas, identified by CBSA code,
+        including those in Puerto Rico. Each time the site data is built, every value is checked against figures
+        published separately by the same agencies (the BLS data API, Census table B25064, and EIA's web table).
+        Site data built <span id="built">…</span>.</p>
+    </section>
+
+    <section id="missing">
+      <h2>Missing data</h2>
+      <p>Missing values are shown as missing. They are <strong>never estimated or filled in</strong> from another
+        year, a nearby area, or a state or regional average.</p>
+      <ul>
+        <li><strong>No data:</strong> the source publishes no estimate for that metro (for example, too few survey responses).</li>
+        <li><strong>Not covered:</strong> the source doesn't cover that metro at all. This is the case for gas in all but 10 metros.</li>
+        <li><strong>Top-coded:</strong> the source reports only a range, such as rent of “$3,500 or more”.
+          Hours aren't calculated from a range.</li>
+      </ul>
+    </section>
+
+    <section id="limits">
+      <h2>Limitations</h2>
+      <h3>Wages</h3>
+      <ul>
+        <li><strong>Pre-tax.</strong> Wages are before taxes and deductions, so take-home pay buys less than shown.</li>
+        <li><strong>A median isn't your pay.</strong> Half of workers in a metro earn less than the median and half
+          earn more. The median covers all occupations combined.</li>
+        <li><strong>Lag.</strong> OEWS is published once a year, about a year after its reference period.</li>
+        <li><strong>Annual conversion.</strong> Dividing annual pay by 2,080 assumes full-time, year-round work with
+          no overtime.</li>
+      </ul>
+      <h3>Rent</h3>
+      <ul>
+        <li><strong>Survey estimates.</strong> ACS figures come from a sample and carry margins of error (shown as ±,
+          at 90% confidence). Smaller metros have larger margins.</li>
+        <li><strong>All renters, not new leases.</strong> The median includes long-time tenants, so it is usually
+          below what a new renter would be asked to pay today.</li>
+        <li><strong>Includes utilities.</strong> Gross rent is contract rent plus utilities and fuels paid by the renter.</li>
+      </ul>
+      <h3>Gas</h3>
+      <ul>
+        <li><strong>Only 10 metros.</strong> EIA publishes city prices for only 10 areas. Every other metro shows no gas data.</li>
+        <li><strong>Boundaries may differ.</strong> EIA's city sampling areas may not match metro boundaries exactly.</li>
+        <li><strong>Regular grade, one month.</strong> Prices are for regular gasoline, averaged over a single month,
+          and change month to month.</li>
+      </ul>
+      <h3>Across sources</h3>
+      <ul>
+        <li><strong>Different periods.</strong> <span id="periods">…</span>. Gas is the most recent, so it is compared
+          with older wages. If prices have risen since the wage period, hours are somewhat overstated.</li>
+        <li><strong>One number per metro.</strong> Metros include cities, suburbs, and rural counties; costs vary
+          within a metro.</li>
+        <li><strong>Limited costs.</strong> Only rent and gas are covered. Groceries, dining out, transportation,
+          childcare, healthcare, and other costs are not included yet; groceries and dining out lack good metro-level public sources.</li>
+      </ul>
+    </section>
+
+    <section id="privacy">
+      <h2>Privacy</h2>
+      <p>If you enter a wage, it stays in your browser tab. It is never saved (no cookies or local storage), never
+        sent to a server, and never placed in the page address. The site has no accounts and no analytics.</p>
+    </section>
+
+    <section id="credits">
+      <h2>Attribution</h2>
+      <p>Sources: U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics; U.S. Census Bureau,
+        American Community Survey; U.S. Energy Information Administration. This site is not endorsed by these agencies.</p>
+      <p>Code is open source under the MIT License:
+        <a href="https://github.com/rbbarclay/time-to-afford">github.com/rbbarclay/time-to-afford</a>.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><a href="./">← Back to Time to Afford</a></p>
+  </footer>
+</body>
+</html>
