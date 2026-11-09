@@ -14,6 +14,7 @@ Show how many hours of work it takes to afford common expenses in each U.S. metr
 - **Site data build done** (`pipeline/build.py`). It runs validation, then merges the three files into `web/data/metros.json` (393 metros sorted by name, about 115 KB) with source metadata. Gas for metros EIA doesn't cover has status `not_covered`, which is separate from `missing`.
 - **Front end, your wages mode, done** (`web/index.html`, `app.js`, `calc.js`, `styles.css`). It has a metro picker (default New York), an optional wage (hourly or annual), and a rent-type selector. The rent card shows hours per month with inputs, margin of error and as-of date. The gas card shows hours for a 15-gallon fill-up and for 1 gallon. Missing, top-coded and not-covered values say so instead of showing a number. A short "Keep in mind" list links to the methodology page. Durations under an hour show as minutes. Local preview: `python3 -m http.server -d web` and open http://localhost:8000. JS tests: `cd web && node --test tests/`
 - **Methodology page done** (`web/methodology.html`, `methodology.js`). It covers the calculation with a live worked example, a sources table, how missing data is handled, limitations grouped by source and across sources, privacy, and attribution. Periods, dates and metro count are read from `metros.json`, so they stay current when the data is rebuilt.
+- **Hosting set up:** GitHub Pages at https://rbbarclay.github.io/time-to-afford/ via `.github/workflows/pages.yml`. On each push to `main` it runs the Python and JS tests, then publishes `web/` without the tests and `package.json`. The workflow doesn't run the data pipeline, so data updates are manual: run the pipeline locally, then commit and push.
 - Setup: `uv venv .venv && uv pip install -p .venv -r pipeline/requirements.txt`
 - Run: `BLS_CONTACT=<email> .venv/bin/python pipeline/wages.py` (or `--file <oesmYYma.zip>`). `.venv/bin/python pipeline/rent.py` (or `--year`, `--file/--geos-file`); `.venv/bin/python pipeline/gas.py` (or `--file`); `.venv/bin/python pipeline/build.py` (validates, then writes the site data); `.venv/bin/python pipeline/validate.py` (add `--refresh-references` to re-fetch the reference values; this uses 16 of the BLS API's 25 daily requests and needs `BLS_CONTACT`). Tests: `.venv/bin/pytest pipeline`
 
@@ -67,4 +68,5 @@ Show how many hours of work it takes to afford common expenses in each U.S. metr
 - [x] Front end: your wages mode (with rent selector: all units by default, 1 bedroom, 2 bedrooms)
 - [x] Decide the gas quantity (1 gallon and a 15-gallon fill-up, both fixed)
 - [x] Methodology page, including a clear list of limitations and constraints for each source
-- [ ] Hosting: GitHub Pages workflow (chosen; Vercel possible later)
+- [x] Hosting: GitHub Pages workflow (Vercel possible later; only the workflow would change)
+- [ ] Later: automate data refresh (e.g. monthly gas update)
