@@ -15,6 +15,7 @@ Show how many hours of work it takes to afford common expenses in each U.S. metr
 - **Front end, your wages mode, done** (`web/index.html`, `app.js`, `calc.js`, `styles.css`). It has a metro picker (default New York), an optional wage (hourly or annual), and a rent-type selector. The rent card shows hours per month with inputs, margin of error and as-of date. The gas card shows hours for a 15-gallon fill-up and for 1 gallon. Missing, top-coded and not-covered values say so instead of showing a number. A short "Keep in mind" list links to the methodology page. Durations under an hour show as minutes. Local preview: `python3 -m http.server -d web` and open http://localhost:8000. JS tests: `cd web && node --test tests/`
 - **Methodology page done** (`web/methodology.html`, `methodology.js`). It covers the calculation with a live worked example, a sources table, how missing data is handled, limitations grouped by source and across sources, privacy, and attribution. Periods, dates and metro count are read from `metros.json`, so they stay current when the data is rebuilt.
 - **Hosting set up:** GitHub Pages at https://rbbarclay.github.io/time-to-afford/ via `.github/workflows/pages.yml`. On each push to `main` it runs the Python and JS tests, then publishes `web/` without the tests and `package.json`. The workflow doesn't run the data pipeline, so data updates are manual: run the pipeline locally, then commit and push.
+- **Planned: groceries and mortgage** ([docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md), accepted 2026-11-09). Sources were checked against publisher sites on 2026-11-09 and are recorded in DATA.md. Nothing is built yet.
 - Setup: `uv venv .venv && uv pip install -p .venv -r pipeline/requirements.txt`
 - Run: `BLS_CONTACT=<email> .venv/bin/python pipeline/wages.py` (or `--file <oesmYYma.zip>`). `.venv/bin/python pipeline/rent.py` (or `--year`, `--file/--geos-file`); `.venv/bin/python pipeline/gas.py` (or `--file`); `.venv/bin/python pipeline/build.py` (validates, then writes the site data); `.venv/bin/python pipeline/validate.py` (add `--refresh-references` to re-fetch the reference values; this uses 16 of the BLS API's 25 daily requests and needs `BLS_CONTACT`). Tests: `.venv/bin/pytest pipeline`
 
@@ -22,7 +23,11 @@ Show how many hours of work it takes to afford common expenses in each U.S. metr
 
 - **Architecture:** a static site. A Python pipeline writes JSON files that the site reads.
 - **No database, user accounts, or runtime API** in v1.
-- **v1 metrics:** wage (BLS OEWS), rent (Census ACS), gas (EIA). Groceries and dinner out come later.
+- **v1 metrics:** wage (BLS OEWS), rent (Census ACS), gas (EIA). Groceries and mortgage are planned (see below); dinner out comes later.
+- **Data policy, amended 2026-11-09: "no imputed values" becomes "no unlabeled estimates."** Every value carries a tier: `observed` (published directly for that place and period), `estimated` (a national or regional figure scaled by a published adjustment factor), or `scenario` (calculated from stated or user-adjustable assumptions). Estimated and scenario values are allowed only with a tier, a method string, and an as-of date; the pipeline must reject values missing tier or method. Missing data is still shown as missing, never filled in. Scenario values never appear on the map; they show only in a detail panel beside their assumptions.
+- **Mortgage (planned):** two figures, always labeled separately. Observed: ACS median monthly owner costs for owners with a mortgage (B25088), labeled as including taxes and insurance. Scenario: monthly principal and interest on the metro's ACS median home value (B25077). Defaults are a **20% down payment**, documented as an average assumption, and a **30-year term**; both are editable in the app (in-browser only) and reset to defaults. The rate is the national 30-year fixed average, so metro rate differences aren't captured.
+- **Property taxes and homeowner's insurance are excluded from v1** of the mortgage scenario. To be documented on the methodology page and added later as a separate, labeled line.
+- **Grocery basket (planned, national phase):** milk, eggs, bread, ground beef, bananas, coffee, from BLS Average Price series (IDs in DATA.md), stored as observed national values. The USDA Thrifty Food Plan is a national reference line only. Metro estimates (later phase) scale national prices by BEA's **all-goods** RPP, since there's no food-specific line, and the method string says so. Groceries and dinner out stay out of any "total hours" figure until the basket is validated.
 - **License:** MIT for code. The repo is public.
 - **Wage privacy:** wage math runs only in the browser. A user's wage is never put in URLs or stored on a server.
 - **Map:** dots at metro centers, all the same size. Metros with no data get a hollow or gray dot. The legend shows the actual min and max values.
@@ -54,7 +59,10 @@ Show how many hours of work it takes to afford common expenses in each U.S. metr
 - OEWS data lags about a year.
 - EIA gas prices cover only 10 metros, and EIA's city areas may not match metro boundaries exactly.
 - Periods don't match: wages are May 2025, rent is 2025 (ACS 1-year), gas is the latest month (currently October 2026). Comparing current gas prices with older wages overstates hours somewhat.
-- No good metro-level sources exist yet for groceries or dinner out.
+- No public source gives observed metro-level grocery prices or dinner-out costs. Planned grocery metro values are estimates (national BLS price × BEA all-goods RPP).
+- BEA RPPs cover 387 of 393 metros; the 6 Puerto Rico metros have none, so they'll show no grocery estimate. The latest RPP year is 2024, older than the other sources.
+- BLS regional average-price series are uneven: several stopped at October 2025, and there's no West series for eggs. No metro-level series exist for the basket items.
+- ACS owner costs with a mortgage are top-coded at $4,000+ (San Francisco and San Jose in 2025).
 - v1 uses pre-tax wages only.
 - ACS median gross rent covers all renters, including long-time tenants, so it is usually below current asking rents for new leases.
 
@@ -70,6 +78,20 @@ Show how many hours of work it takes to afford common expenses in each U.S. metr
 - [x] Methodology page, including a clear list of limitations and constraints for each source
 - [x] Hosting: GitHub Pages workflow (Vercel possible later; only the workflow would change)
 - [ ] Later: automate data refresh (e.g. monthly gas update)
+
+### Groceries and mortgage (plan section 7 build order)
+- [ ] 1. Add `tier`, `method` and `inputs` to the data schema; make the validator enforce them. This changes the current `{value, status}` format used by every module and `web/data/metros.json`.
+- [ ] 2. Mortgage observed values (ACS B25088 with a mortgage, B25077 home value) for about 10 metros, checked against the Census table. Decide first: 1-year (matches rent, covers all 393 metros) or 5-year (the plan's choice; latest is 2020–2024).
+- [ ] 3. Mortgage scenario calculator, unit-tested against a known amortization example. **Blocked:** Freddie Mac PMMS terms are unresolved (DATA.md); get permission or choose another rate source before publishing rates.
+- [ ] 4. National grocery basket (G1), with `pipeline/config/basket.yml`.
+- [ ] 5. Metro grocery estimates (G2), checked against the national average for consistency.
+- [ ] 6. Front end: tier badges, method tooltips, scenario panel.
+- [ ] Methodology page: explain value tiers; state that property taxes and homeowner's insurance are excluded from the mortgage scenario; rewrite "never estimated or filled in" when the first estimated values ship (the live page is unchanged until then).
+- [ ] Verify the terms still marked UNVERIFIED in DATA.md (EIA reuse page; USDA policies page).
+
+## Open questions
+
+- **Estimated grocery values on the map?** Still open. Proposed default: detail panel only for v1, so the map stays observed-only.
 
 ## Future improvements
 

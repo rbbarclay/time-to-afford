@@ -18,7 +18,13 @@ See [PROJECT.md](PROJECT.md) for current state, decisions, and to-do, and [DATA.
 
 - **Public or clearly licensed sources only.** Every source and its terms are listed in [DATA.md](DATA.md).
 - **Every value carries an as-of date.** Values are never shown without the period they describe.
-- **Missing data is shown as missing, never imputed.** If a metro lacks a value, the site says so. It does not estimate or fill in a value.
+- **Missing data is shown as missing.** If a metro lacks a value, the site says so instead of filling it in.
+- **No unlabeled estimates.** Every value has a tier:
+  - **observed:** published directly for that place and period (e.g. a metro's median wage)
+  - **estimated:** derived from a national or regional figure and a published adjustment factor (e.g. a national grocery price scaled by a metro price index)
+  - **scenario:** calculated from stated or user-adjustable assumptions (e.g. a mortgage payment at a 20% down payment)
+
+  Estimated and scenario values always carry their method and as-of date and are labeled as such. Scenario values never appear on the map. See [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md).
 
 ## License
 
