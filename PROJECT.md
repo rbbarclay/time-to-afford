@@ -70,3 +70,7 @@ Show how many hours of work it takes to afford common expenses in each U.S. metr
 - [x] Methodology page, including a clear list of limitations and constraints for each source
 - [x] Hosting: GitHub Pages workflow (Vercel possible later; only the workflow would change)
 - [ ] Later: automate data refresh (e.g. monthly gas update)
+
+## Future improvements
+
+- **Cost map with a cost selector:** create a map color-coding the cost of living, letting people choose which cost to show (e.g. rent by type, or gas). This builds on feature 3 (Map) and follows the map decisions above: dots at metro centers, all the same size; no-data metros hollow or gray; a legend with the actual min and max. Colors show **hours of work**, not dollar cost. **Wage used:** by default, each metro's own median wage, which shows local affordability. If the user enters a wage, that wage is applied to every metro, which shows where their pay goes furthest. This matches the main page. The legend and tooltips must say which wage is in use.
