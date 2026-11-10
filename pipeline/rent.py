@@ -60,13 +60,16 @@ def _to_int(raw: str | None):
         return None
 
 
-def parse_estimate(est: str | None, moe: str | None) -> dict:
-    """Convert an ACS estimate/MOE pair into {"value", "moe", "status"}."""
+def parse_estimate(est: str | None, moe: str | None, top_code: int = TOP_CODE) -> dict:
+    """Convert an ACS estimate/MOE pair into {"value", "moe", "status"}.
+
+    `top_code` is the table's "or more" code (3501 for gross rent = "$3,500+").
+    """
     e, m = _to_int(est), _to_int(moe)
     moe_val = m if m is not None and m >= 0 else None
     if e is None or e < 0:
         return {"value": None, "moe": None, "status": "missing"}
-    if e == TOP_CODE:
+    if e == top_code:
         return {"value": None, "moe": None, "status": "top_coded"}
     return {"value": e, "moe": moe_val, "status": "ok"}
 

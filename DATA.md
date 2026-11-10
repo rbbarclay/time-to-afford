@@ -44,7 +44,7 @@ Each entry follows the checklist in section 10.8 of that plan. **"Checked"** mea
 
 From [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md), section 10. None of these are in the pipeline yet.
 
-### Census ACS owner costs and home value: mortgage, observed (plan 10.1)
+### Census ACS owner costs and home value: mortgage, observed (plan 10.1). In the pipeline as `pipeline/owner.py` (not yet on the site)
 - **Publisher:** U.S. Census Bureau
 - **URL:** same table-based summary files as rent, e.g. `https://www2.census.gov/programs-surveys/acs/summary_file/2025/table-based-SF/data/1YRData/acsdt1y2025-b25077.dat` and `...-b25088.dat`
 - **Tables (checked 2026-11-09 against `ACS20251YR_Table_Shells.txt`):**
@@ -52,12 +52,13 @@ From [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md
   - **B25088** median selected monthly owner costs by mortgage status: `B25088_E002` = housing units **with a mortgage** (+ `M002`). `E001` is all owners, `E003` is without a mortgage. Selected monthly owner costs include mortgage payments, real estate taxes, insurance, utilities, and fees, so the label must say so.
 - **Access:** keyless summary files, the same as rent. The plan names the Census API, which now requires a key; not needed while the pipeline runs locally.
 - **Geography:** metropolitan statistical areas. **2025 1-year:** both tables cover all 393 of our metros, with no missing values. **5-year:** the latest published is 2020–2024 (`acsdt5y2024-*`); 2021–2025 isn't out yet.
-- **1-year vs 5-year:** the plan specifies 5-year estimates. Rent uses 1-year 2025. Which one to use for owner costs is a decision for build step 2 (see PROJECT.md).
-- **Special values:** `B25088_E002` = `4001` means "$4,000 or more" (top-coded) and is treated like rent's `3501`. In the 2025 1-year data this affects San Francisco (41860) and San Jose (41940).
+- **1-year vs 5-year:** the plan specifies 5-year estimates; the project uses **1-year 2025** (decided 2026-11-09; comparison in PROJECT.md). The 5-year data is a possible labeled fallback only if a future 1-year release drops metros.
+- **Cross-check:** `B25097_E001` (median value, all owner-occupied units) equals `B25077_E001` for all 393 metros; `validate.py` checks this. Census publishes no second median for owner costs with a mortgage in the summary files (the Data Profile DP04 is API-only), so owner costs get structure and range checks only.
+- **Special values:** `B25088_E002` = `4001` means "$4,000 or more" (top-coded) and is treated like rent's `3501`. In the 2025 1-year data this affects San Francisco (41860) and San Jose (41940). For `B25077`, `2000001` ("$2,000,000 or more") is handled as top-coded. That code follows ACS convention but isn't observed in the 2025 metro data, so it's **unverified** against a real file.
 - **Cadence:** annual
 - **Terms checked 2026-11-09:** as for ACS rent above (cite the Census Bureau).
 - **Attribution text:** "Source: U.S. Census Bureau, American Community Survey"
-- **As-of format (planned):** `as_of: "YYYY"` (1-year) or `"YYYY-YYYY"` (5-year)
+- **As-of format in data files:** `as_of: "YYYY"`, `reference_period: "YYYY (ACS 1-year)"`
 
 ### Freddie Mac Primary Mortgage Market Survey (PMMS): mortgage rate, scenario input (plan 10.2)
 - **Publisher:** Freddie Mac

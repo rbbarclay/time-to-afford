@@ -1,0 +1,6724 @@
+{
+  "source": "U.S. Census Bureau, American Community Survey (ACS) 1-year estimates, tables B25077 and B25088",
+  "source_url": "https://www2.census.gov/programs-surveys/acs/summary_file/2025/table-based-SF/data/1YRData/acsdt1y2025-b25088.dat",
+  "reference_period": "2025 (ACS 1-year)",
+  "as_of": "2025",
+  "retrieved": "2026-11-09",
+  "basis": "Median home value and median monthly owner costs for owners with a mortgage (owner costs include taxes, insurance, utilities, and fees), metropolitan statistical areas",
+  "attribution": "Source: U.S. Census Bureau, American Community Survey",
+  "measures": {
+    "home_value": "Median home value",
+    "owner_cost_with_mortgage": "Median monthly owner costs, with a mortgage"
+  },
+  "methods": {
+    "acs_home_value": {
+      "description": "Census ACS 1-year median value of owner-occupied housing units, for the metro",
+      "inputs": [
+        {
+          "source": "census_acs",
+          "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2025/table-based-SF/data/1YRData/acsdt1y2025-b25077.dat",
+          "table": "B25077",
+          "estimate": "B25077_E001",
+          "margin_of_error": "B25077_M001"
+        }
+      ],
+      "as_of": "2025"
+    },
+    "acs_owner_cost_with_mortgage": {
+      "description": "Census ACS 1-year median selected monthly owner costs for owner-occupied units with a mortgage, for the metro. Includes the mortgage payment plus real estate taxes, homeowner's insurance, utilities, and fees; not the mortgage payment alone",
+      "inputs": [
+        {
+          "source": "census_acs",
+          "url": "https://www2.census.gov/programs-surveys/acs/summary_file/2025/table-based-SF/data/1YRData/acsdt1y2025-b25088.dat",
+          "table": "B25088",
+          "estimate": "B25088_E002",
+          "margin_of_error": "B25088_M002"
+        }
+      ],
+      "as_of": "2025"
+    }
+  },
+  "metros": {
+    "10180": {
+      "name": "Abilene, TX",
+      "home_value": {
+        "value": 218400,
+        "moe": 16177,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1938,
+        "moe": 154,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "10380": {
+      "name": "Aguadilla, PR",
+      "home_value": {
+        "value": 169300,
+        "moe": 11978,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 848,
+        "moe": 47,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "10420": {
+      "name": "Akron, OH",
+      "home_value": {
+        "value": 244800,
+        "moe": 6472,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1636,
+        "moe": 45,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "10500": {
+      "name": "Albany, GA",
+      "home_value": {
+        "value": 174300,
+        "moe": 18666,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1500,
+        "moe": 163,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "10540": {
+      "name": "Albany, OR",
+      "home_value": {
+        "value": 416100,
+        "moe": 18566,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1937,
+        "moe": 81,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "10580": {
+      "name": "Albany-Schenectady-Troy, NY",
+      "home_value": {
+        "value": 333600,
+        "moe": 6351,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2091,
+        "moe": 49,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "10740": {
+      "name": "Albuquerque, NM",
+      "home_value": {
+        "value": 338000,
+        "moe": 5692,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1744,
+        "moe": 53,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "10780": {
+      "name": "Alexandria, LA",
+      "home_value": {
+        "value": 194300,
+        "moe": 23503,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1749,
+        "moe": 168,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "10900": {
+      "name": "Allentown-Bethlehem-Easton, PA-NJ",
+      "home_value": {
+        "value": 353900,
+        "moe": 7206,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2098,
+        "moe": 55,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "11020": {
+      "name": "Altoona, PA",
+      "home_value": {
+        "value": 178100,
+        "moe": 10004,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1309,
+        "moe": 83,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "11100": {
+      "name": "Amarillo, TX",
+      "home_value": {
+        "value": 231300,
+        "moe": 11438,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1759,
+        "moe": 127,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "11180": {
+      "name": "Ames, IA",
+      "home_value": {
+        "value": 293200,
+        "moe": 18355,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1885,
+        "moe": 89,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "11200": {
+      "name": "Amherst Town-Northampton, MA",
+      "home_value": {
+        "value": 453500,
+        "moe": 22581,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2396,
+        "moe": 110,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "11260": {
+      "name": "Anchorage, AK",
+      "home_value": {
+        "value": 400600,
+        "moe": 12715,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2314,
+        "moe": 99,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "11460": {
+      "name": "Ann Arbor, MI",
+      "home_value": {
+        "value": 418400,
+        "moe": 10754,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2381,
+        "moe": 82,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "11500": {
+      "name": "Anniston-Oxford, AL",
+      "home_value": {
+        "value": 185900,
+        "moe": 12524,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1286,
+        "moe": 74,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "11540": {
+      "name": "Appleton, WI",
+      "home_value": {
+        "value": 315700,
+        "moe": 9427,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1717,
+        "moe": 82,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "11640": {
+      "name": "Arecibo, PR",
+      "home_value": {
+        "value": 134500,
+        "moe": 13731,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 734,
+        "moe": 66,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "11700": {
+      "name": "Asheville, NC",
+      "home_value": {
+        "value": 428100,
+        "moe": 13341,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1921,
+        "moe": 94,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12020": {
+      "name": "Athens-Clarke County, GA",
+      "home_value": {
+        "value": 387000,
+        "moe": 15131,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1815,
+        "moe": 174,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12060": {
+      "name": "Atlanta-Sandy Springs-Roswell, GA",
+      "home_value": {
+        "value": 407900,
+        "moe": 3776,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2274,
+        "moe": 24,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12100": {
+      "name": "Atlantic City-Hammonton, NJ",
+      "home_value": {
+        "value": 417100,
+        "moe": 12517,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2281,
+        "moe": 70,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12220": {
+      "name": "Auburn-Opelika, AL",
+      "home_value": {
+        "value": 291600,
+        "moe": 17451,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1712,
+        "moe": 114,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12260": {
+      "name": "Augusta-Richmond County, GA-SC",
+      "home_value": {
+        "value": 259900,
+        "moe": 9234,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1697,
+        "moe": 75,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12420": {
+      "name": "Austin-Round Rock-San Marcos, TX",
+      "home_value": {
+        "value": 459900,
+        "moe": 9430,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2791,
+        "moe": 61,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12540": {
+      "name": "Bakersfield-Delano, CA",
+      "home_value": {
+        "value": 369800,
+        "moe": 6751,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2035,
+        "moe": 75,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12580": {
+      "name": "Baltimore-Columbia-Towson, MD",
+      "home_value": {
+        "value": 419800,
+        "moe": 5664,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2421,
+        "moe": 32,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12620": {
+      "name": "Bangor, ME",
+      "home_value": {
+        "value": 281500,
+        "moe": 18762,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1780,
+        "moe": 100,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12700": {
+      "name": "Barnstable Town, MA",
+      "home_value": {
+        "value": 716200,
+        "moe": 20909,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2622,
+        "moe": 120,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12940": {
+      "name": "Baton Rouge, LA",
+      "home_value": {
+        "value": 260500,
+        "moe": 7685,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1756,
+        "moe": 51,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "12980": {
+      "name": "Battle Creek, MI",
+      "home_value": {
+        "value": 184800,
+        "moe": 12707,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1518,
+        "moe": 96,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "13020": {
+      "name": "Bay City, MI",
+      "home_value": {
+        "value": 176300,
+        "moe": 11160,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1384,
+        "moe": 71,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "13140": {
+      "name": "Beaumont-Port Arthur, TX",
+      "home_value": {
+        "value": 193700,
+        "moe": 11155,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1856,
+        "moe": 73,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "13220": {
+      "name": "Beckley, WV",
+      "home_value": {
+        "value": 147300,
+        "moe": 21193,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1088,
+        "moe": 91,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "13380": {
+      "name": "Bellingham, WA",
+      "home_value": {
+        "value": 641600,
+        "moe": 21684,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2530,
+        "moe": 127,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "13460": {
+      "name": "Bend, OR",
+      "home_value": {
+        "value": 666100,
+        "moe": 21128,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2513,
+        "moe": 127,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "13740": {
+      "name": "Billings, MT",
+      "home_value": {
+        "value": 402000,
+        "moe": 14864,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2066,
+        "moe": 131,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "13780": {
+      "name": "Binghamton, NY",
+      "home_value": {
+        "value": 178100,
+        "moe": 7737,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1541,
+        "moe": 73,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "13820": {
+      "name": "Birmingham, AL",
+      "home_value": {
+        "value": 282200,
+        "moe": 7666,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1753,
+        "moe": 45,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "13900": {
+      "name": "Bismarck, ND",
+      "home_value": {
+        "value": 334100,
+        "moe": 13424,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1955,
+        "moe": 109,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "13980": {
+      "name": "Blacksburg-Christiansburg-Radford, VA",
+      "home_value": {
+        "value": 298200,
+        "moe": 17780,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1762,
+        "moe": 160,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "14010": {
+      "name": "Bloomington, IL",
+      "home_value": {
+        "value": 248200,
+        "moe": 9457,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1862,
+        "moe": 71,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "14020": {
+      "name": "Bloomington, IN",
+      "home_value": {
+        "value": 316800,
+        "moe": 11324,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1742,
+        "moe": 94,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "14260": {
+      "name": "Boise City, ID",
+      "home_value": {
+        "value": 507400,
+        "moe": 5053,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2021,
+        "moe": 52,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "14460": {
+      "name": "Boston-Cambridge-Newton, MA-NH",
+      "home_value": {
+        "value": 713900,
+        "moe": 6347,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3184,
+        "moe": 35,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "14500": {
+      "name": "Boulder, CO",
+      "home_value": {
+        "value": 770900,
+        "moe": 27071,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3023,
+        "moe": 137,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "14540": {
+      "name": "Bowling Green, KY",
+      "home_value": {
+        "value": 260700,
+        "moe": 16059,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1511,
+        "moe": 121,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "14580": {
+      "name": "Bozeman, MT",
+      "home_value": {
+        "value": 750400,
+        "moe": 34377,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2568,
+        "moe": 170,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "14740": {
+      "name": "Bremerton-Silverdale-Port Orchard, WA",
+      "home_value": {
+        "value": 554600,
+        "moe": 20357,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2497,
+        "moe": 111,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "14860": {
+      "name": "Bridgeport-Stamford-Danbury, CT",
+      "home_value": {
+        "value": 654800,
+        "moe": 20788,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3420,
+        "moe": 80,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "15180": {
+      "name": "Brownsville-Harlingen, TX",
+      "home_value": {
+        "value": 183300,
+        "moe": 10344,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1623,
+        "moe": 83,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "15260": {
+      "name": "Brunswick-St. Simons, GA",
+      "home_value": {
+        "value": 277700,
+        "moe": 17306,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1646,
+        "moe": 179,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "15380": {
+      "name": "Buffalo-Cheektowaga, NY",
+      "home_value": {
+        "value": 266700,
+        "moe": 4993,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1736,
+        "moe": 42,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "15500": {
+      "name": "Burlington, NC",
+      "home_value": {
+        "value": 300000,
+        "moe": 16387,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1633,
+        "moe": 118,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "15540": {
+      "name": "Burlington-South Burlington, VT",
+      "home_value": {
+        "value": 433300,
+        "moe": 17323,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2386,
+        "moe": 92,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "15940": {
+      "name": "Canton-Massillon, OH",
+      "home_value": {
+        "value": 229100,
+        "moe": 8019,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1474,
+        "moe": 56,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "15980": {
+      "name": "Cape Coral-Fort Myers, FL",
+      "home_value": {
+        "value": 381600,
+        "moe": 7553,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2275,
+        "moe": 83,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16020": {
+      "name": "Cape Girardeau, MO-IL",
+      "home_value": {
+        "value": 233400,
+        "moe": 22906,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1446,
+        "moe": 130,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16180": {
+      "name": "Carson City, NV",
+      "home_value": {
+        "value": 459000,
+        "moe": 33687,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1867,
+        "moe": 156,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16220": {
+      "name": "Casper, WY",
+      "home_value": {
+        "value": 324800,
+        "moe": 20915,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1967,
+        "moe": 197,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16300": {
+      "name": "Cedar Rapids, IA",
+      "home_value": {
+        "value": 251600,
+        "moe": 8667,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1737,
+        "moe": 70,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16540": {
+      "name": "Chambersburg, PA",
+      "home_value": {
+        "value": 294800,
+        "moe": 10553,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1702,
+        "moe": 79,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16580": {
+      "name": "Champaign-Urbana, IL",
+      "home_value": {
+        "value": 224900,
+        "moe": 12679,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1647,
+        "moe": 88,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16620": {
+      "name": "Charleston, WV",
+      "home_value": {
+        "value": 153200,
+        "moe": 7903,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1335,
+        "moe": 93,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16700": {
+      "name": "Charleston-North Charleston, SC",
+      "home_value": {
+        "value": 429100,
+        "moe": 9108,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2247,
+        "moe": 60,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16740": {
+      "name": "Charlotte-Concord-Gastonia, NC-SC",
+      "home_value": {
+        "value": 415300,
+        "moe": 5920,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2050,
+        "moe": 38,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16820": {
+      "name": "Charlottesville, VA",
+      "home_value": {
+        "value": 487300,
+        "moe": 27520,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2214,
+        "moe": 121,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16860": {
+      "name": "Chattanooga, TN-GA",
+      "home_value": {
+        "value": 321500,
+        "moe": 10805,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1732,
+        "moe": 76,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16940": {
+      "name": "Cheyenne, WY",
+      "home_value": {
+        "value": 375100,
+        "moe": 12611,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2113,
+        "moe": 165,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "16980": {
+      "name": "Chicago-Naperville-Elgin, IL-IN",
+      "home_value": {
+        "value": 347700,
+        "moe": 2491,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2352,
+        "moe": 19,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17020": {
+      "name": "Chico, CA",
+      "home_value": {
+        "value": 417900,
+        "moe": 22279,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2291,
+        "moe": 121,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17140": {
+      "name": "Cincinnati, OH-KY-IN",
+      "home_value": {
+        "value": 312400,
+        "moe": 5037,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1884,
+        "moe": 33,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17300": {
+      "name": "Clarksville, TN-KY",
+      "home_value": {
+        "value": 302900,
+        "moe": 12539,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1821,
+        "moe": 104,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17410": {
+      "name": "Cleveland, OH",
+      "home_value": {
+        "value": 250500,
+        "moe": 3687,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1705,
+        "moe": 22,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17420": {
+      "name": "Cleveland, TN",
+      "home_value": {
+        "value": 309400,
+        "moe": 20274,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1569,
+        "moe": 155,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17660": {
+      "name": "Coeur d'Alene, ID",
+      "home_value": {
+        "value": 569000,
+        "moe": 28500,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2165,
+        "moe": 103,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17780": {
+      "name": "College Station-Bryan, TX",
+      "home_value": {
+        "value": 320400,
+        "moe": 13351,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2062,
+        "moe": 161,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17820": {
+      "name": "Colorado Springs, CO",
+      "home_value": {
+        "value": 476700,
+        "moe": 8335,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2454,
+        "moe": 65,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17860": {
+      "name": "Columbia, MO",
+      "home_value": {
+        "value": 295800,
+        "moe": 15904,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1684,
+        "moe": 124,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17900": {
+      "name": "Columbia, SC",
+      "home_value": {
+        "value": 273600,
+        "moe": 6452,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1667,
+        "moe": 58,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "17980": {
+      "name": "Columbus, GA-AL",
+      "home_value": {
+        "value": 216300,
+        "moe": 15150,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1666,
+        "moe": 102,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "18020": {
+      "name": "Columbus, IN",
+      "home_value": {
+        "value": 254700,
+        "moe": 16739,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1531,
+        "moe": 104,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "18140": {
+      "name": "Columbus, OH",
+      "home_value": {
+        "value": 347600,
+        "moe": 4720,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2062,
+        "moe": 37,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "18580": {
+      "name": "Corpus Christi, TX",
+      "home_value": {
+        "value": 247000,
+        "moe": 9103,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2082,
+        "moe": 87,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "18700": {
+      "name": "Corvallis, OR",
+      "home_value": {
+        "value": 557100,
+        "moe": 27688,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2371,
+        "moe": 178,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "18880": {
+      "name": "Crestview-Fort Walton Beach-Destin, FL",
+      "home_value": {
+        "value": 368300,
+        "moe": 15855,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2055,
+        "moe": 144,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19100": {
+      "name": "Dallas-Fort Worth-Arlington, TX",
+      "home_value": {
+        "value": 392000,
+        "moe": 2717,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2665,
+        "moe": 30,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19140": {
+      "name": "Dalton, GA",
+      "home_value": {
+        "value": 255400,
+        "moe": 11951,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1513,
+        "moe": 100,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19300": {
+      "name": "Daphne-Fairhope-Foley, AL",
+      "home_value": {
+        "value": 355400,
+        "moe": 17220,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1907,
+        "moe": 105,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19340": {
+      "name": "Davenport-Moline-Rock Island, IA-IL",
+      "home_value": {
+        "value": 196200,
+        "moe": 5209,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1500,
+        "moe": 44,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19430": {
+      "name": "Dayton-Kettering-Beavercreek, OH",
+      "home_value": {
+        "value": 235800,
+        "moe": 5641,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1604,
+        "moe": 41,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19460": {
+      "name": "Decatur, AL",
+      "home_value": {
+        "value": 252900,
+        "moe": 10470,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1431,
+        "moe": 110,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19500": {
+      "name": "Decatur, IL",
+      "home_value": {
+        "value": 132500,
+        "moe": 16242,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1230,
+        "moe": 95,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19660": {
+      "name": "Deltona-Daytona Beach-Ormond Beach, FL",
+      "home_value": {
+        "value": 350000,
+        "moe": 7865,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2058,
+        "moe": 84,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19740": {
+      "name": "Denver-Aurora-Centennial, CO",
+      "home_value": {
+        "value": 626500,
+        "moe": 5453,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2846,
+        "moe": 35,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19780": {
+      "name": "Des Moines-West Des Moines, IA",
+      "home_value": {
+        "value": 306400,
+        "moe": 6257,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1901,
+        "moe": 47,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "19820": {
+      "name": "Detroit-Warren-Dearborn, MI",
+      "home_value": {
+        "value": 284200,
+        "moe": 3166,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1835,
+        "moe": 22,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "20020": {
+      "name": "Dothan, AL",
+      "home_value": {
+        "value": 214100,
+        "moe": 14221,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1450,
+        "moe": 84,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "20100": {
+      "name": "Dover, DE",
+      "home_value": {
+        "value": 352800,
+        "moe": 15371,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1889,
+        "moe": 90,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "20220": {
+      "name": "Dubuque, IA",
+      "home_value": {
+        "value": 262200,
+        "moe": 15745,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1549,
+        "moe": 76,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "20260": {
+      "name": "Duluth, MN-WI",
+      "home_value": {
+        "value": 265100,
+        "moe": 7521,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1708,
+        "moe": 67,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "20500": {
+      "name": "Durham-Chapel Hill, NC",
+      "home_value": {
+        "value": 458100,
+        "moe": 13602,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2170,
+        "moe": 69,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "20580": {
+      "name": "Eagle Pass, TX",
+      "home_value": {
+        "value": 209900,
+        "moe": 17380,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1593,
+        "moe": 484,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "20740": {
+      "name": "Eau Claire, WI",
+      "home_value": {
+        "value": 307400,
+        "moe": 10447,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1717,
+        "moe": 91,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "20940": {
+      "name": "El Centro, CA",
+      "home_value": {
+        "value": 342800,
+        "moe": 14612,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1753,
+        "moe": 120,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "21060": {
+      "name": "Elizabethtown, KY",
+      "home_value": {
+        "value": 260500,
+        "moe": 20034,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1564,
+        "moe": 85,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "21140": {
+      "name": "Elkhart-Goshen, IN",
+      "home_value": {
+        "value": 248000,
+        "moe": 12819,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1528,
+        "moe": 79,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "21300": {
+      "name": "Elmira, NY",
+      "home_value": {
+        "value": 143600,
+        "moe": 11515,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1323,
+        "moe": 74,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "21340": {
+      "name": "El Paso, TX",
+      "home_value": {
+        "value": 221400,
+        "moe": 4675,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1665,
+        "moe": 68,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "21420": {
+      "name": "Enid, OK",
+      "home_value": {
+        "value": 157200,
+        "moe": 17851,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1446,
+        "moe": 108,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "21500": {
+      "name": "Erie, PA",
+      "home_value": {
+        "value": 192700,
+        "moe": 8136,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1379,
+        "moe": 62,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "21660": {
+      "name": "Eugene-Springfield, OR",
+      "home_value": {
+        "value": 460900,
+        "moe": 12899,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2152,
+        "moe": 92,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "21780": {
+      "name": "Evansville, IN",
+      "home_value": {
+        "value": 231900,
+        "moe": 6748,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1545,
+        "moe": 52,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "21820": {
+      "name": "Fairbanks-College, AK",
+      "home_value": {
+        "value": 343900,
+        "moe": 20181,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2338,
+        "moe": 172,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22020": {
+      "name": "Fargo, ND-MN",
+      "home_value": {
+        "value": 329400,
+        "moe": 9381,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2047,
+        "moe": 89,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22140": {
+      "name": "Farmington, NM",
+      "home_value": {
+        "value": 233000,
+        "moe": 16209,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1684,
+        "moe": 140,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22180": {
+      "name": "Fayetteville, NC",
+      "home_value": {
+        "value": 247700,
+        "moe": 6567,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1670,
+        "moe": 51,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22220": {
+      "name": "Fayetteville-Springdale-Rogers, AR",
+      "home_value": {
+        "value": 364300,
+        "moe": 11083,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1977,
+        "moe": 90,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22380": {
+      "name": "Flagstaff, AZ",
+      "home_value": {
+        "value": 512800,
+        "moe": 34533,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2299,
+        "moe": 176,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22420": {
+      "name": "Flint, MI",
+      "home_value": {
+        "value": 204800,
+        "moe": 8611,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1526,
+        "moe": 63,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22500": {
+      "name": "Florence, SC",
+      "home_value": {
+        "value": 201200,
+        "moe": 17249,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1462,
+        "moe": 110,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22520": {
+      "name": "Florence-Muscle Shoals, AL",
+      "home_value": {
+        "value": 228800,
+        "moe": 16031,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1383,
+        "moe": 115,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22540": {
+      "name": "Fond du Lac, WI",
+      "home_value": {
+        "value": 263000,
+        "moe": 14749,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1503,
+        "moe": 80,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22660": {
+      "name": "Fort Collins-Loveland, CO",
+      "home_value": {
+        "value": 589300,
+        "moe": 13058,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2468,
+        "moe": 83,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "22900": {
+      "name": "Fort Smith, AR-OK",
+      "home_value": {
+        "value": 219700,
+        "moe": 9621,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1379,
+        "moe": 43,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "23060": {
+      "name": "Fort Wayne, IN",
+      "home_value": {
+        "value": 251300,
+        "moe": 7770,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1558,
+        "moe": 47,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "23420": {
+      "name": "Fresno, CA",
+      "home_value": {
+        "value": 416600,
+        "moe": 7363,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2165,
+        "moe": 52,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "23460": {
+      "name": "Gadsden, AL",
+      "home_value": {
+        "value": 195100,
+        "moe": 16625,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1308,
+        "moe": 128,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "23540": {
+      "name": "Gainesville, FL",
+      "home_value": {
+        "value": 312900,
+        "moe": 15063,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1904,
+        "moe": 89,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "23580": {
+      "name": "Gainesville, GA",
+      "home_value": {
+        "value": 414800,
+        "moe": 19303,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2218,
+        "moe": 112,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "23900": {
+      "name": "Gettysburg, PA",
+      "home_value": {
+        "value": 312700,
+        "moe": 13503,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1737,
+        "moe": 82,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24020": {
+      "name": "Glens Falls, NY",
+      "home_value": {
+        "value": 274200,
+        "moe": 13874,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1832,
+        "moe": 63,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24140": {
+      "name": "Goldsboro, NC",
+      "home_value": {
+        "value": 214400,
+        "moe": 25804,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1465,
+        "moe": 133,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24220": {
+      "name": "Grand Forks, ND-MN",
+      "home_value": {
+        "value": 276700,
+        "moe": 12511,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1801,
+        "moe": 89,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24260": {
+      "name": "Grand Island, NE",
+      "home_value": {
+        "value": 265800,
+        "moe": 24844,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1848,
+        "moe": 123,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24300": {
+      "name": "Grand Junction, CO",
+      "home_value": {
+        "value": 431300,
+        "moe": 19897,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1853,
+        "moe": 121,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24340": {
+      "name": "Grand Rapids-Wyoming-Kentwood, MI",
+      "home_value": {
+        "value": 333100,
+        "moe": 4969,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1767,
+        "moe": 43,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24420": {
+      "name": "Grants Pass, OR",
+      "home_value": {
+        "value": 425700,
+        "moe": 20361,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1806,
+        "moe": 163,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24500": {
+      "name": "Great Falls, MT",
+      "home_value": {
+        "value": 351300,
+        "moe": 18075,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1735,
+        "moe": 102,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24540": {
+      "name": "Greeley, CO",
+      "home_value": {
+        "value": 507300,
+        "moe": 11246,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2616,
+        "moe": 80,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24580": {
+      "name": "Green Bay, WI",
+      "home_value": {
+        "value": 322600,
+        "moe": 8398,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1701,
+        "moe": 61,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24660": {
+      "name": "Greensboro-High Point, NC",
+      "home_value": {
+        "value": 284700,
+        "moe": 8015,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1644,
+        "moe": 48,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24780": {
+      "name": "Greenville, NC",
+      "home_value": {
+        "value": 265400,
+        "moe": 15061,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1775,
+        "moe": 180,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "24860": {
+      "name": "Greenville-Anderson-Greer, SC",
+      "home_value": {
+        "value": 316800,
+        "moe": 6948,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1640,
+        "moe": 45,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25020": {
+      "name": "Guayama, PR",
+      "home_value": {
+        "value": 115700,
+        "moe": 10873,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 727,
+        "moe": 54,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25060": {
+      "name": "Gulfport-Biloxi, MS",
+      "home_value": {
+        "value": 229700,
+        "moe": 7273,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1596,
+        "moe": 84,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25180": {
+      "name": "Hagerstown-Martinsburg, MD-WV",
+      "home_value": {
+        "value": 323600,
+        "moe": 8345,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1781,
+        "moe": 91,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25220": {
+      "name": "Hammond, LA",
+      "home_value": {
+        "value": 235400,
+        "moe": 12664,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1598,
+        "moe": 100,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25260": {
+      "name": "Hanford-Corcoran, CA",
+      "home_value": {
+        "value": 341700,
+        "moe": 19452,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1687,
+        "moe": 134,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25420": {
+      "name": "Harrisburg-Carlisle, PA",
+      "home_value": {
+        "value": 285100,
+        "moe": 7075,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1743,
+        "moe": 52,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25500": {
+      "name": "Harrisonburg, VA",
+      "home_value": {
+        "value": 348500,
+        "moe": 16873,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1615,
+        "moe": 76,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25540": {
+      "name": "Hartford-West Hartford-East Hartford, CT",
+      "home_value": {
+        "value": 388700,
+        "moe": 5971,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2408,
+        "moe": 40,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25620": {
+      "name": "Hattiesburg, MS",
+      "home_value": {
+        "value": 243600,
+        "moe": 14017,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1646,
+        "moe": 73,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25740": {
+      "name": "Helena, MT",
+      "home_value": {
+        "value": 481200,
+        "moe": 25944,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2103,
+        "moe": 144,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25860": {
+      "name": "Hickory-Lenoir-Morganton, NC",
+      "home_value": {
+        "value": 268200,
+        "moe": 9239,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1432,
+        "moe": 71,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25940": {
+      "name": "Hilton Head Island-Bluffton-Port Royal, SC",
+      "home_value": {
+        "value": 508000,
+        "moe": 16784,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2274,
+        "moe": 134,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "25980": {
+      "name": "Hinesville, GA",
+      "home_value": {
+        "value": 258400,
+        "moe": 12084,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1832,
+        "moe": 179,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "26140": {
+      "name": "Homosassa Springs, FL",
+      "home_value": {
+        "value": 260600,
+        "moe": 12042,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1559,
+        "moe": 103,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "26300": {
+      "name": "Hot Springs, AR",
+      "home_value": {
+        "value": 265800,
+        "moe": 24873,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1387,
+        "moe": 82,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "26380": {
+      "name": "Houma-Bayou Cane-Thibodaux, LA",
+      "home_value": {
+        "value": 213500,
+        "moe": 9839,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1743,
+        "moe": 82,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "26420": {
+      "name": "Houston-Pasadena-The Woodlands, TX",
+      "home_value": {
+        "value": 329000,
+        "moe": 3290,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2594,
+        "moe": 40,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "26580": {
+      "name": "Huntington-Ashland, WV-KY-OH",
+      "home_value": {
+        "value": 167000,
+        "moe": 4658,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1344,
+        "moe": 50,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "26620": {
+      "name": "Huntsville, AL",
+      "home_value": {
+        "value": 337700,
+        "moe": 11080,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1844,
+        "moe": 53,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "26820": {
+      "name": "Idaho Falls, ID",
+      "home_value": {
+        "value": 418400,
+        "moe": 16661,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1906,
+        "moe": 126,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "26900": {
+      "name": "Indianapolis-Carmel-Greenwood, IN",
+      "home_value": {
+        "value": 304600,
+        "moe": 4309,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1855,
+        "moe": 34,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "26980": {
+      "name": "Iowa City, IA",
+      "home_value": {
+        "value": 313900,
+        "moe": 17719,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1960,
+        "moe": 97,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27060": {
+      "name": "Ithaca, NY",
+      "home_value": {
+        "value": 343600,
+        "moe": 18380,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2244,
+        "moe": 153,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27100": {
+      "name": "Jackson, MI",
+      "home_value": {
+        "value": 219600,
+        "moe": 11119,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1486,
+        "moe": 77,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27140": {
+      "name": "Jackson, MS",
+      "home_value": {
+        "value": 205300,
+        "moe": 8867,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1559,
+        "moe": 60,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27180": {
+      "name": "Jackson, TN",
+      "home_value": {
+        "value": 237800,
+        "moe": 11096,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1509,
+        "moe": 94,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27260": {
+      "name": "Jacksonville, FL",
+      "home_value": {
+        "value": 369100,
+        "moe": 5974,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2104,
+        "moe": 59,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27340": {
+      "name": "Jacksonville, NC",
+      "home_value": {
+        "value": 268800,
+        "moe": 12294,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1761,
+        "moe": 95,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27500": {
+      "name": "Janesville-Beloit, WI",
+      "home_value": {
+        "value": 278200,
+        "moe": 13127,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1710,
+        "moe": 104,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27620": {
+      "name": "Jefferson City, MO",
+      "home_value": {
+        "value": 282600,
+        "moe": 12673,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1525,
+        "moe": 88,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27740": {
+      "name": "Johnson City, TN",
+      "home_value": {
+        "value": 273600,
+        "moe": 11691,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1373,
+        "moe": 70,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27780": {
+      "name": "Johnstown, PA",
+      "home_value": {
+        "value": 140100,
+        "moe": 20135,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1223,
+        "moe": 88,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27860": {
+      "name": "Jonesboro, AR",
+      "home_value": {
+        "value": 216000,
+        "moe": 12184,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1288,
+        "moe": 101,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27900": {
+      "name": "Joplin, MO-KS",
+      "home_value": {
+        "value": 211000,
+        "moe": 11002,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1446,
+        "moe": 73,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "27980": {
+      "name": "Kahului-Wailuku, HI",
+      "home_value": {
+        "value": 1020500,
+        "moe": 73196,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2683,
+        "moe": 230,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "28020": {
+      "name": "Kalamazoo-Portage, MI",
+      "home_value": {
+        "value": 272800,
+        "moe": 10225,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1692,
+        "moe": 61,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "28100": {
+      "name": "Kankakee, IL",
+      "home_value": {
+        "value": 218500,
+        "moe": 10085,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1770,
+        "moe": 117,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "28140": {
+      "name": "Kansas City, MO-KS",
+      "home_value": {
+        "value": 331600,
+        "moe": 4340,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2059,
+        "moe": 40,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "28420": {
+      "name": "Kennewick-Richland, WA",
+      "home_value": {
+        "value": 436900,
+        "moe": 9997,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2225,
+        "moe": 86,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "28450": {
+      "name": "Kenosha, WI",
+      "home_value": {
+        "value": 301100,
+        "moe": 17623,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1837,
+        "moe": 104,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "28660": {
+      "name": "Killeen-Temple, TX",
+      "home_value": {
+        "value": 259500,
+        "moe": 8593,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1831,
+        "moe": 77,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "28700": {
+      "name": "Kingsport-Bristol, TN-VA",
+      "home_value": {
+        "value": 244600,
+        "moe": 9018,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1311,
+        "moe": 82,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "28740": {
+      "name": "Kingston, NY",
+      "home_value": {
+        "value": 417900,
+        "moe": 20803,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2342,
+        "moe": 98,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "28880": {
+      "name": "Kiryas Joel-Poughkeepsie-Newburgh, NY",
+      "home_value": {
+        "value": 449100,
+        "moe": 8990,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2755,
+        "moe": 85,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "28940": {
+      "name": "Knoxville, TN",
+      "home_value": {
+        "value": 369000,
+        "moe": 7869,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1735,
+        "moe": 58,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29020": {
+      "name": "Kokomo, IN",
+      "home_value": {
+        "value": 185200,
+        "moe": 20859,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1262,
+        "moe": 111,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29100": {
+      "name": "La Crosse-Onalaska, WI-MN",
+      "home_value": {
+        "value": 298700,
+        "moe": 12231,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1735,
+        "moe": 73,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29180": {
+      "name": "Lafayette, LA",
+      "home_value": {
+        "value": 226600,
+        "moe": 7650,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1565,
+        "moe": 79,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29200": {
+      "name": "Lafayette-West Lafayette, IN",
+      "home_value": {
+        "value": 283400,
+        "moe": 8719,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1500,
+        "moe": 85,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29340": {
+      "name": "Lake Charles, LA",
+      "home_value": {
+        "value": 208300,
+        "moe": 11049,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1586,
+        "moe": 107,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29420": {
+      "name": "Lake Havasu City-Kingman, AZ",
+      "home_value": {
+        "value": 328400,
+        "moe": 20050,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1545,
+        "moe": 84,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29460": {
+      "name": "Lakeland-Winter Haven, FL",
+      "home_value": {
+        "value": 297700,
+        "moe": 7800,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2069,
+        "moe": 79,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29540": {
+      "name": "Lancaster, PA",
+      "home_value": {
+        "value": 351900,
+        "moe": 8271,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1975,
+        "moe": 55,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29620": {
+      "name": "Lansing-East Lansing, MI",
+      "home_value": {
+        "value": 245500,
+        "moe": 7285,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1657,
+        "moe": 52,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29700": {
+      "name": "Laredo, TX",
+      "home_value": {
+        "value": 218000,
+        "moe": 12497,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1769,
+        "moe": 115,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29740": {
+      "name": "Las Cruces, NM",
+      "home_value": {
+        "value": 257700,
+        "moe": 12807,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1463,
+        "moe": 79,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29820": {
+      "name": "Las Vegas-Henderson-North Las Vegas, NV",
+      "home_value": {
+        "value": 453500,
+        "moe": 5740,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2063,
+        "moe": 44,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "29940": {
+      "name": "Lawrence, KS",
+      "home_value": {
+        "value": 348500,
+        "moe": 20803,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2091,
+        "moe": 200,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30020": {
+      "name": "Lawton, OK",
+      "home_value": {
+        "value": 172300,
+        "moe": 9629,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1556,
+        "moe": 93,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30140": {
+      "name": "Lebanon, PA",
+      "home_value": {
+        "value": 305400,
+        "moe": 13412,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1815,
+        "moe": 55,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30300": {
+      "name": "Lewiston, ID-WA",
+      "home_value": {
+        "value": 347400,
+        "moe": 23275,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1731,
+        "moe": 208,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30340": {
+      "name": "Lewiston-Auburn, ME",
+      "home_value": {
+        "value": 321900,
+        "moe": 15403,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1698,
+        "moe": 120,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30460": {
+      "name": "Lexington-Fayette, KY",
+      "home_value": {
+        "value": 319500,
+        "moe": 8467,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1782,
+        "moe": 66,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30500": {
+      "name": "Lexington Park, MD",
+      "home_value": {
+        "value": 448500,
+        "moe": 16268,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2450,
+        "moe": 106,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30620": {
+      "name": "Lima, OH",
+      "home_value": {
+        "value": 196800,
+        "moe": 19176,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1405,
+        "moe": 84,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30700": {
+      "name": "Lincoln, NE",
+      "home_value": {
+        "value": 308200,
+        "moe": 9616,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1923,
+        "moe": 49,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30780": {
+      "name": "Little Rock-North Little Rock-Conway, AR",
+      "home_value": {
+        "value": 248700,
+        "moe": 6674,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1628,
+        "moe": 53,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30860": {
+      "name": "Logan, UT-ID",
+      "home_value": {
+        "value": 478000,
+        "moe": 23267,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2016,
+        "moe": 120,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "30980": {
+      "name": "Longview, TX",
+      "home_value": {
+        "value": 200000,
+        "moe": 10966,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1606,
+        "moe": 83,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31020": {
+      "name": "Longview-Kelso, WA",
+      "home_value": {
+        "value": 432400,
+        "moe": 13639,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2218,
+        "moe": 123,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31080": {
+      "name": "Los Angeles-Long Beach-Anaheim, CA",
+      "home_value": {
+        "value": 925900,
+        "moe": 6663,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3325,
+        "moe": 30,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31140": {
+      "name": "Louisville/Jefferson County, KY-IN",
+      "home_value": {
+        "value": 288400,
+        "moe": 4315,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1679,
+        "moe": 27,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31180": {
+      "name": "Lubbock, TX",
+      "home_value": {
+        "value": 225100,
+        "moe": 9827,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1902,
+        "moe": 104,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31340": {
+      "name": "Lynchburg, VA",
+      "home_value": {
+        "value": 282600,
+        "moe": 12292,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1609,
+        "moe": 56,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31420": {
+      "name": "Macon-Bibb County, GA",
+      "home_value": {
+        "value": 218300,
+        "moe": 12270,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1595,
+        "moe": 89,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31540": {
+      "name": "Madison, WI",
+      "home_value": {
+        "value": 424400,
+        "moe": 6397,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2236,
+        "moe": 41,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31700": {
+      "name": "Manchester-Nashua, NH",
+      "home_value": {
+        "value": 503100,
+        "moe": 10151,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2544,
+        "moe": 79,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31740": {
+      "name": "Manhattan, KS",
+      "home_value": {
+        "value": 279800,
+        "moe": 18066,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1899,
+        "moe": 60,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31860": {
+      "name": "Mankato, MN",
+      "home_value": {
+        "value": 288300,
+        "moe": 12410,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1721,
+        "moe": 57,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "31900": {
+      "name": "Mansfield, OH",
+      "home_value": {
+        "value": 207400,
+        "moe": 13347,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1254,
+        "moe": 107,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "32420": {
+      "name": "Mayagüez, PR",
+      "home_value": {
+        "value": 118400,
+        "moe": 7766,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 688,
+        "moe": 49,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "32580": {
+      "name": "McAllen-Edinburg-Mission, TX",
+      "home_value": {
+        "value": 165800,
+        "moe": 4184,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1563,
+        "moe": 72,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "32780": {
+      "name": "Medford, OR",
+      "home_value": {
+        "value": 434400,
+        "moe": 13380,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2111,
+        "moe": 114,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "32820": {
+      "name": "Memphis, TN-MS-AR",
+      "home_value": {
+        "value": 280700,
+        "moe": 6883,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1783,
+        "moe": 47,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "32900": {
+      "name": "Merced, CA",
+      "home_value": {
+        "value": 423700,
+        "moe": 11305,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2277,
+        "moe": 124,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33100": {
+      "name": "Miami-Fort Lauderdale-West Palm Beach, FL",
+      "home_value": {
+        "value": 525700,
+        "moe": 4000,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2801,
+        "moe": 33,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33140": {
+      "name": "Michigan City-La Porte, IN",
+      "home_value": {
+        "value": 249500,
+        "moe": 15421,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1482,
+        "moe": 95,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33220": {
+      "name": "Midland, MI",
+      "home_value": {
+        "value": 233800,
+        "moe": 9566,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1698,
+        "moe": 124,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33260": {
+      "name": "Midland, TX",
+      "home_value": {
+        "value": 320100,
+        "moe": 16074,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2237,
+        "moe": 145,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33340": {
+      "name": "Milwaukee-Waukesha, WI",
+      "home_value": {
+        "value": 355600,
+        "moe": 5810,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1973,
+        "moe": 32,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33460": {
+      "name": "Minneapolis-St. Paul-Bloomington, MN-WI",
+      "home_value": {
+        "value": 396700,
+        "moe": 3046,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2320,
+        "moe": 17,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33500": {
+      "name": "Minot, ND",
+      "home_value": {
+        "value": 246000,
+        "moe": 16864,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1692,
+        "moe": 138,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33540": {
+      "name": "Missoula, MT",
+      "home_value": {
+        "value": 531300,
+        "moe": 14805,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2287,
+        "moe": 144,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33660": {
+      "name": "Mobile, AL",
+      "home_value": {
+        "value": 218600,
+        "moe": 9724,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1576,
+        "moe": 66,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33700": {
+      "name": "Modesto, CA",
+      "home_value": {
+        "value": 479900,
+        "moe": 9063,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2161,
+        "moe": 88,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33740": {
+      "name": "Monroe, LA",
+      "home_value": {
+        "value": 178900,
+        "moe": 18177,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1390,
+        "moe": 91,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33780": {
+      "name": "Monroe, MI",
+      "home_value": {
+        "value": 275200,
+        "moe": 15712,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1650,
+        "moe": 87,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "33860": {
+      "name": "Montgomery, AL",
+      "home_value": {
+        "value": 227000,
+        "moe": 8610,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1483,
+        "moe": 62,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "34060": {
+      "name": "Morgantown, WV",
+      "home_value": {
+        "value": 257400,
+        "moe": 17588,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1617,
+        "moe": 113,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "34100": {
+      "name": "Morristown, TN",
+      "home_value": {
+        "value": 301500,
+        "moe": 17922,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1380,
+        "moe": 83,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "34580": {
+      "name": "Mount Vernon-Anacortes, WA",
+      "home_value": {
+        "value": 610000,
+        "moe": 32217,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2634,
+        "moe": 159,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "34620": {
+      "name": "Muncie, IN",
+      "home_value": {
+        "value": 155700,
+        "moe": 9868,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1192,
+        "moe": 58,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "34740": {
+      "name": "Muskegon-Norton Shores, MI",
+      "home_value": {
+        "value": 247300,
+        "moe": 12049,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1553,
+        "moe": 104,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "34820": {
+      "name": "Myrtle Beach-Conway-North Myrtle Beach, SC",
+      "home_value": {
+        "value": 323600,
+        "moe": 8549,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1672,
+        "moe": 76,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "34900": {
+      "name": "Napa, CA",
+      "home_value": {
+        "value": 858700,
+        "moe": 36500,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3487,
+        "moe": 339,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "34940": {
+      "name": "Naples-Marco Island, FL",
+      "home_value": {
+        "value": 619900,
+        "moe": 23239,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2818,
+        "moe": 151,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "34980": {
+      "name": "Nashville-Davidson--Murfreesboro--Franklin, TN",
+      "home_value": {
+        "value": 461800,
+        "moe": 8156,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2095,
+        "moe": 49,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "35300": {
+      "name": "New Haven, CT",
+      "home_value": {
+        "value": 393400,
+        "moe": 9274,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2569,
+        "moe": 112,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "35380": {
+      "name": "New Orleans-Metairie, LA",
+      "home_value": {
+        "value": 275400,
+        "moe": 7359,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2104,
+        "moe": 65,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "35620": {
+      "name": "New York-Newark-Jersey City, NY-NJ",
+      "home_value": {
+        "value": 691700,
+        "moe": 5263,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3441,
+        "moe": 23,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "35660": {
+      "name": "Niles, MI",
+      "home_value": {
+        "value": 255300,
+        "moe": 12634,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1608,
+        "moe": 90,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "35840": {
+      "name": "North Port-Bradenton-Sarasota, FL",
+      "home_value": {
+        "value": 440200,
+        "moe": 8129,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2407,
+        "moe": 60,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "35980": {
+      "name": "Norwich-New London-Willimantic, CT",
+      "home_value": {
+        "value": 383400,
+        "moe": 10086,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2270,
+        "moe": 71,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "36100": {
+      "name": "Ocala, FL",
+      "home_value": {
+        "value": 286000,
+        "moe": 9222,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1633,
+        "moe": 66,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "36220": {
+      "name": "Odessa, TX",
+      "home_value": {
+        "value": 252200,
+        "moe": 16707,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1999,
+        "moe": 197,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "36260": {
+      "name": "Ogden, UT",
+      "home_value": {
+        "value": 523700,
+        "moe": 9786,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2250,
+        "moe": 55,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "36420": {
+      "name": "Oklahoma City, OK",
+      "home_value": {
+        "value": 268600,
+        "moe": 4212,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1902,
+        "moe": 36,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "36500": {
+      "name": "Olympia-Lacey-Tumwater, WA",
+      "home_value": {
+        "value": 524600,
+        "moe": 10983,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2630,
+        "moe": 98,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "36540": {
+      "name": "Omaha, NE-IA",
+      "home_value": {
+        "value": 311100,
+        "moe": 6228,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2093,
+        "moe": 45,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "36740": {
+      "name": "Orlando-Kissimmee-Sanford, FL",
+      "home_value": {
+        "value": 411400,
+        "moe": 6164,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2274,
+        "moe": 37,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "36780": {
+      "name": "Oshkosh-Neenah, WI",
+      "home_value": {
+        "value": 269700,
+        "moe": 11969,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1630,
+        "moe": 65,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "36980": {
+      "name": "Owensboro, KY",
+      "home_value": {
+        "value": 218100,
+        "moe": 16156,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1486,
+        "moe": 122,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "37100": {
+      "name": "Oxnard-Thousand Oaks-Ventura, CA",
+      "home_value": {
+        "value": 860200,
+        "moe": 13324,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3260,
+        "moe": 78,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "37140": {
+      "name": "Paducah, KY-IL",
+      "home_value": {
+        "value": 196600,
+        "moe": 23514,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1552,
+        "moe": 199,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "37340": {
+      "name": "Palm Bay-Melbourne-Titusville, FL",
+      "home_value": {
+        "value": 365000,
+        "moe": 8770,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2017,
+        "moe": 91,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "37460": {
+      "name": "Panama City-Panama City Beach, FL",
+      "home_value": {
+        "value": 338400,
+        "moe": 15713,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1972,
+        "moe": 92,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "37620": {
+      "name": "Parkersburg-Vienna, WV",
+      "home_value": {
+        "value": 173700,
+        "moe": 12898,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1262,
+        "moe": 85,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "37860": {
+      "name": "Pensacola-Ferry Pass-Brent, FL",
+      "home_value": {
+        "value": 316300,
+        "moe": 9443,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1843,
+        "moe": 65,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "37900": {
+      "name": "Peoria, IL",
+      "home_value": {
+        "value": 178400,
+        "moe": 9609,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1557,
+        "moe": 56,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "37980": {
+      "name": "Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",
+      "home_value": {
+        "value": 395900,
+        "moe": 3690,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2308,
+        "moe": 22,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "38060": {
+      "name": "Phoenix-Mesa-Chandler, AZ",
+      "home_value": {
+        "value": 464400,
+        "moe": 4477,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2147,
+        "moe": 26,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "38240": {
+      "name": "Pinehurst-Southern Pines, NC",
+      "home_value": {
+        "value": 410800,
+        "moe": 22827,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2141,
+        "moe": 128,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "38300": {
+      "name": "Pittsburgh, PA",
+      "home_value": {
+        "value": 240000,
+        "moe": 3082,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1695,
+        "moe": 26,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "38340": {
+      "name": "Pittsfield, MA",
+      "home_value": {
+        "value": 365300,
+        "moe": 16766,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2076,
+        "moe": 134,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "38540": {
+      "name": "Pocatello, ID",
+      "home_value": {
+        "value": 332500,
+        "moe": 11258,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1691,
+        "moe": 135,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "38660": {
+      "name": "Ponce, PR",
+      "home_value": {
+        "value": 118500,
+        "moe": 4879,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 773,
+        "moe": 41,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "38860": {
+      "name": "Portland-South Portland, ME",
+      "home_value": {
+        "value": 506800,
+        "moe": 11147,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2377,
+        "moe": 77,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "38900": {
+      "name": "Portland-Vancouver-Hillsboro, OR-WA",
+      "home_value": {
+        "value": 575500,
+        "moe": 6347,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2609,
+        "moe": 32,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "38940": {
+      "name": "Port St. Lucie, FL",
+      "home_value": {
+        "value": 425700,
+        "moe": 8988,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2296,
+        "moe": 78,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39150": {
+      "name": "Prescott Valley-Prescott, AZ",
+      "home_value": {
+        "value": 501900,
+        "moe": 16932,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1734,
+        "moe": 125,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39300": {
+      "name": "Providence-Warwick, RI-MA",
+      "home_value": {
+        "value": 492800,
+        "moe": 6597,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2498,
+        "moe": 57,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39340": {
+      "name": "Provo-Orem-Lehi, UT",
+      "home_value": {
+        "value": 581900,
+        "moe": 12364,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2451,
+        "moe": 82,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39380": {
+      "name": "Pueblo, CO",
+      "home_value": {
+        "value": 326300,
+        "moe": 10276,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1726,
+        "moe": 105,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39460": {
+      "name": "Punta Gorda, FL",
+      "home_value": {
+        "value": 367600,
+        "moe": 15250,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2204,
+        "moe": 111,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39540": {
+      "name": "Racine-Mount Pleasant, WI",
+      "home_value": {
+        "value": 298400,
+        "moe": 13365,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1911,
+        "moe": 101,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39580": {
+      "name": "Raleigh-Cary, NC",
+      "home_value": {
+        "value": 465500,
+        "moe": 9866,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2301,
+        "moe": 48,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39660": {
+      "name": "Rapid City, SD",
+      "home_value": {
+        "value": 355400,
+        "moe": 16681,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1976,
+        "moe": 91,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39740": {
+      "name": "Reading, PA",
+      "home_value": {
+        "value": 307100,
+        "moe": 9475,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1959,
+        "moe": 78,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39820": {
+      "name": "Redding, CA",
+      "home_value": {
+        "value": 394300,
+        "moe": 18179,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2251,
+        "moe": 95,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "39900": {
+      "name": "Reno, NV",
+      "home_value": {
+        "value": 530400,
+        "moe": 8973,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2100,
+        "moe": 100,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "40060": {
+      "name": "Richmond, VA",
+      "home_value": {
+        "value": 399000,
+        "moe": 6153,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2052,
+        "moe": 47,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "40140": {
+      "name": "Riverside-San Bernardino-Ontario, CA",
+      "home_value": {
+        "value": 587200,
+        "moe": 6716,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2640,
+        "moe": 41,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "40220": {
+      "name": "Roanoke, VA",
+      "home_value": {
+        "value": 302200,
+        "moe": 10574,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1673,
+        "moe": 58,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "40340": {
+      "name": "Rochester, MN",
+      "home_value": {
+        "value": 337500,
+        "moe": 8806,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2024,
+        "moe": 77,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "40380": {
+      "name": "Rochester, NY",
+      "home_value": {
+        "value": 252300,
+        "moe": 4895,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1714,
+        "moe": 30,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "40420": {
+      "name": "Rockford, IL",
+      "home_value": {
+        "value": 203000,
+        "moe": 8306,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1576,
+        "moe": 41,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "40580": {
+      "name": "Rocky Mount, NC",
+      "home_value": {
+        "value": 207000,
+        "moe": 21151,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1511,
+        "moe": 135,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "40660": {
+      "name": "Rome, GA",
+      "home_value": {
+        "value": 260700,
+        "moe": 13715,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1708,
+        "moe": 95,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "40900": {
+      "name": "Sacramento-Roseville-Folsom, CA",
+      "home_value": {
+        "value": 594600,
+        "moe": 7718,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2758,
+        "moe": 36,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "40980": {
+      "name": "Saginaw, MI",
+      "home_value": {
+        "value": 170200,
+        "moe": 7480,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1363,
+        "moe": 107,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41060": {
+      "name": "St. Cloud, MN",
+      "home_value": {
+        "value": 300600,
+        "moe": 9413,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1915,
+        "moe": 76,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41100": {
+      "name": "St. George, UT",
+      "home_value": {
+        "value": 546700,
+        "moe": 33042,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2191,
+        "moe": 119,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41140": {
+      "name": "St. Joseph, MO-KS",
+      "home_value": {
+        "value": 205900,
+        "moe": 14408,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1458,
+        "moe": 121,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41180": {
+      "name": "St. Louis, MO-IL",
+      "home_value": {
+        "value": 283300,
+        "moe": 3961,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1813,
+        "moe": 26,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41420": {
+      "name": "Salem, OR",
+      "home_value": {
+        "value": 448300,
+        "moe": 9341,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2088,
+        "moe": 93,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41500": {
+      "name": "Salinas, CA",
+      "home_value": {
+        "value": 862000,
+        "moe": 21910,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2927,
+        "moe": 146,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41540": {
+      "name": "Salisbury, MD",
+      "home_value": {
+        "value": 281600,
+        "moe": 13799,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1812,
+        "moe": 225,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41620": {
+      "name": "Salt Lake City-Murray, UT",
+      "home_value": {
+        "value": 579200,
+        "moe": 10732,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2348,
+        "moe": 42,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41660": {
+      "name": "San Angelo, TX",
+      "home_value": {
+        "value": 232200,
+        "moe": 19382,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2013,
+        "moe": 193,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41700": {
+      "name": "San Antonio-New Braunfels, TX",
+      "home_value": {
+        "value": 309800,
+        "moe": 4975,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2130,
+        "moe": 41,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41740": {
+      "name": "San Diego-Chula Vista-Carlsbad, CA",
+      "home_value": {
+        "value": 927700,
+        "moe": 10798,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3393,
+        "moe": 46,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41780": {
+      "name": "Sandusky, OH",
+      "home_value": {
+        "value": 238100,
+        "moe": 15906,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1504,
+        "moe": 90,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41860": {
+      "name": "San Francisco-Oakland-Fremont, CA",
+      "home_value": {
+        "value": 1152400,
+        "moe": 11509,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": null,
+        "moe": null,
+        "status": "top_coded",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41940": {
+      "name": "San Jose-Sunnyvale-Santa Clara, CA",
+      "home_value": {
+        "value": 1605600,
+        "moe": 36506,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": null,
+        "moe": null,
+        "status": "top_coded",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "41980": {
+      "name": "San Juan-Bayamón-Caguas, PR",
+      "home_value": {
+        "value": 161900,
+        "moe": 1834,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 964,
+        "moe": 23,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "42020": {
+      "name": "San Luis Obispo-Paso Robles, CA",
+      "home_value": {
+        "value": 877800,
+        "moe": 21639,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3089,
+        "moe": 151,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "42100": {
+      "name": "Santa Cruz-Watsonville, CA",
+      "home_value": {
+        "value": 1082200,
+        "moe": 40964,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3867,
+        "moe": 176,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "42140": {
+      "name": "Santa Fe, NM",
+      "home_value": {
+        "value": 519900,
+        "moe": 27692,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2147,
+        "moe": 199,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "42200": {
+      "name": "Santa Maria-Santa Barbara, CA",
+      "home_value": {
+        "value": 857900,
+        "moe": 46284,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3048,
+        "moe": 210,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "42220": {
+      "name": "Santa Rosa-Petaluma, CA",
+      "home_value": {
+        "value": 819200,
+        "moe": 15790,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3235,
+        "moe": 87,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "42340": {
+      "name": "Savannah, GA",
+      "home_value": {
+        "value": 359400,
+        "moe": 11701,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2099,
+        "moe": 85,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "42540": {
+      "name": "Scranton--Wilkes-Barre, PA",
+      "home_value": {
+        "value": 225600,
+        "moe": 5543,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1630,
+        "moe": 60,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "42660": {
+      "name": "Seattle-Tacoma-Bellevue, WA",
+      "home_value": {
+        "value": 771100,
+        "moe": 8385,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3203,
+        "moe": 39,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "42680": {
+      "name": "Sebastian-Vero Beach-West Vero Corridor, FL",
+      "home_value": {
+        "value": 383200,
+        "moe": 11700,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1988,
+        "moe": 166,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "42700": {
+      "name": "Sebring, FL",
+      "home_value": {
+        "value": 223100,
+        "moe": 12160,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1441,
+        "moe": 95,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "43100": {
+      "name": "Sheboygan, WI",
+      "home_value": {
+        "value": 285700,
+        "moe": 9961,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1486,
+        "moe": 90,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "43300": {
+      "name": "Sherman-Denison, TX",
+      "home_value": {
+        "value": 321800,
+        "moe": 20386,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2260,
+        "moe": 195,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "43340": {
+      "name": "Shreveport-Bossier City, LA",
+      "home_value": {
+        "value": 202300,
+        "moe": 11391,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1596,
+        "moe": 79,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "43420": {
+      "name": "Sierra Vista-Douglas, AZ",
+      "home_value": {
+        "value": 247900,
+        "moe": 12232,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1482,
+        "moe": 117,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "43580": {
+      "name": "Sioux City, IA-NE-SD",
+      "home_value": {
+        "value": 224400,
+        "moe": 15974,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1627,
+        "moe": 106,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "43620": {
+      "name": "Sioux Falls, SD-MN",
+      "home_value": {
+        "value": 334200,
+        "moe": 10510,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1954,
+        "moe": 79,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "43640": {
+      "name": "Slidell-Mandeville-Covington, LA",
+      "home_value": {
+        "value": 305300,
+        "moe": 12334,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2103,
+        "moe": 87,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "43780": {
+      "name": "South Bend-Mishawaka, IN-MI",
+      "home_value": {
+        "value": 229100,
+        "moe": 5581,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1418,
+        "moe": 56,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "43900": {
+      "name": "Spartanburg, SC",
+      "home_value": {
+        "value": 267300,
+        "moe": 7850,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1455,
+        "moe": 57,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "44060": {
+      "name": "Spokane-Spokane Valley, WA",
+      "home_value": {
+        "value": 441100,
+        "moe": 10801,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2127,
+        "moe": 71,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "44100": {
+      "name": "Springfield, IL",
+      "home_value": {
+        "value": 211600,
+        "moe": 7302,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1652,
+        "moe": 73,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "44140": {
+      "name": "Springfield, MA",
+      "home_value": {
+        "value": 335800,
+        "moe": 6903,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2049,
+        "moe": 98,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "44180": {
+      "name": "Springfield, MO",
+      "home_value": {
+        "value": 279300,
+        "moe": 6863,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1544,
+        "moe": 60,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "44220": {
+      "name": "Springfield, OH",
+      "home_value": {
+        "value": 194800,
+        "moe": 11490,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1371,
+        "moe": 81,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "44300": {
+      "name": "State College, PA",
+      "home_value": {
+        "value": 364000,
+        "moe": 16367,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2053,
+        "moe": 131,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "44420": {
+      "name": "Staunton-Stuarts Draft, VA",
+      "home_value": {
+        "value": 327700,
+        "moe": 12447,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1726,
+        "moe": 83,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "44700": {
+      "name": "Stockton-Lodi, CA",
+      "home_value": {
+        "value": 544000,
+        "moe": 12314,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2486,
+        "moe": 98,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "44940": {
+      "name": "Sumter, SC",
+      "home_value": {
+        "value": 190600,
+        "moe": 21768,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1295,
+        "moe": 179,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "45060": {
+      "name": "Syracuse, NY",
+      "home_value": {
+        "value": 231900,
+        "moe": 6088,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1714,
+        "moe": 39,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "45220": {
+      "name": "Tallahassee, FL",
+      "home_value": {
+        "value": 313500,
+        "moe": 13371,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1839,
+        "moe": 73,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "45300": {
+      "name": "Tampa-St. Petersburg-Clearwater, FL",
+      "home_value": {
+        "value": 382900,
+        "moe": 4236,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2218,
+        "moe": 33,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "45460": {
+      "name": "Terre Haute, IN",
+      "home_value": {
+        "value": 162400,
+        "moe": 10956,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1248,
+        "moe": 68,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "45500": {
+      "name": "Texarkana, TX-AR",
+      "home_value": {
+        "value": 203500,
+        "moe": 18508,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1424,
+        "moe": 86,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "45780": {
+      "name": "Toledo, OH",
+      "home_value": {
+        "value": 208500,
+        "moe": 6133,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1542,
+        "moe": 49,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "45820": {
+      "name": "Topeka, KS",
+      "home_value": {
+        "value": 216000,
+        "moe": 11333,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1691,
+        "moe": 70,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "45900": {
+      "name": "Traverse City, MI",
+      "home_value": {
+        "value": 398700,
+        "moe": 16494,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1733,
+        "moe": 112,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "45940": {
+      "name": "Trenton-Princeton, NJ",
+      "home_value": {
+        "value": 471400,
+        "moe": 19740,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2775,
+        "moe": 104,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "46060": {
+      "name": "Tucson, AZ",
+      "home_value": {
+        "value": 352300,
+        "moe": 7445,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1816,
+        "moe": 53,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "46140": {
+      "name": "Tulsa, OK",
+      "home_value": {
+        "value": 260700,
+        "moe": 3037,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1774,
+        "moe": 32,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "46220": {
+      "name": "Tuscaloosa, AL",
+      "home_value": {
+        "value": 247300,
+        "moe": 14003,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1598,
+        "moe": 112,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "46300": {
+      "name": "Twin Falls, ID",
+      "home_value": {
+        "value": 362500,
+        "moe": 12603,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1535,
+        "moe": 88,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "46340": {
+      "name": "Tyler, TX",
+      "home_value": {
+        "value": 288000,
+        "moe": 14333,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1829,
+        "moe": 130,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "46520": {
+      "name": "Urban Honolulu, HI",
+      "home_value": {
+        "value": 949900,
+        "moe": 17405,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 3237,
+        "moe": 66,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "46540": {
+      "name": "Utica-Rome, NY",
+      "home_value": {
+        "value": 197200,
+        "moe": 8450,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1563,
+        "moe": 54,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "46660": {
+      "name": "Valdosta, GA",
+      "home_value": {
+        "value": 222400,
+        "moe": 13348,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1527,
+        "moe": 92,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "46700": {
+      "name": "Vallejo, CA",
+      "home_value": {
+        "value": 620900,
+        "moe": 10356,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2960,
+        "moe": 96,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "47020": {
+      "name": "Victoria, TX",
+      "home_value": {
+        "value": 224600,
+        "moe": 15668,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1902,
+        "moe": 151,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "47220": {
+      "name": "Vineland, NJ",
+      "home_value": {
+        "value": 253600,
+        "moe": 18427,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1837,
+        "moe": 76,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "47260": {
+      "name": "Virginia Beach-Chesapeake-Norfolk, VA-NC",
+      "home_value": {
+        "value": 374200,
+        "moe": 5038,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2123,
+        "moe": 32,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "47300": {
+      "name": "Visalia, CA",
+      "home_value": {
+        "value": 369200,
+        "moe": 8229,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1865,
+        "moe": 60,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "47380": {
+      "name": "Waco, TX",
+      "home_value": {
+        "value": 267000,
+        "moe": 14419,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1901,
+        "moe": 70,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "47460": {
+      "name": "Walla Walla, WA",
+      "home_value": {
+        "value": 418100,
+        "moe": 20497,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2095,
+        "moe": 251,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "47580": {
+      "name": "Warner Robins, GA",
+      "home_value": {
+        "value": 254000,
+        "moe": 16205,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1579,
+        "moe": 85,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "47900": {
+      "name": "Washington-Arlington-Alexandria, DC-VA-MD-WV",
+      "home_value": {
+        "value": 612500,
+        "moe": 4853,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2978,
+        "moe": 28,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "47930": {
+      "name": "Waterbury-Shelton, CT",
+      "home_value": {
+        "value": 364100,
+        "moe": 11249,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2344,
+        "moe": 90,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "47940": {
+      "name": "Waterloo-Cedar Falls, IA",
+      "home_value": {
+        "value": 217600,
+        "moe": 7697,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1597,
+        "moe": 53,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "48060": {
+      "name": "Watertown-Fort Drum, NY",
+      "home_value": {
+        "value": 212100,
+        "moe": 15414,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1642,
+        "moe": 102,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "48140": {
+      "name": "Wausau, WI",
+      "home_value": {
+        "value": 244300,
+        "moe": 7661,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1510,
+        "moe": 67,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "48260": {
+      "name": "Weirton-Steubenville, WV-OH",
+      "home_value": {
+        "value": 162900,
+        "moe": 8114,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1262,
+        "moe": 80,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "48300": {
+      "name": "Wenatchee-East Wenatchee, WA",
+      "home_value": {
+        "value": 533400,
+        "moe": 27449,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2096,
+        "moe": 165,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "48540": {
+      "name": "Wheeling, WV-OH",
+      "home_value": {
+        "value": 161200,
+        "moe": 10561,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1303,
+        "moe": 87,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "48620": {
+      "name": "Wichita, KS",
+      "home_value": {
+        "value": 229100,
+        "moe": 5283,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1676,
+        "moe": 57,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "48660": {
+      "name": "Wichita Falls, TX",
+      "home_value": {
+        "value": 184600,
+        "moe": 11502,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1833,
+        "moe": 122,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "48680": {
+      "name": "Wildwood-The Villages, FL",
+      "home_value": {
+        "value": 417200,
+        "moe": 13770,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1963,
+        "moe": 257,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "48700": {
+      "name": "Williamsport, PA",
+      "home_value": {
+        "value": 220500,
+        "moe": 17229,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1577,
+        "moe": 68,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "48900": {
+      "name": "Wilmington, NC",
+      "home_value": {
+        "value": 416600,
+        "moe": 11109,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2056,
+        "moe": 92,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "49020": {
+      "name": "Winchester, VA-WV",
+      "home_value": {
+        "value": 401900,
+        "moe": 16007,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2008,
+        "moe": 115,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "49180": {
+      "name": "Winston-Salem, NC",
+      "home_value": {
+        "value": 279000,
+        "moe": 4729,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1508,
+        "moe": 56,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "49340": {
+      "name": "Worcester, MA",
+      "home_value": {
+        "value": 489600,
+        "moe": 9957,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2445,
+        "moe": 54,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "49420": {
+      "name": "Yakima, WA",
+      "home_value": {
+        "value": 351700,
+        "moe": 11227,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1842,
+        "moe": 79,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "49620": {
+      "name": "York-Hanover, PA",
+      "home_value": {
+        "value": 289500,
+        "moe": 7203,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1901,
+        "moe": 64,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "49660": {
+      "name": "Youngstown-Warren, OH",
+      "home_value": {
+        "value": 176600,
+        "moe": 6480,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1286,
+        "moe": 46,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "49700": {
+      "name": "Yuba City, CA",
+      "home_value": {
+        "value": 441100,
+        "moe": 16545,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 2266,
+        "moe": 133,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    },
+    "49740": {
+      "name": "Yuma, AZ",
+      "home_value": {
+        "value": 260900,
+        "moe": 16721,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_home_value"
+      },
+      "owner_cost_with_mortgage": {
+        "value": 1812,
+        "moe": 68,
+        "status": "ok",
+        "tier": "observed",
+        "method": "acs_owner_cost_with_mortgage"
+      }
+    }
+  }
+}

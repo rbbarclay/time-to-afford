@@ -1,5 +1,8 @@
 """Validate data/wages.json, data/rent.json, data/gas.json across all metros.
 
+Files: data/wages.json, rent.json, gas.json, and owner.json (ACS home value and
+owner costs, if present).
+
 Checks
   1. structure    every value is {value, status, tier, method}; null iff status != "ok";
                   every method key is defined in the file's methods table, and every
@@ -11,6 +14,10 @@ Checks
                     wages -> BLS public API v1 (OEWS hourly median series)
                     rent  -> Census ACS table B25064 (median gross rent, should equal B25031 all units)
                     gas   -> EIA HTML table (same series as the spreadsheet)
+                    owner -> Census ACS table B25097 total (median value), which should
+                             equal B25077. Census publishes no second median for owner
+                             costs (B25088) in these files, so owner costs get structure
+                             and range checks only.
 
 Writes data/validation_report.csv: one row per metro with inputs, as-of dates,
 hours of work (rent / median wage, gas per gallon / median wage), and the
@@ -18,7 +25,8 @@ measures that are missing.
 
 Usage:
   python pipeline/validate.py                         # validate using stored references
-  python pipeline/validate.py --refresh-references    # re-fetch references first (BLS_CONTACT or --contact required)
+  python pipeline/validate.py --refresh-references    # re-fetch all references (BLS_CONTACT or --contact required)
+  python pipeline/validate.py --refresh-references owner   # re-fetch only some: wage, rent, gas, owner
 """
 
 from __future__ import annotations
@@ -44,13 +52,16 @@ DATA = ROOT / "data"
 REF_PATH = Path(__file__).resolve().parent / "reference" / "references.json"
 REPORT_PATH = DATA / "validation_report.csv"
 
-RANGES = {"wage": (8.0, 100.0), "rent": (300, 5000), "gas": (2.0, 9.0)}
+RANGES = {"wage": (8.0, 100.0), "rent": (300, 5000), "gas": (2.0, 9.0),
+          "home_value": (50_000, 3_000_000), "owner_cost": (500, 6000)}
 RENT_KEYS = ("all_units", "one_bedroom", "two_bedroom")
+OWNER_KEYS = ("home_value", "owner_cost_with_mortgage")
+REFERENCE_SOURCES = ("wage", "rent", "gas", "owner")
 
 BLS_API = "https://api.bls.gov/publicAPI/v1/timeseries/data/"
 BLS_BATCH = 25  # API v1 limit: 25 series per request, 25 requests per day
-CENSUS_B25064 = ("https://www2.census.gov/programs-surveys/acs/summary_file/{y}/table-based-SF/"
-                 "data/1YRData/acsdt1y{y}-b25064.dat")
+CENSUS_TABLE = ("https://www2.census.gov/programs-surveys/acs/summary_file/{y}/table-based-SF/"
+                "data/1YRData/acsdt1y{y}-{t}.dat")
 EIA_HTML = "https://www.eia.gov/dnav/pet/pet_pri_gnd_a_epmr_pte_dpgal_m.htm"
 EIA_CITY_LABELS = ["Boston", "Chicago", "Cleveland", "Denver", "Houston", "Los Angeles", "Miami",
                    "New York City", "San Francisco", "Seattle"]
@@ -88,17 +99,19 @@ def check_structure(label: str, doc: dict, fields: list[str]) -> list[str]:
     return errors
 
 
-def check_alignment(wages: dict, rent: dict, gas: dict) -> list[str]:
+def check_alignment(wages: dict, rent: dict, gas: dict, owner: dict | None = None) -> list[str]:
     w, r, g = set(wages["metros"]), set(rent["metros"]), set(gas["metros"])
     errors = []
     if w != r:
         errors.append(f"rent/wage metro mismatch: only wages {sorted(w - r)[:5]}, only rent {sorted(r - w)[:5]}")
     if not g <= w:
         errors.append(f"gas metros not in wages: {sorted(g - w)}")
+    if owner is not None and (o := set(owner["metros"])) != w:
+        errors.append(f"owner/wage metro mismatch: only wages {sorted(w - o)[:5]}, only owner {sorted(o - w)[:5]}")
     return errors
 
 
-def check_ranges(wages: dict, rent: dict, gas: dict) -> list[str]:
+def check_ranges(wages: dict, rent: dict, gas: dict, owner: dict | None = None) -> list[str]:
     warnings = []
 
     def chk(kind, code, label, v):
@@ -113,6 +126,9 @@ def check_ranges(wages: dict, rent: dict, gas: dict) -> list[str]:
             chk("rent", code, k, value_of(m[k]))
     for code, m in gas["metros"].items():
         chk("gas", code, "price_per_gallon", value_of(m["price_per_gallon"]))
+    for code, m in (owner or {}).get("metros", {}).items():
+        chk("home_value", code, "home_value", value_of(m["home_value"]))
+        chk("owner_cost", code, "owner_cost_with_mortgage", value_of(m["owner_cost_with_mortgage"]))
     return warnings
 
 
@@ -129,7 +145,7 @@ def compare(ours: dict, ref: dict, tol: float) -> tuple[list[str], set]:
     return errors, checked
 
 
-def check_references(wages, rent, gas, refs) -> tuple[list[str], dict]:
+def check_references(wages, rent, gas, refs, owner: dict | None = None) -> tuple[list[str], dict]:
     """Returns (errors, {code: set of measures checked})."""
     errors, checked = [], {}
     pairs = [
@@ -137,6 +153,9 @@ def check_references(wages, rent, gas, refs) -> tuple[list[str], dict]:
         ("rent", "census_b25064", {c: value_of(m["all_units"]) for c, m in rent["metros"].items()}, 0.5),
         ("gas", "eia_html", {c: value_of(m["price_per_gallon"]) for c, m in gas["metros"].items()}, 0.0005),
     ]
+    if owner is not None:
+        pairs.append(("home_value", "census_b25097",
+                      {c: value_of(m["home_value"]) for c, m in owner["metros"].items()}, 0.5))
     for label, key, ours, tol in pairs:
         ref = refs.get(key)
         if not ref:
@@ -159,17 +178,21 @@ def hours(cost, wage):
     return round(cost / wage, 2) if cost is not None and wage else None
 
 
-def report_rows(wages, rent, gas, checked) -> list[dict]:
+def report_rows(wages, rent, gas, checked, owner: dict | None = None) -> list[dict]:
     rows = []
     for code in sorted(wages["metros"]):
         w, r, g = wages["metros"][code], rent["metros"].get(code, {}), gas["metros"].get(code)
+        o = (owner or {}).get("metros", {}).get(code, {})
         wage = value_of(w["hourly_median"])
         rents = {k: value_of(r.get(k)) for k in RENT_KEYS}
         price = value_of(g["price_per_gallon"]) if g else None
         missing = [n for n, v in [("wage", wage), ("rent_all_units", rents["all_units"]),
                                   ("rent_1br", rents["one_bedroom"]), ("rent_2br", rents["two_bedroom"]),
                                   ("gas", price)] if v is None]
-        rows.append({
+        if owner is not None:
+            home, cost = value_of(o.get("home_value")), value_of(o.get("owner_cost_with_mortgage"))
+            missing += [n for n, v in [("home_value", home), ("owner_cost", cost)] if v is None]
+        row = {
             "cbsa": code,
             "name": r.get("name") or w["name"],  # ACS names keep diacritics
             "wage_hourly_median": wage, "wage_as_of": wages["as_of"],
@@ -180,7 +203,11 @@ def report_rows(wages, rent, gas, checked) -> list[dict]:
             "hours_per_gallon": hours(price, wage),
             "measures_missing": ";".join(missing),
             "reference_checked": ";".join(sorted(checked.get(code, ()))),
-        })
+        }
+        if owner is not None:
+            row.update({"home_value": home, "owner_cost_with_mortgage": cost, "owner_as_of": owner["as_of"],
+                        "hours_owner_cost": hours(cost, wage)})
+        rows.append(row)
     return rows
 
 
@@ -239,11 +266,22 @@ def parse_eia_html(html: str) -> tuple[str, dict]:
     return months[5] if len(months) >= 6 else months[-1], out
 
 
-def fetch_references(wages: dict, rent: dict, gas: dict, contact: str) -> dict:
-    today = dt.date.today().isoformat()
-    refs = {}
+def _census_column(url: str, column: str, metros: dict, top_code: int) -> dict:
+    """Read one column of a Census table-based summary file for our metros."""
+    lines = _get(url, "time-to-afford/0.1").decode("utf-8").splitlines()
+    hdr = lines[0].split("|")
+    vals = {}
+    for ln in lines[1:]:
+        row = dict(zip(hdr, ln.split("|")))
+        gid = row["GEO_ID"]
+        if gid.startswith("310M") and gid[-5:] in metros:
+            v = int(row[column])
+            vals[gid[-5:]] = v if 0 <= v != top_code else None
+    return vals
 
-    # BLS API v1: 16 requests for ~393 metros (daily limit 25)
+
+def fetch_wage_reference(wages: dict, contact: str, today: str) -> dict:
+    """BLS API v1: 16 requests for ~393 metros (daily limit 25)."""
     ua = f"time-to-afford/0.1 (contact: {contact})"
     year = wages["as_of"][:4]
     codes = sorted(wages["metros"])
@@ -253,57 +291,81 @@ def fetch_references(wages: dict, rent: dict, gas: dict, contact: str) -> dict:
                            "startyear": year, "endyear": year}).encode()
         values.update(parse_bls_response(json.loads(_get(BLS_API, ua, body)), year))
         time.sleep(1)
-    refs["bls_oews_hourly_median"] = {"source_url": BLS_API, "series": "OEUM{area}00000000000008",
-                                      "period": f"May {year}", "retrieved": today, "values": values}
+    return {"source_url": BLS_API, "series": "OEUM{area}00000000000008",
+            "period": f"May {year}", "retrieved": today, "values": values}
 
-    # Census B25064 (one file)
-    y = rent["as_of"]
-    url = CENSUS_B25064.format(y=y)
-    lines = _get(url, "time-to-afford/0.1").decode("utf-8").splitlines()
-    hdr = lines[0].split("|")
-    vals = {}
-    for ln in lines[1:]:
-        row = dict(zip(hdr, ln.split("|")))
-        gid = row["GEO_ID"]
-        if gid.startswith("310M") and gid[-5:] in rent["metros"]:
-            v = int(row["B25064_E001"])
-            vals[gid[-5:]] = v if 0 <= v != 3501 else None
-    refs["census_b25064"] = {"source_url": url, "period": y, "retrieved": today, "values": vals}
 
-    # EIA HTML table (one page)
+def fetch_rent_reference(rent: dict, today: str) -> dict:
+    url = CENSUS_TABLE.format(y=rent["as_of"], t="b25064")
+    return {"source_url": url, "period": rent["as_of"], "retrieved": today,
+            "values": _census_column(url, "B25064_E001", rent["metros"], 3501)}
+
+
+def fetch_gas_reference(gas: dict, today: str) -> dict:
     month, by_label = parse_eia_html(_get(EIA_HTML, "time-to-afford/0.1").decode("utf-8", "replace"))
     label_to_cbsa = {m["eia_area"].split(",")[0]: c for c, m in gas["metros"].items()}
     vals = {label_to_cbsa[lbl]: v for lbl, v in by_label.items() if lbl in label_to_cbsa}
-    refs["eia_html"] = {"source_url": EIA_HTML, "period": month, "retrieved": today, "values": vals}
-    return refs
+    return {"source_url": EIA_HTML, "period": month, "retrieved": today, "values": vals}
+
+
+def fetch_owner_reference(owner: dict, today: str) -> dict:
+    """B25097_E001 (median value, all owner-occupied units) should equal B25077_E001."""
+    url = CENSUS_TABLE.format(y=owner["as_of"], t="b25097")
+    return {"source_url": url, "column": "B25097_E001", "period": owner["as_of"], "retrieved": today,
+            "values": _census_column(url, "B25097_E001", owner["metros"], 2000001)}
+
+
+REFERENCE_KEYS = {"wage": "bls_oews_hourly_median", "rent": "census_b25064", "gas": "eia_html",
+                  "owner": "census_b25097"}
+
+
+def fetch_references(sources, wages, rent, gas, owner, contact) -> dict:
+    """Fetch the requested reference sources; returns {reference key: data}."""
+    today = dt.date.today().isoformat()
+    out = {}
+    if "wage" in sources:
+        out[REFERENCE_KEYS["wage"]] = fetch_wage_reference(wages, contact, today)
+    if "rent" in sources:
+        out[REFERENCE_KEYS["rent"]] = fetch_rent_reference(rent, today)
+    if "gas" in sources:
+        out[REFERENCE_KEYS["gas"]] = fetch_gas_reference(gas, today)
+    if "owner" in sources and owner is not None:
+        out[REFERENCE_KEYS["owner"]] = fetch_owner_reference(owner, today)
+    return out
 
 
 # ---------- entry point ----------
 
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--refresh-references", action="store_true")
+    p.add_argument("--refresh-references", nargs="*", choices=REFERENCE_SOURCES, metavar="SOURCE",
+                   help="re-fetch reference values: all, or any of wage rent gas owner")
     p.add_argument("--contact", default=os.environ.get("BLS_CONTACT"))
     args = p.parse_args(argv)
 
     wages, rent, gas = load("wages.json"), load("rent.json"), load("gas.json")
+    owner = load("owner.json") if (DATA / "owner.json").exists() else None
 
-    if args.refresh_references:
-        if not args.contact:
-            p.error("--refresh-references requires --contact or BLS_CONTACT")
-        REF_PATH.parent.mkdir(parents=True, exist_ok=True)
-        REF_PATH.write_text(json.dumps(fetch_references(wages, rent, gas, args.contact), indent=2) + "\n")
     refs = json.loads(REF_PATH.read_text()) if REF_PATH.exists() else {}
+    if args.refresh_references is not None:
+        sources = set(args.refresh_references or REFERENCE_SOURCES)
+        if "wage" in sources and not args.contact:
+            p.error("refreshing wage references requires --contact or BLS_CONTACT")
+        refs.update(fetch_references(sources, wages, rent, gas, owner, args.contact))  # keep the others
+        REF_PATH.parent.mkdir(parents=True, exist_ok=True)
+        REF_PATH.write_text(json.dumps(refs, indent=2) + "\n")
 
     errors = (check_structure("wages", wages, ["hourly_median", "hourly_mean", "employment"])
               + check_structure("rent", rent, list(RENT_KEYS))
               + check_structure("gas", gas, ["price_per_gallon"])
-              + check_alignment(wages, rent, gas))
-    warnings = check_ranges(wages, rent, gas)
-    ref_errors, checked = check_references(wages, rent, gas, refs)
+              + check_alignment(wages, rent, gas, owner))
+    if owner is not None:
+        errors += check_structure("owner", owner, list(OWNER_KEYS))
+    warnings = check_ranges(wages, rent, gas, owner)
+    ref_errors, checked = check_references(wages, rent, gas, refs, owner)
     errors += ref_errors
 
-    rows = report_rows(wages, rent, gas, checked)
+    rows = report_rows(wages, rent, gas, checked, owner)
     write_report(rows)
 
     complete = sum(1 for r in rows if not r["measures_missing"])
@@ -311,7 +373,7 @@ def main(argv=None) -> int:
     for r in rows:
         for m in filter(None, r["measures_missing"].split(";")):
             by_measure[m] = by_measure.get(m, 0) + 1
-    by_check = {k: sum(k in s for s in checked.values()) for k in ("wage", "rent", "gas")}
+    by_check = {k: sum(k in s for s in checked.values()) for k in ("wage", "rent", "gas", "home_value")}
     print(f"Metros: {len(rows)}; complete (all measures): {complete}; missing by measure: {by_measure}")
     print(f"Reference-checked metros: {by_check}")
     print(f"Report: {REPORT_PATH}")

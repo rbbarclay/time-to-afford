@@ -152,3 +152,47 @@ def test_structure_requires_complete_methods_table():
     assert any("missing as_of" in e for e in errs)
     del rent["methods"]
     assert any("missing methods table" in e for e in v.check_structure("rent", rent, list(v.RENT_KEYS)))
+
+
+def owner_sample():
+    return {"as_of": "2025", "methods": METHODS, "metros": {
+        "35620": {"name": "New York", "home_value": dict(ok(691700), moe=5263),
+                  "owner_cost_with_mortgage": dict(ok(3441), moe=23)},
+        "41980": {"name": "San Juan", "home_value": dict(ok(150000), moe=4000),
+                  "owner_cost_with_mortgage": {"value": None, "moe": None, "status": "top_coded",
+                                               "tier": "observed", "method": "m"}},
+    }}
+
+
+def test_owner_alignment_ranges_and_reference():
+    wages, rent, gas = sample()
+    owner = owner_sample()
+    assert v.check_alignment(wages, rent, gas, owner) == []
+    assert v.check_structure("owner", owner, list(v.OWNER_KEYS)) == []
+    assert v.check_ranges(wages, rent, gas, owner) == []
+    r = refs()
+    r["census_b25097"] = {"values": {"35620": 691700, "41980": 150000}}
+    errs, checked = v.check_references(wages, rent, gas, r, owner)
+    assert errs == [] and "home_value" in checked["35620"]
+    r["census_b25097"]["values"]["35620"] = 700000
+    errs, _ = v.check_references(wages, rent, gas, r, owner)
+    assert any("home_value 35620" in e for e in errs)
+    del owner["metros"]["41980"]
+    assert any("owner/wage metro mismatch" in e for e in v.check_alignment(wages, rent, gas, owner))
+
+
+def test_owner_range_warning():
+    wages, rent, gas = sample()
+    owner = owner_sample()
+    owner["metros"]["35620"]["owner_cost_with_mortgage"]["value"] = 9000
+    assert any("owner_cost_with_mortgage=9000" in w for w in v.check_ranges(wages, rent, gas, owner))
+
+
+def test_report_rows_with_owner():
+    wages, rent, gas = sample()
+    _, checked = v.check_references(wages, rent, gas, refs())
+    rows = {r["cbsa"]: r for r in v.report_rows(wages, rent, gas, checked, owner_sample())}
+    assert rows["35620"]["owner_cost_with_mortgage"] == 3441
+    assert rows["35620"]["hours_owner_cost"] == round(3441 / 29.53, 2)
+    assert rows["41980"]["measures_missing"] == "rent_1br;gas;owner_cost"  # top-coded counts as no value
+    assert "home_value" not in v.report_rows(wages, rent, gas, checked)[0]  # owner columns only when given

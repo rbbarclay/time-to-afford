@@ -1,394 +1,394 @@
-cbsa,name,wage_hourly_median,wage_as_of,rent_all_units,rent_1br,rent_2br,rent_as_of,gas_per_gallon,gas_as_of,hours_rent_all_units,hours_per_gallon,measures_missing,reference_checked
-10180,"Abilene, TX",21.32,2025-05,1230,1028,1225,2025,,,57.69,,gas,rent;wage
-10380,"Aguadilla, PR",12.73,2025-05,662,656,657,2025,,,52.0,,gas,rent;wage
-10420,"Akron, OH",23.48,2025-05,1108,914,1141,2025,,,47.19,,gas,rent;wage
-10500,"Albany, GA",20.97,2025-05,995,793,909,2025,,,47.45,,gas,rent;wage
-10540,"Albany, OR",23.9,2025-05,1368,1155,1393,2025,,,57.24,,gas,rent;wage
-10580,"Albany-Schenectady-Troy, NY",28.1,2025-05,1407,1240,1548,2025,,,50.07,,gas,rent;wage
-10740,"Albuquerque, NM",23.11,2025-05,1287,1102,1302,2025,,,55.69,,gas,rent;wage
-10780,"Alexandria, LA",19.52,2025-05,990,671,892,2025,,,50.72,,gas,rent;wage
-10900,"Allentown-Bethlehem-Easton, PA-NJ",23.55,2025-05,1542,1265,1633,2025,,,65.48,,gas,rent;wage
-11020,"Altoona, PA",21.28,2025-05,792,612,848,2025,,,37.22,,gas,rent;wage
-11100,"Amarillo, TX",21.43,2025-05,1146,880,1104,2025,,,53.48,,gas,rent;wage
-11180,"Ames, IA",24.14,2025-05,1039,878,1017,2025,,,43.04,,gas,rent;wage
-11200,"Amherst Town-Northampton, MA",27.42,2025-05,1580,1357,1627,2025,,,57.62,,gas,rent;wage
-11260,"Anchorage, AK",28.94,2025-05,1577,1101,1557,2025,,,54.49,,gas,rent;wage
-11460,"Ann Arbor, MI",26.63,2025-05,1562,1348,1759,2025,,,58.66,,gas,rent;wage
-11500,"Anniston-Oxford, AL",20.52,2025-05,904,697,1002,2025,,,44.05,,gas,rent;wage
-11540,"Appleton, WI",24.0,2025-05,1213,950,1173,2025,,,50.54,,gas,rent;wage
-11640,"Arecibo, PR",12.56,2025-05,597,316,537,2025,,,47.53,,gas,rent;wage
-11700,"Asheville, NC",22.53,2025-05,1535,1373,1492,2025,,,68.13,,gas,rent;wage
-12020,"Athens-Clarke County, GA",19.82,2025-05,1476,1259,1399,2025,,,74.47,,gas,rent;wage
-12060,"Atlanta-Sandy Springs-Roswell, GA",24.6,2025-05,1813,1588,1781,2025,,,73.7,,gas,rent;wage
-12100,"Atlantic City-Hammonton, NJ",22.85,2025-05,1428,1265,1528,2025,,,62.49,,gas,rent;wage
-12220,"Auburn-Opelika, AL",18.78,2025-05,1170,960,1146,2025,,,62.3,,gas,rent;wage
-12260,"Augusta-Richmond County, GA-SC",22.11,2025-05,1383,1164,1315,2025,,,62.55,,gas,rent;wage
-12420,"Austin-Round Rock-San Marcos, TX",27.38,2025-05,1741,1511,1836,2025,,,63.59,,gas,rent;wage
-12540,"Bakersfield-Delano, CA",22.82,2025-05,1491,1086,1398,2025,,,65.34,,gas,rent;wage
-12580,"Baltimore-Columbia-Towson, MD",28.4,2025-05,1730,1408,1764,2025,,,60.92,,gas,rent;wage
-12620,"Bangor, ME",23.06,2025-05,1230,990,1291,2025,,,53.34,,gas,rent;wage
-12700,"Barnstable Town, MA",27.1,2025-05,1636,1078,1832,2025,,,60.37,,gas,rent;wage
-12940,"Baton Rouge, LA",23.42,2025-05,1159,965,1143,2025,,,49.49,,gas,rent;wage
-12980,"Battle Creek, MI",23.41,2025-05,1103,901,1142,2025,,,47.12,,gas,rent;wage
-13020,"Bay City, MI",21.93,2025-05,928,672,951,2025,,,42.32,,gas,rent;wage
-13140,"Beaumont-Port Arthur, TX",23.38,2025-05,1134,945,1126,2025,,,48.5,,gas,rent;wage
-13220,"Beckley, WV",20.12,2025-05,945,1621,872,2025,,,46.97,,gas,rent;wage
-13380,"Bellingham, WA",27.8,2025-05,1610,1315,1653,2025,,,57.91,,gas,rent;wage
-13460,"Bend, OR",26.24,2025-05,1754,1515,1673,2025,,,66.84,,gas,rent;wage
-13740,"Billings, MT",23.59,2025-05,1290,869,1349,2025,,,54.68,,gas,rent;wage
-13780,"Binghamton, NY",23.78,2025-05,1074,831,1097,2025,,,45.16,,gas,rent;wage
-13820,"Birmingham, AL",22.97,2025-05,1250,1162,1194,2025,,,54.42,,gas,rent;wage
-13900,"Bismarck, ND",25.27,2025-05,1163,1070,1117,2025,,,46.02,,gas,rent;wage
-13980,"Blacksburg-Christiansburg-Radford, VA",23.14,2025-05,1201,808,1121,2025,,,51.9,,gas,rent;wage
-14010,"Bloomington, IL",25.55,2025-05,1128,989,1122,2025,,,44.15,,gas,rent;wage
-14020,"Bloomington, IN",22.91,2025-05,1269,1076,1358,2025,,,55.39,,gas,rent;wage
-14260,"Boise City, ID",23.6,2025-05,1702,1360,1652,2025,,,72.12,,gas,rent;wage
-14460,"Boston-Cambridge-Newton, MA-NH",32.03,2025-05,2221,1902,2370,2025,4.266,2026-10,69.34,0.13,,gas;rent;wage
-14500,"Boulder, CO",33.45,2025-05,1945,1718,1970,2025,,,58.15,,gas,rent;wage
-14540,"Bowling Green, KY",21.65,2025-05,1051,958,1052,2025,,,48.55,,gas,rent;wage
-14580,"Bozeman, MT",26.36,2025-05,1825,1734,1779,2025,,,69.23,,gas,rent;wage
-14740,"Bremerton-Silverdale-Port Orchard, WA",30.38,2025-05,1967,1680,1968,2025,,,64.75,,gas,rent;wage
-14860,"Bridgeport-Stamford-Danbury, CT",29.55,2025-05,2109,1966,2118,2025,,,71.37,,gas,rent;wage
-15180,"Brownsville-Harlingen, TX",17.54,2025-05,1064,856,1055,2025,,,60.66,,gas,rent;wage
-15260,"Brunswick-St. Simons, GA",20.16,2025-05,1352,1213,1172,2025,,,67.06,,gas,rent;wage
-15380,"Buffalo-Cheektowaga, NY",24.42,2025-05,1196,957,1205,2025,,,48.98,,gas,rent;wage
-15500,"Burlington, NC",21.16,2025-05,1346,1290,1339,2025,,,63.61,,gas,rent;wage
-15540,"Burlington-South Burlington, VT",28.86,2025-05,1704,1399,1893,2025,,,59.04,,gas,rent;wage
-15940,"Canton-Massillon, OH",22.02,2025-05,938,767,987,2025,,,42.6,,gas,rent;wage
-15980,"Cape Coral-Fort Myers, FL",22.49,2025-05,1926,1704,1849,2025,,,85.64,,gas,rent;wage
-16020,"Cape Girardeau, MO-IL",21.38,2025-05,871,673,942,2025,,,40.74,,gas,rent;wage
-16180,"Carson City, NV",27.25,2025-05,1580,1323,1592,2025,,,57.98,,gas,rent;wage
-16220,"Casper, WY",23.5,2025-05,1233,849,1398,2025,,,52.47,,gas,rent;wage
-16300,"Cedar Rapids, IA",23.73,2025-05,987,759,1038,2025,,,41.59,,gas,rent;wage
-16540,"Chambersburg, PA",22.86,2025-05,1085,795,1183,2025,,,47.46,,gas,rent;wage
-16580,"Champaign-Urbana, IL",24.38,2025-05,1157,988,1136,2025,,,47.46,,gas,rent;wage
-16620,"Charleston, WV",22.03,2025-05,882,820,840,2025,,,40.04,,gas,rent;wage
-16700,"Charleston-North Charleston, SC",23.63,2025-05,1855,1788,1817,2025,,,78.5,,gas,rent;wage
-16740,"Charlotte-Concord-Gastonia, NC-SC",24.03,2025-05,1641,1484,1589,2025,,,68.29,,gas,rent;wage
-16820,"Charlottesville, VA",26.53,2025-05,1754,1512,1800,2025,,,66.11,,gas,rent;wage
-16860,"Chattanooga, TN-GA",22.45,2025-05,1353,1317,1313,2025,,,60.27,,gas,rent;wage
-16940,"Cheyenne, WY",24.78,2025-05,1338,1015,1156,2025,,,54.0,,gas,rent;wage
-16980,"Chicago-Naperville-Elgin, IL-IN",26.31,2025-05,1620,1438,1648,2025,4.733,2026-10,61.57,0.18,,gas;rent;wage
-17020,"Chico, CA",23.1,2025-05,1457,1066,1460,2025,,,63.07,,gas,rent;wage
-17140,"Cincinnati, OH-KY-IN",24.12,2025-05,1279,1032,1316,2025,,,53.03,,gas,rent;wage
-17300,"Clarksville, TN-KY",21.57,2025-05,1331,1071,1195,2025,,,61.71,,gas,rent;wage
-17410,"Cleveland, OH",24.11,2025-05,1157,919,1207,2025,4.029,2026-10,47.99,0.17,,gas;rent;wage
-17420,"Cleveland, TN",19.34,2025-05,1207,797,1029,2025,,,62.41,,gas,rent;wage
-17660,"Coeur d'Alene, ID",22.96,2025-05,1645,1358,1609,2025,,,71.65,,gas,rent;wage
-17780,"College Station-Bryan, TX",21.38,2025-05,1303,1133,1237,2025,,,60.94,,gas,rent;wage
-17820,"Colorado Springs, CO",25.34,2025-05,1750,1434,1701,2025,,,69.06,,gas,rent;wage
-17860,"Columbia, MO",22.72,2025-05,1112,943,1088,2025,,,48.94,,gas,rent;wage
-17900,"Columbia, SC",22.32,2025-05,1357,1136,1314,2025,,,60.8,,gas,rent;wage
-17980,"Columbus, GA-AL",20.93,2025-05,1147,874,1051,2025,,,54.8,,gas,rent;wage
-18020,"Columbus, IN",23.3,2025-05,1364,1323,1372,2025,,,58.54,,gas,rent;wage
-18140,"Columbus, OH",24.69,2025-05,1468,1242,1528,2025,,,59.46,,gas,rent;wage
-18580,"Corpus Christi, TX",21.81,2025-05,1348,1186,1328,2025,,,61.81,,gas,rent;wage
-18700,"Corvallis, OR",27.73,2025-05,1644,1295,1671,2025,,,59.29,,gas,rent;wage
-18880,"Crestview-Fort Walton Beach-Destin, FL",22.84,2025-05,1684,1381,1613,2025,,,73.73,,gas,rent;wage
-19100,"Dallas-Fort Worth-Arlington, TX",24.73,2025-05,1744,1490,1794,2025,,,70.52,,gas,rent;wage
-19140,"Dalton, GA",20.29,2025-05,1084,972,1112,2025,,,53.43,,gas,rent;wage
-19300,"Daphne-Fairhope-Foley, AL",18.52,2025-05,1407,868,1444,2025,,,75.97,,gas,rent;wage
-19340,"Davenport-Moline-Rock Island, IA-IL",23.34,2025-05,961,838,1005,2025,,,41.17,,gas,rent;wage
-19430,"Dayton-Kettering-Beavercreek, OH",24.03,2025-05,1149,891,1170,2025,,,47.82,,gas,rent;wage
-19460,"Decatur, AL",22.25,2025-05,976,547,992,2025,,,43.87,,gas,rent;wage
-19500,"Decatur, IL",24.66,2025-05,834,701,831,2025,,,33.82,,gas,rent;wage
-19660,"Deltona-Daytona Beach-Ormond Beach, FL",21.61,2025-05,1703,1380,1638,2025,,,78.81,,gas,rent;wage
-19740,"Denver-Aurora-Centennial, CO",29.96,2025-05,1944,1714,2110,2025,4.196,2026-10,64.89,0.14,,gas;rent;wage
-19780,"Des Moines-West Des Moines, IA",24.91,2025-05,1195,1077,1184,2025,,,47.97,,gas,rent;wage
-19820,"Detroit-Warren-Dearborn, MI",25.04,2025-05,1316,1043,1398,2025,,,52.56,,gas,rent;wage
-20020,"Dothan, AL",18.35,2025-05,937,775,866,2025,,,51.06,,gas,rent;wage
-20100,"Dover, DE",22.45,2025-05,1512,1039,1484,2025,,,67.35,,gas,rent;wage
-20220,"Dubuque, IA",23.44,2025-05,932,798,1086,2025,,,39.76,,gas,rent;wage
-20260,"Duluth, MN-WI",24.04,2025-05,1122,812,1192,2025,,,46.67,,gas,rent;wage
-20500,"Durham-Chapel Hill, NC",29.19,2025-05,1632,1403,1630,2025,,,55.91,,gas,rent;wage
-20580,"Eagle Pass, TX",17.1,2025-05,859,671,992,2025,,,50.23,,gas,rent;wage
-20740,"Eau Claire, WI",23.12,2025-05,1205,991,1223,2025,,,52.12,,gas,rent;wage
-20940,"El Centro, CA",21.7,2025-05,981,965,874,2025,,,45.21,,gas,rent;wage
-21060,"Elizabethtown, KY",22.51,2025-05,1085,771,1023,2025,,,48.2,,gas,rent;wage
-21140,"Elkhart-Goshen, IN",23.11,2025-05,1160,965,1207,2025,,,50.19,,gas,rent;wage
-21300,"Elmira, NY",23.01,2025-05,1172,570,1186,2025,,,50.93,,gas,rent;wage
-21340,"El Paso, TX",18.99,2025-05,1150,969,1100,2025,,,60.56,,gas,rent;wage
-21420,"Enid, OK",19.47,2025-05,1028,718,985,2025,,,52.8,,gas,rent;wage
-21500,"Erie, PA",21.38,2025-05,1000,765,1032,2025,,,46.77,,gas,rent;wage
-21660,"Eugene-Springfield, OR",23.88,2025-05,1475,1237,1402,2025,,,61.77,,gas,rent;wage
-21780,"Evansville, IN",22.38,2025-05,1084,937,1087,2025,,,48.44,,gas,rent;wage
-21820,"Fairbanks-College, AK",29.71,2025-05,1468,1203,1520,2025,,,49.41,,gas,rent;wage
-22020,"Fargo, ND-MN",24.54,2025-05,1132,939,1156,2025,,,46.13,,gas,rent;wage
-22140,"Farmington, NM",22.03,2025-05,937,850,945,2025,,,42.53,,gas,rent;wage
-22180,"Fayetteville, NC",21.93,2025-05,1391,1161,1286,2025,,,63.43,,gas,rent;wage
-22220,"Fayetteville-Springdale-Rogers, AR",22.41,2025-05,1330,988,1232,2025,,,59.35,,gas,rent;wage
-22380,"Flagstaff, AZ",22.84,2025-05,1588,1698,1678,2025,,,69.53,,gas,rent;wage
-22420,"Flint, MI",22.06,2025-05,1045,702,1155,2025,,,47.37,,gas,rent;wage
-22500,"Florence, SC",20.93,2025-05,1024,706,1124,2025,,,48.92,,gas,rent;wage
-22520,"Florence-Muscle Shoals, AL",19.1,2025-05,943,682,1001,2025,,,49.37,,gas,rent;wage
-22540,"Fond du Lac, WI",24.2,2025-05,972,738,991,2025,,,40.17,,gas,rent;wage
-22660,"Fort Collins-Loveland, CO",26.59,2025-05,1839,1648,1775,2025,,,69.16,,gas,rent;wage
-22900,"Fort Smith, AR-OK",19.02,2025-05,937,654,891,2025,,,49.26,,gas,rent;wage
-23060,"Fort Wayne, IN",22.93,2025-05,1157,984,1216,2025,,,50.46,,gas,rent;wage
-23420,"Fresno, CA",22.55,2025-05,1550,1269,1560,2025,,,68.74,,gas,rent;wage
-23460,"Gadsden, AL",17.63,2025-05,763,663,792,2025,,,43.28,,gas,rent;wage
-23540,"Gainesville, FL",22.61,2025-05,1463,1410,1506,2025,,,64.71,,gas,rent;wage
-23580,"Gainesville, GA",22.07,2025-05,1483,1239,1464,2025,,,67.2,,gas,rent;wage
-23900,"Gettysburg, PA",22.41,2025-05,1196,956,1100,2025,,,53.37,,gas,rent;wage
-24020,"Glens Falls, NY",23.6,2025-05,1233,1036,1306,2025,,,52.25,,gas,rent;wage
-24140,"Goldsboro, NC",19.51,2025-05,1029,562,950,2025,,,52.74,,gas,rent;wage
-24220,"Grand Forks, ND-MN",23.92,2025-05,993,780,1018,2025,,,41.51,,gas,rent;wage
-24260,"Grand Island, NE",23.75,2025-05,1242,706,1184,2025,,,52.29,,gas,rent;wage
-24300,"Grand Junction, CO",23.32,2025-05,1375,1188,1510,2025,,,58.96,,gas,rent;wage
-24340,"Grand Rapids-Wyoming-Kentwood, MI",22.87,2025-05,1365,1219,1388,2025,,,59.69,,gas,rent;wage
-24420,"Grants Pass, OR",24.39,2025-05,1333,620,1360,2025,,,54.65,,gas,rent;wage
-24500,"Great Falls, MT",22.36,2025-05,996,853,988,2025,,,44.54,,gas,rent;wage
-24540,"Greeley, CO",26.48,2025-05,1792,1336,1768,2025,,,67.67,,gas,rent;wage
-24580,"Green Bay, WI",24.01,2025-05,1087,904,1093,2025,,,45.27,,gas,rent;wage
-24660,"Greensboro-High Point, NC",22.39,2025-05,1223,1117,1218,2025,,,54.62,,gas,rent;wage
-24780,"Greenville, NC",22.39,2025-05,1135,987,1142,2025,,,50.69,,gas,rent;wage
-24860,"Greenville-Anderson-Greer, SC",22.39,2025-05,1322,1139,1279,2025,,,59.04,,gas,rent;wage
-25020,"Guayama, PR",12.15,2025-05,576,347,423,2025,,,47.41,,gas,rent;wage
-25060,"Gulfport-Biloxi, MS",20.9,2025-05,1217,890,1156,2025,,,58.23,,gas,rent;wage
-25180,"Hagerstown-Martinsburg, MD-WV",22.81,2025-05,1287,969,1149,2025,,,56.42,,gas,rent;wage
-25220,"Hammond, LA",18.5,2025-05,1051,806,1134,2025,,,56.81,,gas,rent;wage
-25260,"Hanford-Corcoran, CA",23.3,2025-05,1530,1080,1434,2025,,,65.67,,gas,rent;wage
-25420,"Harrisburg-Carlisle, PA",23.85,2025-05,1349,1177,1360,2025,,,56.56,,gas,rent;wage
-25500,"Harrisonburg, VA",22.17,2025-05,1182,848,1250,2025,,,53.32,,gas,rent;wage
-25540,"Hartford-West Hartford-East Hartford, CT",28.82,2025-05,1548,1313,1731,2025,,,53.71,,gas,rent;wage
-25620,"Hattiesburg, MS",18.15,2025-05,1032,847,1019,2025,,,56.86,,gas,rent;wage
-25740,"Helena, MT",26.46,2025-05,1268,1079,1294,2025,,,47.92,,gas,rent;wage
-25860,"Hickory-Lenoir-Morganton, NC",21.74,2025-05,979,720,1011,2025,,,45.03,,gas,rent;wage
-25940,"Hilton Head Island-Bluffton-Port Royal, SC",21.08,2025-05,1875,1808,2022,2025,,,88.95,,gas,rent;wage
-25980,"Hinesville, GA",22.44,2025-05,1374,1050,1079,2025,,,61.23,,gas,rent;wage
-26140,"Homosassa Springs, FL",19.89,2025-05,1100,730,1200,2025,,,55.3,,gas,rent;wage
-26300,"Hot Springs, AR",17.57,2025-05,1063,935,1028,2025,,,60.5,,gas,rent;wage
-26380,"Houma-Bayou Cane-Thibodaux, LA",21.93,2025-05,1061,1029,971,2025,,,48.38,,gas,rent;wage
-26420,"Houston-Pasadena-The Woodlands, TX",23.76,2025-05,1550,1315,1562,2025,3.747,2026-10,65.24,0.16,,gas;rent;wage
-26580,"Huntington-Ashland, WV-KY-OH",21.44,2025-05,944,716,914,2025,,,44.03,,gas,rent;wage
-26620,"Huntsville, AL",24.88,2025-05,1328,1101,1350,2025,,,53.38,,gas,rent;wage
-26820,"Idaho Falls, ID",22.5,2025-05,1404,1144,1287,2025,,,62.4,,gas,rent;wage
-26900,"Indianapolis-Carmel-Greenwood, IN",23.72,2025-05,1380,1189,1397,2025,,,58.18,,gas,rent;wage
-26980,"Iowa City, IA",24.07,2025-05,1168,994,1203,2025,,,48.53,,gas,rent;wage
-27060,"Ithaca, NY",27.95,2025-05,1646,1365,1753,2025,,,58.89,,gas,rent;wage
-27100,"Jackson, MI",22.96,2025-05,1066,955,1063,2025,,,46.43,,gas,rent;wage
-27140,"Jackson, MS",20.6,2025-05,1176,1046,1190,2025,,,57.09,,gas,rent;wage
-27180,"Jackson, TN",21.53,2025-05,1180,699,1146,2025,,,54.81,,gas,rent;wage
-27260,"Jacksonville, FL",23.48,2025-05,1635,1368,1642,2025,,,69.63,,gas,rent;wage
-27340,"Jacksonville, NC",19.34,2025-05,1514,1082,1368,2025,,,78.28,,gas,rent;wage
-27500,"Janesville-Beloit, WI",23.26,2025-05,1129,912,1135,2025,,,48.54,,gas,rent;wage
-27620,"Jefferson City, MO",23.09,2025-05,895,582,874,2025,,,38.76,,gas,rent;wage
-27740,"Johnson City, TN",20.9,2025-05,1080,888,1080,2025,,,51.67,,gas,rent;wage
-27780,"Johnstown, PA",21.21,2025-05,736,584,740,2025,,,34.7,,gas,rent;wage
-27860,"Jonesboro, AR",20.31,2025-05,1064,796,941,2025,,,52.39,,gas,rent;wage
-27900,"Joplin, MO-KS",21.63,2025-05,999,735,974,2025,,,46.19,,gas,rent;wage
-27980,"Kahului-Wailuku, HI",27.71,2025-05,1956,1481,1963,2025,,,70.59,,gas,rent;wage
-28020,"Kalamazoo-Portage, MI",23.32,2025-05,1171,1021,1219,2025,,,50.21,,gas,rent;wage
-28100,"Kankakee, IL",22.03,2025-05,1088,908,1107,2025,,,49.39,,gas,rent;wage
-28140,"Kansas City, MO-KS",24.44,2025-05,1414,1200,1418,2025,,,57.86,,gas,rent;wage
-28420,"Kennewick-Richland, WA",27.54,2025-05,1485,1158,1595,2025,,,53.92,,gas,rent;wage
-28450,"Kenosha, WI",23.22,2025-05,1487,1091,1449,2025,,,64.04,,gas,rent;wage
-28660,"Killeen-Temple, TX",22.43,2025-05,1405,927,1193,2025,,,62.64,,gas,rent;wage
-28700,"Kingsport-Bristol, TN-VA",21.75,2025-05,862,672,862,2025,,,39.63,,gas,rent;wage
-28740,"Kingston, NY",24.05,2025-05,1696,1522,1821,2025,,,70.52,,gas,rent;wage
-28880,"Kiryas Joel-Poughkeepsie-Newburgh, NY",24.51,2025-05,1788,1567,1916,2025,,,72.95,,gas,rent;wage
-28940,"Knoxville, TN",22.63,2025-05,1376,1106,1452,2025,,,60.8,,gas,rent;wage
-29020,"Kokomo, IN",23.55,2025-05,969,863,1122,2025,,,41.15,,gas,rent;wage
-29100,"La Crosse-Onalaska, WI-MN",23.2,2025-05,1164,933,1236,2025,,,50.17,,gas,rent;wage
-29180,"Lafayette, LA",20.09,2025-05,1031,866,1045,2025,,,51.32,,gas,rent;wage
-29200,"Lafayette-West Lafayette, IN",23.45,2025-05,1225,964,1345,2025,,,52.24,,gas,rent;wage
-29340,"Lake Charles, LA",21.97,2025-05,1101,847,1076,2025,,,50.11,,gas,rent;wage
-29420,"Lake Havasu City-Kingman, AZ",21.26,2025-05,1283,853,1297,2025,,,60.35,,gas,rent;wage
-29460,"Lakeland-Winter Haven, FL",22.18,2025-05,1660,1251,1437,2025,,,74.84,,gas,rent;wage
-29540,"Lancaster, PA",23.18,2025-05,1456,1247,1469,2025,,,62.81,,gas,rent;wage
-29620,"Lansing-East Lansing, MI",25.39,2025-05,1207,1029,1171,2025,,,47.54,,gas,rent;wage
-29700,"Laredo, TX",17.91,2025-05,1143,972,1098,2025,,,63.82,,gas,rent;wage
-29740,"Las Cruces, NM",20.23,2025-05,965,938,932,2025,,,47.7,,gas,rent;wage
-29820,"Las Vegas-Henderson-North Las Vegas, NV",22.44,2025-05,1711,1390,1635,2025,,,76.25,,gas,rent;wage
-29940,"Lawrence, KS",22.78,2025-05,1243,1112,1222,2025,,,54.57,,gas,rent;wage
-30020,"Lawton, OK",20.24,2025-05,1039,754,943,2025,,,51.33,,gas,rent;wage
-30140,"Lebanon, PA",22.35,2025-05,1260,892,1158,2025,,,56.38,,gas,rent;wage
-30300,"Lewiston, ID-WA",23.22,2025-05,1025,659,1063,2025,,,44.14,,gas,rent;wage
-30340,"Lewiston-Auburn, ME",23.82,2025-05,1206,991,1369,2025,,,50.63,,gas,rent;wage
-30460,"Lexington-Fayette, KY",23.38,2025-05,1253,1091,1274,2025,,,53.59,,gas,rent;wage
-30500,"Lexington Park, MD",30.76,2025-05,1895,1161,1623,2025,,,61.61,,gas,rent;wage
-30620,"Lima, OH",22.68,2025-05,1090,586,1069,2025,,,48.06,,gas,rent;wage
-30700,"Lincoln, NE",23.94,2025-05,1203,1131,1213,2025,,,50.25,,gas,rent;wage
-30780,"Little Rock-North Little Rock-Conway, AR",22.02,2025-05,1171,1042,1170,2025,,,53.18,,gas,rent;wage
-30860,"Logan, UT-ID",22.29,2025-05,1353,1226,1216,2025,,,60.7,,gas,rent;wage
-30980,"Longview, TX",21.71,2025-05,1042,840,1046,2025,,,48.0,,gas,rent;wage
-31020,"Longview-Kelso, WA",27.61,2025-05,1247,974,1269,2025,,,45.16,,gas,rent;wage
-31080,"Los Angeles-Long Beach-Anaheim, CA",26.85,2025-05,2170,1879,2328,2025,6.049,2026-10,80.82,0.23,,gas;rent;wage
-31140,"Louisville/Jefferson County, KY-IN",23.25,2025-05,1229,962,1271,2025,,,52.86,,gas,rent;wage
-31180,"Lubbock, TX",20.26,2025-05,1225,992,1181,2025,,,60.46,,gas,rent;wage
-31340,"Lynchburg, VA",22.21,2025-05,1089,922,1087,2025,,,49.03,,gas,rent;wage
-31420,"Macon-Bibb County, GA",21.71,2025-05,1120,490,1153,2025,,,51.59,,gas,rent;wage
-31540,"Madison, WI",27.92,2025-05,1533,1409,1647,2025,,,54.91,,gas,rent;wage
-31700,"Manchester-Nashua, NH",27.18,2025-05,1935,1477,2107,2025,,,71.19,,gas,rent;wage
-31740,"Manhattan, KS",22.07,2025-05,1166,871,1128,2025,,,52.83,,gas,rent;wage
-31860,"Mankato, MN",23.81,2025-05,1162,1049,1255,2025,,,48.8,,gas,rent;wage
-31900,"Mansfield, OH",21.49,2025-05,923,757,954,2025,,,42.95,,gas,rent;wage
-32420,"Mayagüez, PR",12.15,2025-05,514,435,529,2025,,,42.3,,gas,rent;wage
-32580,"McAllen-Edinburg-Mission, TX",17.23,2025-05,1058,760,1030,2025,,,61.4,,gas,rent;wage
-32780,"Medford, OR",23.99,2025-05,1500,1115,1418,2025,,,62.53,,gas,rent;wage
-32820,"Memphis, TN-MS-AR",22.54,2025-05,1330,1064,1278,2025,,,59.01,,gas,rent;wage
-32900,"Merced, CA",22.7,2025-05,1498,1138,1247,2025,,,65.99,,gas,rent;wage
-33100,"Miami-Fort Lauderdale-West Palm Beach, FL",23.39,2025-05,2151,1818,2211,2025,4.076,2026-10,91.96,0.17,,gas;rent;wage
-33140,"Michigan City-La Porte, IN",21.89,2025-05,1039,894,1087,2025,,,47.46,,gas,rent;wage
-33220,"Midland, MI",23.72,2025-05,1133,843,1181,2025,,,47.77,,gas,rent;wage
-33260,"Midland, TX",26.19,2025-05,1681,1295,1815,2025,,,64.18,,gas,rent;wage
-33340,"Milwaukee-Waukesha, WI",24.6,2025-05,1260,1047,1313,2025,,,51.22,,gas,rent;wage
-33460,"Minneapolis-St. Paul-Bloomington, MN-WI",28.52,2025-05,1504,1327,1645,2025,,,52.73,,gas,rent;wage
-33500,"Minot, ND",23.53,2025-05,1128,436,1081,2025,,,47.94,,gas,rent;wage
-33540,"Missoula, MT",23.0,2025-05,1420,1272,1562,2025,,,61.74,,gas,rent;wage
-33660,"Mobile, AL",22.59,2025-05,1154,998,1167,2025,,,51.08,,gas,rent;wage
-33700,"Modesto, CA",24.33,2025-05,1792,1281,1700,2025,,,73.65,,gas,rent;wage
-33740,"Monroe, LA",18.34,2025-05,923,724,943,2025,,,50.33,,gas,rent;wage
-33780,"Monroe, MI",22.23,2025-05,1264,890,1302,2025,,,56.86,,gas,rent;wage
-33860,"Montgomery, AL",21.61,2025-05,1300,1069,1241,2025,,,60.16,,gas,rent;wage
-34060,"Morgantown, WV",22.76,2025-05,1020,919,1048,2025,,,44.82,,gas,rent;wage
-34100,"Morristown, TN",21.29,2025-05,1057,658,985,2025,,,49.65,,gas,rent;wage
-34580,"Mount Vernon-Anacortes, WA",28.65,2025-05,1730,1360,1960,2025,,,60.38,,gas,rent;wage
-34620,"Muncie, IN",21.21,2025-05,890,748,919,2025,,,41.96,,gas,rent;wage
-34740,"Muskegon-Norton Shores, MI",22.15,2025-05,1046,698,1106,2025,,,47.22,,gas,rent;wage
-34820,"Myrtle Beach-Conway-North Myrtle Beach, SC",18.23,2025-05,1441,1363,1383,2025,,,79.05,,gas,rent;wage
-34900,"Napa, CA",26.54,2025-05,2357,1434,2331,2025,,,88.81,,gas,rent;wage
-34940,"Naples-Marco Island, FL",22.98,2025-05,2058,1782,2075,2025,,,89.56,,gas,rent;wage
-34980,"Nashville-Davidson--Murfreesboro--Franklin, TN",24.23,2025-05,1696,1474,1666,2025,,,70.0,,gas,rent;wage
-35300,"New Haven, CT",28.88,2025-05,1733,1439,1869,2025,,,60.01,,gas,rent;wage
-35380,"New Orleans-Metairie, LA",22.73,2025-05,1357,1194,1376,2025,,,59.7,,gas,rent;wage
-35620,"New York-Newark-Jersey City, NY-NJ",29.53,2025-05,1932,1774,1997,2025,4.27,2026-10,65.42,0.14,,gas;rent;wage
-35660,"Niles, MI",22.11,2025-05,1009,835,1063,2025,,,45.64,,gas,rent;wage
-35840,"North Port-Bradenton-Sarasota, FL",22.81,2025-05,1908,1706,1975,2025,,,83.65,,gas,rent;wage
-35980,"Norwich-New London-Willimantic, CT",27.58,2025-05,1551,1238,1644,2025,,,56.24,,gas,rent;wage
-36100,"Ocala, FL",21.15,2025-05,1452,1064,1481,2025,,,68.65,,gas,rent;wage
-36220,"Odessa, TX",23.36,2025-05,1356,1054,1772,2025,,,58.05,,gas,rent;wage
-36260,"Ogden, UT",23.51,2025-05,1662,1282,1550,2025,,,70.69,,gas,rent;wage
-36420,"Oklahoma City, OK",22.71,2025-05,1226,1028,1199,2025,,,53.99,,gas,rent;wage
-36500,"Olympia-Lacey-Tumwater, WA",29.79,2025-05,1900,1583,1935,2025,,,63.78,,gas,rent;wage
-36540,"Omaha, NE-IA",23.88,2025-05,1320,1137,1366,2025,,,55.28,,gas,rent;wage
-36740,"Orlando-Kissimmee-Sanford, FL",22.42,2025-05,1894,1680,1855,2025,,,84.48,,gas,rent;wage
-36780,"Oshkosh-Neenah, WI",25.99,2025-05,1083,849,1145,2025,,,41.67,,gas,rent;wage
-36980,"Owensboro, KY",21.62,2025-05,1005,751,1043,2025,,,46.48,,gas,rent;wage
-37100,"Oxnard-Thousand Oaks-Ventura, CA",25.24,2025-05,2375,2039,2399,2025,,,94.1,,gas,rent;wage
-37140,"Paducah, KY-IL",22.05,2025-05,888,739,886,2025,,,40.27,,gas,rent;wage
-37340,"Palm Bay-Melbourne-Titusville, FL",23.57,2025-05,1759,1505,1755,2025,,,74.63,,gas,rent;wage
-37460,"Panama City-Panama City Beach, FL",21.65,2025-05,1588,1368,1511,2025,,,73.35,,gas,rent;wage
-37620,"Parkersburg-Vienna, WV",20.19,2025-05,898,719,966,2025,,,44.48,,gas,rent;wage
-37860,"Pensacola-Ferry Pass-Brent, FL",22.23,2025-05,1452,1184,1371,2025,,,65.32,,gas,rent;wage
-37900,"Peoria, IL",23.84,2025-05,1063,798,1120,2025,,,44.59,,gas,rent;wage
-37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",26.11,2025-05,1638,1458,1723,2025,,,62.73,,gas,rent;wage
-38060,"Phoenix-Mesa-Chandler, AZ",24.7,2025-05,1836,1567,1825,2025,,,74.33,,gas,rent;wage
-38240,"Pinehurst-Southern Pines, NC",20.64,2025-05,1771,640,1487,2025,,,85.8,,gas,rent;wage
-38300,"Pittsburgh, PA",23.87,2025-05,1150,966,1185,2025,,,48.18,,gas,rent;wage
-38340,"Pittsfield, MA",24.93,2025-05,1149,918,1283,2025,,,46.09,,gas,rent;wage
-38540,"Pocatello, ID",21.71,2025-05,1091,646,1110,2025,,,50.25,,gas,rent;wage
-38660,"Ponce, PR",12.95,2025-05,506,299,405,2025,,,39.07,,gas,rent;wage
-38860,"Portland-South Portland, ME",27.39,2025-05,1665,1383,1833,2025,,,60.79,,gas,rent;wage
-38900,"Portland-Vancouver-Hillsboro, OR-WA",29.18,2025-05,1799,1600,1850,2025,,,61.65,,gas,rent;wage
-38940,"Port St. Lucie, FL",22.35,2025-05,1909,1700,1856,2025,,,85.41,,gas,rent;wage
-39150,"Prescott Valley-Prescott, AZ",22.27,2025-05,1600,1235,1488,2025,,,71.85,,gas,rent;wage
-39300,"Providence-Warwick, RI-MA",25.81,2025-05,1511,1109,1641,2025,,,58.54,,gas,rent;wage
-39340,"Provo-Orem-Lehi, UT",23.08,2025-05,1685,1323,1444,2025,,,73.01,,gas,rent;wage
-39380,"Pueblo, CO",23.53,2025-05,1321,849,1345,2025,,,56.14,,gas,rent;wage
-39460,"Punta Gorda, FL",21.88,2025-05,1734,1120,1701,2025,,,79.25,,gas,rent;wage
-39540,"Racine-Mount Pleasant, WI",23.5,2025-05,1193,1035,1204,2025,,,50.77,,gas,rent;wage
-39580,"Raleigh-Cary, NC",24.99,2025-05,1713,1475,1673,2025,,,68.55,,gas,rent;wage
-39660,"Rapid City, SD",22.25,2025-05,1313,1057,1356,2025,,,59.01,,gas,rent;wage
-39740,"Reading, PA",23.77,2025-05,1376,1081,1349,2025,,,57.89,,gas,rent;wage
-39820,"Redding, CA",23.52,2025-05,1380,823,1368,2025,,,58.67,,gas,rent;wage
-39900,"Reno, NV",23.87,2025-05,1711,1513,1781,2025,,,71.68,,gas,rent;wage
-40060,"Richmond, VA",24.74,2025-05,1643,1480,1684,2025,,,66.41,,gas,rent;wage
-40140,"Riverside-San Bernardino-Ontario, CA",23.27,2025-05,2041,1647,1940,2025,,,87.71,,gas,rent;wage
-40220,"Roanoke, VA",22.67,2025-05,1163,996,1131,2025,,,51.3,,gas,rent;wage
-40340,"Rochester, MN",29.15,2025-05,1348,1242,1240,2025,,,46.24,,gas,rent;wage
-40380,"Rochester, NY",24.62,2025-05,1267,1042,1428,2025,,,51.46,,gas,rent;wage
-40420,"Rockford, IL",22.65,2025-05,1146,822,1175,2025,,,50.6,,gas,rent;wage
-40580,"Rocky Mount, NC",21.13,2025-05,1048,468,856,2025,,,49.6,,gas,rent;wage
-40660,"Rome, GA",20.51,2025-05,1111,655,1125,2025,,,54.17,,gas,rent;wage
-40900,"Sacramento-Roseville-Folsom, CA",28.73,2025-05,1929,1596,1922,2025,,,67.14,,gas,rent;wage
-40980,"Saginaw, MI",22.21,2025-05,1043,927,1032,2025,,,46.96,,gas,rent;wage
-41060,"St. Cloud, MN",24.44,2025-05,1129,939,1179,2025,,,46.19,,gas,rent;wage
-41100,"St. George, UT",21.7,2025-05,1669,1167,1497,2025,,,76.91,,gas,rent;wage
-41140,"St. Joseph, MO-KS",22.76,2025-05,933,711,963,2025,,,40.99,,gas,rent;wage
-41180,"St. Louis, MO-IL",24.03,2025-05,1232,989,1223,2025,,,51.27,,gas,rent;wage
-41420,"Salem, OR",26.59,2025-05,1599,1308,1576,2025,,,60.14,,gas,rent;wage
-41500,"Salinas, CA",22.78,2025-05,2027,1943,2207,2025,,,88.98,,gas,rent;wage
-41540,"Salisbury, MD",23.42,2025-05,1502,1015,1542,2025,,,64.13,,gas,rent;wage
-41620,"Salt Lake City-Murray, UT",26.56,2025-05,1711,1467,1721,2025,,,64.42,,gas,rent;wage
-41660,"San Angelo, TX",20.93,2025-05,1039,881,1173,2025,,,49.64,,gas,rent;wage
-41700,"San Antonio-New Braunfels, TX",22.6,2025-05,1396,1198,1460,2025,,,61.77,,gas,rent;wage
-41740,"San Diego-Chula Vista-Carlsbad, CA",28.21,2025-05,2416,2148,2483,2025,,,85.64,,gas,rent;wage
-41780,"Sandusky, OH",21.62,2025-05,1000,505,1052,2025,,,46.25,,gas,rent;wage
-41860,"San Francisco-Oakland-Fremont, CA",35.7,2025-05,2480,2191,2766,2025,6.079,2026-10,69.47,0.17,,gas;rent;wage
-41940,"San Jose-Sunnyvale-Santa Clara, CA",40.41,2025-05,2889,2496,2973,2025,,,71.49,,gas,rent;wage
-41980,"San Juan-Bayamón-Caguas, PR",14.15,2025-05,639,390,581,2025,,,45.16,,gas,rent;wage
-42020,"San Luis Obispo-Paso Robles, CA",24.41,2025-05,2194,1865,2160,2025,,,89.88,,gas,rent;wage
-42100,"Santa Cruz-Watsonville, CA",26.31,2025-05,2257,2067,2433,2025,,,85.78,,gas,rent;wage
-42140,"Santa Fe, NM",23.42,2025-05,1511,1231,1609,2025,,,64.52,,gas,rent;wage
-42200,"Santa Maria-Santa Barbara, CA",24.85,2025-05,2283,2092,2331,2025,,,91.87,,gas,rent;wage
-42220,"Santa Rosa-Petaluma, CA",27.33,2025-05,2204,1819,2283,2025,,,80.64,,gas,rent;wage
-42340,"Savannah, GA",22.71,2025-05,1750,1579,1676,2025,,,77.06,,gas,rent;wage
-42540,"Scranton--Wilkes-Barre, PA",22.28,2025-05,1149,796,1231,2025,,,51.57,,gas,rent;wage
-42660,"Seattle-Tacoma-Bellevue, WA",34.91,2025-05,2121,1871,2214,2025,5.553,2026-10,60.76,0.16,,gas;rent;wage
-42680,"Sebastian-Vero Beach-West Vero Corridor, FL",21.87,2025-05,1776,1099,1860,2025,,,81.21,,gas,rent;wage
-42700,"Sebring, FL",19.42,2025-05,1199,806,1258,2025,,,61.74,,gas,rent;wage
-43100,"Sheboygan, WI",24.95,2025-05,1143,853,1161,2025,,,45.81,,gas,rent;wage
-43300,"Sherman-Denison, TX",21.45,2025-05,1380,1185,1346,2025,,,64.34,,gas,rent;wage
-43340,"Shreveport-Bossier City, LA",21.55,2025-05,994,877,1054,2025,,,46.13,,gas,rent;wage
-43420,"Sierra Vista-Douglas, AZ",22.62,2025-05,1024,743,1060,2025,,,45.27,,gas,rent;wage
-43580,"Sioux City, IA-NE-SD",22.61,2025-05,1093,844,1142,2025,,,48.34,,gas,rent;wage
-43620,"Sioux Falls, SD-MN",23.06,2025-05,1213,970,1244,2025,,,52.6,,gas,rent;wage
-43640,"Slidell-Mandeville-Covington, LA",21.01,2025-05,1426,1237,1263,2025,,,67.87,,gas,rent;wage
-43780,"South Bend-Mishawaka, IN-MI",22.38,2025-05,1158,1032,1176,2025,,,51.74,,gas,rent;wage
-43900,"Spartanburg, SC",22.91,2025-05,1238,1110,1148,2025,,,54.04,,gas,rent;wage
-44060,"Spokane-Spokane Valley, WA",26.28,2025-05,1423,1152,1424,2025,,,54.15,,gas,rent;wage
-44100,"Springfield, IL",25.32,2025-05,970,838,1027,2025,,,38.31,,gas,rent;wage
-44140,"Springfield, MA",24.97,2025-05,1131,817,1240,2025,,,45.29,,gas,rent;wage
-44180,"Springfield, MO",22.01,2025-05,1096,895,1032,2025,,,49.8,,gas,rent;wage
-44220,"Springfield, OH",21.86,2025-05,1076,450,1136,2025,,,49.22,,gas,rent;wage
-44300,"State College, PA",23.66,2025-05,1284,926,1374,2025,,,54.27,,gas,rent;wage
-44420,"Staunton-Stuarts Draft, VA",23.1,2025-05,1311,787,1337,2025,,,56.75,,gas,rent;wage
-44700,"Stockton-Lodi, CA",23.55,2025-05,1815,1299,1667,2025,,,77.07,,gas,rent;wage
-44940,"Sumter, SC",20.62,2025-05,1155,732,946,2025,,,56.01,,gas,rent;wage
-45060,"Syracuse, NY",25.48,2025-05,1186,967,1221,2025,,,46.55,,gas,rent;wage
-45220,"Tallahassee, FL",22.37,2025-05,1289,1145,1367,2025,,,57.62,,gas,rent;wage
-45300,"Tampa-St. Petersburg-Clearwater, FL",23.53,2025-05,1875,1620,1861,2025,,,79.69,,gas,rent;wage
-45460,"Terre Haute, IN",21.57,2025-05,877,740,901,2025,,,40.66,,gas,rent;wage
-45500,"Texarkana, TX-AR",20.77,2025-05,1002,884,1006,2025,,,48.24,,gas,rent;wage
-45780,"Toledo, OH",23.18,2025-05,1040,814,1094,2025,,,44.87,,gas,rent;wage
-45820,"Topeka, KS",23.82,2025-05,981,819,983,2025,,,41.18,,gas,rent;wage
-45900,"Traverse City, MI",22.82,2025-05,1241,1077,1369,2025,,,54.38,,gas,rent;wage
-45940,"Trenton-Princeton, NJ",30.52,2025-05,1732,1492,1804,2025,,,56.75,,gas,rent;wage
-46060,"Tucson, AZ",22.96,2025-05,1320,1090,1377,2025,,,57.49,,gas,rent;wage
-46140,"Tulsa, OK",22.44,2025-05,1163,945,1187,2025,,,51.83,,gas,rent;wage
-46220,"Tuscaloosa, AL",21.74,2025-05,1124,744,1207,2025,,,51.7,,gas,rent;wage
-46300,"Twin Falls, ID",21.83,2025-05,1150,962,1168,2025,,,52.68,,gas,rent;wage
-46340,"Tyler, TX",20.51,2025-05,1443,1118,1382,2025,,,70.36,,gas,rent;wage
-46520,"Urban Honolulu, HI",27.51,2025-05,2132,1693,2134,2025,,,77.5,,gas,rent;wage
-46540,"Utica-Rome, NY",23.55,2025-05,995,744,1059,2025,,,42.25,,gas,rent;wage
-46660,"Valdosta, GA",18.8,2025-05,1061,806,1104,2025,,,56.44,,gas,rent;wage
-46700,"Vallejo, CA",28.18,2025-05,2155,1692,2085,2025,,,76.47,,gas,rent;wage
-47020,"Victoria, TX",20.7,2025-05,1130,1134,1114,2025,,,54.59,,gas,rent;wage
-47220,"Vineland, NJ",23.17,2025-05,1417,1289,1393,2025,,,61.16,,gas,rent;wage
-47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC",23.76,2025-05,1643,1389,1567,2025,,,69.15,,gas,rent;wage
-47300,"Visalia, CA",21.7,2025-05,1314,788,1231,2025,,,60.55,,gas,rent;wage
-47380,"Waco, TX",22.13,2025-05,1303,1042,1307,2025,,,58.88,,gas,rent;wage
-47460,"Walla Walla, WA",25.53,2025-05,1662,1299,1549,2025,,,65.1,,gas,rent;wage
-47580,"Warner Robins, GA",23.37,2025-05,1350,1303,1270,2025,,,57.77,,gas,rent;wage
-47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV",34.16,2025-05,2168,1970,2226,2025,,,63.47,,gas,rent;wage
-47930,"Waterbury-Shelton, CT",24.73,2025-05,1514,1281,1581,2025,,,61.22,,gas,rent;wage
-47940,"Waterloo-Cedar Falls, IA",22.8,2025-05,997,749,1037,2025,,,43.73,,gas,rent;wage
-48060,"Watertown-Fort Drum, NY",22.89,2025-05,1300,721,1286,2025,,,56.79,,gas,rent;wage
-48140,"Wausau, WI",23.46,2025-05,1102,957,1146,2025,,,46.97,,gas,rent;wage
-48260,"Weirton-Steubenville, WV-OH",22.04,2025-05,856,594,860,2025,,,38.84,,gas,rent;wage
-48300,"Wenatchee-East Wenatchee, WA",23.7,2025-05,1401,1180,1414,2025,,,59.11,,gas,rent;wage
-48540,"Wheeling, WV-OH",21.28,2025-05,799,662,808,2025,,,37.55,,gas,rent;wage
-48620,"Wichita, KS",22.9,2025-05,1065,898,1054,2025,,,46.51,,gas,rent;wage
-48660,"Wichita Falls, TX",20.77,2025-05,1144,841,1080,2025,,,55.08,,gas,rent;wage
-48680,"Wildwood-The Villages, FL",22.04,2025-05,1427,1385,1412,2025,,,64.75,,gas,rent;wage
-48700,"Williamsport, PA",22.14,2025-05,924,767,925,2025,,,41.73,,gas,rent;wage
-48900,"Wilmington, NC",22.02,2025-05,1625,1484,1658,2025,,,73.8,,gas,rent;wage
-49020,"Winchester, VA-WV",22.63,2025-05,1492,1036,1515,2025,,,65.93,,gas,rent;wage
-49180,"Winston-Salem, NC",22.3,2025-05,1180,994,1117,2025,,,52.91,,gas,rent;wage
-49340,"Worcester, MA",27.8,2025-05,1661,1294,1757,2025,,,59.75,,gas,rent;wage
-49420,"Yakima, WA",22.99,2025-05,1140,885,1190,2025,,,49.59,,gas,rent;wage
-49620,"York-Hanover, PA",23.16,2025-05,1351,1138,1358,2025,,,58.33,,gas,rent;wage
-49660,"Youngstown-Warren, OH",21.06,2025-05,885,751,918,2025,,,42.02,,gas,rent;wage
-49700,"Yuba City, CA",24.03,2025-05,1563,1206,1553,2025,,,65.04,,gas,rent;wage
-49740,"Yuma, AZ",21.23,2025-05,1121,825,1258,2025,,,52.8,,gas,rent;wage
+cbsa,name,wage_hourly_median,wage_as_of,rent_all_units,rent_1br,rent_2br,rent_as_of,gas_per_gallon,gas_as_of,hours_rent_all_units,hours_per_gallon,measures_missing,reference_checked,home_value,owner_cost_with_mortgage,owner_as_of,hours_owner_cost
+10180,"Abilene, TX",21.32,2025-05,1230,1028,1225,2025,,,57.69,,gas,home_value;rent;wage,218400,1938,2025,90.9
+10380,"Aguadilla, PR",12.73,2025-05,662,656,657,2025,,,52.0,,gas,home_value;rent;wage,169300,848,2025,66.61
+10420,"Akron, OH",23.48,2025-05,1108,914,1141,2025,,,47.19,,gas,home_value;rent;wage,244800,1636,2025,69.68
+10500,"Albany, GA",20.97,2025-05,995,793,909,2025,,,47.45,,gas,home_value;rent;wage,174300,1500,2025,71.53
+10540,"Albany, OR",23.9,2025-05,1368,1155,1393,2025,,,57.24,,gas,home_value;rent;wage,416100,1937,2025,81.05
+10580,"Albany-Schenectady-Troy, NY",28.1,2025-05,1407,1240,1548,2025,,,50.07,,gas,home_value;rent;wage,333600,2091,2025,74.41
+10740,"Albuquerque, NM",23.11,2025-05,1287,1102,1302,2025,,,55.69,,gas,home_value;rent;wage,338000,1744,2025,75.47
+10780,"Alexandria, LA",19.52,2025-05,990,671,892,2025,,,50.72,,gas,home_value;rent;wage,194300,1749,2025,89.6
+10900,"Allentown-Bethlehem-Easton, PA-NJ",23.55,2025-05,1542,1265,1633,2025,,,65.48,,gas,home_value;rent;wage,353900,2098,2025,89.09
+11020,"Altoona, PA",21.28,2025-05,792,612,848,2025,,,37.22,,gas,home_value;rent;wage,178100,1309,2025,61.51
+11100,"Amarillo, TX",21.43,2025-05,1146,880,1104,2025,,,53.48,,gas,home_value;rent;wage,231300,1759,2025,82.08
+11180,"Ames, IA",24.14,2025-05,1039,878,1017,2025,,,43.04,,gas,home_value;rent;wage,293200,1885,2025,78.09
+11200,"Amherst Town-Northampton, MA",27.42,2025-05,1580,1357,1627,2025,,,57.62,,gas,home_value;rent;wage,453500,2396,2025,87.38
+11260,"Anchorage, AK",28.94,2025-05,1577,1101,1557,2025,,,54.49,,gas,home_value;rent;wage,400600,2314,2025,79.96
+11460,"Ann Arbor, MI",26.63,2025-05,1562,1348,1759,2025,,,58.66,,gas,home_value;rent;wage,418400,2381,2025,89.41
+11500,"Anniston-Oxford, AL",20.52,2025-05,904,697,1002,2025,,,44.05,,gas,home_value;rent;wage,185900,1286,2025,62.67
+11540,"Appleton, WI",24.0,2025-05,1213,950,1173,2025,,,50.54,,gas,home_value;rent;wage,315700,1717,2025,71.54
+11640,"Arecibo, PR",12.56,2025-05,597,316,537,2025,,,47.53,,gas,home_value;rent;wage,134500,734,2025,58.44
+11700,"Asheville, NC",22.53,2025-05,1535,1373,1492,2025,,,68.13,,gas,home_value;rent;wage,428100,1921,2025,85.26
+12020,"Athens-Clarke County, GA",19.82,2025-05,1476,1259,1399,2025,,,74.47,,gas,home_value;rent;wage,387000,1815,2025,91.57
+12060,"Atlanta-Sandy Springs-Roswell, GA",24.6,2025-05,1813,1588,1781,2025,,,73.7,,gas,home_value;rent;wage,407900,2274,2025,92.44
+12100,"Atlantic City-Hammonton, NJ",22.85,2025-05,1428,1265,1528,2025,,,62.49,,gas,home_value;rent;wage,417100,2281,2025,99.82
+12220,"Auburn-Opelika, AL",18.78,2025-05,1170,960,1146,2025,,,62.3,,gas,home_value;rent;wage,291600,1712,2025,91.16
+12260,"Augusta-Richmond County, GA-SC",22.11,2025-05,1383,1164,1315,2025,,,62.55,,gas,home_value;rent;wage,259900,1697,2025,76.75
+12420,"Austin-Round Rock-San Marcos, TX",27.38,2025-05,1741,1511,1836,2025,,,63.59,,gas,home_value;rent;wage,459900,2791,2025,101.94
+12540,"Bakersfield-Delano, CA",22.82,2025-05,1491,1086,1398,2025,,,65.34,,gas,home_value;rent;wage,369800,2035,2025,89.18
+12580,"Baltimore-Columbia-Towson, MD",28.4,2025-05,1730,1408,1764,2025,,,60.92,,gas,home_value;rent;wage,419800,2421,2025,85.25
+12620,"Bangor, ME",23.06,2025-05,1230,990,1291,2025,,,53.34,,gas,home_value;rent;wage,281500,1780,2025,77.19
+12700,"Barnstable Town, MA",27.1,2025-05,1636,1078,1832,2025,,,60.37,,gas,home_value;rent;wage,716200,2622,2025,96.75
+12940,"Baton Rouge, LA",23.42,2025-05,1159,965,1143,2025,,,49.49,,gas,home_value;rent;wage,260500,1756,2025,74.98
+12980,"Battle Creek, MI",23.41,2025-05,1103,901,1142,2025,,,47.12,,gas,home_value;rent;wage,184800,1518,2025,64.84
+13020,"Bay City, MI",21.93,2025-05,928,672,951,2025,,,42.32,,gas,home_value;rent;wage,176300,1384,2025,63.11
+13140,"Beaumont-Port Arthur, TX",23.38,2025-05,1134,945,1126,2025,,,48.5,,gas,home_value;rent;wage,193700,1856,2025,79.38
+13220,"Beckley, WV",20.12,2025-05,945,1621,872,2025,,,46.97,,gas,home_value;rent;wage,147300,1088,2025,54.08
+13380,"Bellingham, WA",27.8,2025-05,1610,1315,1653,2025,,,57.91,,gas,home_value;rent;wage,641600,2530,2025,91.01
+13460,"Bend, OR",26.24,2025-05,1754,1515,1673,2025,,,66.84,,gas,home_value;rent;wage,666100,2513,2025,95.77
+13740,"Billings, MT",23.59,2025-05,1290,869,1349,2025,,,54.68,,gas,home_value;rent;wage,402000,2066,2025,87.58
+13780,"Binghamton, NY",23.78,2025-05,1074,831,1097,2025,,,45.16,,gas,home_value;rent;wage,178100,1541,2025,64.8
+13820,"Birmingham, AL",22.97,2025-05,1250,1162,1194,2025,,,54.42,,gas,home_value;rent;wage,282200,1753,2025,76.32
+13900,"Bismarck, ND",25.27,2025-05,1163,1070,1117,2025,,,46.02,,gas,home_value;rent;wage,334100,1955,2025,77.36
+13980,"Blacksburg-Christiansburg-Radford, VA",23.14,2025-05,1201,808,1121,2025,,,51.9,,gas,home_value;rent;wage,298200,1762,2025,76.15
+14010,"Bloomington, IL",25.55,2025-05,1128,989,1122,2025,,,44.15,,gas,home_value;rent;wage,248200,1862,2025,72.88
+14020,"Bloomington, IN",22.91,2025-05,1269,1076,1358,2025,,,55.39,,gas,home_value;rent;wage,316800,1742,2025,76.04
+14260,"Boise City, ID",23.6,2025-05,1702,1360,1652,2025,,,72.12,,gas,home_value;rent;wage,507400,2021,2025,85.64
+14460,"Boston-Cambridge-Newton, MA-NH",32.03,2025-05,2221,1902,2370,2025,4.266,2026-10,69.34,0.13,,gas;home_value;rent;wage,713900,3184,2025,99.41
+14500,"Boulder, CO",33.45,2025-05,1945,1718,1970,2025,,,58.15,,gas,home_value;rent;wage,770900,3023,2025,90.37
+14540,"Bowling Green, KY",21.65,2025-05,1051,958,1052,2025,,,48.55,,gas,home_value;rent;wage,260700,1511,2025,69.79
+14580,"Bozeman, MT",26.36,2025-05,1825,1734,1779,2025,,,69.23,,gas,home_value;rent;wage,750400,2568,2025,97.42
+14740,"Bremerton-Silverdale-Port Orchard, WA",30.38,2025-05,1967,1680,1968,2025,,,64.75,,gas,home_value;rent;wage,554600,2497,2025,82.19
+14860,"Bridgeport-Stamford-Danbury, CT",29.55,2025-05,2109,1966,2118,2025,,,71.37,,gas,home_value;rent;wage,654800,3420,2025,115.74
+15180,"Brownsville-Harlingen, TX",17.54,2025-05,1064,856,1055,2025,,,60.66,,gas,home_value;rent;wage,183300,1623,2025,92.53
+15260,"Brunswick-St. Simons, GA",20.16,2025-05,1352,1213,1172,2025,,,67.06,,gas,home_value;rent;wage,277700,1646,2025,81.65
+15380,"Buffalo-Cheektowaga, NY",24.42,2025-05,1196,957,1205,2025,,,48.98,,gas,home_value;rent;wage,266700,1736,2025,71.09
+15500,"Burlington, NC",21.16,2025-05,1346,1290,1339,2025,,,63.61,,gas,home_value;rent;wage,300000,1633,2025,77.17
+15540,"Burlington-South Burlington, VT",28.86,2025-05,1704,1399,1893,2025,,,59.04,,gas,home_value;rent;wage,433300,2386,2025,82.67
+15940,"Canton-Massillon, OH",22.02,2025-05,938,767,987,2025,,,42.6,,gas,home_value;rent;wage,229100,1474,2025,66.94
+15980,"Cape Coral-Fort Myers, FL",22.49,2025-05,1926,1704,1849,2025,,,85.64,,gas,home_value;rent;wage,381600,2275,2025,101.16
+16020,"Cape Girardeau, MO-IL",21.38,2025-05,871,673,942,2025,,,40.74,,gas,home_value;rent;wage,233400,1446,2025,67.63
+16180,"Carson City, NV",27.25,2025-05,1580,1323,1592,2025,,,57.98,,gas,home_value;rent;wage,459000,1867,2025,68.51
+16220,"Casper, WY",23.5,2025-05,1233,849,1398,2025,,,52.47,,gas,home_value;rent;wage,324800,1967,2025,83.7
+16300,"Cedar Rapids, IA",23.73,2025-05,987,759,1038,2025,,,41.59,,gas,home_value;rent;wage,251600,1737,2025,73.2
+16540,"Chambersburg, PA",22.86,2025-05,1085,795,1183,2025,,,47.46,,gas,home_value;rent;wage,294800,1702,2025,74.45
+16580,"Champaign-Urbana, IL",24.38,2025-05,1157,988,1136,2025,,,47.46,,gas,home_value;rent;wage,224900,1647,2025,67.56
+16620,"Charleston, WV",22.03,2025-05,882,820,840,2025,,,40.04,,gas,home_value;rent;wage,153200,1335,2025,60.6
+16700,"Charleston-North Charleston, SC",23.63,2025-05,1855,1788,1817,2025,,,78.5,,gas,home_value;rent;wage,429100,2247,2025,95.09
+16740,"Charlotte-Concord-Gastonia, NC-SC",24.03,2025-05,1641,1484,1589,2025,,,68.29,,gas,home_value;rent;wage,415300,2050,2025,85.31
+16820,"Charlottesville, VA",26.53,2025-05,1754,1512,1800,2025,,,66.11,,gas,home_value;rent;wage,487300,2214,2025,83.45
+16860,"Chattanooga, TN-GA",22.45,2025-05,1353,1317,1313,2025,,,60.27,,gas,home_value;rent;wage,321500,1732,2025,77.15
+16940,"Cheyenne, WY",24.78,2025-05,1338,1015,1156,2025,,,54.0,,gas,home_value;rent;wage,375100,2113,2025,85.27
+16980,"Chicago-Naperville-Elgin, IL-IN",26.31,2025-05,1620,1438,1648,2025,4.733,2026-10,61.57,0.18,,gas;home_value;rent;wage,347700,2352,2025,89.4
+17020,"Chico, CA",23.1,2025-05,1457,1066,1460,2025,,,63.07,,gas,home_value;rent;wage,417900,2291,2025,99.18
+17140,"Cincinnati, OH-KY-IN",24.12,2025-05,1279,1032,1316,2025,,,53.03,,gas,home_value;rent;wage,312400,1884,2025,78.11
+17300,"Clarksville, TN-KY",21.57,2025-05,1331,1071,1195,2025,,,61.71,,gas,home_value;rent;wage,302900,1821,2025,84.42
+17410,"Cleveland, OH",24.11,2025-05,1157,919,1207,2025,4.029,2026-10,47.99,0.17,,gas;home_value;rent;wage,250500,1705,2025,70.72
+17420,"Cleveland, TN",19.34,2025-05,1207,797,1029,2025,,,62.41,,gas,home_value;rent;wage,309400,1569,2025,81.13
+17660,"Coeur d'Alene, ID",22.96,2025-05,1645,1358,1609,2025,,,71.65,,gas,home_value;rent;wage,569000,2165,2025,94.29
+17780,"College Station-Bryan, TX",21.38,2025-05,1303,1133,1237,2025,,,60.94,,gas,home_value;rent;wage,320400,2062,2025,96.45
+17820,"Colorado Springs, CO",25.34,2025-05,1750,1434,1701,2025,,,69.06,,gas,home_value;rent;wage,476700,2454,2025,96.84
+17860,"Columbia, MO",22.72,2025-05,1112,943,1088,2025,,,48.94,,gas,home_value;rent;wage,295800,1684,2025,74.12
+17900,"Columbia, SC",22.32,2025-05,1357,1136,1314,2025,,,60.8,,gas,home_value;rent;wage,273600,1667,2025,74.69
+17980,"Columbus, GA-AL",20.93,2025-05,1147,874,1051,2025,,,54.8,,gas,home_value;rent;wage,216300,1666,2025,79.6
+18020,"Columbus, IN",23.3,2025-05,1364,1323,1372,2025,,,58.54,,gas,home_value;rent;wage,254700,1531,2025,65.71
+18140,"Columbus, OH",24.69,2025-05,1468,1242,1528,2025,,,59.46,,gas,home_value;rent;wage,347600,2062,2025,83.52
+18580,"Corpus Christi, TX",21.81,2025-05,1348,1186,1328,2025,,,61.81,,gas,home_value;rent;wage,247000,2082,2025,95.46
+18700,"Corvallis, OR",27.73,2025-05,1644,1295,1671,2025,,,59.29,,gas,home_value;rent;wage,557100,2371,2025,85.5
+18880,"Crestview-Fort Walton Beach-Destin, FL",22.84,2025-05,1684,1381,1613,2025,,,73.73,,gas,home_value;rent;wage,368300,2055,2025,89.97
+19100,"Dallas-Fort Worth-Arlington, TX",24.73,2025-05,1744,1490,1794,2025,,,70.52,,gas,home_value;rent;wage,392000,2665,2025,107.76
+19140,"Dalton, GA",20.29,2025-05,1084,972,1112,2025,,,53.43,,gas,home_value;rent;wage,255400,1513,2025,74.57
+19300,"Daphne-Fairhope-Foley, AL",18.52,2025-05,1407,868,1444,2025,,,75.97,,gas,home_value;rent;wage,355400,1907,2025,102.97
+19340,"Davenport-Moline-Rock Island, IA-IL",23.34,2025-05,961,838,1005,2025,,,41.17,,gas,home_value;rent;wage,196200,1500,2025,64.27
+19430,"Dayton-Kettering-Beavercreek, OH",24.03,2025-05,1149,891,1170,2025,,,47.82,,gas,home_value;rent;wage,235800,1604,2025,66.75
+19460,"Decatur, AL",22.25,2025-05,976,547,992,2025,,,43.87,,gas,home_value;rent;wage,252900,1431,2025,64.31
+19500,"Decatur, IL",24.66,2025-05,834,701,831,2025,,,33.82,,gas,home_value;rent;wage,132500,1230,2025,49.88
+19660,"Deltona-Daytona Beach-Ormond Beach, FL",21.61,2025-05,1703,1380,1638,2025,,,78.81,,gas,home_value;rent;wage,350000,2058,2025,95.23
+19740,"Denver-Aurora-Centennial, CO",29.96,2025-05,1944,1714,2110,2025,4.196,2026-10,64.89,0.14,,gas;home_value;rent;wage,626500,2846,2025,94.99
+19780,"Des Moines-West Des Moines, IA",24.91,2025-05,1195,1077,1184,2025,,,47.97,,gas,home_value;rent;wage,306400,1901,2025,76.31
+19820,"Detroit-Warren-Dearborn, MI",25.04,2025-05,1316,1043,1398,2025,,,52.56,,gas,home_value;rent;wage,284200,1835,2025,73.28
+20020,"Dothan, AL",18.35,2025-05,937,775,866,2025,,,51.06,,gas,home_value;rent;wage,214100,1450,2025,79.02
+20100,"Dover, DE",22.45,2025-05,1512,1039,1484,2025,,,67.35,,gas,home_value;rent;wage,352800,1889,2025,84.14
+20220,"Dubuque, IA",23.44,2025-05,932,798,1086,2025,,,39.76,,gas,home_value;rent;wage,262200,1549,2025,66.08
+20260,"Duluth, MN-WI",24.04,2025-05,1122,812,1192,2025,,,46.67,,gas,home_value;rent;wage,265100,1708,2025,71.05
+20500,"Durham-Chapel Hill, NC",29.19,2025-05,1632,1403,1630,2025,,,55.91,,gas,home_value;rent;wage,458100,2170,2025,74.34
+20580,"Eagle Pass, TX",17.1,2025-05,859,671,992,2025,,,50.23,,gas,home_value;rent;wage,209900,1593,2025,93.16
+20740,"Eau Claire, WI",23.12,2025-05,1205,991,1223,2025,,,52.12,,gas,home_value;rent;wage,307400,1717,2025,74.26
+20940,"El Centro, CA",21.7,2025-05,981,965,874,2025,,,45.21,,gas,home_value;rent;wage,342800,1753,2025,80.78
+21060,"Elizabethtown, KY",22.51,2025-05,1085,771,1023,2025,,,48.2,,gas,home_value;rent;wage,260500,1564,2025,69.48
+21140,"Elkhart-Goshen, IN",23.11,2025-05,1160,965,1207,2025,,,50.19,,gas,home_value;rent;wage,248000,1528,2025,66.12
+21300,"Elmira, NY",23.01,2025-05,1172,570,1186,2025,,,50.93,,gas,home_value;rent;wage,143600,1323,2025,57.5
+21340,"El Paso, TX",18.99,2025-05,1150,969,1100,2025,,,60.56,,gas,home_value;rent;wage,221400,1665,2025,87.68
+21420,"Enid, OK",19.47,2025-05,1028,718,985,2025,,,52.8,,gas,home_value;rent;wage,157200,1446,2025,74.27
+21500,"Erie, PA",21.38,2025-05,1000,765,1032,2025,,,46.77,,gas,home_value;rent;wage,192700,1379,2025,64.5
+21660,"Eugene-Springfield, OR",23.88,2025-05,1475,1237,1402,2025,,,61.77,,gas,home_value;rent;wage,460900,2152,2025,90.12
+21780,"Evansville, IN",22.38,2025-05,1084,937,1087,2025,,,48.44,,gas,home_value;rent;wage,231900,1545,2025,69.03
+21820,"Fairbanks-College, AK",29.71,2025-05,1468,1203,1520,2025,,,49.41,,gas,home_value;rent;wage,343900,2338,2025,78.69
+22020,"Fargo, ND-MN",24.54,2025-05,1132,939,1156,2025,,,46.13,,gas,home_value;rent;wage,329400,2047,2025,83.41
+22140,"Farmington, NM",22.03,2025-05,937,850,945,2025,,,42.53,,gas,home_value;rent;wage,233000,1684,2025,76.44
+22180,"Fayetteville, NC",21.93,2025-05,1391,1161,1286,2025,,,63.43,,gas,home_value;rent;wage,247700,1670,2025,76.15
+22220,"Fayetteville-Springdale-Rogers, AR",22.41,2025-05,1330,988,1232,2025,,,59.35,,gas,home_value;rent;wage,364300,1977,2025,88.22
+22380,"Flagstaff, AZ",22.84,2025-05,1588,1698,1678,2025,,,69.53,,gas,home_value;rent;wage,512800,2299,2025,100.66
+22420,"Flint, MI",22.06,2025-05,1045,702,1155,2025,,,47.37,,gas,home_value;rent;wage,204800,1526,2025,69.17
+22500,"Florence, SC",20.93,2025-05,1024,706,1124,2025,,,48.92,,gas,home_value;rent;wage,201200,1462,2025,69.85
+22520,"Florence-Muscle Shoals, AL",19.1,2025-05,943,682,1001,2025,,,49.37,,gas,home_value;rent;wage,228800,1383,2025,72.41
+22540,"Fond du Lac, WI",24.2,2025-05,972,738,991,2025,,,40.17,,gas,home_value;rent;wage,263000,1503,2025,62.11
+22660,"Fort Collins-Loveland, CO",26.59,2025-05,1839,1648,1775,2025,,,69.16,,gas,home_value;rent;wage,589300,2468,2025,92.82
+22900,"Fort Smith, AR-OK",19.02,2025-05,937,654,891,2025,,,49.26,,gas,home_value;rent;wage,219700,1379,2025,72.5
+23060,"Fort Wayne, IN",22.93,2025-05,1157,984,1216,2025,,,50.46,,gas,home_value;rent;wage,251300,1558,2025,67.95
+23420,"Fresno, CA",22.55,2025-05,1550,1269,1560,2025,,,68.74,,gas,home_value;rent;wage,416600,2165,2025,96.01
+23460,"Gadsden, AL",17.63,2025-05,763,663,792,2025,,,43.28,,gas,home_value;rent;wage,195100,1308,2025,74.19
+23540,"Gainesville, FL",22.61,2025-05,1463,1410,1506,2025,,,64.71,,gas,home_value;rent;wage,312900,1904,2025,84.21
+23580,"Gainesville, GA",22.07,2025-05,1483,1239,1464,2025,,,67.2,,gas,home_value;rent;wage,414800,2218,2025,100.5
+23900,"Gettysburg, PA",22.41,2025-05,1196,956,1100,2025,,,53.37,,gas,home_value;rent;wage,312700,1737,2025,77.51
+24020,"Glens Falls, NY",23.6,2025-05,1233,1036,1306,2025,,,52.25,,gas,home_value;rent;wage,274200,1832,2025,77.63
+24140,"Goldsboro, NC",19.51,2025-05,1029,562,950,2025,,,52.74,,gas,home_value;rent;wage,214400,1465,2025,75.09
+24220,"Grand Forks, ND-MN",23.92,2025-05,993,780,1018,2025,,,41.51,,gas,home_value;rent;wage,276700,1801,2025,75.29
+24260,"Grand Island, NE",23.75,2025-05,1242,706,1184,2025,,,52.29,,gas,home_value;rent;wage,265800,1848,2025,77.81
+24300,"Grand Junction, CO",23.32,2025-05,1375,1188,1510,2025,,,58.96,,gas,home_value;rent;wage,431300,1853,2025,79.46
+24340,"Grand Rapids-Wyoming-Kentwood, MI",22.87,2025-05,1365,1219,1388,2025,,,59.69,,gas,home_value;rent;wage,333100,1767,2025,77.26
+24420,"Grants Pass, OR",24.39,2025-05,1333,620,1360,2025,,,54.65,,gas,home_value;rent;wage,425700,1806,2025,74.05
+24500,"Great Falls, MT",22.36,2025-05,996,853,988,2025,,,44.54,,gas,home_value;rent;wage,351300,1735,2025,77.59
+24540,"Greeley, CO",26.48,2025-05,1792,1336,1768,2025,,,67.67,,gas,home_value;rent;wage,507300,2616,2025,98.79
+24580,"Green Bay, WI",24.01,2025-05,1087,904,1093,2025,,,45.27,,gas,home_value;rent;wage,322600,1701,2025,70.85
+24660,"Greensboro-High Point, NC",22.39,2025-05,1223,1117,1218,2025,,,54.62,,gas,home_value;rent;wage,284700,1644,2025,73.43
+24780,"Greenville, NC",22.39,2025-05,1135,987,1142,2025,,,50.69,,gas,home_value;rent;wage,265400,1775,2025,79.28
+24860,"Greenville-Anderson-Greer, SC",22.39,2025-05,1322,1139,1279,2025,,,59.04,,gas,home_value;rent;wage,316800,1640,2025,73.25
+25020,"Guayama, PR",12.15,2025-05,576,347,423,2025,,,47.41,,gas,home_value;rent;wage,115700,727,2025,59.84
+25060,"Gulfport-Biloxi, MS",20.9,2025-05,1217,890,1156,2025,,,58.23,,gas,home_value;rent;wage,229700,1596,2025,76.36
+25180,"Hagerstown-Martinsburg, MD-WV",22.81,2025-05,1287,969,1149,2025,,,56.42,,gas,home_value;rent;wage,323600,1781,2025,78.08
+25220,"Hammond, LA",18.5,2025-05,1051,806,1134,2025,,,56.81,,gas,home_value;rent;wage,235400,1598,2025,86.38
+25260,"Hanford-Corcoran, CA",23.3,2025-05,1530,1080,1434,2025,,,65.67,,gas,home_value;rent;wage,341700,1687,2025,72.4
+25420,"Harrisburg-Carlisle, PA",23.85,2025-05,1349,1177,1360,2025,,,56.56,,gas,home_value;rent;wage,285100,1743,2025,73.08
+25500,"Harrisonburg, VA",22.17,2025-05,1182,848,1250,2025,,,53.32,,gas,home_value;rent;wage,348500,1615,2025,72.85
+25540,"Hartford-West Hartford-East Hartford, CT",28.82,2025-05,1548,1313,1731,2025,,,53.71,,gas,home_value;rent;wage,388700,2408,2025,83.55
+25620,"Hattiesburg, MS",18.15,2025-05,1032,847,1019,2025,,,56.86,,gas,home_value;rent;wage,243600,1646,2025,90.69
+25740,"Helena, MT",26.46,2025-05,1268,1079,1294,2025,,,47.92,,gas,home_value;rent;wage,481200,2103,2025,79.48
+25860,"Hickory-Lenoir-Morganton, NC",21.74,2025-05,979,720,1011,2025,,,45.03,,gas,home_value;rent;wage,268200,1432,2025,65.87
+25940,"Hilton Head Island-Bluffton-Port Royal, SC",21.08,2025-05,1875,1808,2022,2025,,,88.95,,gas,home_value;rent;wage,508000,2274,2025,107.87
+25980,"Hinesville, GA",22.44,2025-05,1374,1050,1079,2025,,,61.23,,gas,home_value;rent;wage,258400,1832,2025,81.64
+26140,"Homosassa Springs, FL",19.89,2025-05,1100,730,1200,2025,,,55.3,,gas,home_value;rent;wage,260600,1559,2025,78.38
+26300,"Hot Springs, AR",17.57,2025-05,1063,935,1028,2025,,,60.5,,gas,home_value;rent;wage,265800,1387,2025,78.94
+26380,"Houma-Bayou Cane-Thibodaux, LA",21.93,2025-05,1061,1029,971,2025,,,48.38,,gas,home_value;rent;wage,213500,1743,2025,79.48
+26420,"Houston-Pasadena-The Woodlands, TX",23.76,2025-05,1550,1315,1562,2025,3.747,2026-10,65.24,0.16,,gas;home_value;rent;wage,329000,2594,2025,109.18
+26580,"Huntington-Ashland, WV-KY-OH",21.44,2025-05,944,716,914,2025,,,44.03,,gas,home_value;rent;wage,167000,1344,2025,62.69
+26620,"Huntsville, AL",24.88,2025-05,1328,1101,1350,2025,,,53.38,,gas,home_value;rent;wage,337700,1844,2025,74.12
+26820,"Idaho Falls, ID",22.5,2025-05,1404,1144,1287,2025,,,62.4,,gas,home_value;rent;wage,418400,1906,2025,84.71
+26900,"Indianapolis-Carmel-Greenwood, IN",23.72,2025-05,1380,1189,1397,2025,,,58.18,,gas,home_value;rent;wage,304600,1855,2025,78.2
+26980,"Iowa City, IA",24.07,2025-05,1168,994,1203,2025,,,48.53,,gas,home_value;rent;wage,313900,1960,2025,81.43
+27060,"Ithaca, NY",27.95,2025-05,1646,1365,1753,2025,,,58.89,,gas,home_value;rent;wage,343600,2244,2025,80.29
+27100,"Jackson, MI",22.96,2025-05,1066,955,1063,2025,,,46.43,,gas,home_value;rent;wage,219600,1486,2025,64.72
+27140,"Jackson, MS",20.6,2025-05,1176,1046,1190,2025,,,57.09,,gas,home_value;rent;wage,205300,1559,2025,75.68
+27180,"Jackson, TN",21.53,2025-05,1180,699,1146,2025,,,54.81,,gas,home_value;rent;wage,237800,1509,2025,70.09
+27260,"Jacksonville, FL",23.48,2025-05,1635,1368,1642,2025,,,69.63,,gas,home_value;rent;wage,369100,2104,2025,89.61
+27340,"Jacksonville, NC",19.34,2025-05,1514,1082,1368,2025,,,78.28,,gas,home_value;rent;wage,268800,1761,2025,91.05
+27500,"Janesville-Beloit, WI",23.26,2025-05,1129,912,1135,2025,,,48.54,,gas,home_value;rent;wage,278200,1710,2025,73.52
+27620,"Jefferson City, MO",23.09,2025-05,895,582,874,2025,,,38.76,,gas,home_value;rent;wage,282600,1525,2025,66.05
+27740,"Johnson City, TN",20.9,2025-05,1080,888,1080,2025,,,51.67,,gas,home_value;rent;wage,273600,1373,2025,65.69
+27780,"Johnstown, PA",21.21,2025-05,736,584,740,2025,,,34.7,,gas,home_value;rent;wage,140100,1223,2025,57.66
+27860,"Jonesboro, AR",20.31,2025-05,1064,796,941,2025,,,52.39,,gas,home_value;rent;wage,216000,1288,2025,63.42
+27900,"Joplin, MO-KS",21.63,2025-05,999,735,974,2025,,,46.19,,gas,home_value;rent;wage,211000,1446,2025,66.85
+27980,"Kahului-Wailuku, HI",27.71,2025-05,1956,1481,1963,2025,,,70.59,,gas,home_value;rent;wage,1020500,2683,2025,96.82
+28020,"Kalamazoo-Portage, MI",23.32,2025-05,1171,1021,1219,2025,,,50.21,,gas,home_value;rent;wage,272800,1692,2025,72.56
+28100,"Kankakee, IL",22.03,2025-05,1088,908,1107,2025,,,49.39,,gas,home_value;rent;wage,218500,1770,2025,80.34
+28140,"Kansas City, MO-KS",24.44,2025-05,1414,1200,1418,2025,,,57.86,,gas,home_value;rent;wage,331600,2059,2025,84.25
+28420,"Kennewick-Richland, WA",27.54,2025-05,1485,1158,1595,2025,,,53.92,,gas,home_value;rent;wage,436900,2225,2025,80.79
+28450,"Kenosha, WI",23.22,2025-05,1487,1091,1449,2025,,,64.04,,gas,home_value;rent;wage,301100,1837,2025,79.11
+28660,"Killeen-Temple, TX",22.43,2025-05,1405,927,1193,2025,,,62.64,,gas,home_value;rent;wage,259500,1831,2025,81.63
+28700,"Kingsport-Bristol, TN-VA",21.75,2025-05,862,672,862,2025,,,39.63,,gas,home_value;rent;wage,244600,1311,2025,60.28
+28740,"Kingston, NY",24.05,2025-05,1696,1522,1821,2025,,,70.52,,gas,home_value;rent;wage,417900,2342,2025,97.38
+28880,"Kiryas Joel-Poughkeepsie-Newburgh, NY",24.51,2025-05,1788,1567,1916,2025,,,72.95,,gas,home_value;rent;wage,449100,2755,2025,112.4
+28940,"Knoxville, TN",22.63,2025-05,1376,1106,1452,2025,,,60.8,,gas,home_value;rent;wage,369000,1735,2025,76.67
+29020,"Kokomo, IN",23.55,2025-05,969,863,1122,2025,,,41.15,,gas,home_value;rent;wage,185200,1262,2025,53.59
+29100,"La Crosse-Onalaska, WI-MN",23.2,2025-05,1164,933,1236,2025,,,50.17,,gas,home_value;rent;wage,298700,1735,2025,74.78
+29180,"Lafayette, LA",20.09,2025-05,1031,866,1045,2025,,,51.32,,gas,home_value;rent;wage,226600,1565,2025,77.9
+29200,"Lafayette-West Lafayette, IN",23.45,2025-05,1225,964,1345,2025,,,52.24,,gas,home_value;rent;wage,283400,1500,2025,63.97
+29340,"Lake Charles, LA",21.97,2025-05,1101,847,1076,2025,,,50.11,,gas,home_value;rent;wage,208300,1586,2025,72.19
+29420,"Lake Havasu City-Kingman, AZ",21.26,2025-05,1283,853,1297,2025,,,60.35,,gas,home_value;rent;wage,328400,1545,2025,72.67
+29460,"Lakeland-Winter Haven, FL",22.18,2025-05,1660,1251,1437,2025,,,74.84,,gas,home_value;rent;wage,297700,2069,2025,93.28
+29540,"Lancaster, PA",23.18,2025-05,1456,1247,1469,2025,,,62.81,,gas,home_value;rent;wage,351900,1975,2025,85.2
+29620,"Lansing-East Lansing, MI",25.39,2025-05,1207,1029,1171,2025,,,47.54,,gas,home_value;rent;wage,245500,1657,2025,65.26
+29700,"Laredo, TX",17.91,2025-05,1143,972,1098,2025,,,63.82,,gas,home_value;rent;wage,218000,1769,2025,98.77
+29740,"Las Cruces, NM",20.23,2025-05,965,938,932,2025,,,47.7,,gas,home_value;rent;wage,257700,1463,2025,72.32
+29820,"Las Vegas-Henderson-North Las Vegas, NV",22.44,2025-05,1711,1390,1635,2025,,,76.25,,gas,home_value;rent;wage,453500,2063,2025,91.93
+29940,"Lawrence, KS",22.78,2025-05,1243,1112,1222,2025,,,54.57,,gas,home_value;rent;wage,348500,2091,2025,91.79
+30020,"Lawton, OK",20.24,2025-05,1039,754,943,2025,,,51.33,,gas,home_value;rent;wage,172300,1556,2025,76.88
+30140,"Lebanon, PA",22.35,2025-05,1260,892,1158,2025,,,56.38,,gas,home_value;rent;wage,305400,1815,2025,81.21
+30300,"Lewiston, ID-WA",23.22,2025-05,1025,659,1063,2025,,,44.14,,gas,home_value;rent;wage,347400,1731,2025,74.55
+30340,"Lewiston-Auburn, ME",23.82,2025-05,1206,991,1369,2025,,,50.63,,gas,home_value;rent;wage,321900,1698,2025,71.28
+30460,"Lexington-Fayette, KY",23.38,2025-05,1253,1091,1274,2025,,,53.59,,gas,home_value;rent;wage,319500,1782,2025,76.22
+30500,"Lexington Park, MD",30.76,2025-05,1895,1161,1623,2025,,,61.61,,gas,home_value;rent;wage,448500,2450,2025,79.65
+30620,"Lima, OH",22.68,2025-05,1090,586,1069,2025,,,48.06,,gas,home_value;rent;wage,196800,1405,2025,61.95
+30700,"Lincoln, NE",23.94,2025-05,1203,1131,1213,2025,,,50.25,,gas,home_value;rent;wage,308200,1923,2025,80.33
+30780,"Little Rock-North Little Rock-Conway, AR",22.02,2025-05,1171,1042,1170,2025,,,53.18,,gas,home_value;rent;wage,248700,1628,2025,73.93
+30860,"Logan, UT-ID",22.29,2025-05,1353,1226,1216,2025,,,60.7,,gas,home_value;rent;wage,478000,2016,2025,90.44
+30980,"Longview, TX",21.71,2025-05,1042,840,1046,2025,,,48.0,,gas,home_value;rent;wage,200000,1606,2025,73.98
+31020,"Longview-Kelso, WA",27.61,2025-05,1247,974,1269,2025,,,45.16,,gas,home_value;rent;wage,432400,2218,2025,80.33
+31080,"Los Angeles-Long Beach-Anaheim, CA",26.85,2025-05,2170,1879,2328,2025,6.049,2026-10,80.82,0.23,,gas;home_value;rent;wage,925900,3325,2025,123.84
+31140,"Louisville/Jefferson County, KY-IN",23.25,2025-05,1229,962,1271,2025,,,52.86,,gas,home_value;rent;wage,288400,1679,2025,72.22
+31180,"Lubbock, TX",20.26,2025-05,1225,992,1181,2025,,,60.46,,gas,home_value;rent;wage,225100,1902,2025,93.88
+31340,"Lynchburg, VA",22.21,2025-05,1089,922,1087,2025,,,49.03,,gas,home_value;rent;wage,282600,1609,2025,72.44
+31420,"Macon-Bibb County, GA",21.71,2025-05,1120,490,1153,2025,,,51.59,,gas,home_value;rent;wage,218300,1595,2025,73.47
+31540,"Madison, WI",27.92,2025-05,1533,1409,1647,2025,,,54.91,,gas,home_value;rent;wage,424400,2236,2025,80.09
+31700,"Manchester-Nashua, NH",27.18,2025-05,1935,1477,2107,2025,,,71.19,,gas,home_value;rent;wage,503100,2544,2025,93.6
+31740,"Manhattan, KS",22.07,2025-05,1166,871,1128,2025,,,52.83,,gas,home_value;rent;wage,279800,1899,2025,86.04
+31860,"Mankato, MN",23.81,2025-05,1162,1049,1255,2025,,,48.8,,gas,home_value;rent;wage,288300,1721,2025,72.28
+31900,"Mansfield, OH",21.49,2025-05,923,757,954,2025,,,42.95,,gas,home_value;rent;wage,207400,1254,2025,58.35
+32420,"Mayagüez, PR",12.15,2025-05,514,435,529,2025,,,42.3,,gas,home_value;rent;wage,118400,688,2025,56.63
+32580,"McAllen-Edinburg-Mission, TX",17.23,2025-05,1058,760,1030,2025,,,61.4,,gas,home_value;rent;wage,165800,1563,2025,90.71
+32780,"Medford, OR",23.99,2025-05,1500,1115,1418,2025,,,62.53,,gas,home_value;rent;wage,434400,2111,2025,87.99
+32820,"Memphis, TN-MS-AR",22.54,2025-05,1330,1064,1278,2025,,,59.01,,gas,home_value;rent;wage,280700,1783,2025,79.1
+32900,"Merced, CA",22.7,2025-05,1498,1138,1247,2025,,,65.99,,gas,home_value;rent;wage,423700,2277,2025,100.31
+33100,"Miami-Fort Lauderdale-West Palm Beach, FL",23.39,2025-05,2151,1818,2211,2025,4.076,2026-10,91.96,0.17,,gas;home_value;rent;wage,525700,2801,2025,119.75
+33140,"Michigan City-La Porte, IN",21.89,2025-05,1039,894,1087,2025,,,47.46,,gas,home_value;rent;wage,249500,1482,2025,67.7
+33220,"Midland, MI",23.72,2025-05,1133,843,1181,2025,,,47.77,,gas,home_value;rent;wage,233800,1698,2025,71.59
+33260,"Midland, TX",26.19,2025-05,1681,1295,1815,2025,,,64.18,,gas,home_value;rent;wage,320100,2237,2025,85.41
+33340,"Milwaukee-Waukesha, WI",24.6,2025-05,1260,1047,1313,2025,,,51.22,,gas,home_value;rent;wage,355600,1973,2025,80.2
+33460,"Minneapolis-St. Paul-Bloomington, MN-WI",28.52,2025-05,1504,1327,1645,2025,,,52.73,,gas,home_value;rent;wage,396700,2320,2025,81.35
+33500,"Minot, ND",23.53,2025-05,1128,436,1081,2025,,,47.94,,gas,home_value;rent;wage,246000,1692,2025,71.91
+33540,"Missoula, MT",23.0,2025-05,1420,1272,1562,2025,,,61.74,,gas,home_value;rent;wage,531300,2287,2025,99.43
+33660,"Mobile, AL",22.59,2025-05,1154,998,1167,2025,,,51.08,,gas,home_value;rent;wage,218600,1576,2025,69.77
+33700,"Modesto, CA",24.33,2025-05,1792,1281,1700,2025,,,73.65,,gas,home_value;rent;wage,479900,2161,2025,88.82
+33740,"Monroe, LA",18.34,2025-05,923,724,943,2025,,,50.33,,gas,home_value;rent;wage,178900,1390,2025,75.79
+33780,"Monroe, MI",22.23,2025-05,1264,890,1302,2025,,,56.86,,gas,home_value;rent;wage,275200,1650,2025,74.22
+33860,"Montgomery, AL",21.61,2025-05,1300,1069,1241,2025,,,60.16,,gas,home_value;rent;wage,227000,1483,2025,68.63
+34060,"Morgantown, WV",22.76,2025-05,1020,919,1048,2025,,,44.82,,gas,home_value;rent;wage,257400,1617,2025,71.05
+34100,"Morristown, TN",21.29,2025-05,1057,658,985,2025,,,49.65,,gas,home_value;rent;wage,301500,1380,2025,64.82
+34580,"Mount Vernon-Anacortes, WA",28.65,2025-05,1730,1360,1960,2025,,,60.38,,gas,home_value;rent;wage,610000,2634,2025,91.94
+34620,"Muncie, IN",21.21,2025-05,890,748,919,2025,,,41.96,,gas,home_value;rent;wage,155700,1192,2025,56.2
+34740,"Muskegon-Norton Shores, MI",22.15,2025-05,1046,698,1106,2025,,,47.22,,gas,home_value;rent;wage,247300,1553,2025,70.11
+34820,"Myrtle Beach-Conway-North Myrtle Beach, SC",18.23,2025-05,1441,1363,1383,2025,,,79.05,,gas,home_value;rent;wage,323600,1672,2025,91.72
+34900,"Napa, CA",26.54,2025-05,2357,1434,2331,2025,,,88.81,,gas,home_value;rent;wage,858700,3487,2025,131.39
+34940,"Naples-Marco Island, FL",22.98,2025-05,2058,1782,2075,2025,,,89.56,,gas,home_value;rent;wage,619900,2818,2025,122.63
+34980,"Nashville-Davidson--Murfreesboro--Franklin, TN",24.23,2025-05,1696,1474,1666,2025,,,70.0,,gas,home_value;rent;wage,461800,2095,2025,86.46
+35300,"New Haven, CT",28.88,2025-05,1733,1439,1869,2025,,,60.01,,gas,home_value;rent;wage,393400,2569,2025,88.95
+35380,"New Orleans-Metairie, LA",22.73,2025-05,1357,1194,1376,2025,,,59.7,,gas,home_value;rent;wage,275400,2104,2025,92.56
+35620,"New York-Newark-Jersey City, NY-NJ",29.53,2025-05,1932,1774,1997,2025,4.27,2026-10,65.42,0.14,,gas;home_value;rent;wage,691700,3441,2025,116.53
+35660,"Niles, MI",22.11,2025-05,1009,835,1063,2025,,,45.64,,gas,home_value;rent;wage,255300,1608,2025,72.73
+35840,"North Port-Bradenton-Sarasota, FL",22.81,2025-05,1908,1706,1975,2025,,,83.65,,gas,home_value;rent;wage,440200,2407,2025,105.52
+35980,"Norwich-New London-Willimantic, CT",27.58,2025-05,1551,1238,1644,2025,,,56.24,,gas,home_value;rent;wage,383400,2270,2025,82.31
+36100,"Ocala, FL",21.15,2025-05,1452,1064,1481,2025,,,68.65,,gas,home_value;rent;wage,286000,1633,2025,77.21
+36220,"Odessa, TX",23.36,2025-05,1356,1054,1772,2025,,,58.05,,gas,home_value;rent;wage,252200,1999,2025,85.57
+36260,"Ogden, UT",23.51,2025-05,1662,1282,1550,2025,,,70.69,,gas,home_value;rent;wage,523700,2250,2025,95.7
+36420,"Oklahoma City, OK",22.71,2025-05,1226,1028,1199,2025,,,53.99,,gas,home_value;rent;wage,268600,1902,2025,83.75
+36500,"Olympia-Lacey-Tumwater, WA",29.79,2025-05,1900,1583,1935,2025,,,63.78,,gas,home_value;rent;wage,524600,2630,2025,88.28
+36540,"Omaha, NE-IA",23.88,2025-05,1320,1137,1366,2025,,,55.28,,gas,home_value;rent;wage,311100,2093,2025,87.65
+36740,"Orlando-Kissimmee-Sanford, FL",22.42,2025-05,1894,1680,1855,2025,,,84.48,,gas,home_value;rent;wage,411400,2274,2025,101.43
+36780,"Oshkosh-Neenah, WI",25.99,2025-05,1083,849,1145,2025,,,41.67,,gas,home_value;rent;wage,269700,1630,2025,62.72
+36980,"Owensboro, KY",21.62,2025-05,1005,751,1043,2025,,,46.48,,gas,home_value;rent;wage,218100,1486,2025,68.73
+37100,"Oxnard-Thousand Oaks-Ventura, CA",25.24,2025-05,2375,2039,2399,2025,,,94.1,,gas,home_value;rent;wage,860200,3260,2025,129.16
+37140,"Paducah, KY-IL",22.05,2025-05,888,739,886,2025,,,40.27,,gas,home_value;rent;wage,196600,1552,2025,70.39
+37340,"Palm Bay-Melbourne-Titusville, FL",23.57,2025-05,1759,1505,1755,2025,,,74.63,,gas,home_value;rent;wage,365000,2017,2025,85.57
+37460,"Panama City-Panama City Beach, FL",21.65,2025-05,1588,1368,1511,2025,,,73.35,,gas,home_value;rent;wage,338400,1972,2025,91.09
+37620,"Parkersburg-Vienna, WV",20.19,2025-05,898,719,966,2025,,,44.48,,gas,home_value;rent;wage,173700,1262,2025,62.51
+37860,"Pensacola-Ferry Pass-Brent, FL",22.23,2025-05,1452,1184,1371,2025,,,65.32,,gas,home_value;rent;wage,316300,1843,2025,82.91
+37900,"Peoria, IL",23.84,2025-05,1063,798,1120,2025,,,44.59,,gas,home_value;rent;wage,178400,1557,2025,65.31
+37980,"Philadelphia-Camden-Wilmington, PA-NJ-DE-MD",26.11,2025-05,1638,1458,1723,2025,,,62.73,,gas,home_value;rent;wage,395900,2308,2025,88.4
+38060,"Phoenix-Mesa-Chandler, AZ",24.7,2025-05,1836,1567,1825,2025,,,74.33,,gas,home_value;rent;wage,464400,2147,2025,86.92
+38240,"Pinehurst-Southern Pines, NC",20.64,2025-05,1771,640,1487,2025,,,85.8,,gas,home_value;rent;wage,410800,2141,2025,103.73
+38300,"Pittsburgh, PA",23.87,2025-05,1150,966,1185,2025,,,48.18,,gas,home_value;rent;wage,240000,1695,2025,71.01
+38340,"Pittsfield, MA",24.93,2025-05,1149,918,1283,2025,,,46.09,,gas,home_value;rent;wage,365300,2076,2025,83.27
+38540,"Pocatello, ID",21.71,2025-05,1091,646,1110,2025,,,50.25,,gas,home_value;rent;wage,332500,1691,2025,77.89
+38660,"Ponce, PR",12.95,2025-05,506,299,405,2025,,,39.07,,gas,home_value;rent;wage,118500,773,2025,59.69
+38860,"Portland-South Portland, ME",27.39,2025-05,1665,1383,1833,2025,,,60.79,,gas,home_value;rent;wage,506800,2377,2025,86.78
+38900,"Portland-Vancouver-Hillsboro, OR-WA",29.18,2025-05,1799,1600,1850,2025,,,61.65,,gas,home_value;rent;wage,575500,2609,2025,89.41
+38940,"Port St. Lucie, FL",22.35,2025-05,1909,1700,1856,2025,,,85.41,,gas,home_value;rent;wage,425700,2296,2025,102.73
+39150,"Prescott Valley-Prescott, AZ",22.27,2025-05,1600,1235,1488,2025,,,71.85,,gas,home_value;rent;wage,501900,1734,2025,77.86
+39300,"Providence-Warwick, RI-MA",25.81,2025-05,1511,1109,1641,2025,,,58.54,,gas,home_value;rent;wage,492800,2498,2025,96.78
+39340,"Provo-Orem-Lehi, UT",23.08,2025-05,1685,1323,1444,2025,,,73.01,,gas,home_value;rent;wage,581900,2451,2025,106.2
+39380,"Pueblo, CO",23.53,2025-05,1321,849,1345,2025,,,56.14,,gas,home_value;rent;wage,326300,1726,2025,73.35
+39460,"Punta Gorda, FL",21.88,2025-05,1734,1120,1701,2025,,,79.25,,gas,home_value;rent;wage,367600,2204,2025,100.73
+39540,"Racine-Mount Pleasant, WI",23.5,2025-05,1193,1035,1204,2025,,,50.77,,gas,home_value;rent;wage,298400,1911,2025,81.32
+39580,"Raleigh-Cary, NC",24.99,2025-05,1713,1475,1673,2025,,,68.55,,gas,home_value;rent;wage,465500,2301,2025,92.08
+39660,"Rapid City, SD",22.25,2025-05,1313,1057,1356,2025,,,59.01,,gas,home_value;rent;wage,355400,1976,2025,88.81
+39740,"Reading, PA",23.77,2025-05,1376,1081,1349,2025,,,57.89,,gas,home_value;rent;wage,307100,1959,2025,82.41
+39820,"Redding, CA",23.52,2025-05,1380,823,1368,2025,,,58.67,,gas,home_value;rent;wage,394300,2251,2025,95.71
+39900,"Reno, NV",23.87,2025-05,1711,1513,1781,2025,,,71.68,,gas,home_value;rent;wage,530400,2100,2025,87.98
+40060,"Richmond, VA",24.74,2025-05,1643,1480,1684,2025,,,66.41,,gas,home_value;rent;wage,399000,2052,2025,82.94
+40140,"Riverside-San Bernardino-Ontario, CA",23.27,2025-05,2041,1647,1940,2025,,,87.71,,gas,home_value;rent;wage,587200,2640,2025,113.45
+40220,"Roanoke, VA",22.67,2025-05,1163,996,1131,2025,,,51.3,,gas,home_value;rent;wage,302200,1673,2025,73.8
+40340,"Rochester, MN",29.15,2025-05,1348,1242,1240,2025,,,46.24,,gas,home_value;rent;wage,337500,2024,2025,69.43
+40380,"Rochester, NY",24.62,2025-05,1267,1042,1428,2025,,,51.46,,gas,home_value;rent;wage,252300,1714,2025,69.62
+40420,"Rockford, IL",22.65,2025-05,1146,822,1175,2025,,,50.6,,gas,home_value;rent;wage,203000,1576,2025,69.58
+40580,"Rocky Mount, NC",21.13,2025-05,1048,468,856,2025,,,49.6,,gas,home_value;rent;wage,207000,1511,2025,71.51
+40660,"Rome, GA",20.51,2025-05,1111,655,1125,2025,,,54.17,,gas,home_value;rent;wage,260700,1708,2025,83.28
+40900,"Sacramento-Roseville-Folsom, CA",28.73,2025-05,1929,1596,1922,2025,,,67.14,,gas,home_value;rent;wage,594600,2758,2025,96.0
+40980,"Saginaw, MI",22.21,2025-05,1043,927,1032,2025,,,46.96,,gas,home_value;rent;wage,170200,1363,2025,61.37
+41060,"St. Cloud, MN",24.44,2025-05,1129,939,1179,2025,,,46.19,,gas,home_value;rent;wage,300600,1915,2025,78.36
+41100,"St. George, UT",21.7,2025-05,1669,1167,1497,2025,,,76.91,,gas,home_value;rent;wage,546700,2191,2025,100.97
+41140,"St. Joseph, MO-KS",22.76,2025-05,933,711,963,2025,,,40.99,,gas,home_value;rent;wage,205900,1458,2025,64.06
+41180,"St. Louis, MO-IL",24.03,2025-05,1232,989,1223,2025,,,51.27,,gas,home_value;rent;wage,283300,1813,2025,75.45
+41420,"Salem, OR",26.59,2025-05,1599,1308,1576,2025,,,60.14,,gas,home_value;rent;wage,448300,2088,2025,78.53
+41500,"Salinas, CA",22.78,2025-05,2027,1943,2207,2025,,,88.98,,gas,home_value;rent;wage,862000,2927,2025,128.49
+41540,"Salisbury, MD",23.42,2025-05,1502,1015,1542,2025,,,64.13,,gas,home_value;rent;wage,281600,1812,2025,77.37
+41620,"Salt Lake City-Murray, UT",26.56,2025-05,1711,1467,1721,2025,,,64.42,,gas,home_value;rent;wage,579200,2348,2025,88.4
+41660,"San Angelo, TX",20.93,2025-05,1039,881,1173,2025,,,49.64,,gas,home_value;rent;wage,232200,2013,2025,96.18
+41700,"San Antonio-New Braunfels, TX",22.6,2025-05,1396,1198,1460,2025,,,61.77,,gas,home_value;rent;wage,309800,2130,2025,94.25
+41740,"San Diego-Chula Vista-Carlsbad, CA",28.21,2025-05,2416,2148,2483,2025,,,85.64,,gas,home_value;rent;wage,927700,3393,2025,120.28
+41780,"Sandusky, OH",21.62,2025-05,1000,505,1052,2025,,,46.25,,gas,home_value;rent;wage,238100,1504,2025,69.57
+41860,"San Francisco-Oakland-Fremont, CA",35.7,2025-05,2480,2191,2766,2025,6.079,2026-10,69.47,0.17,owner_cost,gas;home_value;rent;wage,1152400,,2025,
+41940,"San Jose-Sunnyvale-Santa Clara, CA",40.41,2025-05,2889,2496,2973,2025,,,71.49,,gas;owner_cost,home_value;rent;wage,1605600,,2025,
+41980,"San Juan-Bayamón-Caguas, PR",14.15,2025-05,639,390,581,2025,,,45.16,,gas,home_value;rent;wage,161900,964,2025,68.13
+42020,"San Luis Obispo-Paso Robles, CA",24.41,2025-05,2194,1865,2160,2025,,,89.88,,gas,home_value;rent;wage,877800,3089,2025,126.55
+42100,"Santa Cruz-Watsonville, CA",26.31,2025-05,2257,2067,2433,2025,,,85.78,,gas,home_value;rent;wage,1082200,3867,2025,146.98
+42140,"Santa Fe, NM",23.42,2025-05,1511,1231,1609,2025,,,64.52,,gas,home_value;rent;wage,519900,2147,2025,91.67
+42200,"Santa Maria-Santa Barbara, CA",24.85,2025-05,2283,2092,2331,2025,,,91.87,,gas,home_value;rent;wage,857900,3048,2025,122.66
+42220,"Santa Rosa-Petaluma, CA",27.33,2025-05,2204,1819,2283,2025,,,80.64,,gas,home_value;rent;wage,819200,3235,2025,118.37
+42340,"Savannah, GA",22.71,2025-05,1750,1579,1676,2025,,,77.06,,gas,home_value;rent;wage,359400,2099,2025,92.43
+42540,"Scranton--Wilkes-Barre, PA",22.28,2025-05,1149,796,1231,2025,,,51.57,,gas,home_value;rent;wage,225600,1630,2025,73.16
+42660,"Seattle-Tacoma-Bellevue, WA",34.91,2025-05,2121,1871,2214,2025,5.553,2026-10,60.76,0.16,,gas;home_value;rent;wage,771100,3203,2025,91.75
+42680,"Sebastian-Vero Beach-West Vero Corridor, FL",21.87,2025-05,1776,1099,1860,2025,,,81.21,,gas,home_value;rent;wage,383200,1988,2025,90.9
+42700,"Sebring, FL",19.42,2025-05,1199,806,1258,2025,,,61.74,,gas,home_value;rent;wage,223100,1441,2025,74.2
+43100,"Sheboygan, WI",24.95,2025-05,1143,853,1161,2025,,,45.81,,gas,home_value;rent;wage,285700,1486,2025,59.56
+43300,"Sherman-Denison, TX",21.45,2025-05,1380,1185,1346,2025,,,64.34,,gas,home_value;rent;wage,321800,2260,2025,105.36
+43340,"Shreveport-Bossier City, LA",21.55,2025-05,994,877,1054,2025,,,46.13,,gas,home_value;rent;wage,202300,1596,2025,74.06
+43420,"Sierra Vista-Douglas, AZ",22.62,2025-05,1024,743,1060,2025,,,45.27,,gas,home_value;rent;wage,247900,1482,2025,65.52
+43580,"Sioux City, IA-NE-SD",22.61,2025-05,1093,844,1142,2025,,,48.34,,gas,home_value;rent;wage,224400,1627,2025,71.96
+43620,"Sioux Falls, SD-MN",23.06,2025-05,1213,970,1244,2025,,,52.6,,gas,home_value;rent;wage,334200,1954,2025,84.74
+43640,"Slidell-Mandeville-Covington, LA",21.01,2025-05,1426,1237,1263,2025,,,67.87,,gas,home_value;rent;wage,305300,2103,2025,100.1
+43780,"South Bend-Mishawaka, IN-MI",22.38,2025-05,1158,1032,1176,2025,,,51.74,,gas,home_value;rent;wage,229100,1418,2025,63.36
+43900,"Spartanburg, SC",22.91,2025-05,1238,1110,1148,2025,,,54.04,,gas,home_value;rent;wage,267300,1455,2025,63.51
+44060,"Spokane-Spokane Valley, WA",26.28,2025-05,1423,1152,1424,2025,,,54.15,,gas,home_value;rent;wage,441100,2127,2025,80.94
+44100,"Springfield, IL",25.32,2025-05,970,838,1027,2025,,,38.31,,gas,home_value;rent;wage,211600,1652,2025,65.24
+44140,"Springfield, MA",24.97,2025-05,1131,817,1240,2025,,,45.29,,gas,home_value;rent;wage,335800,2049,2025,82.06
+44180,"Springfield, MO",22.01,2025-05,1096,895,1032,2025,,,49.8,,gas,home_value;rent;wage,279300,1544,2025,70.15
+44220,"Springfield, OH",21.86,2025-05,1076,450,1136,2025,,,49.22,,gas,home_value;rent;wage,194800,1371,2025,62.72
+44300,"State College, PA",23.66,2025-05,1284,926,1374,2025,,,54.27,,gas,home_value;rent;wage,364000,2053,2025,86.77
+44420,"Staunton-Stuarts Draft, VA",23.1,2025-05,1311,787,1337,2025,,,56.75,,gas,home_value;rent;wage,327700,1726,2025,74.72
+44700,"Stockton-Lodi, CA",23.55,2025-05,1815,1299,1667,2025,,,77.07,,gas,home_value;rent;wage,544000,2486,2025,105.56
+44940,"Sumter, SC",20.62,2025-05,1155,732,946,2025,,,56.01,,gas,home_value;rent;wage,190600,1295,2025,62.8
+45060,"Syracuse, NY",25.48,2025-05,1186,967,1221,2025,,,46.55,,gas,home_value;rent;wage,231900,1714,2025,67.27
+45220,"Tallahassee, FL",22.37,2025-05,1289,1145,1367,2025,,,57.62,,gas,home_value;rent;wage,313500,1839,2025,82.21
+45300,"Tampa-St. Petersburg-Clearwater, FL",23.53,2025-05,1875,1620,1861,2025,,,79.69,,gas,home_value;rent;wage,382900,2218,2025,94.26
+45460,"Terre Haute, IN",21.57,2025-05,877,740,901,2025,,,40.66,,gas,home_value;rent;wage,162400,1248,2025,57.86
+45500,"Texarkana, TX-AR",20.77,2025-05,1002,884,1006,2025,,,48.24,,gas,home_value;rent;wage,203500,1424,2025,68.56
+45780,"Toledo, OH",23.18,2025-05,1040,814,1094,2025,,,44.87,,gas,home_value;rent;wage,208500,1542,2025,66.52
+45820,"Topeka, KS",23.82,2025-05,981,819,983,2025,,,41.18,,gas,home_value;rent;wage,216000,1691,2025,70.99
+45900,"Traverse City, MI",22.82,2025-05,1241,1077,1369,2025,,,54.38,,gas,home_value;rent;wage,398700,1733,2025,75.94
+45940,"Trenton-Princeton, NJ",30.52,2025-05,1732,1492,1804,2025,,,56.75,,gas,home_value;rent;wage,471400,2775,2025,90.92
+46060,"Tucson, AZ",22.96,2025-05,1320,1090,1377,2025,,,57.49,,gas,home_value;rent;wage,352300,1816,2025,79.09
+46140,"Tulsa, OK",22.44,2025-05,1163,945,1187,2025,,,51.83,,gas,home_value;rent;wage,260700,1774,2025,79.06
+46220,"Tuscaloosa, AL",21.74,2025-05,1124,744,1207,2025,,,51.7,,gas,home_value;rent;wage,247300,1598,2025,73.51
+46300,"Twin Falls, ID",21.83,2025-05,1150,962,1168,2025,,,52.68,,gas,home_value;rent;wage,362500,1535,2025,70.32
+46340,"Tyler, TX",20.51,2025-05,1443,1118,1382,2025,,,70.36,,gas,home_value;rent;wage,288000,1829,2025,89.18
+46520,"Urban Honolulu, HI",27.51,2025-05,2132,1693,2134,2025,,,77.5,,gas,home_value;rent;wage,949900,3237,2025,117.67
+46540,"Utica-Rome, NY",23.55,2025-05,995,744,1059,2025,,,42.25,,gas,home_value;rent;wage,197200,1563,2025,66.37
+46660,"Valdosta, GA",18.8,2025-05,1061,806,1104,2025,,,56.44,,gas,home_value;rent;wage,222400,1527,2025,81.22
+46700,"Vallejo, CA",28.18,2025-05,2155,1692,2085,2025,,,76.47,,gas,home_value;rent;wage,620900,2960,2025,105.04
+47020,"Victoria, TX",20.7,2025-05,1130,1134,1114,2025,,,54.59,,gas,home_value;rent;wage,224600,1902,2025,91.88
+47220,"Vineland, NJ",23.17,2025-05,1417,1289,1393,2025,,,61.16,,gas,home_value;rent;wage,253600,1837,2025,79.28
+47260,"Virginia Beach-Chesapeake-Norfolk, VA-NC",23.76,2025-05,1643,1389,1567,2025,,,69.15,,gas,home_value;rent;wage,374200,2123,2025,89.35
+47300,"Visalia, CA",21.7,2025-05,1314,788,1231,2025,,,60.55,,gas,home_value;rent;wage,369200,1865,2025,85.94
+47380,"Waco, TX",22.13,2025-05,1303,1042,1307,2025,,,58.88,,gas,home_value;rent;wage,267000,1901,2025,85.9
+47460,"Walla Walla, WA",25.53,2025-05,1662,1299,1549,2025,,,65.1,,gas,home_value;rent;wage,418100,2095,2025,82.06
+47580,"Warner Robins, GA",23.37,2025-05,1350,1303,1270,2025,,,57.77,,gas,home_value;rent;wage,254000,1579,2025,67.57
+47900,"Washington-Arlington-Alexandria, DC-VA-MD-WV",34.16,2025-05,2168,1970,2226,2025,,,63.47,,gas,home_value;rent;wage,612500,2978,2025,87.18
+47930,"Waterbury-Shelton, CT",24.73,2025-05,1514,1281,1581,2025,,,61.22,,gas,home_value;rent;wage,364100,2344,2025,94.78
+47940,"Waterloo-Cedar Falls, IA",22.8,2025-05,997,749,1037,2025,,,43.73,,gas,home_value;rent;wage,217600,1597,2025,70.04
+48060,"Watertown-Fort Drum, NY",22.89,2025-05,1300,721,1286,2025,,,56.79,,gas,home_value;rent;wage,212100,1642,2025,71.73
+48140,"Wausau, WI",23.46,2025-05,1102,957,1146,2025,,,46.97,,gas,home_value;rent;wage,244300,1510,2025,64.36
+48260,"Weirton-Steubenville, WV-OH",22.04,2025-05,856,594,860,2025,,,38.84,,gas,home_value;rent;wage,162900,1262,2025,57.26
+48300,"Wenatchee-East Wenatchee, WA",23.7,2025-05,1401,1180,1414,2025,,,59.11,,gas,home_value;rent;wage,533400,2096,2025,88.44
+48540,"Wheeling, WV-OH",21.28,2025-05,799,662,808,2025,,,37.55,,gas,home_value;rent;wage,161200,1303,2025,61.23
+48620,"Wichita, KS",22.9,2025-05,1065,898,1054,2025,,,46.51,,gas,home_value;rent;wage,229100,1676,2025,73.19
+48660,"Wichita Falls, TX",20.77,2025-05,1144,841,1080,2025,,,55.08,,gas,home_value;rent;wage,184600,1833,2025,88.25
+48680,"Wildwood-The Villages, FL",22.04,2025-05,1427,1385,1412,2025,,,64.75,,gas,home_value;rent;wage,417200,1963,2025,89.07
+48700,"Williamsport, PA",22.14,2025-05,924,767,925,2025,,,41.73,,gas,home_value;rent;wage,220500,1577,2025,71.23
+48900,"Wilmington, NC",22.02,2025-05,1625,1484,1658,2025,,,73.8,,gas,home_value;rent;wage,416600,2056,2025,93.37
+49020,"Winchester, VA-WV",22.63,2025-05,1492,1036,1515,2025,,,65.93,,gas,home_value;rent;wage,401900,2008,2025,88.73
+49180,"Winston-Salem, NC",22.3,2025-05,1180,994,1117,2025,,,52.91,,gas,home_value;rent;wage,279000,1508,2025,67.62
+49340,"Worcester, MA",27.8,2025-05,1661,1294,1757,2025,,,59.75,,gas,home_value;rent;wage,489600,2445,2025,87.95
+49420,"Yakima, WA",22.99,2025-05,1140,885,1190,2025,,,49.59,,gas,home_value;rent;wage,351700,1842,2025,80.12
+49620,"York-Hanover, PA",23.16,2025-05,1351,1138,1358,2025,,,58.33,,gas,home_value;rent;wage,289500,1901,2025,82.08
+49660,"Youngstown-Warren, OH",21.06,2025-05,885,751,918,2025,,,42.02,,gas,home_value;rent;wage,176600,1286,2025,61.06
+49700,"Yuba City, CA",24.03,2025-05,1563,1206,1553,2025,,,65.04,,gas,home_value;rent;wage,441100,2266,2025,94.3
+49740,"Yuma, AZ",21.23,2025-05,1121,825,1258,2025,,,52.8,,gas,home_value;rent;wage,260900,1812,2025,85.35
