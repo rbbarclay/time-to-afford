@@ -70,3 +70,59 @@ export function formatMoney(value, { cents = false } = {}) {
 export function formatGasPrice(value) {
   return value == null ? "—" : `$${value.toFixed(3)}`;
 }
+
+// ---------- Mortgage scenario (tier "scenario") ----------
+// Plan: docs/plans/groceries-and-mortgage.md, section 5B. Monthly principal and
+// interest only: property taxes and homeowner's insurance are excluded in v1.
+// Inputs the user edits (down payment, term) stay in this page's memory only.
+
+export const MORTGAGE_DEFAULTS = Object.freeze({
+  downPayment: 0.20, // share of home value; an average assumption, editable
+  termYears: 30,
+});
+
+/**
+ * Standard amortization: monthly payment on `principal` at `annualRate`
+ * (e.g. 0.0718 for 7.18%) over `termYears`. Returns null for invalid inputs.
+ */
+export function monthlyPayment(principal, annualRate, termYears) {
+  if (![principal, annualRate, termYears].every(Number.isFinite)) return null;
+  if (principal < 0 || annualRate < 0 || annualRate >= 1 || termYears <= 0) return null;
+  const n = Math.round(termYears * 12);
+  if (n < 1) return null;
+  const i = annualRate / 12;
+  if (i === 0) return principal / n;
+  return (principal * i) / (1 - Math.pow(1 + i, -n));
+}
+
+/**
+ * Scenario payment for a metro's median home value.
+ * homeValue: observed ACS median value (a {value, status, ...} field or a number).
+ * rate: {value: annual rate as a fraction, as_of} from the rate source, or null if unavailable.
+ * Returns null when any input is unavailable, so nothing is shown rather than guessed.
+ */
+export function mortgageScenario(homeValue, rate, {
+  downPayment = MORTGAGE_DEFAULTS.downPayment,
+  termYears = MORTGAGE_DEFAULTS.termYears,
+} = {}) {
+  const value = typeof homeValue === "number" ? homeValue : ok(homeValue);
+  const annualRate = rate && Number.isFinite(rate.value) ? rate.value : null;
+  if (value == null || annualRate == null) return null;
+  if (!Number.isFinite(downPayment) || downPayment < 0 || downPayment >= 1) return null;
+  const loan = value * (1 - downPayment);
+  const payment = monthlyPayment(loan, annualRate, termYears);
+  if (payment == null) return null;
+  return {
+    tier: "scenario",
+    value: payment,
+    loan,
+    assumptions: {
+      home_value: value,
+      down_payment: downPayment,
+      term_years: termYears,
+      annual_rate: annualRate,
+      rate_as_of: rate.as_of ?? null,
+    },
+    excludes: ["property taxes", "homeowner's insurance"],
+  };
+}

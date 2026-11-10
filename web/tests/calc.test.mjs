@@ -87,3 +87,56 @@ test("formatters", () => {
   assert.equal(formatGasPrice(5.553), "$5.553");
   assert.equal(formatGasPrice(null), "—");
 });
+
+// ---------- mortgage scenario ----------
+import { monthlyPayment, mortgageScenario, MORTGAGE_DEFAULTS } from "../calc.js";
+
+const cents = (x) => Math.round(x * 100) / 100;
+
+test("monthlyPayment matches known amortization examples", () => {
+  assert.equal(cents(monthlyPayment(200000, 0.06, 30)), 1199.10); // textbook example
+  assert.equal(cents(monthlyPayment(100000, 0.05, 30)), 536.82);
+  assert.equal(cents(monthlyPayment(300000, 0.04, 15)), 2219.06);
+});
+
+test("monthlyPayment: zero rate and invalid inputs", () => {
+  assert.equal(cents(monthlyPayment(240000, 0, 30)), 666.67);
+  assert.equal(monthlyPayment(0, 0.06, 30), 0);
+  for (const args of [[-1, 0.06, 30], [100000, -0.01, 30], [100000, 1, 30], [100000, 0.06, 0],
+                      [NaN, 0.06, 30], [100000, null, 30], [100000, 0.06, undefined]]) {
+    assert.equal(monthlyPayment(...args), null, JSON.stringify(args));
+  }
+});
+
+test("mortgageScenario defaults: 20% down, 30 years, labeled scenario", () => {
+  assert.deepEqual({ ...MORTGAGE_DEFAULTS }, { downPayment: 0.2, termYears: 30 });
+  const s = mortgageScenario({ value: 250000, status: "ok" }, { value: 0.06, as_of: "2026-11-05" });
+  assert.equal(s.tier, "scenario");
+  assert.equal(s.loan, 200000);
+  assert.equal(cents(s.value), 1199.10);
+  assert.deepEqual(s.assumptions, { home_value: 250000, down_payment: 0.2, term_years: 30,
+                                    annual_rate: 0.06, rate_as_of: "2026-11-05" });
+  assert.deepEqual(s.excludes, ["property taxes", "homeowner's insurance"]);
+});
+
+test("mortgageScenario with user-edited down payment and term", () => {
+  const s = mortgageScenario(375000, { value: 0.04 }, { downPayment: 0.2, termYears: 15 });
+  assert.equal(cents(s.value), 2219.06);
+  assert.equal(s.assumptions.rate_as_of, null);
+  const zeroDown = mortgageScenario(200000, { value: 0.06 }, { downPayment: 0 });
+  assert.equal(cents(zeroDown.value), 1199.10);
+});
+
+test("mortgageScenario returns null rather than guessing", () => {
+  assert.equal(mortgageScenario({ value: null, status: "top_coded" }, { value: 0.06 }), null);
+  assert.equal(mortgageScenario(250000, null), null); // no rate source available
+  assert.equal(mortgageScenario(250000, { value: null }), null);
+  assert.equal(mortgageScenario(250000, { value: 0.06 }, { downPayment: 1 }), null);
+  assert.equal(mortgageScenario(250000, { value: 0.06 }, { downPayment: -0.1 }), null);
+  assert.equal(mortgageScenario(250000, { value: 0.06 }, { termYears: 0 }), null);
+});
+
+test("scenario payment converts to hours like rent", () => {
+  const s = mortgageScenario(250000, { value: 0.06 });
+  assert.equal(cents(hoursFor(s.value, 29.53)), cents(1199.10 / 29.53));
+});
