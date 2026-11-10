@@ -45,15 +45,17 @@ def test_parse_value(raw, expected):
 def test_extract_keeps_only_msa_all_occupations():
     metros = wages.extract_metros(sample_df())
     assert list(metros) == ["10180", "12060", "35620"]  # nonmetro (type 6) and 11-1011 dropped
-    assert metros["12060"]["hourly_median"] == {"value": 24.5, "status": "ok"}
-    assert metros["35620"]["employment"] == {"value": 9_500_000.0, "status": "ok"}
+    assert metros["12060"]["hourly_median"] == {"value": 24.5, "status": "ok",
+                                                "tier": "observed", "method": "oews_hourly_median"}
+    assert metros["35620"]["employment"]["value"] == 9_500_000.0
+    assert metros["35620"]["employment"]["method"] == "oews_employment"
 
 
 def test_missing_values_are_not_imputed():
     m = wages.extract_metros(sample_df())["10180"]
-    assert m["hourly_median"] == {"value": None, "status": "missing"}
-    assert m["hourly_mean"] == {"value": None, "status": "missing"}
-    assert m["employment"] == {"value": None, "status": "missing"}
+    for f in ("hourly_median", "hourly_mean", "employment"):
+        assert m[f]["value"] is None and m[f]["status"] == "missing"
+        assert m[f]["tier"] == "observed"  # the source reported it missing
 
 
 def test_accepts_legacy_occ_code_column_and_lowercase():
@@ -90,3 +92,16 @@ def test_download_requires_contact(monkeypatch):
     monkeypatch.delenv("BLS_CONTACT", raising=False)
     with pytest.raises(SystemExit):
         wages.main([])
+
+
+def test_methods_table_describes_every_field():
+    import tiers
+    out = wages.build_output(wages.extract_metros(sample_df()), 2025, dt.date(2026, 11, 8), "http://x/oesm25ma.zip")
+    assert tiers.check_methods("wages", out["methods"]) == []
+    m = out["methods"]["oews_hourly_median"]
+    assert m["as_of"] == "2025-05"
+    assert m["inputs"][0] == {"source": "bls_oews", "url": "http://x/oesm25ma.zip", "table": "MSA_M2025_dl.xlsx",
+                              "occupation": "00-0000", "field": "H_MEDIAN"}
+    for metro in out["metros"].values():
+        for f in ("hourly_median", "hourly_mean", "employment"):
+            assert tiers.check_value(f, metro[f], out["methods"]) == []

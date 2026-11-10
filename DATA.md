@@ -2,6 +2,8 @@
 
 Only public or clearly licensed sources are used. Every value carries an as-of date. Missing data is shown as missing. Estimates are allowed only when labeled: each estimated or scenario value carries a tier (`observed`, `estimated`, `scenario`), a method string, and an as-of date (see [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md)).
 
+In the data files, each value carries `tier` and a `method` key; the file's `methods` table records each method's description, inputs (URL, table or series, column) and as-of date.
+
 Each entry follows the checklist in section 10.8 of that plan. **"Checked"** means the URL, table or series ID, and terms were confirmed on the publisher's own site on the date shown. Anything that couldn't be confirmed is marked **UNVERIFIED** or **UNRESOLVED**.
 
 ## In use (v1)

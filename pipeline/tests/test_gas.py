@@ -43,7 +43,8 @@ def test_latest_month_selected():
     month, metros = gas.extract_latest(grid)
     assert month == dt.date(2026, 10, 1)
     assert len(metros) == 10
-    assert metros["14460"]["price_per_gallon"] == {"value": 4.1, "status": "ok"}
+    assert metros["14460"]["price_per_gallon"] == {"value": 4.1, "status": "ok",
+                                                   "tier": "observed", "method": "eia_gas_14460"}
     assert metros["42660"]["price_per_gallon"]["value"] == 5.0
     assert metros["17410"]["eia_area"] == "Cleveland, OH"
 
@@ -53,7 +54,9 @@ def test_missing_city_value_not_backfilled():
     vals[2] = None  # Cleveland missing in latest month
     grid = make_grid([(dt.datetime(2026, 9, 15), [4.0] * 10), (dt.datetime(2026, 10, 15), vals)])
     _, metros = gas.extract_latest(grid)
-    assert metros["17410"]["price_per_gallon"] == {"value": None, "status": "missing"}
+    assert metros["17410"]["price_per_gallon"]["value"] is None
+    assert metros["17410"]["price_per_gallon"]["status"] == "missing"
+    assert metros["17410"]["price_per_gallon"]["method"] == "eia_gas_17410"
 
 
 def test_trailing_empty_rows_ignored():
@@ -87,3 +90,13 @@ def test_find_cities_sheet_and_main(tmp_path):
     assert data["as_of"] == "2026-10"
     assert data["reference_period"] == "October 2026 (monthly average)"
     assert data["metros"]["35620"]["price_per_gallon"]["value"] == 4.1
+
+
+def test_methods_table_one_per_city():
+    import tiers
+    out = gas.build_output({}, dt.date(2026, 10, 1), dt.date(2026, 11, 8))
+    assert len(out["methods"]) == 10
+    assert tiers.check_methods("gas", out["methods"]) == []
+    m = out["methods"]["eia_gas_35620"]
+    assert m["as_of"] == "2026-10"
+    assert m["inputs"][0]["series"] == "EMM_EPMR_PTE_Y35NY_DPG" and m["inputs"][0]["sheet"] == "Cities"

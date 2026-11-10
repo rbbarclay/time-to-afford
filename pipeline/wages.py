@@ -28,6 +28,8 @@ from pathlib import Path
 import certifi
 import pandas as pd
 
+from tiers import method_entry, tag
+
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw"
 OUT_PATH = ROOT / "data" / "wages.json"
@@ -38,6 +40,13 @@ SOURCE_PAGE = "https://www.bls.gov/oes/tables.htm"
 ALL_OCCUPATIONS = "00-0000"
 AREA_TYPE_MSA = 4  # OEWS area type 4 = metropolitan statistical area
 FIELDS = {"H_MEDIAN": "hourly_median", "H_MEAN": "hourly_mean", "TOT_EMP": "employment"}
+# output field -> (method key, description)
+METHODS = {
+    "hourly_median": ("oews_hourly_median", "BLS OEWS median hourly wage, all occupations, for the metro"),
+    "hourly_mean": ("oews_hourly_mean", "BLS OEWS mean hourly wage, all occupations, for the metro"),
+    "employment": ("oews_employment", "BLS OEWS total employment, all occupations, for the metro"),
+}
+SOURCE_FIELD = {dst: src for src, dst in FIELDS.items()}
 
 
 # ---------- parsing ----------
@@ -77,7 +86,7 @@ def extract_metros(df: pd.DataFrame) -> dict:
         code = str(row["AREA"]).strip().split(".")[0].zfill(5)
         entry = {"name": str(row["AREA_TITLE"]).strip()}
         for src, dst in FIELDS.items():
-            entry[dst] = parse_value(row[src])
+            entry[dst] = tag(parse_value(row[src]), "observed", METHODS[dst][0])
         metros[code] = entry
     return dict(sorted(metros.items()))
 
@@ -101,6 +110,14 @@ def year_from_name(path: Path) -> int:
     return y + 2000 if y < 100 else y
 
 
+def build_methods(year: int, source_url: str) -> dict:
+    return {
+        key: method_entry(desc, [{"source": "bls_oews", "url": source_url, "table": f"MSA_M{year}_dl.xlsx",
+                                  "occupation": ALL_OCCUPATIONS, "field": SOURCE_FIELD[field]}], f"{year}-05")
+        for field, (key, desc) in METHODS.items()
+    }
+
+
 def build_output(metros: dict, year: int, retrieved: dt.date, source_url: str) -> dict:
     return {
         "source": "U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics (OEWS)",
@@ -110,6 +127,7 @@ def build_output(metros: dict, year: int, retrieved: dt.date, source_url: str) -
         "retrieved": retrieved.isoformat(),
         "basis": "Pre-tax hourly wage, all occupations, metropolitan statistical areas",
         "attribution": "Source: U.S. Bureau of Labor Statistics, OEWS",
+        "methods": build_methods(year, source_url),
         "metros": metros,
     }
 
@@ -166,7 +184,9 @@ def main(argv=None) -> int:
 
     year = year_from_name(path)
     metros = extract_metros(read_oews(path))
-    out = build_output(metros, year, today, URL_TEMPLATE.format(yy=f"{year % 100:02d}"))
+    # A local file keeps the date it was downloaded, not today's date.
+    retrieved = dt.date.fromtimestamp(path.stat().st_mtime) if args.file else today
+    out = build_output(metros, year, retrieved, URL_TEMPLATE.format(yy=f"{year % 100:02d}"))
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(out, indent=2) + "\n")
 

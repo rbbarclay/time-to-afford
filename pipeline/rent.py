@@ -27,6 +27,8 @@ from pathlib import Path
 
 import certifi
 
+from tiers import method_entry, tag
+
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw" / "acs"
 OUT_PATH = ROOT / "data" / "rent.json"
@@ -46,6 +48,7 @@ MEASURES = {
     "two_bedroom": ("B25031_E004", "B25031_M004", "2 bedrooms"),
 }
 DEFAULT_MEASURE = "all_units"
+METHOD_KEYS = {"all_units": "acs_rent_all_units", "one_bedroom": "acs_rent_1br", "two_bedroom": "acs_rent_2br"}
 
 
 # ---------- parsing ----------
@@ -106,9 +109,20 @@ def extract_metros(data_rows: list[dict], names: dict) -> dict:
             continue
         entry = {"name": names[code]}
         for key, (est, moe, _) in MEASURES.items():
-            entry[key] = parse_estimate(r.get(est), r.get(moe))
+            entry[key] = tag(parse_estimate(r.get(est), r.get(moe)), "observed", METHOD_KEYS[key])
         metros[code] = entry
     return dict(sorted(metros.items()))
+
+
+def build_methods(year: int) -> dict:
+    return {
+        METHOD_KEYS[key]: method_entry(
+            f"Census ACS 1-year median monthly gross rent (rent plus utilities), {label.lower()}, for the metro",
+            [{"source": "census_acs", "url": DATA_URL.format(y=year), "table": "B25031",
+              "estimate": est, "margin_of_error": moe}],
+            str(year))
+        for key, (est, moe, label) in MEASURES.items()
+    }
 
 
 def build_output(metros: dict, year: int, retrieved: dt.date) -> dict:
@@ -122,6 +136,7 @@ def build_output(metros: dict, year: int, retrieved: dt.date) -> dict:
         "attribution": "Source: U.S. Census Bureau, American Community Survey",
         "measures": {k: label for k, (_, _, label) in MEASURES.items()},
         "default_measure": DEFAULT_MEASURE,
+        "methods": build_methods(year),
         "metros": metros,
     }
 
@@ -181,7 +196,9 @@ def main(argv=None) -> int:
     names = metro_names(read_pipe(read_text_lines(geos_path)))
     metros = extract_metros(read_pipe(read_text_lines(data_path)), names)
 
-    out = build_output(metros, year, today)
+    # A local file keeps the date it was downloaded, not today's date.
+    retrieved = dt.date.fromtimestamp(data_path.stat().st_mtime) if args.file else today
+    out = build_output(metros, year, retrieved)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(out, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 

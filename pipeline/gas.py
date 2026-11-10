@@ -25,6 +25,8 @@ from pathlib import Path
 import certifi
 import pandas as pd
 
+from tiers import method_entry, tag
+
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw" / "eia"
 OUT_PATH = ROOT / "data" / "gas.json"
@@ -89,11 +91,27 @@ def extract_latest(grid: pd.DataFrame) -> tuple[dt.date, dict]:
     metros = {}
     for col, code in known.items():
         cbsa, label = SERIES_TO_CBSA[code]
-        metros[cbsa] = {"eia_area": label, "eia_series": code, "price_per_gallon": parse_value(row[col])}
+        metros[cbsa] = {"eia_area": label, "eia_series": code,
+                        "price_per_gallon": tag(parse_value(row[col]), "observed", method_key(cbsa))}
     for code, (cbsa, label) in SERIES_TO_CBSA.items():  # series dropped from the file -> missing
         metros.setdefault(cbsa, {"eia_area": label, "eia_series": code,
-                                 "price_per_gallon": {"value": None, "status": "missing"}})
+                                 "price_per_gallon": tag({"value": None, "status": "missing"},
+                                                         "observed", method_key(cbsa))})
     return month, dict(sorted(metros.items()))
+
+
+def method_key(cbsa: str) -> str:
+    return f"eia_gas_{cbsa}"
+
+
+def build_methods(month: dt.date) -> dict:
+    return {
+        method_key(cbsa): method_entry(
+            f"EIA monthly average retail price of regular gasoline for {label} (EIA city area mapped to this metro)",
+            [{"source": "eia", "url": URL, "sheet": "Cities", "series": code}],
+            month.strftime("%Y-%m"))
+        for code, (cbsa, label) in SERIES_TO_CBSA.items()
+    }
 
 
 def build_output(metros: dict, month: dt.date, retrieved: dt.date) -> dict:
@@ -107,6 +125,7 @@ def build_output(metros: dict, month: dt.date, retrieved: dt.date) -> dict:
         "coverage_note": "EIA publishes city prices for only 10 areas; EIA's city sampling areas may not match "
                          "metro (CBSA) boundaries exactly. All other metros have no gas data.",
         "attribution": "Source: U.S. Energy Information Administration",
+        "methods": build_methods(month),
         "metros": metros,
     }
 
@@ -135,7 +154,9 @@ def main(argv=None) -> int:
 
     path = args.file or download()
     month, metros = extract_latest(find_cities_sheet(path))
-    out = build_output(metros, month, dt.date.today())
+    # A local file keeps the date it was downloaded, not today's date.
+    retrieved = dt.date.fromtimestamp(path.stat().st_mtime) if args.file else dt.date.today()
+    out = build_output(metros, month, retrieved)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")
 

@@ -7,13 +7,137 @@
   "basis": "Retail price of regular gasoline (all formulations), dollars per gallon, including taxes",
   "coverage_note": "EIA publishes city prices for only 10 areas; EIA's city sampling areas may not match metro (CBSA) boundaries exactly. All other metros have no gas data.",
   "attribution": "Source: U.S. Energy Information Administration",
+  "methods": {
+    "eia_gas_14460": {
+      "description": "EIA monthly average retail price of regular gasoline for Boston, MA (EIA city area mapped to this metro)",
+      "inputs": [
+        {
+          "source": "eia",
+          "url": "https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls",
+          "sheet": "Cities",
+          "series": "EMM_EPMR_PTE_YBOS_DPG"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "eia_gas_16980": {
+      "description": "EIA monthly average retail price of regular gasoline for Chicago (EIA city area mapped to this metro)",
+      "inputs": [
+        {
+          "source": "eia",
+          "url": "https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls",
+          "sheet": "Cities",
+          "series": "EMM_EPMR_PTE_YORD_DPG"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "eia_gas_17410": {
+      "description": "EIA monthly average retail price of regular gasoline for Cleveland, OH (EIA city area mapped to this metro)",
+      "inputs": [
+        {
+          "source": "eia",
+          "url": "https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls",
+          "sheet": "Cities",
+          "series": "EMM_EPMR_PTE_YCLE_DPG"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "eia_gas_19740": {
+      "description": "EIA monthly average retail price of regular gasoline for Denver (EIA city area mapped to this metro)",
+      "inputs": [
+        {
+          "source": "eia",
+          "url": "https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls",
+          "sheet": "Cities",
+          "series": "EMM_EPMR_PTE_YDEN_DPG"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "eia_gas_26420": {
+      "description": "EIA monthly average retail price of regular gasoline for Houston (EIA city area mapped to this metro)",
+      "inputs": [
+        {
+          "source": "eia",
+          "url": "https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls",
+          "sheet": "Cities",
+          "series": "EMM_EPMR_PTE_Y44HO_DPG"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "eia_gas_31080": {
+      "description": "EIA monthly average retail price of regular gasoline for Los Angeles (EIA city area mapped to this metro)",
+      "inputs": [
+        {
+          "source": "eia",
+          "url": "https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls",
+          "sheet": "Cities",
+          "series": "EMM_EPMR_PTE_Y05LA_DPG"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "eia_gas_33100": {
+      "description": "EIA monthly average retail price of regular gasoline for Miami, FL (EIA city area mapped to this metro)",
+      "inputs": [
+        {
+          "source": "eia",
+          "url": "https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls",
+          "sheet": "Cities",
+          "series": "EMM_EPMR_PTE_YMIA_DPG"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "eia_gas_35620": {
+      "description": "EIA monthly average retail price of regular gasoline for New York City (EIA city area mapped to this metro)",
+      "inputs": [
+        {
+          "source": "eia",
+          "url": "https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls",
+          "sheet": "Cities",
+          "series": "EMM_EPMR_PTE_Y35NY_DPG"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "eia_gas_41860": {
+      "description": "EIA monthly average retail price of regular gasoline for San Francisco (EIA city area mapped to this metro)",
+      "inputs": [
+        {
+          "source": "eia",
+          "url": "https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls",
+          "sheet": "Cities",
+          "series": "EMM_EPMR_PTE_Y05SF_DPG"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "eia_gas_42660": {
+      "description": "EIA monthly average retail price of regular gasoline for Seattle, WA (EIA city area mapped to this metro)",
+      "inputs": [
+        {
+          "source": "eia",
+          "url": "https://www.eia.gov/dnav/pet/xls/PET_PRI_GND_A_EPMR_PTE_DPGAL_M.xls",
+          "sheet": "Cities",
+          "series": "EMM_EPMR_PTE_Y48SE_DPG"
+        }
+      ],
+      "as_of": "2026-10"
+    }
+  },
   "metros": {
     "14460": {
       "eia_area": "Boston, MA",
       "eia_series": "EMM_EPMR_PTE_YBOS_DPG",
       "price_per_gallon": {
         "value": 4.266,
-        "status": "ok"
+        "status": "ok",
+        "tier": "observed",
+        "method": "eia_gas_14460"
       }
     },
     "16980": {
@@ -21,7 +145,9 @@
       "eia_series": "EMM_EPMR_PTE_YORD_DPG",
       "price_per_gallon": {
         "value": 4.733,
-        "status": "ok"
+        "status": "ok",
+        "tier": "observed",
+        "method": "eia_gas_16980"
       }
     },
     "17410": {
@@ -29,7 +155,9 @@
       "eia_series": "EMM_EPMR_PTE_YCLE_DPG",
       "price_per_gallon": {
         "value": 4.029,
-        "status": "ok"
+        "status": "ok",
+        "tier": "observed",
+        "method": "eia_gas_17410"
       }
     },
     "19740": {
@@ -37,7 +165,9 @@
       "eia_series": "EMM_EPMR_PTE_YDEN_DPG",
       "price_per_gallon": {
         "value": 4.196,
-        "status": "ok"
+        "status": "ok",
+        "tier": "observed",
+        "method": "eia_gas_19740"
       }
     },
     "26420": {
@@ -45,7 +175,9 @@
       "eia_series": "EMM_EPMR_PTE_Y44HO_DPG",
       "price_per_gallon": {
         "value": 3.747,
-        "status": "ok"
+        "status": "ok",
+        "tier": "observed",
+        "method": "eia_gas_26420"
       }
     },
     "31080": {
@@ -53,7 +185,9 @@
       "eia_series": "EMM_EPMR_PTE_Y05LA_DPG",
       "price_per_gallon": {
         "value": 6.049,
-        "status": "ok"
+        "status": "ok",
+        "tier": "observed",
+        "method": "eia_gas_31080"
       }
     },
     "33100": {
@@ -61,7 +195,9 @@
       "eia_series": "EMM_EPMR_PTE_YMIA_DPG",
       "price_per_gallon": {
         "value": 4.076,
-        "status": "ok"
+        "status": "ok",
+        "tier": "observed",
+        "method": "eia_gas_33100"
       }
     },
     "35620": {
@@ -69,7 +205,9 @@
       "eia_series": "EMM_EPMR_PTE_Y35NY_DPG",
       "price_per_gallon": {
         "value": 4.27,
-        "status": "ok"
+        "status": "ok",
+        "tier": "observed",
+        "method": "eia_gas_35620"
       }
     },
     "41860": {
@@ -77,7 +215,9 @@
       "eia_series": "EMM_EPMR_PTE_Y05SF_DPG",
       "price_per_gallon": {
         "value": 6.079,
-        "status": "ok"
+        "status": "ok",
+        "tier": "observed",
+        "method": "eia_gas_41860"
       }
     },
     "42660": {
@@ -85,7 +225,9 @@
       "eia_series": "EMM_EPMR_PTE_Y48SE_DPG",
       "price_per_gallon": {
         "value": 5.553,
-        "status": "ok"
+        "status": "ok",
+        "tier": "observed",
+        "method": "eia_gas_42660"
       }
     }
   }

@@ -47,7 +47,8 @@ def test_extract_metros():
     metros = rent.extract_metros(rent.read_pipe(DATA), names)
     assert list(metros) == ["10180", "35620"]  # micro, national, and principal-city rows dropped
     ny = metros["35620"]
-    assert ny["all_units"] == {"value": 1932, "moe": 15, "status": "ok"}
+    assert ny["all_units"] == {"value": 1932, "moe": 15, "status": "ok",
+                               "tier": "observed", "method": "acs_rent_all_units"}
     assert ny["one_bedroom"]["value"] == 1774
     assert ny["two_bedroom"]["value"] == 1997
 
@@ -55,8 +56,9 @@ def test_extract_metros():
 def test_missing_and_top_coded_not_imputed():
     names = rent.metro_names(rent.read_pipe(GEOS))
     ab = rent.extract_metros(rent.read_pipe(DATA), names)["10180"]
-    assert ab["one_bedroom"] == {"value": None, "moe": None, "status": "top_coded"}
-    assert ab["two_bedroom"] == {"value": 1300, "moe": 40, "status": "ok"}
+    assert ab["one_bedroom"] == {"value": None, "moe": None, "status": "top_coded",
+                                 "tier": "observed", "method": "acs_rent_1br"}
+    assert ab["two_bedroom"]["value"] == 1300 and ab["two_bedroom"]["moe"] == 40
 
 
 def test_missing_columns_raise():
@@ -93,3 +95,13 @@ def test_utf8_names_decoded(tmp_path):
     g.write_bytes("GEO_ID|NAME\n310M700US41980|San Juan-Bayam\u00f3n-Caguas, PR Metro Area\n".encode("utf-8"))
     names = rent.metro_names(rent.read_pipe(rent.read_text_lines(g)))
     assert names["41980"] == "San Juan-Bayam\u00f3n-Caguas, PR"
+
+
+def test_methods_table():
+    import tiers
+    out = rent.build_output({}, 2025, dt.date(2026, 11, 8))
+    assert set(out["methods"]) == {"acs_rent_all_units", "acs_rent_1br", "acs_rent_2br"}
+    assert tiers.check_methods("rent", out["methods"]) == []
+    inp = out["methods"]["acs_rent_1br"]["inputs"][0]
+    assert inp["table"] == "B25031" and inp["estimate"] == "B25031_E003" and inp["margin_of_error"] == "B25031_M003"
+    assert out["methods"]["acs_rent_1br"]["as_of"] == "2025"

@@ -1,7 +1,9 @@
 """Validate data/wages.json, data/rent.json, data/gas.json across all metros.
 
 Checks
-  1. structure    every value is {value, status}; null iff status != "ok"; files carry as_of
+  1. structure    every value is {value, status, tier, method}; null iff status != "ok";
+                  every method key is defined in the file's methods table, and every
+                  method has a description, inputs, and as_of; files carry as_of
   2. alignment    rent metros == wage metros; gas metros are a subset of wage metros
   3. ranges       plausible bounds (out-of-range is a WARNING for human review, never changed)
   4. references   values match independently published figures, stored in
@@ -34,6 +36,8 @@ import urllib.request
 from pathlib import Path
 
 import certifi
+
+import tiers
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -68,6 +72,8 @@ def check_structure(label: str, doc: dict, fields: list[str]) -> list[str]:
     errors = []
     if not doc.get("as_of"):
         errors.append(f"{label}: missing as_of")
+    methods = doc.get("methods") or {}
+    errors += tiers.check_methods(label, doc.get("methods"))
     for code, m in doc.get("metros", {}).items():
         if not re.fullmatch(r"\d{5}", code):
             errors.append(f"{label} {code}: code is not a 5-digit CBSA")
@@ -75,8 +81,10 @@ def check_structure(label: str, doc: dict, fields: list[str]) -> list[str]:
             v = m.get(f)
             if not isinstance(v, dict) or "status" not in v or "value" not in v:
                 errors.append(f"{label} {code}.{f}: not a {{value, status}} object")
-            elif (v["value"] is None) != (v["status"] != "ok"):
-                errors.append(f"{label} {code}.{f}: value/status mismatch {v}")
+            else:
+                if (v["value"] is None) != (v["status"] != "ok"):
+                    errors.append(f"{label} {code}.{f}: value/status mismatch {v}")
+                errors += tiers.check_value(f"{label} {code}.{f}", v, methods)
     return errors
 
 

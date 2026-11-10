@@ -1,23 +1,24 @@
 import validate as v
 
 
-def ok(x):
-    return {"value": x, "status": "ok"}
+def ok(x, method="m"):
+    return {"value": x, "status": "ok", "tier": "observed", "method": method}
 
 
-MISSING = {"value": None, "status": "missing"}
+MISSING = {"value": None, "status": "missing", "tier": "observed", "method": "m"}
+METHODS = {"m": {"description": "test method", "inputs": [{"source": "test"}], "as_of": "2025"}}
 
 
 def sample():
-    wages = {"as_of": "2025-05", "metros": {
+    wages = {"as_of": "2025-05", "methods": METHODS, "metros": {
         "35620": {"name": "New York", "hourly_median": ok(29.53), "hourly_mean": ok(41.5), "employment": ok(1.0)},
         "41980": {"name": "San Juan-Bayamon", "hourly_median": ok(14.15), "hourly_mean": ok(19.0), "employment": ok(1.0)},
     }}
-    rent = {"as_of": "2025", "metros": {
+    rent = {"as_of": "2025", "methods": METHODS, "metros": {
         "35620": {"name": "New York", "all_units": ok(1932), "one_bedroom": ok(1774), "two_bedroom": ok(1997)},
         "41980": {"name": "San Juan-Bayamón", "all_units": ok(639), "one_bedroom": MISSING, "two_bedroom": ok(581)},
     }}
-    gas = {"as_of": "2026-10", "metros": {
+    gas = {"as_of": "2026-10", "methods": METHODS, "metros": {
         "35620": {"eia_area": "New York City", "price_per_gallon": ok(4.27)},
     }}
     return wages, rent, gas
@@ -129,3 +130,25 @@ def test_parse_eia_html():
     assert vals["Boston"] == 4.266
     assert vals["New York City"] == 4.27  # not the state row
     assert vals["Seattle"] is None
+
+
+def test_structure_requires_tier_and_method():
+    wages, rent, gas = sample()
+    rent["metros"]["35620"]["all_units"].pop("tier")
+    rent["metros"]["35620"]["one_bedroom"]["method"] = "undefined_method"
+    rent["metros"]["41980"]["all_units"]["tier"] = "guessed"
+    errs = v.check_structure("rent", rent, list(v.RENT_KEYS))
+    assert any("35620.all_units: missing or invalid tier" in e for e in errs)
+    assert any("not defined in methods table" in e for e in errs)
+    assert any("'guessed'" in e for e in errs)
+
+
+def test_structure_requires_complete_methods_table():
+    wages, rent, gas = sample()
+    rent["methods"] = {"m": {"description": "", "inputs": [], "as_of": ""}}
+    errs = v.check_structure("rent", rent, list(v.RENT_KEYS))
+    assert any("missing description" in e for e in errs)
+    assert any("missing inputs" in e for e in errs)
+    assert any("missing as_of" in e for e in errs)
+    del rent["methods"]
+    assert any("missing methods table" in e for e in v.check_structure("rent", rent, list(v.RENT_KEYS)))
