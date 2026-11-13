@@ -2,7 +2,8 @@
 
 Files: data/wages.json, rent.json, gas.json, plus owner.json (ACS home value and
 owner costs), groceries.json (national BLS average prices), and grocery_metro.json
-(estimated metro prices: national price x BEA goods RPP / 100), if present.
+(estimated metro prices: national price x BEA goods RPP / 100), and usda_tfp.json
+(USDA Thrifty Food Plan national reference line), if present.
 
 Checks
   1. structure    every value is {value, status, tier, method}; null iff status != "ok";
@@ -60,7 +61,8 @@ REPORT_PATH = DATA / "validation_report.csv"
 
 RANGES = {"wage": (8.0, 100.0), "rent": (300, 5000), "gas": (2.0, 9.0),
           "home_value": (50_000, 3_000_000), "owner_cost": (500, 6000), "grocery_item": (0.10, 30.0),
-          "rpp_goods": (80.0, 125.0), "grocery_metro_ratio": (0.97, 1.03)}
+          "rpp_goods": (80.0, 125.0), "grocery_metro_ratio": (0.97, 1.03),
+          "tfp_family_monthly": (500.0, 2500.0)}
 RENT_KEYS = ("all_units", "one_bedroom", "two_bedroom")
 OWNER_KEYS = ("home_value", "owner_cost_with_mortgage")
 REFERENCE_SOURCES = ("wage", "rent", "gas", "owner", "groceries")
@@ -172,6 +174,26 @@ def check_grocery_metro(gm: dict, groceries: dict, wages: dict) -> tuple[list[st
         if not lo <= ratio <= hi:
             warnings.append(f"grocery_metro {key}: employment-weighted mean / national = {ratio:.4f} "
                             f"outside [{lo}, {hi}]")
+    return errors, warnings
+
+
+def check_usda_tfp(tfp: dict) -> tuple[list[str], list[str]]:
+    """Structure and range for the national Thrifty Food Plan reference line, and that its members add up."""
+    errors = [] if tfp.get("as_of") else ["usda_tfp: missing as_of"]
+    methods = tfp.get("methods") or {}
+    errors += tiers.check_methods("usda_tfp", methods)
+    v = tfp.get("reference_family_monthly")
+    if not isinstance(v, dict):
+        return errors + ["usda_tfp: no reference_family_monthly"], []
+    errors += tiers.check_value("usda_tfp reference_family_monthly", v, methods)
+    warnings = []
+    lo, hi = RANGES["tfp_family_monthly"]
+    if value_of(v) is not None:
+        if not lo <= v["value"] <= hi:
+            warnings.append(f"usda_tfp reference_family_monthly={v['value']} outside [{lo}, {hi}]")
+        members = sum((tfp.get("members_monthly") or {}).values())
+        if abs(members - v["value"]) > 0.25:
+            errors.append(f"usda_tfp: members sum to {members:.2f}, reference family is {v['value']:.2f}")
     return errors, warnings
 
 
@@ -456,6 +478,7 @@ def main(argv=None) -> int:
     owner = load("owner.json") if (DATA / "owner.json").exists() else None
     groceries = load("groceries.json") if (DATA / "groceries.json").exists() else None
     grocery_metro = load("grocery_metro.json") if (DATA / "grocery_metro.json").exists() else None
+    tfp = load("usda_tfp.json") if (DATA / "usda_tfp.json").exists() else None
 
     refs = json.loads(REF_PATH.read_text()) if REF_PATH.exists() else {}
     if args.refresh_references is not None:
@@ -485,6 +508,10 @@ def main(argv=None) -> int:
             gm_errors, gm_warnings = check_grocery_metro(grocery_metro, groceries, wages)
             errors += gm_errors
             warnings += gm_warnings
+    if tfp is not None:
+        t_errors, t_warnings = check_usda_tfp(tfp)
+        errors += t_errors
+        warnings += t_warnings
 
     rows = report_rows(wages, rent, gas, checked, owner)
     write_report(rows)
@@ -503,6 +530,9 @@ def main(argv=None) -> int:
     if groceries is not None and grocery_metro is not None:
         print(f"Grocery estimates: {len(grocery_metro['metros'])} metros (RPP {grocery_metro['rpp_year']}), "
               f"recomputed from national prices")
+    if tfp is not None:
+        print(f"USDA Thrifty Food Plan (national reference): {tfp.get('reference_period')}, "
+              f"family of four ${value_of(tfp.get('reference_family_monthly')) or 0:,.2f}/month")
     print(f"Report: {REPORT_PATH}")
     for w in warnings:
         print("WARNING", w)

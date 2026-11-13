@@ -225,3 +225,16 @@ def test_grocery_reference_and_ranges():
     assert v.check_grocery_ranges(g) == []
     g["items"]["milk"]["value"] = 45.0
     assert v.check_grocery_ranges(g)
+
+
+def test_check_usda_tfp():
+    import validate
+    m = {"t": {"description": "d", "inputs": [{"source": "usda_tfp"}], "as_of": "2026-10"}}
+    tfp = {"as_of": "2026-10", "methods": m,
+           "reference_family_monthly": {"value": 1024.6, "status": "ok", "tier": "observed", "method": "t"},
+           "members_monthly": {"a": 319.1, "b": 254.2, "c": 209.3, "d": 242.0}}
+    assert validate.check_usda_tfp(tfp) == ([], [])
+    tfp["members_monthly"]["a"] = 300
+    assert "members sum" in validate.check_usda_tfp(tfp)[0][0]
+    tfp["reference_family_monthly"]["value"] = 99
+    assert validate.check_usda_tfp(tfp)[1]

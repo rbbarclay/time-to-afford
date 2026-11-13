@@ -116,16 +116,16 @@ From [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md
 - **File format notes (2026-11-13):** latin-1 CSV; `GeoFIPS` is quoted with a leading space (` "35620"`); rows `00000` (U.S.) and `00999` (nonmetropolitan portion) are skipped; `(NA)` means not available (none in 2024 for our metros). BEA footnotes: no RPPs for Enid before 2013, Twin Falls before 2015, Kiryas Joel-Poughkeepsie-Newburgh before 2016 (the 2024 values exist). Delineation: OMB bulletin 23-01, same codes as OEWS.
 - **Check:** the employment-weighted mean of the 387 metro estimates is 1.002× the national price for every item (expected slightly above 1, since rural areas pull the national level down).
 
-### USDA Thrifty Food Plan: grocery reference line (plan 10.5)
+### USDA Thrifty Food Plan: grocery reference line (plan 10.5). In the pipeline as `pipeline/usda_tfp.py` (on the site)
 - **Publisher:** USDA. The site now names it the **Food and Nutrition Administration** (the plan says Food and Nutrition Service); the Center for Nutrition Policy and Promotion (CNPP) sits under it. `fns.usda.gov` now redirects to `fna.usda.gov`.
 - **URL:** https://www.fna.usda.gov/research/cnpp/usda-food-plans/cost-food-monthly-reports; monthly PDF, e.g. `https://www.fna.usda.gov/sites/default/files/resource-files/CostofFoodSep2026Thrifty.pdf`
 - **Series (checked 2026-11-09):** "Official USDA Thrifty Food Plan: U.S. Average", weekly and monthly cost **by age-sex group**, plus a **reference family of four** (male and female 20–50, children 6–8 and 9–11). September 2026: $1,024.00 per month for the reference family. The plan says "by household type"; the report gives individuals and the one reference family.
-- **Format:** PDF only (no CSV found), so the pipeline would need to parse a PDF.
+- **Format:** PDF only (no CSV found). Read with `pypdf` (text extraction; one page). The module tries this month back to 4 months ago for `CostofFood{Mon}{YYYY}Thrifty.pdf`. October 2026 (issued November 2026): $1,024.60 per month, $236.50 per week. **Check:** the four reference-family members' monthly costs in the same report must add up to the family figure (they do exactly: 319.10 + 254.20 + 209.30 + 242.00).
 - **Geography:** national (separate reports for Alaska and Hawaii)
 - **Cadence:** monthly
 - **Terms checked by hand 2026-11-13** (the policies page returns HTTP 403 to automated requests, which is not worked around): per the project owner's check of USDA's site policies (https://www.usda.gov/policies-and-links), USDA data is in the public domain unless otherwise specified (owner's summary, not a direct quote). No copyright notice or other restriction appears on the FNA cost-of-food reports page or on the monthly report PDF. Cite USDA as the source.
 - **Attribution text:** "Source: USDA, Thrifty Food Plan cost of food report"
-- **As-of format (planned):** `as_of: "YYYY-MM"`
+- **As-of format:** `as_of: "YYYY-MM"`, `reference_period: "Month YYYY"`
 
 ## Deferred
 

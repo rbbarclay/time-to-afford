@@ -1,0 +1,41 @@
+{
+  "source": "U.S. Department of Agriculture, Official USDA Thrifty Food Plan: U.S. Average",
+  "source_url": "https://www.fna.usda.gov/research/cnpp/usda-food-plans/cost-food-monthly-reports",
+  "geography": "US",
+  "reference_period": "October 2026",
+  "as_of": "2026-10",
+  "retrieved": "2026-11-13",
+  "basis": "USDA's monthly cost of a nutritious, low-cost diet with all meals prepared at home, for a reference family of four (two adults 20-50, children 6-8 and 9-11). National reference line only: not a metro value and not part of the grocery basket.",
+  "attribution": "Source: USDA, Thrifty Food Plan cost of food report",
+  "methods": {
+    "usda_tfp_reference_family": {
+      "description": "USDA Thrifty Food Plan, U.S. average monthly cost for the reference family of four (male and female 20-50, children 6-8 and 9-11), as published",
+      "inputs": [
+        {
+          "source": "usda_tfp",
+          "url": "https://www.fna.usda.gov/sites/default/files/resource-files/CostofFoodOct2026Thrifty.pdf",
+          "row": "Reference Family, Monthly Cost"
+        }
+      ],
+      "as_of": "2026-10"
+    }
+  },
+  "reference_family_monthly": {
+    "value": 1024.6,
+    "status": "ok",
+    "tier": "observed",
+    "method": "usda_tfp_reference_family"
+  },
+  "reference_family_weekly": {
+    "value": 236.5,
+    "status": "ok",
+    "tier": "observed",
+    "method": "usda_tfp_reference_family"
+  },
+  "members_monthly": {
+    "child_6_8": 209.3,
+    "child_9_11": 242.0,
+    "female_20_50": 254.2,
+    "male_20_50": 319.1
+  }
+}

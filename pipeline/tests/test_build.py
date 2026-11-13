@@ -146,3 +146,14 @@ def test_bundle_map_points():
     del pts["points"]["10180"]
     with pytest.raises(ValueError, match="10180 has no map point"):
         build.build_bundle(*sample(), dt.date(2026, 11, 13), points=pts)
+
+
+def test_bundle_tfp_reference():
+    tfp = {"source": "USDA", "as_of": "2026-10", "reference_period": "October 2026",
+           "methods": {"tfp": meth("tfp")}, "reference_family_monthly": ok(1024.6, "tfp")}
+    b = build.build_bundle(*sample(), dt.date(2026, 11, 13), tfp=tfp)
+    assert b["reference"] == {"tfp_family_monthly": ok(1024.6, "tfp")}
+    assert b["sources"]["usda_tfp"]["reference_period"] == "October 2026"
+    assert "tfp" in b["methods"] and build.check_bundle(b) == []
+    b["reference"]["tfp_family_monthly"].pop("tier")
+    assert any("reference.tfp_family_monthly" in e for e in build.check_bundle(b))

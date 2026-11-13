@@ -222,4 +222,5 @@ table.compare td.is-missing { color: var(--missing); font-size: .9rem; }
 .detail { margin: 1rem 0; }
 .detail h2 { text-transform: none; letter-spacing: 0; color: var(--text); font-size: 1.05rem; }
 .detail.is-missing .big { color: var(--missing); font-size: 1.4rem; }
+.reference-line { margin-top: 1rem; padding-top: .8rem; border-top: 1px solid var(--border); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

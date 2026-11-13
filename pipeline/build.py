@@ -1,5 +1,6 @@
 """Build web/data/metros.json from data/wages.json, rent.json, gas.json, and (if present)
-owner.json, groceries.json, grocery_metro.json and metro_points.json (map positions from geo.py).
+owner.json, groceries.json, grocery_metro.json, metro_points.json (map positions from geo.py)
+and usda_tfp.json (national Thrifty Food Plan reference line, top-level `reference`).
 
 Runs validate.py first and refuses to build if validation fails.
 Every value keeps its {value, status, tier, method} form, and the bundle's
@@ -52,16 +53,18 @@ def metro_values(m: dict):
         yield f"groceries.{k}", v
 
 
-def basket_values(basket: dict | None):
+def basket_values(basket: dict | None, reference: dict | None = None):
     for k, item in ((basket or {}).get("items") or {}).items():
         yield f"basket.{k}.national", item["national"]
+    for k, v in (reference or {}).items():
+        yield f"reference.{k}", v
 
 
-def used_methods(metros: list[dict], *docs: dict, basket: dict | None = None) -> dict:
+def used_methods(metros: list[dict], *docs: dict, basket: dict | None = None, reference: dict | None = None) -> dict:
     """Collect the methods referenced by values in the bundle (and only those)."""
     available = {k: v for d in docs if d for k, v in (d.get("methods") or {}).items()}
     used = set()
-    values = [v for m in metros for _, v in metro_values(m)] + [v for _, v in basket_values(basket)]
+    values = [v for m in metros for _, v in metro_values(m)] + [v for _, v in basket_values(basket, reference)]
     for v in values:
         if v.get("method"):
             used.add(v["method"])
@@ -81,7 +84,7 @@ def check_bundle(bundle: dict) -> list[str]:
         for name, v in (m.get("groceries") or {}).items():
             if v["status"] != "not_covered" and v.get("tier") != "estimated":
                 errors.append(f"bundle {m['cbsa']}.groceries.{name}: tier {v.get('tier')}, expected estimated")
-    for name, v in basket_values(bundle.get("basket")):
+    for name, v in basket_values(bundle.get("basket"), bundle.get("reference")):
         errors += tiers.check_value(f"bundle {name}", v, methods)
     return errors
 
@@ -99,7 +102,7 @@ def build_basket(groceries: dict) -> dict:
 
 def build_bundle(wages: dict, rent: dict, gas: dict, built: dt.date, owner: dict | None = None,
                  groceries: dict | None = None, grocery_metro: dict | None = None,
-                 points: dict | None = None) -> dict:
+                 points: dict | None = None, tfp: dict | None = None) -> dict:
     if (groceries is None) != (grocery_metro is None):
         raise ValueError("groceries.json and grocery_metro.json must be included together")
     if groceries is not None and grocery_metro.get("as_of") != groceries.get("as_of"):
@@ -140,10 +143,15 @@ def build_bundle(wages: dict, rent: dict, gas: dict, built: dt.date, owner: dict
         sources["groceries"] = source_meta(groceries)
         sources["grocery_estimates"] = source_meta(grocery_metro, ("rpp_year",))
         basket = build_basket(groceries)
+    reference = None
+    if tfp is not None:
+        sources["usda_tfp"] = source_meta(tfp)
+        reference = {"tfp_family_monthly": tfp["reference_family_monthly"]}
     bundle = {
         "built": built.isoformat(),
         "sources": sources,
-        "methods": used_methods(metros, wages, rent, gas, owner, groceries, grocery_metro, basket=basket),
+        "methods": used_methods(metros, wages, rent, gas, owner, groceries, grocery_metro, tfp,
+                                basket=basket, reference=reference),
         "metros": metros,
     }
     if points is not None:
@@ -151,6 +159,8 @@ def build_bundle(wages: dict, rent: dict, gas: dict, built: dt.date, owner: dict
                           "width": points["width"], "height": points["height"]}
     if basket is not None:
         bundle["basket"] = basket
+    if reference is not None:
+        bundle["reference"] = reference
     return bundle
 
 
@@ -162,7 +172,7 @@ def main(argv=None) -> int:
     wages, rent, gas = load("wages.json"), load("rent.json"), load("gas.json")
     bundle = build_bundle(wages, rent, gas, dt.date.today(), owner=load("owner.json"),
                           groceries=load("groceries.json"), grocery_metro=load("grocery_metro.json"),
-                          points=load("metro_points.json"))
+                          points=load("metro_points.json"), tfp=load("usda_tfp.json"))
     if errors := check_bundle(bundle):
         for e in errors:
             print("ERROR", e, file=sys.stderr)

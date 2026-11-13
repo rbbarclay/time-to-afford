@@ -210,7 +210,21 @@ function renderGroceries(metro, wage) {
     listItems("basket-assumptions", []);
   }
   $("groc-source").textContent =
-    `BLS Average Price Data, ${s.groceries.reference_period}; BEA Regional Price Parities, ${s.grocery_estimates.rpp_year}`;
+    `BLS Average Price Data, ${s.groceries.reference_period}; BEA Regional Price Parities, ${s.grocery_estimates.rpp_year}` +
+    (s.usda_tfp ? `; USDA Thrifty Food Plan, ${s.usda_tfp.reference_period}` : "");
+  renderTfp(wage);
+}
+
+/** National reference line: shown beside the groceries, never mixed into them. */
+function renderTfp(wage) {
+  const v = data.reference?.tfp_family_monthly;
+  const show = v && v.status === "ok";
+  $("tfp").hidden = !show;
+  if (!show) return;
+  const hours = wage == null ? "" : ` That's ${formatDuration(v.value / wage)} of work a month at ${formatMoney(wage, { cents: true })}/hr.`;
+  $("tfp-text").textContent = `Family of four, U.S. average: ${formatMoney(v.value, { cents: true })} a month ` +
+    `(${data.sources.usda_tfp.reference_period}).${hours}`;
+  renderMethod("tfp-method", [v.method]);
 }
 
 // ---------- homeownership ----------
