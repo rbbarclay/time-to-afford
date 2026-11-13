@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Methodology · Time to Afford</title>
-  <meta name="description" content="How Time to Afford calculates hours of work, its data sources, and their limitations.">
+  <meta name="description" content="How Time to Afford calculates hours of work, how values are labeled, its data sources, and their limitations.">
   <link rel="stylesheet" href="styles.css">
   <script type="module" src="methodology.js"></script>
 </head>
@@ -17,7 +17,7 @@
 
   <main class="prose">
     <nav class="toc" aria-label="On this page">
-      <a href="#calc">Calculation</a> · <a href="#sources">Sources</a> · <a href="#missing">Missing data</a> ·
+      <a href="#calc">Calculation</a> · <a href="#tiers">Value types</a> · <a href="#sources">Sources</a> · <a href="#missing">Missing data</a> ·
       <a href="#limits">Limitations</a> · <a href="#privacy">Privacy</a> · <a href="#credits">Attribution</a>
     </nav>
 
@@ -31,9 +31,39 @@
         <li><strong>Rent:</strong> monthly median gross rent ÷ wage = hours of work per month.</li>
         <li><strong>Gas, per gallon:</strong> price per gallon ÷ wage.</li>
         <li><strong>Gas, fill-up:</strong> 15 gallons × price per gallon ÷ wage. The 15-gallon size is fixed.</li>
+        <li><strong>Groceries, each item:</strong> estimated local price ÷ wage. The estimated local price is the
+          national average price × the metro's price level for all goods ÷ 100 (see <a href="#tiers">Value types</a>).</li>
+        <li><strong>Groceries, whole basket:</strong> one of each of the six items (1 gallon of milk, 1 dozen eggs,
+          and 1 lb each of bread, ground beef, bananas, and coffee), added up, ÷ wage. This is a small sample of
+          staples, not a grocery budget.</li>
+        <li><strong>Owning a home, typical costs:</strong> median monthly costs for owners with a mortgage ÷ wage =
+          hours of work per month.</li>
+        <li><strong>Owning a home, mortgage payment:</strong> monthly principal and interest on the metro's median
+          home value, ÷ wage. Loan = home value × (1 − down payment). Payment = loan × <var>i</var> ÷
+          (1 − (1 + <var>i</var>)<sup>−<var>n</var></sup>), where <var>i</var> is the annual rate ÷ 12 and
+          <var>n</var> is the number of monthly payments. You enter the rate; the down payment starts at 20% and
+          the term at 30 years, and you can change both. Property taxes and homeowner's insurance are not included.</li>
         <li><strong>Display.</strong> Results under one hour are shown in whole minutes; otherwise in hours to one decimal place.</li>
       </ul>
       <p class="example" id="example">Loading worked example…</p>
+    </section>
+
+    <section id="tiers">
+      <h2>Value types</h2>
+      <p>Every number on the site carries a label saying what kind of value it is. Select
+        “How is this calculated?” beside any figure to see its method, inputs, and as-of date.</p>
+      <ul>
+        <li><span class="tier tier-observed">Observed</span> Published directly by a government agency for that
+          metro and period: wages, rent, gas, home values, and owner costs.</li>
+        <li><span class="tier tier-estimated">Estimated</span> A national figure adjusted by a published local
+          price index. Local grocery prices are estimated: no public source publishes grocery prices for every metro,
+          so the national average price from BLS is multiplied by the metro's Regional Price Parity for all goods
+          from BEA (U.S. = 100). BEA publishes no food-specific index, so the all-goods index is an approximation for
+          grocery prices. These are not prices observed in the metro.</li>
+        <li><span class="tier tier-scenario">Scenario</span> Calculated from stated assumptions, which are always
+          shown beside the result: the whole grocery basket (it depends on the chosen quantities) and the mortgage
+          payment (it depends on the rate, down payment, and term).</li>
+      </ul>
     </section>
 
     <section id="sources">
@@ -67,24 +97,51 @@
               <td data-period="gas">…</td>
               <td>10 metros: Boston, Chicago, Cleveland, Denver, Houston, Los Angeles, Miami, New York, San Francisco, Seattle</td>
             </tr>
+            <tr>
+              <th scope="row">Home value and owner costs</th>
+              <td><a href="https://www.census.gov/programs-surveys/acs">Census American Community Survey (ACS)</a>, tables B25077 and B25088</td>
+              <td>Median home value (owner-occupied homes); median monthly owner costs for owners with a mortgage
+                (mortgage, taxes, insurance, utilities, fees)</td>
+              <td data-period="owner">…</td>
+              <td>All <span data-count>393</span> metros</td>
+            </tr>
+            <tr>
+              <th scope="row">Grocery prices (national)</th>
+              <td><a href="https://www.bls.gov/cpi/average-price-data.htm">BLS Average Price Data</a></td>
+              <td>U.S. city average retail price of six items, monthly, not seasonally adjusted</td>
+              <td data-period="groceries">…</td>
+              <td>National only</td>
+            </tr>
+            <tr>
+              <th scope="row">Local price level (for grocery estimates)</th>
+              <td><a href="https://www.bea.gov/data/prices-inflation/regional-price-parities-state-and-metro-area">BEA Regional Price Parities</a></td>
+              <td>Price level for all goods relative to the U.S. (U.S. = 100)</td>
+              <td id="rpp-year">…</td>
+              <td>387 metros; none in Puerto Rico</td>
+            </tr>
           </tbody>
         </table>
       </div>
       <p>Metros are U.S. Office of Management and Budget metropolitan statistical areas, identified by CBSA code,
         including those in Puerto Rico. Each time the site data is built, every value is checked against figures
-        published separately by the same agencies (the BLS data API, Census table B25064, and EIA's web table).
+        published separately by the same agencies (the BLS data API, Census tables B25064 and B25097, EIA's web
+        table, and the BLS average price data file), and every grocery estimate is recalculated from its inputs.
         Site data built <span id="built">…</span>.</p>
     </section>
 
     <section id="missing">
       <h2>Missing data</h2>
-      <p>Missing values are shown as missing. They are <strong>never estimated or filled in</strong> from another
-        year, a nearby area, or a state or regional average.</p>
+      <p>Missing values are shown as missing. They are <strong>never filled in</strong> from another year, a
+        nearby area, or a state or regional average. Estimated values are different: they are calculated by a
+        stated method for every metro the inputs cover, and they are always labeled
+        <span class="tier tier-estimated">Estimated</span>.</p>
       <ul>
         <li><strong>No data:</strong> the source publishes no estimate for that metro (for example, too few survey responses).</li>
-        <li><strong>Not covered:</strong> the source doesn't cover that metro at all. This is the case for gas in all but 10 metros.</li>
+        <li><strong>Not covered:</strong> the source doesn't cover that metro at all. This is the case for gas in all but 10 metros, and for grocery estimates in the 6 Puerto Rico metros,
+          which have no BEA price level.</li>
         <li><strong>Top-coded:</strong> the source reports only a range, such as rent of “$3,500 or more”.
-          Hours aren't calculated from a range.</li>
+          owner costs of “$4,000 or more”, or a home value of “$2,000,000 or more”. Hours aren't calculated from a
+          range, and no mortgage payment is calculated from a top-coded home value.</li>
       </ul>
     </section>
 
@@ -114,27 +171,50 @@
         <li><strong>Regular grade, one month.</strong> Prices are for regular gasoline, averaged over a single month,
           and change month to month.</li>
       </ul>
+      <h3>Groceries</h3>
+      <ul>
+        <li><strong>Estimates, not local prices.</strong> Local prices are the national average scaled by an
+          all-goods price level. Food prices can differ from the general price level in a metro.</li>
+        <li><strong>Different years.</strong> National prices are from the latest month; the newest BEA price
+          levels are for <span id="rpp-year-2">…</span>.</li>
+        <li><strong>Six items.</strong> The basket is a small sample of staples, one of each, not a grocery budget
+          or a nutritional plan.</li>
+      </ul>
+      <h3>Owning a home</h3>
+      <ul>
+        <li><strong>Typical owner costs include more than the mortgage.</strong> They include property taxes,
+          insurance, utilities, and fees, and are for all owners with a mortgage, including those who bought years
+          ago at different prices and rates.</li>
+        <li><strong>The mortgage payment is a scenario.</strong> It uses the rate you enter (the site doesn't supply
+          one yet), and covers principal and interest only. It leaves out property taxes, homeowner's insurance,
+          and mortgage insurance, so a real payment would be higher.</li>
+        <li><strong>Median home value, not a listing price.</strong> The ACS asks owners what their home is worth;
+          homes for sale today may cost more or less.</li>
+        <li><strong>Survey estimates.</strong> Like rent, these come from the ACS sample and carry margins of error.</li>
+      </ul>
       <h3>Across sources</h3>
       <ul>
         <li><strong>Different periods.</strong> <span id="periods">…</span>. Gas is the most recent, so it is compared
           with older wages. If prices have risen since the wage period, hours are somewhat overstated.</li>
         <li><strong>One number per metro.</strong> Metros include cities, suburbs, and rural counties; costs vary
           within a metro.</li>
-        <li><strong>Limited costs.</strong> Only rent and gas are covered. Groceries, dining out, transportation,
-          childcare, healthcare, and other costs are not included yet; groceries and dining out lack good metro-level public sources.</li>
+        <li><strong>Limited costs.</strong> Only rent, gas, six grocery staples, and homeownership are covered.
+          Dining out, transportation, childcare, healthcare, and other costs are not included, and the figures are not
+          added into a total.</li>
       </ul>
     </section>
 
     <section id="privacy">
       <h2>Privacy</h2>
-      <p>If you enter a wage, it stays in your browser tab. It is never saved (no cookies or local storage), never
+      <p>If you enter a wage or mortgage details, they stay in your browser tab. It is never saved (no cookies or local storage), never
         sent to a server, and never placed in the page address. The site has no accounts and no analytics.</p>
     </section>
 
     <section id="credits">
       <h2>Attribution</h2>
-      <p>Sources: U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics; U.S. Census Bureau,
-        American Community Survey; U.S. Energy Information Administration. This site is not endorsed by these agencies.</p>
+      <p>Sources: U.S. Bureau of Labor Statistics, Occupational Employment and Wage Statistics and Average Price
+        Data; U.S. Census Bureau, American Community Survey; U.S. Energy Information Administration; U.S. Bureau
+        of Economic Analysis, Regional Price Parities. This site is not endorsed by these agencies.</p>
       <p>Code is open source under the MIT License:
         <a href="https://github.com/rbbarclay/time-to-afford">github.com/rbbarclay/time-to-afford</a>.</p>
     </section>
