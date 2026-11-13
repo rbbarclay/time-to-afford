@@ -196,3 +196,32 @@ def test_report_rows_with_owner():
     assert rows["35620"]["hours_owner_cost"] == round(3441 / 29.53, 2)
     assert rows["41980"]["measures_missing"] == "rent_1br;gas;owner_cost"  # top-coded counts as no value
     assert "home_value" not in v.report_rows(wages, rent, gas, checked)[0]  # owner columns only when given
+
+
+def grocery_sample():
+    return {"as_of": "2026-10", "reference_period": "October 2026",
+            "methods": {"bls_ap_milk": {"description": "milk", "inputs": [{"source": "bls_ap"}], "as_of": "2026-10"}},
+            "items": {"milk": {"label": "Milk", "unit": "gallon", "quantity": 1, "series": "APU0000709112",
+                               "value": 4.101, "status": "ok", "tier": "observed", "method": "bls_ap_milk"}}}
+
+
+def test_check_national_structure():
+    g = grocery_sample()
+    assert v.check_national("groceries", g) == []
+    g["items"]["milk"].pop("tier")
+    assert any("tier" in e for e in v.check_national("groceries", g))
+    assert any("no items" in e for e in v.check_national("groceries", {**grocery_sample(), "items": {}}))
+
+
+def test_grocery_reference_and_ranges():
+    g = grocery_sample()
+    ref = {"bls_ap_flat": {"values": {"APU0000709112": {"as_of": "2026-10", "value": 4.101}}}}
+    assert v.check_grocery_reference(g, ref) == ([], 1)
+    ref["bls_ap_flat"]["values"]["APU0000709112"]["value"] = 4.2
+    assert any("ours=4.101" in e for e in v.check_grocery_reference(g, ref)[0])
+    ref["bls_ap_flat"]["values"]["APU0000709112"] = {"as_of": "2026-09", "value": 4.101}
+    assert any("month 2026-10 but reference has 2026-09" in e for e in v.check_grocery_reference(g, ref)[0])
+    assert v.check_grocery_reference(g, {})[0]  # no reference is an error
+    assert v.check_grocery_ranges(g) == []
+    g["items"]["milk"]["value"] = 45.0
+    assert v.check_grocery_ranges(g)

@@ -1,0 +1,142 @@
+{
+  "source": "U.S. Bureau of Labor Statistics, Average Price Data (CPI)",
+  "source_url": "https://www.bls.gov/cpi/average-price-data.htm",
+  "geography": "US",
+  "basket_version": 1,
+  "reference_period": "October 2026",
+  "as_of": "2026-10",
+  "items_same_month": true,
+  "retrieved": "2026-11-13",
+  "basis": "National (U.S. city average) retail prices; not metro values",
+  "attribution": "Source: U.S. Bureau of Labor Statistics, Average Price Data",
+  "methods": {
+    "bls_ap_milk": {
+      "description": "BLS Average Price Data, U.S. city average, milk, whole, per gallon, not seasonally adjusted",
+      "inputs": [
+        {
+          "source": "bls_ap",
+          "url": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+          "series": "APU0000709112"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "bls_ap_eggs": {
+      "description": "BLS Average Price Data, U.S. city average, eggs, grade a large, per dozen, not seasonally adjusted",
+      "inputs": [
+        {
+          "source": "bls_ap",
+          "url": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+          "series": "APU0000708111"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "bls_ap_bread": {
+      "description": "BLS Average Price Data, U.S. city average, bread, white pan, per lb, not seasonally adjusted",
+      "inputs": [
+        {
+          "source": "bls_ap",
+          "url": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+          "series": "APU0000702111"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "bls_ap_ground_beef": {
+      "description": "BLS Average Price Data, U.S. city average, ground beef, 100% beef, per lb, not seasonally adjusted",
+      "inputs": [
+        {
+          "source": "bls_ap",
+          "url": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+          "series": "APU0000703112"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "bls_ap_bananas": {
+      "description": "BLS Average Price Data, U.S. city average, bananas, per lb, not seasonally adjusted",
+      "inputs": [
+        {
+          "source": "bls_ap",
+          "url": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+          "series": "APU0000711211"
+        }
+      ],
+      "as_of": "2026-10"
+    },
+    "bls_ap_coffee": {
+      "description": "BLS Average Price Data, U.S. city average, coffee, 100% ground roast, per lb, not seasonally adjusted",
+      "inputs": [
+        {
+          "source": "bls_ap",
+          "url": "https://api.bls.gov/publicAPI/v1/timeseries/data/",
+          "series": "APU0000717311"
+        }
+      ],
+      "as_of": "2026-10"
+    }
+  },
+  "items": {
+    "milk": {
+      "label": "Milk, whole",
+      "unit": "gallon",
+      "quantity": 1,
+      "series": "APU0000709112",
+      "value": 4.101,
+      "status": "ok",
+      "tier": "observed",
+      "method": "bls_ap_milk"
+    },
+    "eggs": {
+      "label": "Eggs, grade A large",
+      "unit": "dozen",
+      "quantity": 1,
+      "series": "APU0000708111",
+      "value": 2.32,
+      "status": "ok",
+      "tier": "observed",
+      "method": "bls_ap_eggs"
+    },
+    "bread": {
+      "label": "Bread, white pan",
+      "unit": "lb",
+      "quantity": 1,
+      "series": "APU0000702111",
+      "value": 1.861,
+      "status": "ok",
+      "tier": "observed",
+      "method": "bls_ap_bread"
+    },
+    "ground_beef": {
+      "label": "Ground beef, 100% beef",
+      "unit": "lb",
+      "quantity": 1,
+      "series": "APU0000703112",
+      "value": 6.755,
+      "status": "ok",
+      "tier": "observed",
+      "method": "bls_ap_ground_beef"
+    },
+    "bananas": {
+      "label": "Bananas",
+      "unit": "lb",
+      "quantity": 1,
+      "series": "APU0000711211",
+      "value": 0.655,
+      "status": "ok",
+      "tier": "observed",
+      "method": "bls_ap_bananas"
+    },
+    "coffee": {
+      "label": "Coffee, 100% ground roast",
+      "unit": "lb",
+      "quantity": 1,
+      "series": "APU0000717311",
+      "value": 9.249,
+      "status": "ok",
+      "tier": "observed",
+      "method": "bls_ap_coffee"
+    }
+  }
+}

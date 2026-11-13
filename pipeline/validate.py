@@ -1,7 +1,7 @@
 """Validate data/wages.json, data/rent.json, data/gas.json across all metros.
 
-Files: data/wages.json, rent.json, gas.json, and owner.json (ACS home value and
-owner costs, if present).
+Files: data/wages.json, rent.json, gas.json, plus owner.json (ACS home value and
+owner costs) and groceries.json (national BLS average prices), if present.
 
 Checks
   1. structure    every value is {value, status, tier, method}; null iff status != "ok";
@@ -18,6 +18,8 @@ Checks
                              equal B25077. Census publishes no second median for owner
                              costs (B25088) in these files, so owner costs get structure
                              and range checks only.
+                    groceries -> BLS ap.data.3.Food flat file (a separate BLS
+                             publication from the API used to build the data)
 
 Writes data/validation_report.csv: one row per metro with inputs, as-of dates,
 hours of work (rent / median wage, gas per gallon / median wage), and the
@@ -26,7 +28,7 @@ measures that are missing.
 Usage:
   python pipeline/validate.py                         # validate using stored references
   python pipeline/validate.py --refresh-references    # re-fetch all references (BLS_CONTACT or --contact required)
-  python pipeline/validate.py --refresh-references owner   # re-fetch only some: wage, rent, gas, owner
+  python pipeline/validate.py --refresh-references owner   # re-fetch only some: wage, rent, gas, owner, groceries
 """
 
 from __future__ import annotations
@@ -53,10 +55,11 @@ REF_PATH = Path(__file__).resolve().parent / "reference" / "references.json"
 REPORT_PATH = DATA / "validation_report.csv"
 
 RANGES = {"wage": (8.0, 100.0), "rent": (300, 5000), "gas": (2.0, 9.0),
-          "home_value": (50_000, 3_000_000), "owner_cost": (500, 6000)}
+          "home_value": (50_000, 3_000_000), "owner_cost": (500, 6000), "grocery_item": (0.10, 30.0)}
 RENT_KEYS = ("all_units", "one_bedroom", "two_bedroom")
 OWNER_KEYS = ("home_value", "owner_cost_with_mortgage")
-REFERENCE_SOURCES = ("wage", "rent", "gas", "owner")
+REFERENCE_SOURCES = ("wage", "rent", "gas", "owner", "groceries")
+BLS_AP_FLAT = "https://download.bls.gov/pub/time.series/ap/ap.data.3.Food"
 
 BLS_API = "https://api.bls.gov/publicAPI/v1/timeseries/data/"
 BLS_BATCH = 25  # API v1 limit: 25 series per request, 25 requests per day
@@ -97,6 +100,50 @@ def check_structure(label: str, doc: dict, fields: list[str]) -> list[str]:
                     errors.append(f"{label} {code}.{f}: value/status mismatch {v}")
                 errors += tiers.check_value(f"{label} {code}.{f}", v, methods)
     return errors
+
+
+def check_national(label: str, doc: dict) -> list[str]:
+    """Structure checks for a national file with an `items` table instead of `metros`."""
+    errors = [] if doc.get("as_of") else [f"{label}: missing as_of"]
+    methods = doc.get("methods") or {}
+    errors += tiers.check_methods(label, doc.get("methods"))
+    if not doc.get("items"):
+        errors.append(f"{label}: no items")
+    for key, v in (doc.get("items") or {}).items():
+        if not isinstance(v, dict) or "status" not in v or "value" not in v:
+            errors.append(f"{label} {key}: not a {{value, status}} object")
+            continue
+        if (v["value"] is None) != (v["status"] != "ok"):
+            errors.append(f"{label} {key}: value/status mismatch")
+        errors += tiers.check_value(f"{label} {key}", v, methods)
+    return errors
+
+
+def check_grocery_ranges(groceries: dict) -> list[str]:
+    lo, hi = RANGES["grocery_item"]
+    return [f"groceries {k}={value_of(v)} outside [{lo}, {hi}]" for k, v in groceries["items"].items()
+            if value_of(v) is not None and not lo <= value_of(v) <= hi]
+
+
+def check_grocery_reference(groceries: dict, refs: dict) -> tuple[list[str], int]:
+    """Each item must match the BLS flat file for the same series and month. Returns (errors, items checked)."""
+    ref = refs.get("bls_ap_flat")
+    if not ref:
+        return ["groceries: no reference data (bls_ap_flat); run with --refresh-references groceries"], 0
+    errors, checked = [], 0
+    for key, item in groceries["items"].items():
+        r = ref["values"].get(item["series"])
+        if r is None:
+            errors.append(f"groceries {key}: series {item['series']} not in reference")
+            continue
+        as_of = groceries["methods"][item["method"]]["as_of"]
+        checked += 1
+        if r["as_of"] != as_of:
+            errors.append(f"groceries {key}: month {as_of} but reference has {r['as_of']} (refresh one or the other)")
+        elif (item["value"] is None) != (r["value"] is None) or (
+                item["value"] is not None and abs(item["value"] - r["value"]) > 0.0005):
+            errors.append(f"groceries {key}: ours={item['value']} reference={r['value']}")
+    return errors, checked
 
 
 def check_alignment(wages: dict, rent: dict, gas: dict, owner: dict | None = None) -> list[str]:
@@ -315,11 +362,21 @@ def fetch_owner_reference(owner: dict, today: str) -> dict:
             "values": _census_column(url, "B25097_E001", owner["metros"], 2000001)}
 
 
+def fetch_groceries_reference(groceries: dict, contact: str, today: str) -> dict:
+    import groceries as grocery_module  # local import: only needed when refreshing
+    ua = f"time-to-afford/0.1 (contact: {contact})"
+    lines = _get(BLS_AP_FLAT, ua).decode("utf-8").splitlines()
+    wanted = {i["series"] for i in groceries["items"].values()}
+    latest = grocery_module.latest_from_flat(lines, wanted)
+    return {"source_url": BLS_AP_FLAT, "retrieved": today,
+            "values": {s: {"as_of": f"{y}-{m:02d}", "value": v} for s, (y, m, v) in latest.items()}}
+
+
 REFERENCE_KEYS = {"wage": "bls_oews_hourly_median", "rent": "census_b25064", "gas": "eia_html",
-                  "owner": "census_b25097"}
+                  "owner": "census_b25097", "groceries": "bls_ap_flat"}
 
 
-def fetch_references(sources, wages, rent, gas, owner, contact) -> dict:
+def fetch_references(sources, wages, rent, gas, owner, contact, groceries=None) -> dict:
     """Fetch the requested reference sources; returns {reference key: data}."""
     today = dt.date.today().isoformat()
     out = {}
@@ -331,6 +388,8 @@ def fetch_references(sources, wages, rent, gas, owner, contact) -> dict:
         out[REFERENCE_KEYS["gas"]] = fetch_gas_reference(gas, today)
     if "owner" in sources and owner is not None:
         out[REFERENCE_KEYS["owner"]] = fetch_owner_reference(owner, today)
+    if "groceries" in sources and groceries is not None:
+        out[REFERENCE_KEYS["groceries"]] = fetch_groceries_reference(groceries, contact, today)
     return out
 
 
@@ -345,13 +404,14 @@ def main(argv=None) -> int:
 
     wages, rent, gas = load("wages.json"), load("rent.json"), load("gas.json")
     owner = load("owner.json") if (DATA / "owner.json").exists() else None
+    groceries = load("groceries.json") if (DATA / "groceries.json").exists() else None
 
     refs = json.loads(REF_PATH.read_text()) if REF_PATH.exists() else {}
     if args.refresh_references is not None:
         sources = set(args.refresh_references or REFERENCE_SOURCES)
-        if "wage" in sources and not args.contact:
-            p.error("refreshing wage references requires --contact or BLS_CONTACT")
-        refs.update(fetch_references(sources, wages, rent, gas, owner, args.contact))  # keep the others
+        if sources & {"wage", "groceries"} and not args.contact:
+            p.error("refreshing wage or groceries references requires --contact or BLS_CONTACT")
+        refs.update(fetch_references(sources, wages, rent, gas, owner, args.contact, groceries))  # keep the others
         REF_PATH.parent.mkdir(parents=True, exist_ok=True)
         REF_PATH.write_text(json.dumps(refs, indent=2) + "\n")
 
@@ -364,6 +424,12 @@ def main(argv=None) -> int:
     warnings = check_ranges(wages, rent, gas, owner)
     ref_errors, checked = check_references(wages, rent, gas, refs, owner)
     errors += ref_errors
+    grocery_checked = 0
+    if groceries is not None:
+        errors += check_national("groceries", groceries)
+        warnings += check_grocery_ranges(groceries)
+        g_errors, grocery_checked = check_grocery_reference(groceries, refs)
+        errors += g_errors
 
     rows = report_rows(wages, rent, gas, checked, owner)
     write_report(rows)
@@ -376,6 +442,9 @@ def main(argv=None) -> int:
     by_check = {k: sum(k in s for s in checked.values()) for k in ("wage", "rent", "gas", "home_value")}
     print(f"Metros: {len(rows)}; complete (all measures): {complete}; missing by measure: {by_measure}")
     print(f"Reference-checked metros: {by_check}")
+    if groceries is not None:
+        print(f"Groceries (national): {len(groceries['items'])} items, {grocery_checked} reference-checked, "
+              f"{groceries['reference_period']}")
     print(f"Report: {REPORT_PATH}")
     for w in warnings:
         print("WARNING", w)

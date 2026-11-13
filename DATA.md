@@ -73,7 +73,7 @@ From [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md
 - **Attribution text:** not specified by Freddie Mac. Proposed: "Source: Freddie Mac, Primary Mortgage Market Survey®". PMMS® is a Freddie Mac trademark.
 - **As-of format (planned):** `as_of: "YYYY-MM-DD"` (survey week)
 
-### BLS Average Price Data: groceries, observed national (plan 10.3)
+### BLS Average Price Data: groceries, observed national (plan 10.3). In the pipeline as `pipeline/groceries.py` (not yet on the site)
 - **Publisher:** U.S. Bureau of Labor Statistics
 - **URL:** https://www.bls.gov/cpi/average-price-data.htm; series list `https://download.bls.gov/pub/time.series/ap/ap.series`; values via the BLS public API v1 (`https://api.bls.gov/publicAPI/v1/timeseries/data/`)
 - **Series (checked 2026-11-09 against `ap.series` and the API; latest value September 2026):**
@@ -88,10 +88,12 @@ From [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md
   | Coffee | `APU0000717311` | Coffee, 100%, ground roast, all sizes, per lb. (453.6 gm) | $9.332 |
 
 - **Geography:** U.S. city average (area `0000`). **Regional series exist** for the four census regions (`0100` Northeast, `0200` Midwest, `0300` South, `0400` West), but coverage is uneven. Several stopped at October 2025 (Northeast and Midwest milk and eggs, all regional coffee), and there's no West series for eggs. **No metro-level series exist** for these six items.
-- **Cadence:** monthly
+- **Cadence:** monthly (October 2026 was available on 2026-11-13)
+- **Cross-check:** `validate.py` compares each item with the BLS flat file `https://download.bls.gov/pub/time.series/ap/ap.data.3.Food`, a separate publication from the API, for the same series and month.
+- **Basket definition:** `pipeline/config/basket.yml` (versioned; one of each item in BLS units).
 - **Terms checked 2026-11-09:** as for OEWS above (public domain; cite BLS).
 - **Attribution text:** "Source: U.S. Bureau of Labor Statistics, Average Price Data"
-- **As-of format (planned):** `as_of: "YYYY-MM"`
+- **As-of format in data files:** each item's method has `as_of: "YYYY-MM"`; the file has `as_of` (latest month) and `items_same_month`
 
 ### BEA Regional Price Parities (RPPs): grocery estimate adjustment (plan 10.4)
 - **Publisher:** U.S. Bureau of Economic Analysis
@@ -110,7 +112,7 @@ From [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md
 - **Format:** PDF only (no CSV found), so the pipeline would need to parse a PDF.
 - **Geography:** national (separate reports for Alaska and Hawaii)
 - **Cadence:** monthly
-- **Terms: UNVERIFIED.** USDA's policies page (https://www.usda.gov/policies-and-links) returned HTTP 403 to an automated request, and no reuse statement was found on the FNA pages checked. Expected to be a U.S. government work (17 U.S.C. § 105), but not confirmed on the publisher's site.
+- **Terms: UNVERIFIED.** USDA's policies page (https://www.usda.gov/policies-and-links) returned HTTP 403 to an automated request, and no reuse statement was found on the FNA pages checked. The block is deliberately not worked around (e.g. by imitating a browser); check the page by hand. The reference line is deferred until then (PROJECT.md, to-do 4b). Expected to be a U.S. government work (17 U.S.C. § 105), but not confirmed on the publisher's site.
 - **Attribution text:** "Source: USDA, Thrifty Food Plan cost of food report"
 - **As-of format (planned):** `as_of: "YYYY-MM"`
 

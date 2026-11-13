@@ -1,0 +1,41 @@
+# National grocery basket (plan docs/plans/groceries-and-mortgage.md, phase G1).
+# Versioned: change `version` whenever items, series, or quantities change, so
+# every data file records which basket definition produced it.
+#
+# Each item is one BLS Average Price series (U.S. city average, not seasonally
+# adjusted). Series IDs were checked against https://download.bls.gov/pub/time.series/ap/ap.series
+# on 2026-11-09. `quantity` is how many BLS units the basket holds; one of each
+# is a starting assumption, not a nutritional or spending-weighted basket.
+version: 1
+geography: US
+items:
+  - key: milk
+    label: Milk, whole
+    series: APU0000709112
+    unit: gallon
+    quantity: 1
+  - key: eggs
+    label: Eggs, grade A large
+    series: APU0000708111
+    unit: dozen
+    quantity: 1
+  - key: bread
+    label: Bread, white pan
+    series: APU0000702111
+    unit: lb
+    quantity: 1
+  - key: ground_beef
+    label: Ground beef, 100% beef
+    series: APU0000703112
+    unit: lb
+    quantity: 1
+  - key: bananas
+    label: Bananas
+    series: APU0000711211
+    unit: lb
+    quantity: 1
+  - key: coffee
+    label: Coffee, 100% ground roast
+    series: APU0000717311
+    unit: lb
+    quantity: 1
