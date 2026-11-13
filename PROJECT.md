@@ -40,6 +40,8 @@ Show how many hours of work it takes to afford common expenses in each U.S. metr
 - **Tier data format (compact):** the plan's section 3 shows one flat record per value. The project instead keeps the per-metro layout and adds `tier` and a short `method` key to each value, with descriptions, inputs and as-of dates written once in a `methods` table. This holds the same information with far less repetition. Scenario methods add an `assumptions` object. Shared helpers are in `pipeline/tiers.py`.
 - **Basket quantities (2026-11-13):** one of each item in BLS units (1 gallon milk, 1 dozen eggs, 1 lb each of bread, ground beef, bananas, coffee). This is a starting assumption, not a nutritional or spending-weighted basket. It lives in the versioned `basket.yml`; bump `version` on any change.
 - **Grocery basket (planned, national phase):** milk, eggs, bread, ground beef, bananas, coffee, from BLS Average Price series (IDs in DATA.md), stored as observed national values. The USDA Thrifty Food Plan is a national reference line only. Metro estimates (later phase) scale national prices by BEA's **all-goods** RPP, since there's no food-specific line, and the method string says so. Groceries and dinner out stay out of any "total hours" figure until the basket is validated.
+- **Groceries on the map (decided 2026-11-13):** estimated grocery prices appear on both the map and the detail panel. The map colors metros by hours of work for **one item at a time**, picked with a selector. Observed and estimated values can share a color scale, but estimated values are marked as estimated (tier badge). The 6 Puerto Rico metros show as not covered. This differs from the plan's proposed default (detail panel only, map observed-only); plan section 1 allows it.
+- **Basket total tier (decided 2026-11-13): scenario.** The total depends on the chosen quantities (one of each item). Its method lists the quantities, basket version and national month as assumptions, and notes that the item prices are estimates. Scenario values never appear on the map, so the total shows only in the detail panel beside its assumptions.
 - **License:** MIT for code. The repo is public.
 - **Wage privacy:** wage math runs only in the browser. A user's wage is never put in URLs or stored on a server.
 - **Map:** dots at metro centers, all the same size. Metros with no data get a hollow or gray dot. The legend shows the actual min and max values.
@@ -99,14 +101,14 @@ Show how many hours of work it takes to afford common expenses in each U.S. metr
 - [x] 4. National grocery basket (G1), with `pipeline/config/basket.yml`.
 - [ ] 4b. USDA Thrifty Food Plan national reference line (part of G1 in the plan, deferred). Needs: USDA reuse terms verified (the policies page returns HTTP 403 to automated requests; don't work around it, so check it by hand in a browser) and a PDF reader, since the report is PDF only.
 - [x] 5. Metro grocery estimates (G2), checked against the national average for consistency (employment-weighted mean 1.002× national).
-- [ ] 6. Front end: tier badges, method tooltips, scenario panel.
+- [ ] 6. Front end: tier badges, method tooltips, scenario panel; grocery item estimates and basket total (scenario) in the detail panel. The map's grocery item selector is built with the map feature.
 - [ ] Methodology page: explain value tiers; state that property taxes and homeowner's insurance are excluded from the mortgage scenario; rewrite "never estimated or filled in" when the first estimated values ship (the live page is unchanged until then).
 - [ ] Verify the terms still marked UNVERIFIED in DATA.md (EIA reuse page; USDA policies page).
 
 ## Open questions
 
-- **Estimated grocery values on the map?** Still open. Proposed default: detail panel only for v1, so the map stays observed-only.
-- **Basket total: which tier?** The items are observed, but a total depends on the chosen quantities, which are a stated assumption. Decide before step 6 whether a displayed total is labeled observed (sum of observed prices) or scenario (depends on assumptions). No total is stored yet.
+- None currently.
+
 
 ## Future improvements
 
