@@ -1,11 +1,19 @@
 // Time to Afford: "your wages" mode.
-// Privacy: the wage lives only in this page's memory. Nothing is stored (no cookies,
-// localStorage, or URL parameters) and nothing is sent anywhere.
+// Privacy: the wage and the mortgage inputs live only in this page's memory. Nothing is
+// stored (no cookies, localStorage, or URL parameters) and nothing is sent anywhere.
 import {
   parseAmount, toHourly, computeResults, formatDuration, formatMoney, formatGasPrice,
+  ownerResults, groceryResults, basketScenario, parseRatePercent, mortgageScenario, MORTGAGE_DEFAULTS,
 } from "./calc.js";
 
 const DEFAULT_METRO = "35620"; // New York-Newark-Jersey City (largest metro)
+const OWNER_COST_TOP = "$4,000 or more";
+const HOME_VALUE_TOP = "$2,000,000 or more";
+const TIER_LABELS = {
+  observed: ["Observed", "Published directly for this place and period"],
+  estimated: ["Estimated", "A national figure adjusted by a published local price index"],
+  scenario: ["Scenario", "Calculated from stated assumptions you can see (and some you can change)"],
+};
 const $ = (id) => document.getElementById(id);
 
 let data = null;
@@ -33,19 +41,95 @@ async function init() {
   rentSel.value = data.sources.rent.default_measure;
   rentSel.disabled = false;
 
+  resetMortgageInputs();
+  for (const el of document.querySelectorAll(".tier[class*='tier-']")) setTier(el, el.className.match(/tier-(\w+)/)[1]);
+
   // Radio buttons have no shared name (so nothing can be submitted); keep them exclusive by hand.
   for (const [id, other] of [["unit-hour", "unit-year"], ["unit-year", "unit-hour"]]) {
     $(id).addEventListener("change", () => { $(other).checked = !$(id).checked; render(); });
   }
-  for (const id of ["metro", "rent-measure"]) $(id).addEventListener("change", render);
-  $("wage").addEventListener("input", render);
+  for (const id of ["metro", "rent-measure", "mort-term"]) $(id).addEventListener("change", render);
+  for (const id of ["wage", "mort-rate", "mort-down"]) $(id).addEventListener("input", render);
+  $("mort-reset").addEventListener("click", () => { resetMortgageInputs(); render(); });
 
   const s = data.sources;
-  $("periods").textContent =
-    `wages ${s.wage.reference_period}, rent ${s.rent.reference_period}, gas ${s.gas.reference_period}`;
+  const periods = [`wages ${s.wage.reference_period}`, `rent ${s.rent.reference_period}`,
+    `gas ${s.gas.reference_period}`];
+  if (s.owner) periods.push(`owner costs and home values ${s.owner.reference_period}`);
+  if (s.grocery_estimates) periods.push(`groceries ${s.grocery_estimates.reference_period}`);
+  $("periods").textContent = periods.join(", ");
   $("built").textContent = `Site data built ${data.built}.`;
+  $("card-groceries").hidden = !data.basket;
+  $("card-home").hidden = !s.owner;
   render();
 }
+
+function resetMortgageInputs() {
+  $("mort-down").value = String(MORTGAGE_DEFAULTS.downPayment * 100);
+  $("mort-term").value = String(MORTGAGE_DEFAULTS.termYears);
+}
+
+// ---------- shared pieces ----------
+
+function setTier(el, tier) {
+  const [label, title] = TIER_LABELS[tier] ?? ["", ""];
+  el.className = tier ? `tier tier-${tier}` : "tier";
+  el.textContent = label;
+  el.title = title;
+  el.hidden = !tier;
+}
+
+function tierBadge(tier) {
+  const el = document.createElement("span");
+  setTier(el, tier);
+  return el;
+}
+
+function describeInput(input) {
+  const li = document.createElement("li");
+  const parts = Object.entries(input).filter(([k]) => k !== "url" && k !== "source")
+    .map(([k, v]) => `${k.replace(/_/g, " ")} ${v}`);
+  li.append(`${input.source ?? "source"}${parts.length ? `: ${parts.join(", ")}` : ""}`);
+  if (input.url) {
+    const a = document.createElement("a");
+    a.href = input.url;
+    a.textContent = "link";
+    a.rel = "noopener";
+    li.append(" (", a, ")");
+  }
+  return li;
+}
+
+/** Fill a <details class="method"> with the method entries for the given keys (built with DOM nodes, not HTML). */
+function renderMethod(id, keys) {
+  const details = $(id);
+  const body = details.querySelector("div");
+  const methods = [...new Set(keys.filter(Boolean))].map((k) => [k, data.methods[k]]).filter(([, m]) => m);
+  details.hidden = methods.length === 0;
+  body.replaceChildren(...methods.map(([, m]) => {
+    const block = document.createElement("div");
+    block.className = "method-entry";
+    const desc = document.createElement("p");
+    desc.textContent = m.description;
+    const asOf = document.createElement("p");
+    asOf.className = "hint";
+    asOf.textContent = `As of ${m.as_of}`;
+    const inputs = document.createElement("ul");
+    inputs.append(...m.inputs.map(describeInput));
+    block.append(desc, inputs, asOf);
+    return block;
+  }));
+}
+
+function listItems(id, lines) {
+  $(id).replaceChildren(...lines.map((t) => {
+    const li = document.createElement("li");
+    li.textContent = t;
+    return li;
+  }));
+}
+
+// ---------- wage, rent, gas ----------
 
 function readWage() {
   const text = $("wage").value.trim();
@@ -56,23 +140,26 @@ function readWage() {
   return { hourly: toHourly(amount, unit), error: null };
 }
 
-function renderWageMessage(r, s) {
+function renderWageMessage(r, s, metro) {
   const el = $("wage-used");
   const money = (v) => `${formatMoney(v, { cents: true })}/hr`;
   if (r.wage.source === "yours") {
     const median = r.wage.median != null ? ` This metro's median is ${money(r.wage.median)}.` : "";
-    el.textContent = `Using your wage: ${money(r.wage.value)}.${median}`;
+    el.replaceChildren(`Using your wage: ${money(r.wage.value)}.${median}`);
   } else if (r.wage.source === "median") {
-    el.textContent = `Using this metro's median wage: ${money(r.wage.value)} ` +
-      `(BLS OEWS, ${s.wage.reference_period}). Enter your wage above to use yours.`;
+    el.replaceChildren(`Using this metro's median wage: ${money(r.wage.value)} ` +
+      `(BLS OEWS, ${s.wage.reference_period}). Enter your wage above to use yours. `, tierBadge(metro.wage_median.tier));
   } else {
-    el.textContent = "No median wage is available for this metro. Enter your wage above.";
+    el.replaceChildren("No median wage is available for this metro. Enter your wage above.");
   }
+  renderMethod("wage-method", [metro.wage_median.method]);
 }
 
-function renderRent(r, s, rentMeasure) {
+function renderRent(r, s, rentMeasure, metro) {
   const label = s.rent.measures[rentMeasure].toLowerCase();
+  const field = metro.rent[rentMeasure] ?? {};
   $("rent-label").textContent = `· ${label}`;
+  setTier($("rent-tier"), field.tier);
   const missing = r.rent.cost == null;
   $("card-rent").classList.toggle("is-missing", missing);
   $("rent-per").hidden = missing;
@@ -87,11 +174,13 @@ function renderRent(r, s, rentMeasure) {
     const moe = r.rent.moe != null ? ` ±${formatMoney(r.rent.moe)}` : "";
     $("rent-inputs").textContent = `Median gross rent ${formatMoney(r.rent.cost)}/month${moe} (includes utilities)`;
   }
+  renderMethod("rent-method", [field.method]);
   $("rent-source").textContent = `Census ACS, ${s.rent.reference_period}`;
 }
 
-function renderGas(r, s) {
+function renderGas(r, s, metro) {
   const missing = r.gasGallon.cost == null;
+  setTier($("gas-tier"), metro.gas.tier);
   $("card-gas").classList.toggle("is-missing", missing);
   $("gas-fill-per").hidden = missing;
   $("gas-gallon-block").hidden = missing;
@@ -107,8 +196,137 @@ function renderGas(r, s) {
     $("gas-inputs").textContent =
       `${formatGasPrice(r.gasGallon.cost)}/gallon · ${formatMoney(r.gasFill.cost, { cents: true })} for 15 gallons`;
   }
+  renderMethod("gas-method", [metro.gas.method]);
   $("gas-source").textContent = `EIA, ${s.gas.reference_period}`;
 }
+
+// ---------- groceries ----------
+
+function renderGroceries(metro, wage) {
+  if (!data.basket) return;
+  const s = data.sources;
+  const items = groceryResults(metro, data.basket, wage);
+  const notCovered = items.every((i) => i.status === "not_covered");
+  $("card-groceries").classList.toggle("is-missing", notCovered);
+  $("groc-note").hidden = !notCovered;
+  $("groc-note").textContent = notCovered
+    ? "No estimate: BEA publishes no price level (Regional Price Parity) for this metro, so local grocery prices can't be estimated."
+    : "";
+  $("groc-table-wrap").hidden = notCovered;
+  $("basket").hidden = notCovered;
+
+  $("groc-rows").replaceChildren(...items.map((i) => {
+    const tr = document.createElement("tr");
+    const name = document.createElement("th");
+    name.scope = "row";
+    name.textContent = `${i.label}`;
+    const unit = document.createElement("span");
+    unit.className = "hint";
+    unit.textContent = ` per ${i.unit}`;
+    name.append(unit);
+    const cells = [
+      i.price != null ? formatMoney(i.price, { cents: true }) : "No data",
+      i.national != null ? formatMoney(i.national, { cents: true }) : "No data",
+      formatDuration(i.hours),
+    ].map((t) => { const td = document.createElement("td"); td.textContent = t; return td; });
+    tr.append(name, ...cells);
+    return tr;
+  }));
+
+  const rpp = metro.rpp_goods && metro.rpp_goods.status === "ok" ? metro.rpp_goods.value : null;
+  renderMethod("groc-method", [items[0]?.method, metro.rpp_goods?.method]);
+  if (rpp != null) {
+    const body = $("groc-method").querySelector("div");
+    const p = document.createElement("p");
+    p.textContent = `This metro's all-goods price level: ${rpp.toFixed(1)} (U.S. = 100). ` +
+      `The same method applies to every item; only the national price and BLS series differ.`;
+    body.prepend(p);
+  }
+
+  const total = basketScenario(items, data.basket, { rppYear: s.grocery_estimates?.rpp_year });
+  if (total) {
+    $("basket-hours").textContent = formatDuration(wage == null ? null : total.value / wage);
+    $("basket-per").textContent = `of work for one of each item above (${formatMoney(total.value, { cents: true })})`;
+    const a = total.assumptions;
+    listItems("basket-assumptions", [
+      `One of each item: ${Object.values(a.quantities).join(", ")} (basket version ${a.basket_version})`,
+      `Estimated local prices, from national prices for ${a.national_prices_as_of} and ${a.rpp_year} price levels`,
+      "Not a full grocery budget; just these six items",
+    ]);
+  } else if (!notCovered) {
+    $("basket-hours").textContent = "No total";
+    $("basket-per").textContent = "At least one item has no price, so no total is shown.";
+    listItems("basket-assumptions", []);
+  }
+  $("groc-source").textContent =
+    `BLS Average Price Data, ${s.groceries.reference_period}; BEA Regional Price Parities, ${s.grocery_estimates.rpp_year}`;
+}
+
+// ---------- homeownership ----------
+
+function readMortgageInputs() {
+  const rateText = $("mort-rate").value.trim();
+  const rate = rateText ? parseRatePercent(rateText) : null;
+  const downText = $("mort-down").value.trim().replace(/%$/, "");
+  const downPct = downText === "" ? null : Number(downText);
+  const errors = [];
+  if (rateText && rate == null) errors.push("Enter a rate between 0 and 30, like 6.5.");
+  const downOk = downPct != null && Number.isFinite(downPct) && downPct >= 0 && downPct < 100;
+  if (!downOk) errors.push("Enter a down payment from 0 to 99 percent.");
+  return { rate, downPayment: downOk ? downPct / 100 : null, termYears: Number($("mort-term").value), errors };
+}
+
+function renderOwner(metro, wage) {
+  const s = data.sources;
+  if (!s.owner) return;
+  const r = ownerResults(metro, wage);
+
+  const costMissing = r.ownerCost.cost == null;
+  $("own-per").hidden = costMissing;
+  if (costMissing) {
+    const top = r.ownerCost.status === "top_coded";
+    $("own-hours").textContent = top ? "Above $4,000" : "No data";
+    $("own-inputs").textContent = top
+      ? `Census reports this median only as “${OWNER_COST_TOP}”, so hours aren't calculated.`
+      : "Census has no owner-cost estimate for this metro.";
+  } else {
+    $("own-hours").textContent = formatDuration(r.ownerCost.hours);
+    const moe = r.ownerCost.moe != null ? ` ±${formatMoney(r.ownerCost.moe)}` : "";
+    $("own-inputs").textContent = `Median monthly costs for owners with a mortgage: ${formatMoney(r.ownerCost.cost)}${moe}. ` +
+      "Includes the mortgage, property taxes, insurance, utilities, and fees.";
+  }
+  renderMethod("own-method", [metro.owner?.owner_cost_with_mortgage?.method, metro.owner?.home_value?.method]);
+
+  // Scenario: principal and interest on the observed median home value.
+  const home = r.homeValue;
+  const homeText = home.value != null
+    ? `${formatMoney(home.value)}${home.moe != null ? ` ±${formatMoney(home.moe)}` : ""}`
+    : home.status === "top_coded" ? HOME_VALUE_TOP : "not available";
+  $("mort-home").replaceChildren(`Median home value: ${homeText} `, tierBadge("observed"));
+
+  const inp = readMortgageInputs();
+  $("mort-error").hidden = inp.errors.length === 0;
+  $("mort-error").textContent = inp.errors.join(" ");
+  const scenario = inp.rate != null && inp.downPayment != null
+    ? mortgageScenario(home.value, { value: inp.rate, as_of: null },
+      { downPayment: inp.downPayment, termYears: inp.termYears })
+    : null;
+  if (scenario) {
+    const a = scenario.assumptions;
+    $("mort-hours").textContent = formatDuration(wage == null ? null : scenario.value / wage);
+    $("mort-per").textContent = `of work per month for ${formatMoney(scenario.value)} principal and interest ` +
+      `(${(a.annual_rate * 100).toFixed(2)}%, ${Math.round(a.down_payment * 100)}% down, ${a.term_years} years, ` +
+      `loan ${formatMoney(scenario.loan)})`;
+  } else {
+    $("mort-hours").textContent = "—";
+    $("mort-per").textContent = home.value == null
+      ? "No payment shown: there's no median home value to use for this metro."
+      : inp.rate == null ? "Enter an interest rate to see the monthly payment." : "";
+  }
+  $("own-source").textContent = `Census ACS, ${s.owner.reference_period}`;
+}
+
+// ---------- main ----------
 
 function render() {
   const metro = metrosByCode.get($("metro").value);
@@ -120,9 +338,11 @@ function render() {
   $("wage-error").textContent = error ?? "";
 
   const r = computeResults(metro, { yourHourly: hourly, rentMeasure });
-  renderWageMessage(r, data.sources);
-  renderRent(r, data.sources, rentMeasure);
-  renderGas(r, data.sources);
+  renderWageMessage(r, data.sources, metro);
+  renderRent(r, data.sources, rentMeasure, metro);
+  renderGas(r, data.sources, metro);
+  renderGroceries(metro, r.wage.value);
+  renderOwner(metro, r.wage.value);
 }
 
 init();

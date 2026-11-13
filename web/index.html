@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Time to Afford</title>
-  <meta name="description" content="How many hours of work it takes to afford rent and gas in U.S. metro areas.">
+  <meta name="description" content="How many hours of work it takes to afford rent, gas, groceries, and a home in U.S. metro areas.">
   <link rel="stylesheet" href="styles.css">
   <script type="module" src="app.js"></script>
 </head>
@@ -44,19 +44,23 @@
       </div>
     </section>
 
-    <p id="wage-used" class="wage-used" aria-live="polite"></p>
+    <div class="wage-used">
+      <p id="wage-used" aria-live="polite"></p>
+      <details class="method" id="wage-method"><summary>How is this calculated?</summary><div></div></details>
+    </div>
 
     <section class="cards" aria-live="polite" aria-label="Results">
       <article class="card" id="card-rent">
-        <h2>Rent <span class="card-sub" id="rent-label"></span></h2>
+        <h2>Rent <span class="card-sub" id="rent-label"></span> <span class="tier" id="rent-tier"></span></h2>
         <p class="big" id="rent-hours">—</p>
         <p class="per" id="rent-per">of work per month</p>
         <p class="inputs" id="rent-inputs"></p>
+        <details class="method" id="rent-method"><summary>How is this calculated?</summary><div></div></details>
         <p class="source" id="rent-source"></p>
       </article>
 
       <article class="card" id="card-gas">
-        <h2>Gas <span class="card-sub">regular</span></h2>
+        <h2>Gas <span class="card-sub">regular</span> <span class="tier" id="gas-tier"></span></h2>
         <div class="gas-pair">
           <div>
             <p class="big" id="gas-fill-hours">—</p>
@@ -68,7 +72,75 @@
           </div>
         </div>
         <p class="inputs" id="gas-inputs"></p>
+        <details class="method" id="gas-method"><summary>How is this calculated?</summary><div></div></details>
         <p class="source" id="gas-source"></p>
+      </article>
+
+      <article class="card wide" id="card-groceries">
+        <h2>Groceries <span class="card-sub">estimated local prices</span> <span class="tier tier-estimated">Estimated</span></h2>
+        <p class="inputs" id="groc-note" hidden></p>
+        <div class="table-wrap compact" id="groc-table-wrap">
+          <table>
+            <thead><tr><th scope="col">Item</th><th scope="col">Price here (est.)</th>
+              <th scope="col">U.S. average</th><th scope="col">Work time</th></tr></thead>
+            <tbody id="groc-rows"></tbody>
+          </table>
+        </div>
+        <details class="method" id="groc-method"><summary>How are these estimated?</summary><div></div></details>
+
+        <div class="scenario" id="basket">
+          <h3>Whole basket <span class="tier tier-scenario">Scenario</span></h3>
+          <p class="big" id="basket-hours">—</p>
+          <p class="per" id="basket-per"></p>
+          <p class="hint">Assumes:</p>
+          <ul class="assumptions" id="basket-assumptions"></ul>
+        </div>
+        <p class="source" id="groc-source"></p>
+      </article>
+
+      <article class="card wide" id="card-home">
+        <h2>Owning a home</h2>
+        <div class="home-grid">
+          <div>
+            <h3>Typical owner costs <span class="tier tier-observed">Observed</span></h3>
+            <p class="big" id="own-hours">—</p>
+            <p class="per" id="own-per">of work per month</p>
+            <p class="inputs" id="own-inputs"></p>
+            <details class="method" id="own-method"><summary>How is this calculated?</summary><div></div></details>
+          </div>
+
+          <!-- Scenario inputs stay in page memory only: no form, no name attributes, nothing stored. -->
+          <div class="scenario" id="mortgage">
+            <h3>Mortgage payment <span class="tier tier-scenario">Scenario</span></h3>
+            <p class="inputs" id="mort-home"></p>
+            <div class="mort-fields">
+              <div class="field">
+                <label for="mort-rate">Interest rate</label>
+                <div class="suffix-row"><input id="mort-rate" type="text" inputmode="decimal" autocomplete="off"
+                  spellcheck="false" placeholder="e.g. 6.5" aria-describedby="mort-rate-help mort-error"><span aria-hidden="true">%</span></div>
+              </div>
+              <div class="field">
+                <label for="mort-down">Down payment</label>
+                <div class="suffix-row"><input id="mort-down" type="text" inputmode="decimal" autocomplete="off"
+                  spellcheck="false" aria-describedby="mort-error"><span aria-hidden="true">%</span></div>
+              </div>
+              <div class="field">
+                <label for="mort-term">Term</label>
+                <select id="mort-term">
+                  <option value="10">10 years</option><option value="15">15 years</option>
+                  <option value="20">20 years</option><option value="30">30 years</option>
+                </select>
+              </div>
+            </div>
+            <p id="mort-rate-help" class="hint">Enter an annual fixed rate. The site doesn't supply one yet.</p>
+            <p id="mort-error" class="error" role="alert" hidden></p>
+            <p class="big" id="mort-hours">—</p>
+            <p class="per" id="mort-per"></p>
+            <p class="hint" id="mort-excludes">Principal and interest only. Property taxes and homeowner's insurance are not included.</p>
+            <button type="button" id="mort-reset" class="link-button">Reset down payment and term</button>
+          </div>
+        </div>
+        <p class="source" id="own-source"></p>
       </article>
     </section>
 
@@ -78,6 +150,10 @@
         <li>Wages are <strong>pre-tax</strong>; take-home pay buys less.</li>
         <li>Sources cover <strong>different periods</strong>: <span id="periods">…</span>.</li>
         <li>Gas prices exist for <strong>only 10 metros</strong>; EIA's areas may not match metro boundaries exactly.</li>
+        <li>Local grocery prices are <strong>estimates</strong>: the national average price adjusted by the metro's price
+          level for all goods (BEA), since no food-specific local index exists. Puerto Rico metros have none.</li>
+        <li>The mortgage payment is a <strong>scenario</strong> from the rate and down payment you choose. It leaves out
+          property taxes and insurance; the typical owner costs figure includes them.</li>
         <li>Rents are survey estimates (with margins of error) and include utilities.</li>
         <li>A metro median wage is not any one person's pay.</li>
       </ul>
@@ -86,8 +162,9 @@
   </main>
 
   <footer class="site-footer">
-    <p>Data: U.S. Bureau of Labor Statistics (OEWS), U.S. Census Bureau (American Community Survey),
-      U.S. Energy Information Administration. <span id="built"></span></p>
+    <p>Data: U.S. Bureau of Labor Statistics (OEWS, Average Price Data), U.S. Census Bureau (American Community Survey),
+      U.S. Energy Information Administration, U.S. Bureau of Economic Analysis (Regional Price Parities).
+      <span id="built"></span></p>
     <p>Code: <a href="https://github.com/rbbarclay/time-to-afford">github.com/rbbarclay/time-to-afford</a> · MIT License</p>
   </footer>
 </body>
