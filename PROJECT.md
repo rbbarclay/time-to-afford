@@ -105,11 +105,11 @@ Show how many hours of work it takes to afford common expenses in each U.S. metr
 - [x] 3. Mortgage scenario calculator, unit-tested against known amortization examples (`web/calc.js`).
 - [ ] 3b. Mortgage rate source for the scenario. **Blocked:** Freddie Mac PMMS terms are unresolved (DATA.md); get written permission or choose another source before any rate is published in the site data. Until then the user enters the rate (see Decisions).
 - [x] 4. National grocery basket (G1), with `pipeline/config/basket.yml`.
-- [ ] 4b. USDA Thrifty Food Plan national reference line (part of G1 in the plan, deferred). Needs: USDA reuse terms verified (the policies page returns HTTP 403 to automated requests; don't work around it, so check it by hand in a browser) and a PDF reader, since the report is PDF only.
+- [ ] 4b. USDA Thrifty Food Plan national reference line (part of G1 in the plan, deferred). Terms checked by hand 2026-11-13 (public domain unless otherwise specified); unblocked. Needs a PDF reader, since the report is PDF only.
 - [x] 5. Metro grocery estimates (G2), checked against the national average for consistency (employment-weighted mean 1.002× national).
 - [x] 6. Front end: tier badges, method tooltips, scenario panel; grocery item estimates and basket total (scenario) in the detail panel. The map's grocery item selector is built with the map feature.
 - [x] Methodology page: explain value tiers; state that property taxes and homeowner's insurance are excluded from the mortgage scenario; rewrite "never estimated or filled in" when the first estimated values ship (the live page is unchanged until then).
-- [ ] Verify the terms still marked UNVERIFIED in DATA.md (EIA reuse page; USDA policies page).
+- [ ] Verify the terms still marked UNVERIFIED in DATA.md (EIA reuse page). USDA terms checked by hand 2026-11-13.
 
 ## Open questions
 

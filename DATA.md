@@ -123,7 +123,7 @@ From [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md
 - **Format:** PDF only (no CSV found), so the pipeline would need to parse a PDF.
 - **Geography:** national (separate reports for Alaska and Hawaii)
 - **Cadence:** monthly
-- **Terms: UNVERIFIED.** USDA's policies page (https://www.usda.gov/policies-and-links) returned HTTP 403 to an automated request, and no reuse statement was found on the FNA pages checked. The block is deliberately not worked around (e.g. by imitating a browser); check the page by hand. The reference line is deferred until then (PROJECT.md, to-do 4b). Expected to be a U.S. government work (17 U.S.C. § 105), but not confirmed on the publisher's site.
+- **Terms checked by hand 2026-11-13** (the policies page returns HTTP 403 to automated requests, which is not worked around): per the project owner's check of USDA's site policies (https://www.usda.gov/policies-and-links), USDA data is in the public domain unless otherwise specified (owner's summary, not a direct quote). No copyright notice or other restriction appears on the FNA cost-of-food reports page or on the monthly report PDF. Cite USDA as the source.
 - **Attribution text:** "Source: USDA, Thrifty Food Plan cost of food report"
 - **As-of format (planned):** `as_of: "YYYY-MM"`
 
