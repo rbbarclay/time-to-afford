@@ -187,3 +187,70 @@ export function parseRatePercent(text) {
   const pct = Number(cleaned);
   return Number.isFinite(pct) && pct > 0 && pct < 30 ? pct / 100 : null;
 }
+
+// ---------- Comparison of two metros ----------
+
+/** Difference B − A in hours, and as a share of A. Null if either side has no hours. */
+export function hoursDiff(a, b) {
+  if (a == null || b == null) return null;
+  return { hours: b - a, pct: a > 0 ? (b - a) / a : null };
+}
+
+function side(metro, { yourHourly, rentMeasure, basket, rppYear, mortgage }) {
+  const r = computeResults(metro, { yourHourly, rentMeasure });
+  const wage = r.wage.value;
+  const rentField = metro.rent[rentMeasure] ?? {};
+  const cells = {
+    rent: { cost: r.rent.cost, moe: r.rent.moe, status: r.rent.status, hours: r.rent.hours,
+      tier: rentField.tier ?? null, method: rentField.method ?? null },
+    gas_fill: { cost: r.gasFill.cost, status: r.gasFill.status, hours: r.gasFill.hours,
+      tier: metro.gas.tier ?? null, method: metro.gas.method ?? null, perGallon: r.gasGallon.cost },
+  };
+  let items = [];
+  if (basket) {
+    items = groceryResults(metro, basket, wage);
+    const total = basketScenario(items, basket, { rppYear });
+    const allNotCovered = items.every((i) => i.status === "not_covered");
+    cells.basket = {
+      cost: total ? total.value : null, hours: total ? hoursFor(total.value, wage) : null,
+      status: total ? "ok" : allNotCovered ? "not_covered" : "missing", tier: "scenario",
+      method: items[0]?.method ?? null, scenario: total,
+    };
+  }
+  if (metro.owner) {
+    const own = ownerResults(metro, wage);
+    const field = metro.owner.owner_cost_with_mortgage;
+    cells.owner_cost = { cost: own.ownerCost.cost, moe: own.ownerCost.moe, status: own.ownerCost.status,
+      hours: own.ownerCost.hours, tier: field.tier ?? null, method: field.method ?? null };
+    const s = mortgage && mortgage.rate != null
+      ? mortgageScenario(own.homeValue.value, { value: mortgage.rate, as_of: null },
+        { downPayment: mortgage.downPayment, termYears: mortgage.termYears })
+      : null;
+    cells.mortgage = {
+      cost: s ? s.value : null, hours: s ? hoursFor(s.value, wage) : null, tier: "scenario",
+      status: s ? "ok" : own.homeValue.value == null ? own.homeValue.status : "needs_input",
+      method: metro.owner.home_value.method ?? null, homeValue: own.homeValue, scenario: s,
+    };
+  }
+  return { wage: r.wage, cells, items };
+}
+
+/**
+ * Compare two metros. With no wage entered each metro uses its own median wage;
+ * an entered wage (yourHourly) is applied to both.
+ * mortgage: {rate, downPayment, termYears} or null (no scenario without a rate).
+ */
+export function compareMetros(a, b, {
+  yourHourly = null, rentMeasure = "all_units", basket = null, rppYear = null, mortgage = null,
+} = {}) {
+  const opts = { yourHourly, rentMeasure, basket, rppYear, mortgage };
+  const A = side(a, opts);
+  const B = side(b, opts);
+  const rows = Object.keys(A.cells).map((key) => ({
+    key, a: A.cells[key], b: B.cells[key], diff: hoursDiff(A.cells[key].hours, B.cells[key].hours),
+  }));
+  const items = A.items.map((ia, n) => ({
+    key: ia.key, label: ia.label, unit: ia.unit, a: ia, b: B.items[n], diff: hoursDiff(ia.hours, B.items[n].hours),
+  }));
+  return { wage: { a: A.wage, b: B.wage, sameWage: yourHourly != null }, rows, items };
+}

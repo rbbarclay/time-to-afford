@@ -199,3 +199,67 @@ test("mortgageScenario with a user-entered rate has no rate date", () => {
   assert.equal(s.value.toFixed(2), "1199.10");
   assert.equal(s.assumptions.rate_as_of, null);
 });
+
+import { compareMetros, hoursDiff } from "../calc.js";
+
+const cmpBasket = { version: 1, as_of: "2026-10", items: { milk: { label: "Milk", unit: "gallon", quantity: 1, national: ok(4) } } };
+const metroA = {
+  cbsa: "A", name: "A", wage_median: ok(20, { tier: "observed", method: "w" }),
+  rent: { all_units: ok(2000, { moe: 10, tier: "observed", method: "r" }) },
+  gas: ok(4, { tier: "observed", method: "g" }),
+  owner: { home_value: ok(400000, { method: "hv" }), owner_cost_with_mortgage: ok(3000, { method: "oc" }) },
+  groceries: { milk: est(4.4, "em") }, rpp_goods: ok(110),
+};
+const metroB = {
+  cbsa: "B", name: "B", wage_median: ok(25),
+  rent: { all_units: ok(1500, { moe: 20 }) },
+  gas: { value: null, status: "not_covered" },
+  owner: { home_value: { value: null, status: "top_coded" }, owner_cost_with_mortgage: ok(2500) },
+  groceries: { milk: { value: null, status: "not_covered" } }, rpp_goods: { value: null, status: "not_covered" },
+};
+
+test("hoursDiff is B minus A, with share of A", () => {
+  assert.deepEqual(hoursDiff(100, 75), { hours: -25, pct: -0.25 });
+  assert.equal(hoursDiff(null, 5), null);
+  assert.equal(hoursDiff(5, null), null);
+});
+
+test("compareMetros uses each metro's median, or your wage for both", () => {
+  const c = compareMetros(metroA, metroB, { basket: cmpBasket });
+  assert.equal(c.wage.a.value, 20);
+  assert.equal(c.wage.b.value, 25);
+  assert.equal(c.wage.sameWage, false);
+  const rent = c.rows.find((r) => r.key === "rent");
+  assert.equal(rent.a.hours, 100);
+  assert.equal(rent.b.hours, 60);
+  assert.deepEqual(rent.diff, { hours: -40, pct: -0.4 });
+  assert.equal(rent.a.tier, "observed");
+
+  const mine = compareMetros(metroA, metroB, { yourHourly: 50, basket: cmpBasket });
+  assert.equal(mine.wage.sameWage, true);
+  assert.equal(mine.rows.find((r) => r.key === "rent").a.hours, 40);
+  assert.equal(mine.rows.find((r) => r.key === "rent").b.hours, 30);
+});
+
+test("compareMetros keeps missing sides labeled and gives no difference", () => {
+  const c = compareMetros(metroA, metroB, { basket: cmpBasket, mortgage: { rate: 0.06, downPayment: 0.2, termYears: 30 } });
+  const row = (k) => c.rows.find((r) => r.key === k);
+  assert.deepEqual(c.rows.map((r) => r.key), ["rent", "gas_fill", "basket", "owner_cost", "mortgage"]);
+  assert.equal(row("gas_fill").a.cost, 60);
+  assert.equal(row("gas_fill").b.status, "not_covered");
+  assert.equal(row("gas_fill").diff, null);
+  assert.equal(row("basket").a.cost, 4.4);
+  assert.equal(row("basket").a.tier, "scenario");
+  assert.equal(row("basket").b.status, "not_covered");
+  assert.equal(row("mortgage").a.cost.toFixed(2), "1918.56");
+  assert.equal(row("mortgage").b.status, "top_coded");
+  assert.equal(c.items[0].a.price, 4.4);
+  assert.equal(c.items[0].diff, null);
+});
+
+test("compareMetros mortgage needs a rate", () => {
+  const c = compareMetros(metroA, metroA, { basket: cmpBasket });
+  const m = c.rows.find((r) => r.key === "mortgage");
+  assert.equal(m.a.status, "needs_input");
+  assert.equal(m.a.cost, null);
+});
