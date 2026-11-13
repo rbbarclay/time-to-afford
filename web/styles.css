@@ -158,3 +158,35 @@ tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
 .suffix-row input { flex: 1; min-width: 0; }
 .link-button { background: none; border: 0; padding: 0; margin-top: .5rem; font: inherit; font-size: .88rem;
   color: var(--accent); text-decoration: underline; cursor: pointer; }
+
+/* Comparison page */
+.field-label { display: block; font-weight: 600; margin-bottom: .35rem; }
+.pair-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: .75rem; align-items: end; }
+.pair-row .link-button { margin: 0 0 .6rem; white-space: nowrap; }
+.compare-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+table.compare { min-width: 0; table-layout: fixed; }
+table.compare thead th:first-child { width: 30%; }
+table.compare thead th { text-transform: none; letter-spacing: 0; font-size: .9rem; color: var(--text); }
+table.compare tbody th { font-weight: 600; }
+table.compare tbody th .method { font-weight: 400; }
+.cmp-hours { display: block; font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.cmp-cost { display: block; color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
+table.compare td.is-missing { color: var(--missing); font-size: .9rem; }
+.diff-more, .diff-less { font-weight: 600; }
+.item-rows th, .item-rows td { font-size: .9rem; }
+.item-rows th { padding-left: 1.4rem; font-weight: 400; }
+.item-rows .cmp-hours { font-size: 1rem; }
+.nav-links { margin: .6rem 0 0; }
+
+@media (max-width: 620px) {
+  .pair-row { grid-template-columns: 1fr; }
+  .pair-row .link-button { justify-self: start; margin: 0; }
+  table.compare, table.compare tbody, table.compare tr, table.compare th, table.compare td { display: block; width: 100%; }
+  table.compare thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  table.compare tr { border-bottom: 1px solid var(--border); padding: .4rem 0; }
+  table.compare tbody th, table.compare td { border: 0; padding: .3rem .8rem; }
+  table.compare td::before { content: attr(data-label); display: block; color: var(--muted); font-size: .75rem;
+    text-transform: uppercase; letter-spacing: .04em; }
+  .item-rows th { padding-left: .8rem; }
+}
+.item-rows tr.items-head th { padding-left: .7rem; font-weight: 600; background: var(--bg); border-top: 2px solid var(--border); }

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare two metros · Time to Afford</title>
+  <meta name="description" content="Compare the hours of work it takes to afford rent, gas, groceries, and a home in two U.S. metro areas.">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="compare.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <p class="back"><a href="./">← Back to Time to Afford</a></p>
+    <h1>Compare two metros</h1>
+    <p class="tagline">Hours of work for the same costs in two places.</p>
+  </header>
+
+  <main>
+    <!-- Not a <form> and inputs have no name attribute: nothing can be submitted or placed in a URL. -->
+    <section class="controls" aria-label="Inputs">
+      <div class="pair-row">
+        <div class="field">
+          <label for="metro-a">First metro</label>
+          <select id="metro-a" disabled><option>Loading metros…</option></select>
+        </div>
+        <button type="button" id="swap" class="link-button" aria-label="Swap the two metros">⇄ Swap</button>
+        <div class="field">
+          <label for="metro-b">Second metro</label>
+          <select id="metro-b" disabled><option>Loading metros…</option></select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="wage">Your wage <span class="hint">(optional, pre-tax)</span></label>
+        <div class="wage-row">
+          <span class="prefix" aria-hidden="true">$</span>
+          <input id="wage" type="text" inputmode="decimal" autocomplete="off" spellcheck="false"
+                 placeholder="Leave blank to use each metro's median" aria-describedby="wage-help wage-error">
+          <fieldset class="unit" aria-label="Wage period">
+            <label><input type="radio" id="unit-hour" checked> per hour</label>
+            <label><input type="radio" id="unit-year"> per year</label>
+          </fieldset>
+        </div>
+        <p id="wage-error" class="error" role="alert" hidden></p>
+        <p id="wage-help" class="hint">If you enter a wage, it's used for both metros. It stays in this browser tab and
+          is never saved, sent anywhere, or put in the page address.</p>
+      </div>
+
+      <div class="field">
+        <label for="rent-measure">Rent type</label>
+        <select id="rent-measure" disabled></select>
+      </div>
+
+      <div class="field">
+        <span class="field-label">Mortgage scenario <span class="hint">(used for both metros)</span></span>
+        <div class="mort-fields">
+          <div class="field">
+            <label for="mort-rate">Interest rate</label>
+            <div class="suffix-row"><input id="mort-rate" type="text" inputmode="decimal" autocomplete="off"
+              spellcheck="false" placeholder="e.g. 6.5" aria-describedby="mort-error"><span aria-hidden="true">%</span></div>
+          </div>
+          <div class="field">
+            <label for="mort-down">Down payment</label>
+            <div class="suffix-row"><input id="mort-down" type="text" inputmode="decimal" autocomplete="off"
+              spellcheck="false" aria-describedby="mort-error"><span aria-hidden="true">%</span></div>
+          </div>
+          <div class="field">
+            <label for="mort-term">Term</label>
+            <select id="mort-term">
+              <option value="10">10 years</option><option value="15">15 years</option>
+              <option value="20">20 years</option><option value="30">30 years</option>
+            </select>
+          </div>
+        </div>
+        <p id="mort-error" class="error" role="alert" hidden></p>
+        <button type="button" id="mort-reset" class="link-button">Reset down payment and term</button>
+      </div>
+    </section>
+
+    <p id="wage-note" class="wage-used" aria-live="polite"></p>
+
+    <section aria-label="Comparison" aria-live="polite">
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead>
+            <tr><th scope="col">Cost</th><th scope="col" id="head-a">First metro</th>
+              <th scope="col" id="head-b">Second metro</th><th scope="col">Difference</th></tr>
+          </thead>
+          <tbody id="rows"></tbody>
+          <tbody id="item-rows" class="item-rows" hidden></tbody>
+        </table>
+      </div>
+      <p><button type="button" id="toggle-items" class="link-button" aria-controls="item-rows" aria-expanded="false">
+        Show the six grocery items</button></p>
+    </section>
+
+    <section class="limits" aria-labelledby="limits-h">
+      <h2 id="limits-h">Keep in mind</h2>
+      <ul>
+        <li>With no wage entered, each metro uses <strong>its own median wage</strong>, so the hours compare a typical
+          worker in each place, not the same person.</li>
+        <li>The difference is the second metro minus the first, in hours of work, and as a percentage of the first.
+          It's left blank when either metro has no value.</li>
+        <li>Grocery prices are <strong>estimates</strong>, and the basket and mortgage payment are
+          <strong>scenarios</strong>; see each row's “How is this calculated?”.</li>
+        <li>Sources cover <strong>different periods</strong>: <span id="periods">…</span>.</li>
+      </ul>
+      <p><a href="methodology.html">Methodology, sources, and all limitations →</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Data: U.S. Bureau of Labor Statistics (OEWS, Average Price Data), U.S. Census Bureau (American Community
+      Survey), U.S. Energy Information Administration, U.S. Bureau of Economic Analysis (Regional Price Parities).
+      <span id="built"></span></p>
+    <p>Code: <a href="https://github.com/rbbarclay/time-to-afford">github.com/rbbarclay/time-to-afford</a> · MIT License</p>
+  </footer>
+</body>
+</html>

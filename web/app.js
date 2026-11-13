@@ -5,15 +5,11 @@ import {
   parseAmount, toHourly, computeResults, formatDuration, formatMoney, formatGasPrice,
   ownerResults, groceryResults, basketScenario, parseRatePercent, mortgageScenario, MORTGAGE_DEFAULTS,
 } from "./calc.js";
+import { setTier, tierBadge, fillMethod } from "./ui.js";
 
 const DEFAULT_METRO = "35620"; // New York-Newark-Jersey City (largest metro)
 const OWNER_COST_TOP = "$4,000 or more";
 const HOME_VALUE_TOP = "$2,000,000 or more";
-const TIER_LABELS = {
-  observed: ["Observed", "Published directly for this place and period"],
-  estimated: ["Estimated", "A national figure adjusted by a published local price index"],
-  scenario: ["Scenario", "Calculated from stated assumptions you can see (and some you can change)"],
-};
 const $ = (id) => document.getElementById(id);
 
 let data = null;
@@ -71,54 +67,9 @@ function resetMortgageInputs() {
 
 // ---------- shared pieces ----------
 
-function setTier(el, tier) {
-  const [label, title] = TIER_LABELS[tier] ?? ["", ""];
-  el.className = tier ? `tier tier-${tier}` : "tier";
-  el.textContent = label;
-  el.title = title;
-  el.hidden = !tier;
-}
-
-function tierBadge(tier) {
-  const el = document.createElement("span");
-  setTier(el, tier);
-  return el;
-}
-
-function describeInput(input) {
-  const li = document.createElement("li");
-  const parts = Object.entries(input).filter(([k]) => k !== "url" && k !== "source")
-    .map(([k, v]) => `${k.replace(/_/g, " ")} ${v}`);
-  li.append(`${input.source ?? "source"}${parts.length ? `: ${parts.join(", ")}` : ""}`);
-  if (input.url) {
-    const a = document.createElement("a");
-    a.href = input.url;
-    a.textContent = "link";
-    a.rel = "noopener";
-    li.append(" (", a, ")");
-  }
-  return li;
-}
-
-/** Fill a <details class="method"> with the method entries for the given keys (built with DOM nodes, not HTML). */
+/** Fill the <details class="method"> with this id from the bundle's methods table. */
 function renderMethod(id, keys) {
-  const details = $(id);
-  const body = details.querySelector("div");
-  const methods = [...new Set(keys.filter(Boolean))].map((k) => [k, data.methods[k]]).filter(([, m]) => m);
-  details.hidden = methods.length === 0;
-  body.replaceChildren(...methods.map(([, m]) => {
-    const block = document.createElement("div");
-    block.className = "method-entry";
-    const desc = document.createElement("p");
-    desc.textContent = m.description;
-    const asOf = document.createElement("p");
-    asOf.className = "hint";
-    asOf.textContent = `As of ${m.as_of}`;
-    const inputs = document.createElement("ul");
-    inputs.append(...m.inputs.map(describeInput));
-    block.append(desc, inputs, asOf);
-    return block;
-  }));
+  fillMethod($(id), data.methods, keys);
 }
 
 function listItems(id, lines) {
