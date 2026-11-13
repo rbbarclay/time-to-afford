@@ -266,12 +266,14 @@ test("compareMetros mortgage needs a rate", () => {
 
 import { mapMeasures, measureField, mapValues, quantileBreaks, groupOf } from "../calc.js";
 
-test("mapMeasures lists observed and estimated measures, never scenarios", () => {
+test("mapMeasures: observed, estimated, and only the fixed-assumption basket scenario", () => {
   const data = { sources: { rent: { measures: { all_units: "All units" } }, owner: {} },
-    basket: { items: { milk: { label: "Milk, whole", unit: "gallon" } } } };
+    basket: { version: 1, items: { milk: { label: "Milk, whole", unit: "gallon", quantity: 1 } } } };
   const keys = mapMeasures(data).map((m) => m.key);
-  assert.deepEqual(keys, ["rent:all_units", "gas_fill", "owner_cost", "grocery:milk"]);
-  assert.ok(mapMeasures(data).every((m) => m.tier !== "scenario"));
+  assert.deepEqual(keys, ["rent:all_units", "gas_fill", "owner_cost", "basket", "grocery:milk"]);
+  const scenarios = mapMeasures(data).filter((m) => m.tier === "scenario");
+  assert.deepEqual(scenarios.map((m) => m.key), ["basket"]); // never the mortgage payment
+  assert.match(scenarios[0].assumptions, /one of each item \(1 gallon milk; basket version 1\)/);
   assert.equal(mapMeasures(data).find((m) => m.key === "grocery:milk").tier, "estimated");
 });
 
@@ -297,4 +299,25 @@ test("quantileBreaks gives min, equal-count boundaries, max; groupOf assigns gro
   assert.equal(groupOf(null, b), null);
   assert.deepEqual(quantileBreaks([7], 5), [7, 7, 7, 7, 7, 7]);
   assert.equal(groupOf(7, [7, 7, 7, 7, 7, 7]), 4);
+});
+
+test("basket on the map: total of estimated prices, scenario tier, not covered without RPP", () => {
+  const a = measureField(metroA, "basket", cmpBasket);
+  assert.equal(a.cost, 4.4);
+  assert.equal(a.tier, "scenario");
+  assert.equal(measureField(metroB, "basket", cmpBasket).status, "not_covered");
+  assert.equal(measureField(metroA, "basket").status, "not_covered"); // no basket data at all
+  const v = mapValues([metroA, metroB], "basket", { basket: cmpBasket, yourHourly: 22 });
+  assert.deepEqual(v.map((x) => x.hours), [0.2, null]);
+});
+
+import { boundaryLabels } from "../calc.js";
+
+test("boundaryLabels picks one unit and enough decimals to keep neighbors distinct", () => {
+  assert.deepEqual(boundaryLabels([0.6483, 0.9717, 1.0333, 1.1, 1.1333, 1.4]),
+    ["39 min", "58 min", "62 min", "66 min", "68 min", "84 min"]);
+  assert.deepEqual(boundaryLabels([33.8, 47.5, 52.6, 59, 66, 94.1]),
+    ["33.8 hours", "47.5 hours", "52.6 hours", "59.0 hours", "66.0 hours", "94.1 hours"]);
+  assert.deepEqual(boundaryLabels([0.1, 0.16, 0.168, 0.17, 0.18, 0.2]).slice(1, 4), ["9.6 min", "10.1 min", "10.2 min"]);
+  assert.deepEqual(boundaryLabels(null), []);
 });

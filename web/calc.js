@@ -256,10 +256,12 @@ export function compareMetros(a, b, {
 }
 
 // ---------- Map ----------
-// Measures that can be mapped: observed and estimated values only. Scenario values
-// (the basket total and the mortgage payment) never appear on the map.
+// Measures that can be mapped: observed and estimated values, plus scenarios whose
+// assumptions are fixed and the same in every metro (policy amended 2026-11-13). That
+// admits the grocery basket (one of each item everywhere); the mortgage payment, which
+// depends on a rate the user enters, never appears on the map.
 
-/** Map measure keys: "rent:<measure>", "gas_fill", "grocery:<item>", "owner_cost". */
+/** Map measure keys: "rent:<measure>", "gas_fill", "owner_cost", "basket", "grocery:<item>". */
 export function mapMeasures(data) {
   const out = Object.entries(data.sources.rent.measures)
     .map(([k, label]) => ({ key: `rent:${k}`, label: `Rent · ${label.toLowerCase()}`, per: "per month", tier: "observed" }));
@@ -267,15 +269,30 @@ export function mapMeasures(data) {
   if (data.sources.owner) {
     out.push({ key: "owner_cost", label: "Owner costs with a mortgage", per: "per month", tier: "observed" });
   }
+  if (data.basket) {
+    const quantities = Object.values(data.basket.items)
+      .map((i) => `${i.quantity} ${i.unit} ${i.label.split(",")[0].toLowerCase()}`).join(", ");
+    out.push({ key: "basket", label: "Groceries · six-item basket", per: "", tier: "scenario",
+      assumptions: `one of each item (${quantities}; basket version ${data.basket.version}), ` +
+        "at estimated local prices. The same basket in every metro." });
+  }
   for (const [k, item] of Object.entries(data.basket?.items ?? {})) {
-    out.push({ key: `grocery:${k}`, label: `Groceries · ${item.label.toLowerCase()} (1 ${item.unit})`, per: "", tier: "estimated" });
+    out.push({ key: `grocery:${k}`, label: `Groceries · ${item.label} (1 ${item.unit})`, per: "", tier: "estimated" });
   }
   return out;
 }
 
-/** The value a measure maps for one metro: {cost, status, tier, method}. */
-export function measureField(metro, key) {
+/** The value a measure maps for one metro: {cost, status, tier, method}. `basket` is needed for "basket". */
+export function measureField(metro, key, basket = null) {
   const none = { value: null, status: "not_covered" };
+  if (key === "basket") {
+    if (!basket) return { cost: null, status: "not_covered", tier: "scenario", method: null, moe: null };
+    const items = groceryResults(metro, basket, null);
+    const total = basketScenario(items, basket);
+    const allNotCovered = items.every((i) => i.status === "not_covered");
+    return { cost: total ? total.value : null, status: total ? "ok" : allNotCovered ? "not_covered" : "missing",
+      tier: "scenario", method: items[0]?.method ?? null, moe: null };
+  }
   let field;
   let scale = 1;
   if (key.startsWith("rent:")) field = metro.rent[key.slice(5)];
@@ -292,9 +309,9 @@ export function measureField(metro, key) {
  * Hours of work for one measure in every metro. Each metro uses its own median
  * wage unless yourHourly is given, which then applies to all metros.
  */
-export function mapValues(metros, key, { yourHourly = null } = {}) {
+export function mapValues(metros, key, { yourHourly = null, basket = null } = {}) {
   return metros.map((m) => {
-    const f = measureField(m, key);
+    const f = measureField(m, key, basket);
     const median = ok(m.wage_median);
     const wage = yourHourly ?? median;
     return { cbsa: m.cbsa, name: m.name, xy: m.xy ?? null, ...f, wage,
@@ -313,6 +330,23 @@ export function quantileBreaks(values, k = 5) {
   for (let i = 1; i < k; i++) breaks.push(v[Math.min(v.length - 1, Math.floor((i * v.length) / k))]);
   breaks.push(v[v.length - 1]);
   return breaks;
+}
+
+/**
+ * Legend labels for group boundaries, in one unit (minutes under 2 hours, else hours),
+ * with the fewest decimals (0-2) that keep neighboring boundaries distinct.
+ */
+export function boundaryLabels(breaks) {
+  if (!breaks) return [];
+  const minutes = breaks[breaks.length - 1] < 2;
+  const vals = breaks.map((h) => (minutes ? h * 60 : h));
+  const unit = minutes ? "min" : "hours";
+  for (let d = minutes ? 0 : 1; d <= 2; d++) {
+    const labels = vals.map((v) => v.toFixed(d));
+    const distinct = labels.every((l, i) => i === 0 || l !== labels[i - 1] || vals[i] === vals[i - 1]);
+    if (distinct || d === 2) return labels.map((l) => `${l} ${unit}`);
+  }
+  return [];
 }
 
 /** Group index 0..k-1 for a value given quantileBreaks output, or null. */

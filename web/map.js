@@ -3,7 +3,7 @@
 // localStorage, or URL parameters) and nothing is sent anywhere.
 import {
   parseAmount, toHourly, formatDuration, formatMoney, formatGasPrice, GAS_FILL_GALLONS,
-  mapMeasures, mapValues, quantileBreaks, groupOf,
+  mapMeasures, mapValues, quantileBreaks, groupOf, boundaryLabels,
 } from "./calc.js";
 import { setTier, tierBadge, fillMethod } from "./ui.js";
 
@@ -84,10 +84,6 @@ function sizeDots() {
   for (const c of $("selected-dot").children) c.setAttribute("r", r + 3);
 }
 
-/** Legend boundaries: one decimal for minutes, so close groups don't read "10 min – 10 min". */
-function formatBoundary(hours) {
-  return hours < 1 ? `${(hours * 60).toFixed(1)} min` : `${hours.toFixed(1)} hours`;
-}
 
 function el(tag, attrs = {}) {
   const node = document.createElementNS(SVG_NS, tag);
@@ -126,7 +122,7 @@ function render() {
   $("wage-error").hidden = !error;
   $("wage-error").textContent = error ?? "";
   const measure = measures.find((m) => m.key === $("measure").value);
-  const values = mapValues(data.metros, measure.key, { yourHourly: hourly });
+  const values = mapValues(data.metros, measure.key, { yourHourly: hourly, basket: data.basket ?? null });
   const breaks = quantileBreaks(values.map((v) => v.hours), GROUPS);
   current = { values, breaks, measure, hourly };
 
@@ -134,7 +130,7 @@ function render() {
   setTier($("measure-tier"), measure.tier);
   $("map-sub").textContent = `Hours of work${measure.per ? ` ${measure.per}` : ""}, ` +
     (hourly != null ? `at your wage of ${formatMoney(hourly, { cents: true })}/hr in every metro.`
-      : "at each metro's median wage.");
+      : "at each metro's median wage.") + (measure.assumptions ? ` Scenario: ${measure.assumptions}` : "");
 
   // Hollow dots first, then groups light to dark, so darker dots draw on top.
   const order = [...values].sort((a, b) => (groupOf(a.hours, breaks) ?? -1) - (groupOf(b.hours, breaks) ?? -1));
@@ -152,11 +148,10 @@ function renderLegend(values, breaks) {
   if (breaks) {
     const counts = Array(GROUPS).fill(0);
     for (const v of values) { const g = groupOf(v.hours, breaks); if (g != null) counts[g]++; }
+    const labels = boundaryLabels(breaks);
     for (let g = 0; g < GROUPS; g++) {
       if (!counts[g]) continue;
-      const lo = breaks[g];
-      const hi = g === GROUPS - 1 ? breaks[GROUPS] : breaks[g + 1];
-      items.push(legendItem(`g${g}`, `${formatBoundary(lo)} – ${formatBoundary(hi)}`, counts[g]));
+      items.push(legendItem(`g${g}`, `${labels[g]} – ${labels[g + 1]}`, counts[g]));
     }
   }
   const none = {};
@@ -195,7 +190,10 @@ function statusText(v, key) {
   if (v.wage == null && v.cost != null) return "No median wage for this metro. Enter your wage to see hours.";
   if (v.status === "not_covered") {
     if (key === "gas_fill") return "EIA publishes gas prices for only 10 metros, and this isn't one of them.";
-    if (key.startsWith("grocery:")) return "No estimate: BEA publishes no price level for this metro.";
+    if (key.startsWith("grocery:") || key === "basket") return "No estimate: BEA publishes no price level for this metro.";
+  }
+  if (key === "basket" && v.status === "missing") {
+    return "At least one item has no price, so no basket total is shown.";
     return "The source doesn't cover this metro.";
   }
   if (v.status === "top_coded") {
@@ -210,6 +208,7 @@ function costText(v, key) {
   const moe = v.moe != null ? ` ±${formatMoney(v.moe)}` : "";
   if (key === "gas_fill") return `${formatMoney(v.cost, { cents: true })} for ${GAS_FILL_GALLONS} gallons (${formatGasPrice(v.cost / GAS_FILL_GALLONS)}/gallon)`;
   if (key.startsWith("grocery:")) return `${formatMoney(v.cost, { cents: true })} (estimated)`;
+  if (key === "basket") return `${formatMoney(v.cost, { cents: true })} for one of each item, at estimated prices`;
   return `${formatMoney(v.cost)}${moe}${key === "gas_fill" ? "" : " per month"}`;
 }
 
