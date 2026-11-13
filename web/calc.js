@@ -254,3 +254,71 @@ export function compareMetros(a, b, {
   }));
   return { wage: { a: A.wage, b: B.wage, sameWage: yourHourly != null }, rows, items };
 }
+
+// ---------- Map ----------
+// Measures that can be mapped: observed and estimated values only. Scenario values
+// (the basket total and the mortgage payment) never appear on the map.
+
+/** Map measure keys: "rent:<measure>", "gas_fill", "grocery:<item>", "owner_cost". */
+export function mapMeasures(data) {
+  const out = Object.entries(data.sources.rent.measures)
+    .map(([k, label]) => ({ key: `rent:${k}`, label: `Rent · ${label.toLowerCase()}`, per: "per month", tier: "observed" }));
+  out.push({ key: "gas_fill", label: "Gas · 15-gallon fill-up", per: "", tier: "observed" });
+  if (data.sources.owner) {
+    out.push({ key: "owner_cost", label: "Owner costs with a mortgage", per: "per month", tier: "observed" });
+  }
+  for (const [k, item] of Object.entries(data.basket?.items ?? {})) {
+    out.push({ key: `grocery:${k}`, label: `Groceries · ${item.label.toLowerCase()} (1 ${item.unit})`, per: "", tier: "estimated" });
+  }
+  return out;
+}
+
+/** The value a measure maps for one metro: {cost, status, tier, method}. */
+export function measureField(metro, key) {
+  const none = { value: null, status: "not_covered" };
+  let field;
+  let scale = 1;
+  if (key.startsWith("rent:")) field = metro.rent[key.slice(5)];
+  else if (key === "gas_fill") { field = metro.gas; scale = GAS_FILL_GALLONS; }
+  else if (key === "owner_cost") field = metro.owner?.owner_cost_with_mortgage;
+  else if (key.startsWith("grocery:")) field = metro.groceries?.[key.slice(8)];
+  field = field ?? none;
+  const v = ok(field);
+  return { cost: v == null ? null : v * scale, status: field.status, tier: field.tier ?? null,
+    method: field.method ?? null, moe: field.moe ?? null };
+}
+
+/**
+ * Hours of work for one measure in every metro. Each metro uses its own median
+ * wage unless yourHourly is given, which then applies to all metros.
+ */
+export function mapValues(metros, key, { yourHourly = null } = {}) {
+  return metros.map((m) => {
+    const f = measureField(m, key);
+    const median = ok(m.wage_median);
+    const wage = yourHourly ?? median;
+    return { cbsa: m.cbsa, name: m.name, xy: m.xy ?? null, ...f, wage,
+      wageSource: yourHourly != null ? "yours" : median != null ? "median" : "none", hours: hoursFor(f.cost, wage) };
+  });
+}
+
+/**
+ * Equal-count group boundaries for the non-null values: [min, b1, ..., max] (k + 1 numbers).
+ * Returns null with no values. Ties can make groups unequal in size.
+ */
+export function quantileBreaks(values, k = 5) {
+  const v = values.filter((x) => x != null && Number.isFinite(x)).sort((a, b) => a - b);
+  if (!v.length) return null;
+  const breaks = [v[0]];
+  for (let i = 1; i < k; i++) breaks.push(v[Math.min(v.length - 1, Math.floor((i * v.length) / k))]);
+  breaks.push(v[v.length - 1]);
+  return breaks;
+}
+
+/** Group index 0..k-1 for a value given quantileBreaks output, or null. */
+export function groupOf(value, breaks) {
+  if (value == null || !breaks) return null;
+  const k = breaks.length - 1;
+  for (let i = k - 1; i >= 1; i--) if (value >= breaks[i]) return i;
+  return 0;
+}

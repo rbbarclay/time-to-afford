@@ -263,3 +263,38 @@ test("compareMetros mortgage needs a rate", () => {
   assert.equal(m.a.status, "needs_input");
   assert.equal(m.a.cost, null);
 });
+
+import { mapMeasures, measureField, mapValues, quantileBreaks, groupOf } from "../calc.js";
+
+test("mapMeasures lists observed and estimated measures, never scenarios", () => {
+  const data = { sources: { rent: { measures: { all_units: "All units" } }, owner: {} },
+    basket: { items: { milk: { label: "Milk, whole", unit: "gallon" } } } };
+  const keys = mapMeasures(data).map((m) => m.key);
+  assert.deepEqual(keys, ["rent:all_units", "gas_fill", "owner_cost", "grocery:milk"]);
+  assert.ok(mapMeasures(data).every((m) => m.tier !== "scenario"));
+  assert.equal(mapMeasures(data).find((m) => m.key === "grocery:milk").tier, "estimated");
+});
+
+test("measureField and mapValues use each median, or your wage everywhere", () => {
+  assert.equal(measureField(metroA, "gas_fill").cost, 60);
+  assert.equal(measureField(metroB, "gas_fill").status, "not_covered");
+  assert.equal(measureField(metroA, "grocery:milk").tier, "estimated");
+  assert.equal(measureField(metroB, "owner_cost").cost, 2500);
+  assert.equal(measureField({ rent: {}, gas: { value: null, status: "not_covered" } }, "owner_cost").status, "not_covered");
+  const v = mapValues([metroA, metroB], "rent:all_units");
+  assert.deepEqual(v.map((x) => x.hours), [100, 60]);
+  assert.equal(v[0].wageSource, "median");
+  const mine = mapValues([metroA, metroB], "rent:all_units", { yourHourly: 50 });
+  assert.deepEqual(mine.map((x) => x.hours), [40, 30]);
+});
+
+test("quantileBreaks gives min, equal-count boundaries, max; groupOf assigns groups", () => {
+  const vals = Array.from({ length: 10 }, (_, i) => i + 1); // 1..10
+  const b = quantileBreaks([...vals, null], 5);
+  assert.deepEqual(b, [1, 3, 5, 7, 9, 10]);
+  assert.deepEqual(vals.map((x) => groupOf(x, b)), [0, 0, 1, 1, 2, 2, 3, 3, 4, 4]);
+  assert.equal(quantileBreaks([null], 5), null);
+  assert.equal(groupOf(null, b), null);
+  assert.deepEqual(quantileBreaks([7], 5), [7, 7, 7, 7, 7, 7]);
+  assert.equal(groupOf(7, [7, 7, 7, 7, 7, 7]), 4);
+});
