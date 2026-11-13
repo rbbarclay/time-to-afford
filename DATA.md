@@ -95,7 +95,7 @@ From [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md
 - **Attribution text:** "Source: U.S. Bureau of Labor Statistics, Average Price Data"
 - **As-of format in data files:** each item's method has `as_of: "YYYY-MM"`; the file has `as_of` (latest month) and `items_same_month`
 
-### BEA Regional Price Parities (RPPs): grocery estimate adjustment (plan 10.4)
+### BEA Regional Price Parities (RPPs): grocery estimate adjustment (plan 10.4). In the pipeline as `pipeline/grocery_metro.py` (not yet on the site)
 - **Publisher:** U.S. Bureau of Economic Analysis
 - **URL:** https://www.bea.gov/data/prices-inflation/regional-price-parities-state-and-metro-area; data file `https://apps.bea.gov/regional/zip/MARPP.zip` (`MARPP_MSA_2008_2024.csv`)
 - **Series (checked 2026-11-09):** table MARPP, line codes `1` All items, **`2` Goods**, `3` Services: Housing, `4` Services: Utilities, `5` Services: Other. **There is no food-specific line**, so grocery estimates must use the all-goods RPP and the method string must say so.
@@ -103,7 +103,9 @@ From [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md
 - **Cadence:** annual. Latest year is 2024 (current release February 19, 2026); next release December 10, 2026.
 - **Terms checked 2026-11-09:** BEA citation guidelines (https://www.bea.gov/help/guidelines-for-citing-bea): "Citations are appreciated and appropriate." That page doesn't state "public domain"; BEA data are U.S. government works (17 U.S.C. § 105).
 - **Attribution text:** "Source: U.S. Bureau of Economic Analysis, Regional Price Parities"
-- **As-of format (planned):** `year: YYYY` in `inputs`
+- **As-of format:** `year: YYYY` in `inputs`; `rpp_year` at file level
+- **File format notes (2026-11-13):** latin-1 CSV; `GeoFIPS` is quoted with a leading space (` "35620"`); rows `00000` (U.S.) and `00999` (nonmetropolitan portion) are skipped; `(NA)` means not available (none in 2024 for our metros). BEA footnotes: no RPPs for Enid before 2013, Twin Falls before 2015, Kiryas Joel-Poughkeepsie-Newburgh before 2016 (the 2024 values exist). Delineation: OMB bulletin 23-01, same codes as OEWS.
+- **Check:** the employment-weighted mean of the 387 metro estimates is 1.002× the national price for every item (expected slightly above 1, since rural areas pull the national level down).
 
 ### USDA Thrifty Food Plan: grocery reference line (plan 10.5)
 - **Publisher:** USDA. The site now names it the **Food and Nutrition Administration** (the plan says Food and Nutrition Service); the Center for Nutrition Policy and Promotion (CNPP) sits under it. `fns.usda.gov` now redirects to `fna.usda.gov`.

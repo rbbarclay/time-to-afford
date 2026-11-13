@@ -1,7 +1,8 @@
 """Validate data/wages.json, data/rent.json, data/gas.json across all metros.
 
 Files: data/wages.json, rent.json, gas.json, plus owner.json (ACS home value and
-owner costs) and groceries.json (national BLS average prices), if present.
+owner costs), groceries.json (national BLS average prices), and grocery_metro.json
+(estimated metro prices: national price x BEA goods RPP / 100), if present.
 
 Checks
   1. structure    every value is {value, status, tier, method}; null iff status != "ok";
@@ -20,6 +21,9 @@ Checks
                              and range checks only.
                     groceries -> BLS ap.data.3.Food flat file (a separate BLS
                              publication from the API used to build the data)
+  5. grocery estimates  grocery_metro.json metros are wage metros; each estimate equals
+                  national price x RPP / 100 recomputed from groceries.json (same month);
+                  RPP range and employment-weighted mean near national are WARNINGS
 
 Writes data/validation_report.csv: one row per metro with inputs, as-of dates,
 hours of work (rent / median wage, gas per gallon / median wage), and the
@@ -55,7 +59,8 @@ REF_PATH = Path(__file__).resolve().parent / "reference" / "references.json"
 REPORT_PATH = DATA / "validation_report.csv"
 
 RANGES = {"wage": (8.0, 100.0), "rent": (300, 5000), "gas": (2.0, 9.0),
-          "home_value": (50_000, 3_000_000), "owner_cost": (500, 6000), "grocery_item": (0.10, 30.0)}
+          "home_value": (50_000, 3_000_000), "owner_cost": (500, 6000), "grocery_item": (0.10, 30.0),
+          "rpp_goods": (80.0, 125.0), "grocery_metro_ratio": (0.97, 1.03)}
 RENT_KEYS = ("all_units", "one_bedroom", "two_bedroom")
 OWNER_KEYS = ("home_value", "owner_cost_with_mortgage")
 REFERENCE_SOURCES = ("wage", "rent", "gas", "owner", "groceries")
@@ -123,6 +128,51 @@ def check_grocery_ranges(groceries: dict) -> list[str]:
     lo, hi = RANGES["grocery_item"]
     return [f"groceries {k}={value_of(v)} outside [{lo}, {hi}]" for k, v in groceries["items"].items()
             if value_of(v) is not None and not lo <= value_of(v) <= hi]
+
+
+def check_grocery_metro(gm: dict, groceries: dict, wages: dict) -> tuple[list[str], list[str]]:
+    """Returns (errors, warnings) for the estimated metro grocery prices."""
+    errors = [] if gm.get("as_of") else ["grocery_metro: missing as_of"]
+    methods = gm.get("methods") or {}
+    errors += tiers.check_methods("grocery_metro", methods)
+    if gm.get("as_of") != groceries.get("as_of"):
+        errors.append(f"grocery_metro: national month {gm.get('as_of')} but groceries.json is "
+                      f"{groceries.get('as_of')} (rerun grocery_metro.py)")
+    extra = set(gm["metros"]) - set(wages["metros"])
+    if extra:
+        errors.append(f"grocery_metro: metros not in wages: {sorted(extra)}")
+    warnings = []
+    lo, hi = RANGES["rpp_goods"]
+    num, den = {}, {}
+    for code, m in gm["metros"].items():
+        rpp = m["rpp_goods"]
+        errors += tiers.check_value(f"grocery_metro {code}.rpp_goods", rpp, methods)
+        if value_of(rpp) is not None and not lo <= rpp["value"] <= hi:
+            warnings.append(f"grocery_metro {code} rpp_goods={rpp['value']} outside [{lo}, {hi}]")
+        if set(m["items"]) != set(groceries["items"]):
+            errors.append(f"grocery_metro {code}: items differ from groceries.json")
+            continue
+        for key, est in m["items"].items():
+            where = f"grocery_metro {code}.{key}"
+            errors += tiers.check_value(where, est, methods)
+            if est.get("tier") != "estimated":
+                errors.append(f"{where}: tier {est.get('tier')}, expected estimated")
+            national = value_of(groceries["items"][key])
+            expected = (round(national * rpp["value"] / 100, 3)
+                        if national is not None and value_of(rpp) is not None else None)
+            if value_of(est) != expected:
+                errors.append(f"{where}: {value_of(est)} != national x RPP / 100 = {expected}")
+            w = value_of(wages["metros"].get(code, {}).get("employment"))
+            if expected is not None and w:
+                num[key] = num.get(key, 0) + expected * w
+                den[key] = den.get(key, 0) + w
+    lo, hi = RANGES["grocery_metro_ratio"]
+    for key in num:
+        ratio = num[key] / den[key] / value_of(groceries["items"][key])
+        if not lo <= ratio <= hi:
+            warnings.append(f"grocery_metro {key}: employment-weighted mean / national = {ratio:.4f} "
+                            f"outside [{lo}, {hi}]")
+    return errors, warnings
 
 
 def check_grocery_reference(groceries: dict, refs: dict) -> tuple[list[str], int]:
@@ -405,6 +455,7 @@ def main(argv=None) -> int:
     wages, rent, gas = load("wages.json"), load("rent.json"), load("gas.json")
     owner = load("owner.json") if (DATA / "owner.json").exists() else None
     groceries = load("groceries.json") if (DATA / "groceries.json").exists() else None
+    grocery_metro = load("grocery_metro.json") if (DATA / "grocery_metro.json").exists() else None
 
     refs = json.loads(REF_PATH.read_text()) if REF_PATH.exists() else {}
     if args.refresh_references is not None:
@@ -430,6 +481,10 @@ def main(argv=None) -> int:
         warnings += check_grocery_ranges(groceries)
         g_errors, grocery_checked = check_grocery_reference(groceries, refs)
         errors += g_errors
+        if grocery_metro is not None:
+            gm_errors, gm_warnings = check_grocery_metro(grocery_metro, groceries, wages)
+            errors += gm_errors
+            warnings += gm_warnings
 
     rows = report_rows(wages, rent, gas, checked, owner)
     write_report(rows)
@@ -445,6 +500,9 @@ def main(argv=None) -> int:
     if groceries is not None:
         print(f"Groceries (national): {len(groceries['items'])} items, {grocery_checked} reference-checked, "
               f"{groceries['reference_period']}")
+    if groceries is not None and grocery_metro is not None:
+        print(f"Grocery estimates: {len(grocery_metro['metros'])} metros (RPP {grocery_metro['rpp_year']}), "
+              f"recomputed from national prices")
     print(f"Report: {REPORT_PATH}")
     for w in warnings:
         print("WARNING", w)
