@@ -126,3 +126,64 @@ export function mortgageScenario(homeValue, rate, {
     excludes: ["property taxes", "homeowner's insurance"],
   };
 }
+
+// ---------- Homeownership (observed) ----------
+
+/** Observed ACS owner costs (with a mortgage) and median home value for a metro, with hours of work. */
+export function ownerResults(metro, wage) {
+  const field = (k) => (metro.owner && metro.owner[k]) || { value: null, status: "not_covered" };
+  const cost = field("owner_cost_with_mortgage");
+  const home = field("home_value");
+  return {
+    ownerCost: { status: cost.status, cost: ok(cost), moe: cost.moe ?? null, hours: hoursFor(ok(cost), wage) },
+    homeValue: { status: home.status, value: ok(home), moe: home.moe ?? null },
+  };
+}
+
+// ---------- Groceries (estimated items, scenario total) ----------
+
+/**
+ * Hours of work for each basket item at the metro's estimated price.
+ * basket: the bundle's `basket` (labels, units, quantities, national prices).
+ */
+export function groceryResults(metro, basket, wage) {
+  return Object.entries(basket.items).map(([key, item]) => {
+    const field = (metro.groceries && metro.groceries[key]) || { value: null, status: "not_covered" };
+    const price = ok(field);
+    return {
+      key, label: item.label, unit: item.unit, quantity: item.quantity,
+      status: field.status, tier: field.tier ?? null, method: field.method ?? null,
+      price, national: ok(item.national), hours: hoursFor(price, wage),
+    };
+  });
+}
+
+/**
+ * Basket total for a metro: sum of quantity x estimated price. Tier "scenario",
+ * because the total depends on the chosen quantities. Returns null if any item
+ * is unavailable, so a partial basket is never shown as a total.
+ */
+export function basketScenario(items, basket, { rppYear = null } = {}) {
+  if (!items.length || items.some((i) => i.price == null)) return null;
+  const value = items.reduce((sum, i) => sum + i.price * i.quantity, 0);
+  return {
+    tier: "scenario",
+    value,
+    assumptions: {
+      basket_version: basket.version,
+      quantities: Object.fromEntries(items.map((i) => [i.key, `${i.quantity} ${i.unit}`])),
+      national_prices_as_of: basket.as_of,
+      rpp_year: rppYear,
+      item_prices: "estimated (national BLS price x BEA all-goods RPP / 100)",
+    },
+  };
+}
+
+/** Parse a user-entered annual rate in percent ("6.25", "6.25%") into a fraction, else null. */
+export function parseRatePercent(text) {
+  if (text == null) return null;
+  const cleaned = String(text).replace(/[%\s]/g, "");
+  if (!/^\d*\.?\d+$/.test(cleaned)) return null;
+  const pct = Number(cleaned);
+  return Number.isFinite(pct) && pct > 0 && pct < 30 ? pct / 100 : null;
+}

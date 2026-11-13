@@ -84,3 +84,53 @@ def test_undefined_method_raises():
     import pytest
     with pytest.raises(ValueError, match="nope"):
         build.build_bundle(wages, rent, gas, dt.date(2026, 11, 8))
+
+
+def est(x, method):
+    return {"value": x, "status": "ok", "tier": "estimated", "method": method}
+
+
+def extras():
+    owner = {"source": "ACS", "as_of": "2025",
+             "measures": {"home_value": "Median home value", "owner_cost_with_mortgage": "Owner costs"},
+             "methods": {"hv": meth("value"), "oc": meth("cost")},
+             "metros": {"35620": {"name": "New York", "home_value": ok(691700, "hv", moe=5263),
+                                  "owner_cost_with_mortgage": ok(3441, "oc", moe=23)}}}
+    groceries = {"source": "BLS", "as_of": "2026-10", "basket_version": 1,
+                 "methods": {"bls_milk": meth("milk")},
+                 "items": {"milk": {"label": "Milk", "unit": "gallon", "quantity": 1, "series": "APU0000709112",
+                                    **ok(4.101, "bls_milk")}}}
+    gm = {"source": "BLS x BEA", "as_of": "2026-10", "rpp_year": 2024,
+          "methods": {"rpp": meth("rpp"), "est_milk": meth("est")},
+          "metros": {"35620": {"name": "New York", "rpp_goods": ok(110.261, "rpp"),
+                               "items": {"milk": est(4.522, "est_milk")}}}}
+    return owner, groceries, gm
+
+
+def test_bundle_with_owner_and_groceries():
+    owner, groceries, gm = extras()
+    b = build.build_bundle(*sample(), dt.date(2026, 11, 13), owner=owner, groceries=groceries, grocery_metro=gm)
+    ab, ny = b["metros"]
+    assert ny["owner"]["home_value"]["value"] == 691700 and ny["owner"]["owner_cost_with_mortgage"]["moe"] == 23
+    assert ny["groceries"]["milk"] == est(4.522, "est_milk") and ny["rpp_goods"]["value"] == 110.261
+    assert ab["owner"]["home_value"] == {"value": None, "status": "not_covered"}
+    assert ab["groceries"]["milk"] == {"value": None, "status": "not_covered"} and ab["rpp_goods"]["status"] == "not_covered"
+    assert b["basket"] == {"version": 1, "as_of": "2026-10", "items": {"milk": {
+        "label": "Milk", "unit": "gallon", "quantity": 1, "national": ok(4.101, "bls_milk")}}}
+    assert b["sources"]["grocery_estimates"]["rpp_year"] == 2024 and "measures" in b["sources"]["owner"]
+    assert {"hv", "oc", "bls_milk", "rpp", "est_milk"} <= set(b["methods"])
+    assert build.check_bundle(b) == []
+
+
+def test_bundle_grocery_checks():
+    import pytest
+    owner, groceries, gm = extras()
+    with pytest.raises(ValueError, match="together"):
+        build.build_bundle(*sample(), dt.date(2026, 11, 13), groceries=groceries)
+    gm["as_of"] = "2026-09"
+    with pytest.raises(ValueError, match="different national month"):
+        build.build_bundle(*sample(), dt.date(2026, 11, 13), groceries=groceries, grocery_metro=gm)
+    gm["as_of"] = "2026-10"
+    b = build.build_bundle(*sample(), dt.date(2026, 11, 13), groceries=groceries, grocery_metro=gm)
+    b["metros"][1]["groceries"]["milk"]["tier"] = "observed"
+    assert any("expected estimated" in e for e in build.check_bundle(b))

@@ -140,3 +140,62 @@ test("scenario payment converts to hours like rent", () => {
   const s = mortgageScenario(250000, { value: 0.06 });
   assert.equal(cents(hoursFor(s.value, 29.53)), cents(1199.10 / 29.53));
 });
+
+import { ownerResults, groceryResults, basketScenario, parseRatePercent } from "../calc.js";
+
+const basket = {
+  version: 1, as_of: "2026-10",
+  items: {
+    milk: { label: "Milk, whole", unit: "gallon", quantity: 1, national: ok(4.101) },
+    eggs: { label: "Eggs", unit: "dozen", quantity: 2, national: ok(2.32) },
+  },
+};
+const est = (v, method) => ({ value: v, status: "ok", tier: "estimated", method });
+
+test("ownerResults gives hours for owner costs and keeps top-coded/not-covered status", () => {
+  const ny = { owner: { home_value: ok(691700, { moe: 5263 }), owner_cost_with_mortgage: ok(3441, { moe: 23 }) } };
+  const r = ownerResults(ny, 37.4);
+  assert.equal(r.ownerCost.cost, 3441);
+  assert.equal(r.ownerCost.hours, 3441 / 37.4);
+  assert.equal(r.homeValue.value, 691700);
+  const sf = { owner: { home_value: ok(1152400), owner_cost_with_mortgage: { value: null, moe: null, status: "top_coded" } } };
+  assert.equal(ownerResults(sf, 40).ownerCost.status, "top_coded");
+  assert.equal(ownerResults(sf, 40).ownerCost.hours, null);
+  assert.equal(ownerResults({}, 40).homeValue.status, "not_covered");
+});
+
+test("groceryResults uses the metro's estimated prices", () => {
+  const metro = { groceries: { milk: est(4.522, "est_milk"), eggs: est(2.558, "est_eggs") } };
+  const items = groceryResults(metro, basket, 22.61);
+  assert.deepEqual(items.map((i) => i.key), ["milk", "eggs"]);
+  assert.equal(items[0].price, 4.522);
+  assert.equal(items[0].national, 4.101);
+  assert.equal(items[0].tier, "estimated");
+  assert.equal(items[0].hours, 4.522 / 22.61);
+});
+
+test("basketScenario is a scenario total of quantity x price, or null if any item is missing", () => {
+  const metro = { groceries: { milk: est(4.5, "m"), eggs: est(2.5, "e") } };
+  const s = basketScenario(groceryResults(metro, basket, 20), basket, { rppYear: 2024 });
+  assert.equal(s.tier, "scenario");
+  assert.equal(s.value, 4.5 + 2 * 2.5);
+  assert.deepEqual(s.assumptions.quantities, { milk: "1 gallon", eggs: "2 dozen" });
+  assert.equal(s.assumptions.national_prices_as_of, "2026-10");
+  assert.equal(s.assumptions.rpp_year, 2024);
+  const pr = { groceries: { milk: { value: null, status: "not_covered" }, eggs: { value: null, status: "not_covered" } } };
+  assert.equal(basketScenario(groceryResults(pr, basket, 20), basket), null);
+  const partial = { groceries: { milk: est(4.5, "m"), eggs: { value: null, status: "missing", tier: "estimated", method: "e" } } };
+  assert.equal(basketScenario(groceryResults(partial, basket, 20), basket), null);
+});
+
+test("parseRatePercent accepts percents and rejects junk", () => {
+  assert.equal(parseRatePercent("6.25"), 0.0625);
+  assert.equal(parseRatePercent(" 7% "), 0.07);
+  for (const bad of ["", "abc", "0", "-5", "45", null]) assert.equal(parseRatePercent(bad), null, String(bad));
+});
+
+test("mortgageScenario with a user-entered rate has no rate date", () => {
+  const s = mortgageScenario(250000, { value: parseRatePercent("6"), as_of: null });
+  assert.equal(s.value.toFixed(2), "1199.10");
+  assert.equal(s.assumptions.rate_as_of, null);
+});
