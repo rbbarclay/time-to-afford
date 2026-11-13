@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Map · Time to Afford</title>
+  <meta name="description" content="Map of the hours of work it takes to afford rent, gas, groceries, and owner costs across U.S. metro areas.">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="map.js"></script>
+</head>
+<body class="page-wide">
+  <header class="site-header">
+    <p class="back"><a href="./">← Back to Time to Afford</a> · <a href="compare.html">Compare two metros</a></p>
+    <h1>Map</h1>
+    <p class="tagline">Hours of work for one cost, across every metro.</p>
+  </header>
+
+  <main>
+    <!-- Not a <form> and inputs have no name attribute: nothing can be submitted or placed in a URL. -->
+    <section class="controls map-controls" aria-label="Inputs">
+      <div class="field">
+        <label for="measure">Cost to map</label>
+        <select id="measure" disabled><option>Loading…</option></select>
+      </div>
+      <div class="field">
+        <label for="wage">Your wage <span class="hint">(optional, pre-tax)</span></label>
+        <div class="wage-row">
+          <span class="prefix" aria-hidden="true">$</span>
+          <input id="wage" type="text" inputmode="decimal" autocomplete="off" spellcheck="false"
+                 placeholder="Blank: each metro's median" aria-describedby="wage-help wage-error">
+          <fieldset class="unit" aria-label="Wage period">
+            <label><input type="radio" id="unit-hour" checked> per hour</label>
+            <label><input type="radio" id="unit-year"> per year</label>
+          </fieldset>
+        </div>
+        <p id="wage-error" class="error" role="alert" hidden></p>
+        <p id="wage-help" class="hint">If you enter a wage, it's used for every metro. It stays in this browser tab.</p>
+      </div>
+      <div class="field">
+        <label for="metro">Find a metro</label>
+        <select id="metro" disabled><option>Loading…</option></select>
+      </div>
+    </section>
+
+    <section class="map-card" aria-labelledby="map-title">
+      <h2 id="map-title" class="map-title"><span id="measure-label">…</span> <span class="tier" id="measure-tier"></span></h2>
+      <p class="hint" id="map-sub"></p>
+      <div class="legend" id="legend" aria-label="Legend"></div>
+      <div class="map-wrap" id="map-wrap">
+        <svg id="map" role="img" aria-labelledby="map-title map-sub" preserveAspectRatio="xMidYMid meet">
+          <g id="states"></g>
+          <g id="insets"></g>
+          <g id="dots"></g>
+          <g id="selected-dot"></g>
+        </svg>
+        <div class="map-tip" id="tip" hidden aria-hidden="true"></div>
+      </div>
+      <p class="hint">Each dot is a metro area, placed at a point inside it. Tap or click a dot for details.
+        Alaska, Hawaii and Puerto Rico are shown in boxes, not to scale.</p>
+    </section>
+
+    <section class="card detail" id="detail" aria-live="polite" hidden>
+      <h2 id="d-name"></h2>
+      <p class="big" id="d-hours">—</p>
+      <p class="per" id="d-per"></p>
+      <p class="inputs" id="d-inputs"></p>
+      <p class="inputs" id="d-wage"></p>
+      <p class="hint" id="d-group"></p>
+      <details class="method" id="d-method"><summary>How is this calculated?</summary><div></div></details>
+      <p class="source" id="d-source"></p>
+    </section>
+
+    <section>
+      <p><button type="button" id="toggle-table" class="link-button" aria-controls="table-wrap" aria-expanded="false">
+        View as a table</button></p>
+      <div class="table-wrap compact" id="table-wrap" hidden>
+        <table>
+          <caption class="visually-hidden" id="table-caption"></caption>
+          <thead><tr><th scope="col">#</th><th scope="col">Metro</th><th scope="col">Hours of work</th>
+            <th scope="col">Cost</th></tr></thead>
+          <tbody id="table-rows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="limits" aria-labelledby="limits-h">
+      <h2 id="limits-h">Keep in mind</h2>
+      <ul>
+        <li>Colors group metros into <strong>five groups of about equal size</strong>, from fewest to most hours.
+          They show rank, not equal steps in hours; the legend gives each group's range.</li>
+        <li>With no wage entered, each metro uses <strong>its own median wage</strong>.</li>
+        <li>Grocery prices are <strong>estimates</strong>. Scenario figures (the grocery basket and the mortgage
+          payment) aren't mapped; see them on the <a href="./">main page</a>.</li>
+        <li>Hollow dots have no value: not covered by the source, no data, or top-coded.</li>
+      </ul>
+      <p><a href="methodology.html">Methodology, sources, and all limitations →</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Data: U.S. Bureau of Labor Statistics (OEWS, Average Price Data), U.S. Census Bureau (American Community
+      Survey), U.S. Energy Information Administration, U.S. Bureau of Economic Analysis (Regional Price Parities).
+      Map: U.S. Census Bureau (cartographic boundary files, Gazetteer). <span id="built"></span></p>
+    <p>Code: <a href="https://github.com/rbbarclay/time-to-afford">github.com/rbbarclay/time-to-afford</a> · MIT License</p>
+  </footer>
+</body>
+</html>
