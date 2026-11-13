@@ -134,3 +134,15 @@ def test_bundle_grocery_checks():
     b = build.build_bundle(*sample(), dt.date(2026, 11, 13), groceries=groceries, grocery_metro=gm)
     b["metros"][1]["groceries"]["milk"]["tier"] = "observed"
     assert any("expected estimated" in e for e in build.check_bundle(b))
+
+
+def test_bundle_map_points():
+    import pytest
+    pts = {"source": "Gazetteer", "source_url": "u", "width": 960, "height": 520,
+           "points": {"35620": {"xy": [797.2, 175.5]}, "10180": {"xy": [400.0, 330.0]}}}
+    b = build.build_bundle(*sample(), dt.date(2026, 11, 13), points=pts)
+    assert b["metros"][1]["xy"] == [797.2, 175.5]
+    assert b["sources"]["map"]["width"] == 960
+    del pts["points"]["10180"]
+    with pytest.raises(ValueError, match="10180 has no map point"):
+        build.build_bundle(*sample(), dt.date(2026, 11, 13), points=pts)

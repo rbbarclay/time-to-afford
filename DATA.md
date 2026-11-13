@@ -40,6 +40,15 @@ Each entry follows the checklist in section 10.8 of that plan. **"Checked"** mea
 - **Attribution text:** "Source: U.S. Energy Information Administration"
 - **As-of format in data files:** `as_of: "YYYY-MM"`, `reference_period: "Month YYYY (monthly average)"`
 
+### Census geography: map positions and state outlines (`pipeline/geo.py`)
+- **Publisher:** U.S. Census Bureau
+- **Metro points:** 2025 Gazetteer Files, core based statistical areas (`https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2025_Gazetteer/2025_Gaz_cbsa_national.zip`). Pipe-delimited; columns `GEOID` (CBSA code), `INTPTLAT`, `INTPTLONG` (internal point, which lies inside the metro, not a population center). All 393 of our metros match by code (checked 2026-11-13).
+- **State outlines:** 2024 cartographic boundary file, states, 1:20,000,000 (`https://www2.census.gov/geo/tiger/GENZ2024/shp/cb_2024_us_state_20m.zip`), read as a shapefile with the standard library. 50 states, DC and Puerto Rico are kept.
+- **Processing:** projected once at build time (Albers equal-area; Alaska scaled 0.35, Hawaii and Puerto Rico moved into insets, Puerto Rico enlarged 1.6x) and simplified to about 0.4 px, so `web/data/basemap.json` is 46 KB (17 KB gzipped). Outlines are for orientation only.
+- **Cadence:** annual; geography rarely changes. Rerun `geo.py` when metro delineations change.
+- **Terms checked 2026-11-13:** same as the ACS entry above: Census asks to be cited as the source; Census data are U.S. government works (17 U.S.C. § 105).
+- **Attribution text:** "Map: U.S. Census Bureau, cartographic boundary files and Gazetteer"
+
 ## Planned: groceries and mortgage
 
 From [docs/plans/groceries-and-mortgage.md](docs/plans/groceries-and-mortgage.md), section 10. None of these are in the pipeline yet.

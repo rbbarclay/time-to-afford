@@ -1,5 +1,5 @@
 """Build web/data/metros.json from data/wages.json, rent.json, gas.json, and (if present)
-owner.json, groceries.json and grocery_metro.json.
+owner.json, groceries.json, grocery_metro.json and metro_points.json (map positions from geo.py).
 
 Runs validate.py first and refuses to build if validation fails.
 Every value keeps its {value, status, tier, method} form, and the bundle's
@@ -98,7 +98,8 @@ def build_basket(groceries: dict) -> dict:
 
 
 def build_bundle(wages: dict, rent: dict, gas: dict, built: dt.date, owner: dict | None = None,
-                 groceries: dict | None = None, grocery_metro: dict | None = None) -> dict:
+                 groceries: dict | None = None, grocery_metro: dict | None = None,
+                 points: dict | None = None) -> dict:
     if (groceries is None) != (grocery_metro is None):
         raise ValueError("groceries.json and grocery_metro.json must be included together")
     if groceries is not None and grocery_metro.get("as_of") != groceries.get("as_of"):
@@ -121,6 +122,10 @@ def build_bundle(wages: dict, rent: dict, gas: dict, built: dt.date, owner: dict
             e = grocery_metro["metros"].get(code)
             m["rpp_goods"] = e["rpp_goods"] if e else NOT_COVERED
             m["groceries"] = {k: e["items"][k] if e else NOT_COVERED for k in groceries["items"]}
+        if points is not None:
+            if code not in points["points"]:
+                raise ValueError(f"metro {code} has no map point; rerun geo.py")
+            m["xy"] = points["points"][code]["xy"]
         metros.append(m)
     metros.sort(key=lambda m: m["name"].casefold())
     sources = {
@@ -141,6 +146,9 @@ def build_bundle(wages: dict, rent: dict, gas: dict, built: dt.date, owner: dict
         "methods": used_methods(metros, wages, rent, gas, owner, groceries, grocery_metro, basket=basket),
         "metros": metros,
     }
+    if points is not None:
+        sources["map"] = {"source": points["source"], "source_url": points["source_url"],
+                          "width": points["width"], "height": points["height"]}
     if basket is not None:
         bundle["basket"] = basket
     return bundle
@@ -153,7 +161,8 @@ def main(argv=None) -> int:
     load = lambda f: json.loads((DATA / f).read_text(encoding="utf-8")) if (DATA / f).exists() else None
     wages, rent, gas = load("wages.json"), load("rent.json"), load("gas.json")
     bundle = build_bundle(wages, rent, gas, dt.date.today(), owner=load("owner.json"),
-                          groceries=load("groceries.json"), grocery_metro=load("grocery_metro.json"))
+                          groceries=load("groceries.json"), grocery_metro=load("grocery_metro.json"),
+                          points=load("metro_points.json"))
     if errors := check_bundle(bundle):
         for e in errors:
             print("ERROR", e, file=sys.stderr)
